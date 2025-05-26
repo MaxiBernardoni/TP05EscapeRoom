@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "64A5NayEBtnWzBvkrfkBbRLGnLCVb52aSkVwdJWKNA0=",
+  "Hash": "F3DXJtoLLNg+MaorofguQSEPLoScmcLcHAAwV5skbNk=",
   "Source": "TP05-EscapeRoom",
   "BasePath": "_content/TP05-EscapeRoom",
   "Mode": "Default",
@@ -10,36 +10,17 @@
     {
       "Name": "TP05-EscapeRoom\\wwwroot",
       "Source": "TP05-EscapeRoom",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\css\\estilo.css",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\css\\index.css",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
-      "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "css/estilo.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\estilo.css"
-    },
-    {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\css\\index.css",
-      "SourceId": "TP05-EscapeRoom",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "css/index.css",
       "AssetKind": "All",
@@ -55,10 +36,29 @@
       "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\css\\site.css",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "css/site.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\favicon.ico",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "fonts/digital-7.ttf",
       "AssetKind": "All",
@@ -93,10 +93,29 @@
       "OriginalItemSpec": "wwwroot\\fonts\\digital-7.ttf"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "img/apple-iphone13-blue-portrait.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\apple-iphone13-blue-portrait.png"
+    },
+    {
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\site.js",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -112,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -131,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -150,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -169,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -188,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -207,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -226,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -245,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -264,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -283,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -302,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -321,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",

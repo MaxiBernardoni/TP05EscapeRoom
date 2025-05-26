@@ -1,3 +1,13 @@
 @{
-    ViewData["El Contrato Perfecto"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Habitación 3";
 }
+<h2>Estás en Almagro</h2>
+<p>Te bajás del colectivo y estás cerca... pero no sabés la dirección. ¿Qué calle tomás?</p>
+
+<form method="post" action="/Home/ValidarCalle">
+    <input name="calle" placeholder="Ingresá el nombre de la calle" />
+    <button type="submit">Caminar</button>
+</form>
+
+<p class="error">@TempData["Error"]</p>

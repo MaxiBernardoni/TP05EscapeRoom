@@ -1,29 +1,27 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NombreProyecto</title>
+    <title>@ViewData["Title"] - Escape Room UTN</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
-
 <body>
-    <header>
-        NombreProyecto
-    </header>
+    <div class="container">
+        <header style="text-align:center; padding: 20px; font-size: 24px; text-shadow: 0 0 5px #00ffc3;">
+            ESCAPE ROOM — UTN SISTEMAS
+        </header>
 
-    <main role="main">
-        @RenderBody()
-    </main>
+        <main role="main">
+            @RenderBody()
+        </main>
 
-    <footer>
-        &copy; @DateTime.Now.Year - NombreProyecto
-    </footer>
+        <footer style="text-align:center; padding: 10px; font-size: 14px; color: #00ffc3;">
+            &copy; @DateTime.Now.Year - Proyecto Final UTN - Theo Trosman
+        </footer>
+    </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
 </html>
+

@@ -1,71 +1,75 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\css\\estilo.css",
-      "PackagePath": "staticwebassets\\css\\estilo.css"
-    },
-    {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\css\\index.css",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\css\\index.css",
       "PackagePath": "staticwebassets\\css\\index.css"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
       "PackagePath": "staticwebassets\\fonts\\digital-7.ttf"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
+      "PackagePath": "staticwebassets\\img\\apple-iphone13-blue-portrait.png"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\TP05-EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

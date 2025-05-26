@@ -1,3 +1,19 @@
 @{
-    ViewData["El Contrato Perfecto"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Habitación 2";
 }
+<h2>Estás en Palermo</h2>
+<p>Salís de tu casa y caminás por tu barrio. Pero... no sabés qué colectivo tomar para llegar a la oficina.</p>
+
+<form method="post" action="/Home/ValidarColectivo">
+    <label for="colectivo">Elegí el colectivo correcto:</label><br />
+    <select name="colectivo" id="colectivo">
+        <option value="152">152</option>
+        <option value="60">60</option>
+        <option value="39">39</option>
+        <option value="108">108</option>
+    </select><br />
+    <button type="submit">Subir</button>
+</form>
+
+<p class="error">@TempData["Error"]</p>

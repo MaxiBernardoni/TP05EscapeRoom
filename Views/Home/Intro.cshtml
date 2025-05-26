@@ -1,0 +1,156 @@
+@{
+    Layout = null;
+}
+<style>
+    body {
+        margin: 0;
+        background: black;
+        font-family: 'Segoe UI', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .celular {
+        position: relative;
+        width: 380px;
+        height: 780px;
+        background: url('/img/apple-iphone13-blue-portrait.png') no-repeat center center;
+        background-size: contain;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pantalla {
+        position: absolute;
+        top: 65px;
+        bottom: 65px;
+        left: 51px;
+        right: 51px;
+        background-color: rgba(0, 0, 0, 0.94);
+        border-radius: 30px;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;  /* IE y Edge */
+        scrollbar-width: none;     /* Firefox */
+    }
+
+    .pantalla::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .notificacion {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 0.6s forwards;
+        max-width: 100%;
+        word-wrap: break-word;
+        box-sizing: border-box;
+    }
+
+    @@keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nombre-form {
+        margin-top: 20px;
+        display: none;
+    }
+
+    .nombre-form input {
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        margin-bottom: 10px;
+    }
+
+    .nombre-form button {
+        width: 100%;
+        padding: 7px;
+        background-color: #00ffc3;
+        border: none;
+        color: black;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="celular">
+    <div class="pantalla" id="pantalla"></div>
+</div>
+
+<script>
+    const pantalla = document.getElementById("pantalla");
+
+    const mensajes = [
+        "📲 UTN Alert - Notificación nueva",
+        "👨‍🎓 Estás a punto de graduarte de Ingeniería en Sistemas...",
+        "💼 Te llega una oferta misteriosa del Director AURAMAN...",
+        "📍 Lugar de la entrevista: Oficina 203, Piso 7",
+        "🕘 Debés llegar a las 09:00 AM",
+        "⏰ Te despertás a las 08:00 AM encerrado",
+        "🔒 No podés salir... y no sabés por qué",
+        "🧠 Para continuar, decime tu nombre:"
+    ];
+
+    let i = 0;
+
+    function mostrarMensaje() {
+        if (i < mensajes.length) {
+            const div = document.createElement("div");
+            div.className = "notificacion";
+            div.innerText = mensajes[i];
+            pantalla.appendChild(div);
+            pantalla.scrollTop = pantalla.scrollHeight;
+            i++;
+            setTimeout(mostrarMensaje, 1500);
+        } else {
+            mostrarFormulario();
+        }
+    }
+
+    function mostrarFormulario() {
+        const form = document.createElement("div");
+        form.className = "nombre-form";
+        form.innerHTML = `
+            <input type="text" id="nombre" placeholder="Ej: Theo" />
+            <button onclick="guardarNombre()">Entrar</button>
+        `;
+        pantalla.appendChild(form);
+        form.style.display = "block";
+        pantalla.scrollTop = pantalla.scrollHeight;
+    }
+
+    function guardarNombre() {
+        const nombre = document.getElementById("nombre").value;
+        if (nombre.trim() === "") {
+            alert("Ingresá un nombre válido");
+            return;
+        }
+
+        fetch('/Home/GuardarNombre?nombre=' + encodeURIComponent(nombre))
+            .then(() => {
+                location.href = "/Home/IntroAlarma";
+            });
+    }
+
+    mostrarMensaje();
+</script>
+

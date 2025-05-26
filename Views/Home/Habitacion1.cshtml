@@ -1,3 +1,26 @@
 @{
-    ViewData["El Contrato Perfecto"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var nombre = Context.Session.GetString("usuario");
 }
+<h2>Habitación 1</h2>
+<p>¡Buenos días, @nombre! Tenés que encontrar:</p>
+<ul>
+    <li>🔑 Llaves</li>
+    <li>🥐 Desayuno</li>
+    <li>💳 Tarjeta SUBE</li>
+</ul>
+
+
+<form method="post" action="/Home/Agarrar">
+    <select name="objeto">
+        <option value="llaves">Buscar llaves</option>
+        <option value="desayuno">Desayunar</option>
+        <option value="sube">Buscar SUBE</option>
+    </select>
+    <button type="submit">Agarrar</button>
+</form>
+
+<p>@TempData["Mensaje"]</p>
+
+<h3>🧠 Inventario actual:</h3>
+<p style="font-family: monospace;">@ViewBag.Inventario</p>

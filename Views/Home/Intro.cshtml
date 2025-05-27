@@ -15,8 +15,8 @@
 
     .celular {
         position: relative;
-        width: 380px;
-        height: 780px;
+        height: 95vh;
+         aspect-ratio: 380 / 780;
         background: url('/img/apple-iphone13-blue-portrait.png') no-repeat center center;
         background-size: contain;
         display: flex;
@@ -120,7 +120,7 @@
             pantalla.appendChild(div);
             pantalla.scrollTop = pantalla.scrollHeight;
             i++;
-            setTimeout(mostrarMensaje, 1500);
+            setTimeout(mostrarMensaje, 3000);
         } else {
             mostrarFormulario();
         }
@@ -130,7 +130,7 @@
         const form = document.createElement("div");
         form.className = "nombre-form";
         form.innerHTML = `
-            <input type="text" id="nombre" placeholder="Ej: Theo" />
+            <input type="text" id="nombre" placeholder="Ej: Maxi" />
             <button onclick="guardarNombre()">Entrar</button>
         `;
         pantalla.appendChild(form);

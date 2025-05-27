@@ -1,26 +1,69 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var nombre = Context.Session.GetString("usuario");
+    var mapa = ViewBag.Mapa as string[] ?? new string[9]; // protección ante null
+    var inventario = ViewBag.Inventario as string ?? "";
 }
-<h2>Habitación 1</h2>
-<p>¡Buenos días, @nombre! Tenés que encontrar:</p>
-<ul>
-    <li>🔑 Llaves</li>
-    <li>🥐 Desayuno</li>
-    <li>💳 Tarjeta SUBE</li>
-</ul>
 
 
-<form method="post" action="/Home/Agarrar">
-    <select name="objeto">
-        <option value="llaves">Buscar llaves</option>
-        <option value="desayuno">Desayunar</option>
-        <option value="sube">Buscar SUBE</option>
-    </select>
-    <button type="submit">Agarrar</button>
-</form>
+<style>
+    .casa-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-width: 600px;
+        margin: 50px auto;
+    }
 
-<p>@TempData["Mensaje"]</p>
+    .cuarto {
+        background-color: #111;
+        border: 2px solid #00ffc3;
+        color: white;
+        padding: 40px 10px;
+        text-align: center;
+        font-family: monospace;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-<h3>🧠 Inventario actual:</h3>
-<p style="font-family: monospace;">@ViewBag.Inventario</p>
+    .cuarto:hover {
+        background-color: #00ffc3;
+        color: black;
+    }
+
+    .titulo {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #00ffc3;
+        font-family: monospace;
+    }
+
+    .inv {
+        text-align: center;
+        font-family: monospace;
+        color: #ccc;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="titulo">
+    Te encontrás en tu casa. Hay habitaciones.
+</div>
+<div class="casa-grid">
+    @for (int i = 0; i < 9; i++) {
+        <form method="post" asp-action="Recolectar">
+            <input type="hidden" name="index" value="@i" />
+            <button class="cuarto" type="submit">
+                @if (!string.IsNullOrEmpty(mapa[i])) {
+                    <span>@mapa[i]</span>
+                } else {
+                    <span>...</span>
+                }
+            </button>
+        </form>
+    }
+</div>
+<div class="inv">
+    Inventario: @inventario
+</div>

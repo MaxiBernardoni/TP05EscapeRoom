@@ -6,151 +6,149 @@
         margin: 0;
         background: black;
         font-family: 'Segoe UI', sans-serif;
+        color: white;
+        overflow: hidden;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100vh;
-        overflow: hidden;
     }
 
-    .celular {
-        position: relative;
-        height: 95vh;
-         aspect-ratio: 380 / 780;
-        background: url('/img/apple-iphone13-blue-portrait.png') no-repeat center center;
-        background-size: contain;
-        display: flex;
+    .intro-text {
+        text-align: center;
+        font-size: 24px;
+        padding: 30px;
+        animation: fadeout 2s ease 6s forwards;
+    }
+
+    @@keyframes fadeout {
+        to {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    .alarma-container {
+        display: none;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
-    .pantalla {
-        position: absolute;
-        top: 65px;
-        bottom: 65px;
-        left: 51px;
-        right: 51px;
-        background-color: rgba(0, 0, 0, 0.94);
-        border-radius: 30px;
-        padding: 20px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-        scroll-behavior: smooth;
-        -ms-overflow-style: none;  /* IE y Edge */
-        scrollbar-width: none;     /* Firefox */
+    .reloj {
+        font-size: 64px;
+        color: #ff3c3c;
+        font-family: 'Courier New', monospace;
+        margin-bottom: 20px;
+        animation: vibrar 0.1s infinite;
     }
 
-    .pantalla::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
+    @@keyframes vibrar {
+        0% { transform: translate(0px, 0px); }
+        25% { transform: translate(1px, -1px); }
+        50% { transform: translate(-1px, 1px); }
+        75% { transform: translate(1px, 1px); }
+        100% { transform: translate(-1px, -1px); }
     }
 
-    .notificacion {
-        background-color: #1a1a1a;
+    #boton-apagar {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #ff3c3c;
+        border: none;
         color: white;
-        padding: 10px;
-        border-radius: 10px;
-        margin-bottom: 10px;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeIn 0.6s forwards;
-        max-width: 100%;
-        word-wrap: break-word;
-        box-sizing: border-box;
+        cursor: pointer;
+        border-radius: 5px;
     }
 
-    @@keyframes fadeIn {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .nombre-form {
-        margin-top: 20px;
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
         display: none;
     }
 
-    .nombre-form input {
-        width: 100%;
-        padding: 5px;
-        border-radius: 5px;
-        border: none;
-        margin-bottom: 10px;
-    }
-
-    .nombre-form button {
-        width: 100%;
-        padding: 7px;
-        background-color: #00ffc3;
-        border: none;
-        color: black;
+    #tiempo-agotado {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ff3c3c;
+        font-size: 40px;
         font-weight: bold;
-        border-radius: 5px;
-        cursor: pointer;
+        font-family: 'Courier New', monospace;
+        background: black;
+        padding: 20px;
+        border: 3px solid red;
+        display: none;
+        z-index: 10000;
     }
 </style>
 
-<div class="celular">
-    <div class="pantalla" id="pantalla"></div>
+<div class="intro-text" id="intro">
+    Una mañana cualquiera... recibís una notificación. El Director Auraman quiere entrevistarte. La entrevista es a las 09:00. Te despertás a las 08:00. Pero... no podés salir de tu casa.
 </div>
 
+<div class="alarma-container" id="alarma">
+    <div class="reloj" id="reloj-digital">08:00</div>
+    <form method="post" action="/home/startgame">
+    <button id="boton-apagar" type="submit">Apagar alarma</button>
+</form>
+
+</div>
+
+<div id="global-timer"></div>
+<div id="tiempo-agotado">TIEMPO AGOTADO</div>
+
 <script>
-    const pantalla = document.getElementById("pantalla");
+    setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("alarma").style.display = "flex";
+        document.getElementById("global-timer").style.display = "block";
+        iniciarReloj();
+    }, 7000);
 
-    const mensajes = [
-        "📲 UTN Alert - Notificación nueva",
-        "👨‍🎓 Estás a punto de graduarte de Ingeniería en Sistemas...",
-        "💼 Te llega una oferta misteriosa del Director AURAMAN...",
-        "📍 Lugar de la entrevista: Oficina 203, Piso 7",
-        "🕘 Debés llegar a las 09:00 AM",
-        "⏰ Te despertás a las 08:00 AM encerrado",
-        "🔒 No podés salir... y no sabés por qué",
-        "🧠 Para continuar, decime tu nombre:"
-    ];
+    function iniciarReloj() {
+        const startTime = new Date();
+        startTime.setHours(8, 0, 0, 0);
+        const limite = new Date(startTime.getTime() + 60 * 60 * 1000);
 
-    let i = 0;
+        const reloj = document.getElementById("reloj-digital");
+        const global = document.getElementById("global-timer");
 
-    function mostrarMensaje() {
-        if (i < mensajes.length) {
-            const div = document.createElement("div");
-            div.className = "notificacion";
-            div.innerText = mensajes[i];
-            pantalla.appendChild(div);
-            pantalla.scrollTop = pantalla.scrollHeight;
-            i++;
-            setTimeout(mostrarMensaje, 3000);
-        } else {
-            mostrarFormulario();
-        }
-    }
+        function actualizar() {
+            const ahora = new Date();
+            const elapsedMs = ahora - startTime;
 
-    function mostrarFormulario() {
-        const form = document.createElement("div");
-        form.className = "nombre-form";
-        form.innerHTML = `
-            <input type="text" id="nombre" placeholder="Ej: Maxi" />
-            <button onclick="guardarNombre()">Entrar</button>
-        `;
-        pantalla.appendChild(form);
-        form.style.display = "block";
-        pantalla.scrollTop = pantalla.scrollHeight;
-    }
+            if (elapsedMs < 0) {
+                reloj.innerText = "08:00";
+                global.innerText = "08:00:00";
+                return;
+            }
 
-    function guardarNombre() {
-        const nombre = document.getElementById("nombre").value;
-        if (nombre.trim() === "") {
-            alert("Ingresá un nombre válido");
-            return;
+            const totalSec = Math.floor(elapsedMs / 1000);
+            const horas = String(Math.floor(totalSec / 3600) + 8).padStart(2, '0');
+            const minutos = String(Math.floor((totalSec % 3600) / 60)).padStart(2, '0');
+            const segundos = String(totalSec % 60).padStart(2, '0');
+
+            reloj.innerText = `${horas}:${minutos}`;
+            global.innerText = `${horas}:${minutos}:${segundos}`;
+
+            if (ahora >= limite) {
+                document.getElementById("tiempo-agotado").style.display = "block";
+                clearInterval(intervalo);
+            }
         }
 
-        fetch('/Home/GuardarNombre?nombre=' + encodeURIComponent(nombre))
-            .then(() => {
-                location.href = "/Home/IntroAlarma";
-            });
+        actualizar();
+        const intervalo = setInterval(actualizar, 1000);
     }
-
-    mostrarMensaje();
 </script>
-

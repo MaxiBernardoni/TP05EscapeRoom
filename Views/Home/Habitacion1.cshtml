@@ -1,69 +1,158 @@
 @{
+    ViewData["Title"] = "Habitación 1";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var mapa = ViewBag.Mapa as string[] ?? new string[9]; // protección ante null
-    var inventario = ViewBag.Inventario as string ?? "";
+    var elementos = ViewBag.Elementos as List<string> ?? new List<string>();
 }
 
-
 <style>
-    .casa-grid {
+    .room-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        max-width: 600px;
-        margin: 50px auto;
+        gap: 20px;
+        padding: 40px;
+        max-width: 800px;
+        margin: auto;
     }
 
-    .cuarto {
-        background-color: #111;
-        border: 2px solid #00ffc3;
+    .item {
+        background-color: #1e1e1e;
         color: white;
-        padding: 40px 10px;
-        text-align: center;
-        font-family: monospace;
         font-size: 18px;
+        padding: 40px;
+        text-align: center;
+        border-radius: 15px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: transform 0.2s, background-color 0.2s;
+        user-select: none;
     }
 
-    .cuarto:hover {
-        background-color: #00ffc3;
-        color: black;
+    .item:hover {
+        transform: scale(1.05);
+        background-color: #333;
     }
 
-    .titulo {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 24px;
-        color: #00ffc3;
-        font-family: monospace;
+    .item.selected {
+        background-color: #4caf50 !important;
     }
 
-    .inv {
-        text-align: center;
-        font-family: monospace;
-        color: #ccc;
-        margin-top: 20px;
+    .item.disabled {
+        background-color: #444 !important;
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .notificacion-h1 {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #1a1a1a;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 18px;
+        font-size: 16px;
+        font-family: sans-serif;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        z-index: 9999;
+        animation: fadeoutH1 1s ease forwards;
+        animation-delay: 14s;
+        animation-fill-mode: forwards;
+    }
+
+    @@keyframes fadeoutH1 {
+        to { opacity: 0; visibility: hidden; }
+    }
+
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
     }
 </style>
 
-<div class="titulo">
-    Te encontrás en tu casa. Hay habitaciones.
-</div>
-<div class="casa-grid">
-    @for (int i = 0; i < 9; i++) {
-        <form method="post" asp-action="Recolectar">
-            <input type="hidden" name="index" value="@i" />
-            <button class="cuarto" type="submit">
-                @if (!string.IsNullOrEmpty(mapa[i])) {
-                    <span>@mapa[i]</span>
-                } else {
-                    <span>...</span>
-                }
-            </button>
-        </form>
+<div id="global-timer"></div>
+
+<div class="room-grid">
+@for (int i = 0; i < 9; i++) {
+    if (i == 6) {
+        <div class="item disabled" id="puerta" onclick="checkDoor()">🚪 Puerta</div>
+    } else {
+        var nombre = elementos[i < 6 ? i : i - 1];
+        <div class="item" onclick="toggleItem(this, '@nombre')">@nombre</div>
     }
+}
 </div>
-<div class="inv">
-    Inventario: @inventario
+
+<div id="notificacion-h1" class="notificacion-h1">
+    📅 Reunión con Auraman - 9:00
 </div>
+
+<script>
+    const seleccionados = new Set();
+
+    function toggleItem(element, nombre) {
+        if (seleccionados.has(nombre)) {
+            seleccionados.delete(nombre);
+            element.classList.remove('selected');
+        } else {
+            if (seleccionados.size >= 4) return;
+            seleccionados.add(nombre);
+            element.classList.add('selected');
+        }
+        evaluarCondicionesPuerta();
+    }
+
+    function evaluarCondicionesPuerta() {
+        const puerta = document.getElementById("puerta");
+        const tieneLlaves = seleccionados.has('🔑 Llaves');
+        const tieneSube = seleccionados.has('🚌 SUBE');
+        const tieneDesayuno = seleccionados.has('☕ Café') || seleccionados.has('🍞 Tostadas');
+
+        if (tieneLlaves && tieneSube && tieneDesayuno) {
+            puerta.classList.remove("disabled");
+        } else {
+            puerta.classList.add("disabled");
+        }
+    }
+
+    function checkDoor() {
+        const puerta = document.getElementById("puerta");
+        if (puerta.classList.contains("disabled")) {
+            alert("Te falta algo para poder salir...");
+            return;
+        }
+        alert("¡Puerta abierta! Podés avanzar a la próxima habitación.");
+        window.location.href = '/home/habitacion2';
+    }
+
+    function iniciarReloj() {
+        const startTime = new Date();
+        startTime.setHours(8, 0, 0, 0);
+
+        function actualizar() {
+            const ahora = new Date();
+            const diffMs = ahora - startTime;
+            const totalSec = Math.floor(diffMs / 1000);
+            const horas = String(Math.floor(totalSec / 3600) + 8).padStart(2, '0');
+            const minutos = String(Math.floor((totalSec % 3600) / 60)).padStart(2, '0');
+            const segundos = String(totalSec % 60).padStart(2, '0');
+
+            document.getElementById("global-timer").innerText = `${horas}:${minutos}:${segundos}`;
+        }
+
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+
+    iniciarReloj();
+
+    setTimeout(() => {
+        document.getElementById("notificacion-h1").style.display = "none";
+    }, 15000);
+</script>

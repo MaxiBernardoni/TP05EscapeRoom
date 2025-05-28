@@ -19,27 +19,33 @@ public class HomeController : Controller
     }
 
     public IActionResult Habitacion1()
+{
+    if (HttpContext.Session.GetString("habitacion1_elementos") == null)
     {
-        if (HttpContext.Session.GetInt32("Habitacion") != 1)
-            return RedirectToAction("Index");
-
-        if (HttpContext.Session.GetString("habitacion1_objetos") == null)
+        var objetos = new List<string>
         {
-            var objetos = new List<string> { "llaves", "sube", "cafe", "tostadas", "ropa" };
-            var random = new Random();
-            var posiciones = Enumerable.Range(0, 9).OrderBy(x => random.Next()).Take(objetos.Count).ToList();
-            var mapa = new string[9];
-            for (int i = 0; i < mapa.Length; i++) mapa[i] = "";
-            for (int i = 0; i < objetos.Count; i++) mapa[posiciones[i]] = objetos[i];
-            HttpContext.Session.SetString("habitacion1_objetos", string.Join(";", mapa));
-            HttpContext.Session.SetString("habitacion1_inventario", "");
-        }
+            "📘 Libro",
+            "👕 Ropa",
+            "🔑 Llaves",
+            "☕ Café",
+            "🍞 Tostadas",
+            "👜 Mochila",
+            "🧍‍♂️ Espejo",
+            "🚌 SUBE"
+        };
 
-        ViewBag.Mapa = HttpContext.Session.GetString("habitacion1_objetos")?.Split(';') ?? new string[9];
-        ViewBag.Inventario = HttpContext.Session.GetString("habitacion1_inventario") ?? "";
-
-        return View();
+        var random = new Random();
+        var mezcla = objetos.OrderBy(_ => random.Next()).ToList();
+        HttpContext.Session.SetString("habitacion1_elementos", string.Join("|", mezcla));
     }
+
+    var elementos = HttpContext.Session.GetString("habitacion1_elementos")
+                    .Split('|').ToList();
+
+    ViewBag.Elementos = elementos;
+    return View();
+}
+
 
     [HttpPost]
     public IActionResult Recolectar(int index)

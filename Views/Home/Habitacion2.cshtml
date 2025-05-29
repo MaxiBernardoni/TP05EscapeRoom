@@ -1,19 +1,131 @@
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Habitación 2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
-<h2>Estás en Palermo</h2>
-<p>Salís de tu casa y caminás por tu barrio. Pero... no sabés qué colectivo tomar para llegar a la oficina.</p>
 
-<form method="post" action="/Home/ValidarColectivo">
-    <label for="colectivo">Elegí el colectivo correcto:</label><br />
-    <select name="colectivo" id="colectivo">
-        <option value="152">152</option>
-        <option value="60">60</option>
-        <option value="39">39</option>
-        <option value="108">108</option>
-    </select><br />
-    <button type="submit">Subir</button>
-</form>
+<style>
+    .contador-ciclo {
+        position: fixed;
+        top: 50px;
+        right: 20px;
+        font-size: 16px;
+        color: white;
+        font-family: monospace;
+        background: rgba(0,0,0,0.4);
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
 
-<p class="error">@TempData["Error"]</p>
+    .imagen-colectivos {
+        transition: opacity 1s ease-in-out;
+        opacity: 1;
+        width: 90%;
+        max-width: 800px;
+        margin: 40px auto;
+        display: block;
+    }
+
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .error-flotante {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 0, 0, 0.85);
+        color: white;
+        padding: 20px 40px;
+        font-size: 20px;
+        border-radius: 10px;
+        z-index: 99999;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+    }
+</style>
+
+<div id="global-timer"></div>
+<div class="contador-ciclo" id="cicloContador"> </div>
+
+@if (TempData["Error"] != null)
+{
+    <div id="errorFlash" class="error-flotante">@TempData["Error"]</div>
+}
+
+<h2>Elegí bien tu camino...</h2>
+<p>En esta ciudad todo parece igual, pero solo un camino te lleva a la oficina correcta.</p>
+
+<img id="imagenColectivos" src="/img/colectivos.png" alt="Rutas de colectivos" class="imagen-colectivos" />
+
+<div style="text-align:center; margin-top: 40px;">
+    <form asp-action="FalloRuta" method="post" style="display:inline-block; margin:10px;">
+        <button type="submit">🚌 Colectivo 29</button>
+    </form>
+    <form asp-action="AciertoRuta" method="post" style="display:inline-block; margin:10px;">
+        <button type="submit">🚌 Colectivo 15</button>
+    </form>
+    <form asp-action="FalloRuta" method="post" style="display:inline-block; margin:10px;">
+        <button type="submit">🚌 Colectivo 64</button>
+    </form>
+    <form asp-action="FalloRuta" method="post" style="display:inline-block; margin:10px;">
+        <button type="submit">🚌 Colectivo 160</button>
+    </form>
+</div>
+
+<script>
+    let totalSeconds = @totalSeconds;
+    let ciclo = 0;
+    const img = document.getElementById("imagenColectivos");
+    const cicloContador = document.getElementById("cicloContador");
+
+    function iniciarReloj() {
+        const global = document.getElementById("global-timer");
+
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+
+            global.innerText = `${horas}:${mins}:${segs}`;
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+
+    function manejarCiclo() {
+        setInterval(() => {
+            ciclo = (ciclo + 1) % 12;
+            if (ciclo < 4) {
+                img.style.opacity = 1;
+            } else {
+                img.style.opacity = 0;
+            }
+            cicloContador.innerText = (12 - ciclo) + "";
+        }, 1000);
+    }
+
+    const errorFlash = document.getElementById("errorFlash");
+    if (errorFlash) {
+        setTimeout(() => {
+            errorFlash.style.opacity = "0";
+        }, 1000);
+    }
+
+    iniciarReloj();
+    manejarCiclo();
+</script>

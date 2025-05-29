@@ -1,5 +1,6 @@
 @{
     Layout = null;
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
 <style>
     body {
@@ -100,9 +101,8 @@
 <div class="alarma-container" id="alarma">
     <div class="reloj" id="reloj-digital">08:00</div>
     <form method="post" action="/home/startgame">
-    <button id="boton-apagar" type="submit">Apagar alarma</button>
-</form>
-
+        <button id="boton-apagar" type="submit">Apagar alarma</button>
+    </form>
 </div>
 
 <div id="global-timer"></div>
@@ -116,36 +116,28 @@
         iniciarReloj();
     }, 7000);
 
-    function iniciarReloj() {
-        const startTime = new Date();
-        startTime.setHours(8, 0, 0, 0);
-        const limite = new Date(startTime.getTime() + 60 * 60 * 1000);
+    let totalSeconds = @totalSeconds;
 
+    function iniciarReloj() {
         const reloj = document.getElementById("reloj-digital");
         const global = document.getElementById("global-timer");
 
         function actualizar() {
-            const ahora = new Date();
-            const elapsedMs = ahora - startTime;
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
 
-            if (elapsedMs < 0) {
-                reloj.innerText = "08:00";
-                global.innerText = "08:00:00";
-                return;
-            }
+            reloj.innerText = `${horas}:${mins}`;
+            global.innerText = `${horas}:${mins}:${segs}`;
 
-            const totalSec = Math.floor(elapsedMs / 1000);
-            const horas = String(Math.floor(totalSec / 3600) + 8).padStart(2, '0');
-            const minutos = String(Math.floor((totalSec % 3600) / 60)).padStart(2, '0');
-            const segundos = String(totalSec % 60).padStart(2, '0');
-
-            reloj.innerText = `${horas}:${minutos}`;
-            global.innerText = `${horas}:${minutos}:${segundos}`;
-
-            if (ahora >= limite) {
+            if (horas === "09" && mins === "30" && segs === "00") {
                 document.getElementById("tiempo-agotado").style.display = "block";
                 clearInterval(intervalo);
             }
+
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
         }
 
         actualizar();

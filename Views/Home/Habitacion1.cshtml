@@ -1,7 +1,10 @@
 @{
     ViewData["Title"] = "Habitación 1";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var elementos = ViewBag.Elementos as List<string> ?? new List<string>();
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion1Model;
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+    var seleccionados = modelo?.ObjetosSeleccionados ?? new List<string>();
+    var objetos = modelo?.ObjetosDisponibles ?? new List<string>();
 }
 
 <style>
@@ -41,27 +44,6 @@
         cursor: not-allowed;
     }
 
-    .notificacion-h1 {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #1a1a1a;
-        color: white;
-        padding: 15px 20px;
-        border-radius: 18px;
-        font-size: 16px;
-        font-family: sans-serif;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        z-index: 9999;
-        animation: fadeoutH1 1s ease forwards;
-        animation-delay: 14s;
-        animation-fill-mode: forwards;
-    }
-
-    @@keyframes fadeoutH1 {
-        to { opacity: 0; visibility: hidden; }
-    }
-
     #global-timer {
         position: fixed;
         top: 10px;
@@ -81,69 +63,35 @@
 <div class="room-grid">
 @for (int i = 0; i < 9; i++) {
     if (i == 6) {
-        <div class="item disabled" id="puerta" onclick="checkDoor()">🚪 Puerta</div>
+        <form asp-action="VerificarPuerta" method="post">
+            <button type="submit" class="item @(modelo.PuedeSalir() ? "" : "disabled")">🚪 Puerta</button>
+        </form>
     } else {
-        var nombre = elementos[i < 6 ? i : i - 1];
-        <div class="item" onclick="toggleItem(this, '@nombre')">@nombre</div>
+        var obj = objetos[i < 6 ? i : i - 1];
+        <form asp-action="SeleccionarObjeto" method="post">
+            <input type="hidden" name="objeto" value="@obj" />
+            <button type="submit" class="item @(seleccionados.Contains(obj) ? "selected" : "")">@obj</button>
+        </form>
     }
 }
 </div>
 
-<div id="notificacion-h1" class="notificacion-h1">
-    📅 Reunión con Auraman - 9:00
-</div>
-
 <script>
-    const seleccionados = new Set();
-
-    function toggleItem(element, nombre) {
-        if (seleccionados.has(nombre)) {
-            seleccionados.delete(nombre);
-            element.classList.remove('selected');
-        } else {
-            if (seleccionados.size >= 4) return;
-            seleccionados.add(nombre);
-            element.classList.add('selected');
-        }
-        evaluarCondicionesPuerta();
-    }
-
-    function evaluarCondicionesPuerta() {
-        const puerta = document.getElementById("puerta");
-        const tieneLlaves = seleccionados.has('🔑 Llaves');
-        const tieneSube = seleccionados.has('🚌 SUBE');
-        const tieneDesayuno = seleccionados.has('☕ Café') || seleccionados.has('🍞 Tostadas');
-
-        if (tieneLlaves && tieneSube && tieneDesayuno) {
-            puerta.classList.remove("disabled");
-        } else {
-            puerta.classList.add("disabled");
-        }
-    }
-
-    function checkDoor() {
-        const puerta = document.getElementById("puerta");
-        if (puerta.classList.contains("disabled")) {
-            alert("Te falta algo para poder salir...");
-            return;
-        }
-        alert("¡Puerta abierta! Podés avanzar a la próxima habitación.");
-        window.location.href = '/home/habitacion2';
-    }
+    let totalSeconds = @totalSeconds;
 
     function iniciarReloj() {
-        const startTime = new Date();
-        startTime.setHours(8, 0, 0, 0);
+        const global = document.getElementById("global-timer");
 
         function actualizar() {
-            const ahora = new Date();
-            const diffMs = ahora - startTime;
-            const totalSec = Math.floor(diffMs / 1000);
-            const horas = String(Math.floor(totalSec / 3600) + 8).padStart(2, '0');
-            const minutos = String(Math.floor((totalSec % 3600) / 60)).padStart(2, '0');
-            const segundos = String(totalSec % 60).padStart(2, '0');
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
 
-            document.getElementById("global-timer").innerText = `${horas}:${minutos}:${segundos}`;
+            global.innerText = `${horas}:${mins}:${segs}`;
+
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
         }
 
         actualizar();
@@ -151,8 +99,5 @@
     }
 
     iniciarReloj();
-
-    setTimeout(() => {
-        document.getElementById("notificacion-h1").style.display = "none";
-    }, 15000);
 </script>
+

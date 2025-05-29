@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Transición Colectivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+}
+
+<div id="global-timer"></div>
+
+<div style="text-align: center; padding-top: 80px;">
+    <video autoplay muted playsinline style="width: 80%; max-width: 600px;">
+        <source src="/img/entrandoColectivo.mp4" type="video/mp4">
+        Tu navegador no soporta la animación.
+    </video>
+    <h2 style="color: lime; margin-top: 20px;">Subís al colectivo...</h2>
+</div>
+
+<script>
+    let totalSeconds = @totalSeconds;
+
+    function iniciarReloj() {
+        const global = document.getElementById("global-timer");
+
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+
+            global.innerText = `${horas}:${mins}:${segs}`;
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+
+    setTimeout(() => {
+        window.location.href = '/home/juegocolectivo';
+    }, 4000);
+
+    iniciarReloj();
+</script>
+

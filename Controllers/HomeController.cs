@@ -1,141 +1,150 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using TuProyecto.Models;
+using System.Text.Json;
 
-namespace TP05_EscapeRoom.Controllers;
-
-public class HomeController : Controller
+namespace TuProyecto.Controllers
 {
-    public IActionResult Index()
+    public class HomeController : Controller
     {
-        return RedirectToAction("Intro");
-    }
+        [HttpGet]
+        public IActionResult Index() => View();
 
-    public IActionResult StartGame()
-    {
-        HttpContext.Session.SetInt32("Habitacion", 1);
-        HttpContext.Session.Remove("habitacion1_objetos");
-        HttpContext.Session.Remove("habitacion1_inventario");
-        return RedirectToAction("Habitacion1");
-    }
-
-    public IActionResult Habitacion1()
-{
-    if (HttpContext.Session.GetString("habitacion1_elementos") == null)
-    {
-        var objetos = new List<string>
+        [HttpGet]
+        public IActionResult Intro()
         {
-            "📘 Libro",
-            "👕 Ropa",
-            "🔑 Llaves",
-            "☕ Café",
-            "🍞 Tostadas",
-            "👜 Mochila",
-            "🧍‍♂️ Espejo",
-            "🚌 SUBE"
-        };
-
-        var random = new Random();
-        var mezcla = objetos.OrderBy(_ => random.Next()).ToList();
-        HttpContext.Session.SetString("habitacion1_elementos", string.Join("|", mezcla));
-    }
-
-    var elementos = HttpContext.Session.GetString("habitacion1_elementos")
-                    .Split('|').ToList();
-
-    ViewBag.Elementos = elementos;
-    return View();
-}
-
-
-    [HttpPost]
-    public IActionResult Recolectar(int index)
-    {
-        var mapa = HttpContext.Session.GetString("habitacion1_objetos")?.Split(';') ?? new string[9];
-        var inventario = HttpContext.Session.GetString("habitacion1_inventario") ?? "";
-
-        if (index >= 0 && index < mapa.Length && mapa[index] != "")
-        {
-            inventario += mapa[index] + ";";
-            mapa[index] = "";
+            int seconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            ViewBag.GameSeconds = seconds;
+            ViewBag.GameClock = new GameClock(seconds);
+            return View();
         }
 
-        HttpContext.Session.SetString("habitacion1_objetos", string.Join(";", mapa));
-        HttpContext.Session.SetString("habitacion1_inventario", inventario);
-
-        if (inventario.Contains("llaves") && inventario.Contains("sube") &&
-            (inventario.Contains("cafe") || inventario.Contains("tostadas")))
+        [HttpGet]
+        public IActionResult IntroAlarma()
         {
-            HttpContext.Session.SetInt32("Habitacion", 2);
+            int seconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            ViewBag.GameSeconds = seconds;
+            ViewBag.GameClock = new GameClock(seconds);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult StartGame()
+        {
+            if (HttpContext.Session.GetInt32("game_seconds") == null)
+                HttpContext.Session.SetInt32("game_seconds", 0);
+
+            var modelo = new Habitacion1Model();
+            var modeloJson = JsonSerializer.Serialize(modelo);
+            HttpContext.Session.SetString("habitacion1", modeloJson);
+
+            return RedirectToAction("Habitacion1");
+        }
+
+        [HttpGet]
+        public IActionResult Habitacion1()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion1");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new Habitacion1Model()
+                : JsonSerializer.Deserialize<Habitacion1Model>(modeloJson);
+
+            ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SeleccionarObjeto(string objeto)
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion1");
+            if (modeloJson != null)
+            {
+                var modelo = JsonSerializer.Deserialize<Habitacion1Model>(modeloJson);
+                modelo.SeleccionarObjeto(objeto);
+                HttpContext.Session.SetString("habitacion1", JsonSerializer.Serialize(modelo));
+            }
+            return RedirectToAction("Habitacion1");
+        }
+
+        [HttpPost]
+        public IActionResult VerificarPuerta()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion1");
+            if (modeloJson != null)
+            {
+                var modelo = JsonSerializer.Deserialize<Habitacion1Model>(modeloJson);
+                if (modelo.PuedeSalir())
+                    return RedirectToAction("Habitacion2");
+
+                TempData["Error"] = "Te falta algo para poder salir.";
+            }
+            return RedirectToAction("Habitacion1");
+        }
+
+        [HttpGet]
+        public IActionResult Habitacion2()
+        {
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            ViewBag.Modelo = new Habitacion2Model();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult FalloRuta()
+        {
+            int seconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            seconds += 120;
+            HttpContext.Session.SetInt32("game_seconds", seconds);
+            TempData["Error"] = "Elegiste el colectivo incorrecto. Se restaron 2 minutos.";
             return RedirectToAction("Habitacion2");
         }
 
-        return RedirectToAction("Habitacion1");
-    }
+        [HttpPost]
+        public IActionResult AciertoRuta() => RedirectToAction("TransicionColectivo");
 
-    public IActionResult Habitacion2()
-    {
-        return View();
-    }
+[HttpGet]
+public IActionResult TransicionColectivo()
+{
+    ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+    return View();
+}
 
-    [HttpPost]
-    public IActionResult ValidarColectivo(string colectivo)
-    {
-        if (colectivo == "152")
+        [HttpGet]
+        public IActionResult JuegoColectivo()
         {
-            HttpContext.Session.SetInt32("Habitacion", 3);
-            return RedirectToAction("Habitacion3");
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
         }
 
-        TempData["Error"] = "Ese colectivo no te lleva a destino. Intentá con otro.";
-        return RedirectToAction("Habitacion2");
-    }
-
-    [HttpPost]
-    public IActionResult ValidarCalle(string calle)
-    {
-        if (calle.Trim().ToLower() == "bulnes")
+        [HttpPost]
+        public IActionResult ResultadoColectivo(string eleccion)
         {
-            HttpContext.Session.SetInt32("Habitacion", 4);
-            return RedirectToAction("Habitacion4");
+            var modelo = new JuegoColectivoModel(eleccion);
+            int segundos = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+
+            if (modelo.Resultado == "Perdiste") segundos += 60;
+            if (modelo.Resultado == "Ganaste") segundos = Math.Max(0, segundos - 30);
+
+            HttpContext.Session.SetInt32("game_seconds", segundos);
+            ViewBag.GameSeconds = segundos;
+            ViewBag.Modelo = modelo;
+            return View("ResultadoColectivo");
         }
 
-        TempData["Error"] = "Esa calle no es la correcta. Te perdiste.";
-        return RedirectToAction("Habitacion3");
-    }
-
-    [HttpPost]
-    public IActionResult IniciarSesion(string nombre)
-    {
-        if (!string.IsNullOrWhiteSpace(nombre))
+        [HttpGet]
+        public IActionResult Habitacion3()
         {
-            HttpContext.Session.SetString("usuario", nombre);
-            return RedirectToAction("Intro");
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
         }
 
-        TempData["Error"] = "Por favor, ingresá tu nombre.";
-        return RedirectToAction("Index");
-    }
-
-    public IActionResult Intro()
-    {
-        return View();
-    }
-
-    public IActionResult GuardarNombre(string nombre)
-    {
-        HttpContext.Session.SetString("usuario", nombre);
-        return Ok();
-    }
-
-    public IActionResult IntroAlarma()
-    {
-        return View();
-    }
-
-    public IActionResult SetHabitacion(int id)
-    {
-        HttpContext.Session.SetInt32("Habitacion", id);
-        return RedirectToAction("Habitacion1");
+        [HttpGet]
+        public IActionResult UpdateClock(int seconds)
+        {
+            HttpContext.Session.SetInt32("game_seconds", seconds);
+            return Ok();
+        }
     }
 }
 

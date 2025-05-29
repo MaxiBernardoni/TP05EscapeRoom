@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\img\\apple-iphone13-blue-portrait.png"
     },
     {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivos.png",
+      "PackagePath": "staticwebassets\\img\\colectivos.png"
+    },
+    {
       "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

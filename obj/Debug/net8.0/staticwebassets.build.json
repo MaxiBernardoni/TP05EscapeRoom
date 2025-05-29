@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "F3DXJtoLLNg+MaorofguQSEPLoScmcLcHAAwV5skbNk=",
+  "Hash": "WCdsDjMa5SsNHVpOGPx8LJCiMGHKZ9Nyopb4JV0RZ2U=",
   "Source": "TP05-EscapeRoom",
   "BasePath": "_content/TP05-EscapeRoom",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\apple-iphone13-blue-portrait.png"
+    },
+    {
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivos.png",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "img/colectivos.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\colectivos.png"
     },
     {
       "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\site.js",

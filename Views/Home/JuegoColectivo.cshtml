@@ -1,0 +1,61 @@
+@{
+    ViewData["Title"] = "Juego en el Colectivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+}
+
+<style>
+    .juego-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+    }
+
+    .juego-opciones button {
+        font-size: 24px;
+        margin: 15px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+</style>
+
+<div id="global-timer"></div>
+<h2>Juego en el colectivo</h2>
+<p>Jugás piedra, papel o tijera contra el conductor. Elegí una opción:</p>
+
+<div class="juego-container">
+    <form asp-action="ResultadoColectivo" method="post">
+        <div class="juego-opciones">
+            <button name="eleccion" value="piedra">🪨 Piedra</button>
+            <button name="eleccion" value="papel">📄 Papel</button>
+            <button name="eleccion" value="tijera">✂️ Tijera</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    let totalSeconds = @totalSeconds;
+
+    function iniciarReloj() {
+        const global = document.getElementById("global-timer");
+
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+
+            global.innerText = `${horas}:${mins}:${segs}`;
+
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+
+    iniciarReloj();
+</script>

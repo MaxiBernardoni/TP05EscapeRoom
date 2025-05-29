@@ -1,84 +1,115 @@
 @{
     Layout = null;
-    var nombre = Context.Session.GetString("usuario") ?? "Jugador";
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
 <style>
     body {
         margin: 0;
-        background: #000;
-        color: #00ffc3;
-        font-family: 'JetBrains Mono', monospace;
+        background: black;
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
+        overflow: hidden;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
+        justify-content: center;
         height: 100vh;
     }
 
-    .alarma-container {
-        text-align: center;
+    .reloj {
+        font-size: 64px;
+        color: #ff3c3c;
+        font-family: 'Courier New', monospace;
+        margin-bottom: 20px;
+        animation: vibrar 0.1s infinite;
     }
 
-    .alarma-container h2 {
-        font-size: 24px;
+    @@keyframes vibrar {
+        0% { transform: translate(0px, 0px); }
+        25% { transform: translate(1px, -1px); }
+        50% { transform: translate(-1px, 1px); }
+        75% { transform: translate(1px, 1px); }
+        100% { transform: translate(-1px, -1px); }
     }
 
-    .drag-area {
-        position: relative;
-        width: 300px;
-        height: 100px;
-        margin: 40px auto;
+    #boton-apagar {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #ff3c3c;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
     }
 
-    #drag {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: #00ffc3;
-        position: absolute;
-        top: 20px;
-        left: 0;
-        cursor: grab;
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
     }
 
-    #drop {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: #444;
-        position: absolute;
-        top: 20px;
-        right: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
+    #tiempo-agotado {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ff3c3c;
+        font-size: 40px;
+        font-weight: bold;
+        font-family: 'Courier New', monospace;
+        background: black;
+        padding: 20px;
+        border: 3px solid red;
+        display: none;
+        z-index: 10000;
     }
 </style>
 
-<div class="alarma-container">
-    <h2>🔔 ALARMA ACTIVADA 🔔</h2>
-    <p>@nombre, despertate. ¡Tenés que llegar a la entrevista!</p>
-    <p>Arrastrá el círculo al icono de silenciar para apagarla:</p>
+<div class="reloj" id="reloj-digital">08:00</div>
+<form method="post" action="/home/startgame">
+    <button id="boton-apagar" type="submit">Apagar alarma</button>
+</form>
 
-    <div class="drag-area">
-        <div id="drag" draggable="true"></div>
-        <div id="drop">🔇</div>
-    </div>
-</div>
+<div id="global-timer"></div>
+<div id="tiempo-agotado">TIEMPO AGOTADO</div>
 
 <script>
-    const drag = document.getElementById("drag");
-    const drop = document.getElementById("drop");
+    let totalSeconds = @totalSeconds;
 
-    drag.addEventListener("dragstart", (e) => {
-        e.dataTransfer.setData("text/plain", "drag");
-    });
+    function iniciarReloj() {
+        const reloj = document.getElementById("reloj-digital");
+        const global = document.getElementById("global-timer");
 
-    drop.addEventListener("dragover", (e) => e.preventDefault());
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
 
-    drop.addEventListener("drop", (e) => {
-        e.preventDefault();
-        window.location.href = '/Home/SetHabitacion/1';
-    });
+            reloj.innerText = `${horas}:${mins}`;
+            global.innerText = `${horas}:${mins}:${segs}`;
+
+            if (horas === "09" && mins === "30" && segs === "00") {
+                document.getElementById("tiempo-agotado").style.display = "block";
+                clearInterval(intervalo);
+            }
+
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+
+        actualizar();
+        const intervalo = setInterval(actualizar, 1000);
+    }
+
+    iniciarReloj();
 </script>
+
 

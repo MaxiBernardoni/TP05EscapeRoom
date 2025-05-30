@@ -9,7 +9,14 @@
 <body>
     <div class="container">
         <header style="text-align:center; padding: 20px; font-size: 24px; text-shadow: 0 0 5px #00ffc3;">
-            ESCAPE ROOM — AURAMAN'S INTERVIEW
+            @if (ViewData["Resumen"] != null)
+            {
+                @ViewData["Resumen"]
+            }
+            else
+            {
+                <span>Escape Room</span>
+            }
         </header>
 
         <main role="main">

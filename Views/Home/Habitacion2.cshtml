@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Habitación 2";
+    ViewData["Resumen"] = "Estás en Palermo, tu barrio. Debes encontrar el colectivo correcto para llegar a la oficina.";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
@@ -23,7 +24,6 @@
         width: 90%;
         max-width: 800px;
         margin: 40px auto;
-        display: block;
     }
 
     #global-timer {
@@ -53,6 +53,62 @@
         opacity: 1;
         transition: opacity 0.5s ease;
     }
+
+    .glitch {
+        color: white;
+        font-weight: bold;
+        position: relative;
+        display: inline-block;
+        font-size: 1.2em;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .glitch.glitch-anim {
+        animation: glitch-anim 0.7s linear 1;
+    }
+    .glitch.glitch-anim::before, .glitch.glitch-anim::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        color: #ff00c8;
+        z-index: 1;
+    }
+    .glitch.glitch-anim::before {
+        animation: glitchTop 0.7s linear 1;
+        top: -2px;
+    }
+    .glitch.glitch-anim::after {
+        animation: glitchBottom 0.7s linear 1;
+        top: 2px;
+        color: #00fff9;
+    }
+    @@keyframes glitch-anim {
+        0% { text-shadow: 2px 0 #ff00c8, -2px 0 #00fff9; }
+        20% { text-shadow: -2px 0 #ff00c8, 2px 0 #00fff9; }
+        40% { text-shadow: 2px 2px #ff00c8, -2px -2px #00fff9; }
+        60% { text-shadow: -2px 2px #ff00c8, 2px -2px #00fff9; }
+        80% { text-shadow: 2px 0 #ff00c8, -2px 0 #00fff9; }
+        100% { text-shadow: none; }
+    }
+    @@keyframes glitchTop {
+        0% { clip-path: inset(0 0 80% 0); }
+        20% { clip-path: inset(0 0 60% 0); left: 2px; }
+        40% { clip-path: inset(0 0 40% 0); left: -2px; }
+        60% { clip-path: inset(0 0 20% 0); left: 2px; }
+        80% { clip-path: inset(0 0 60% 0); left: -2px; }
+        100% { clip-path: inset(0 0 80% 0); left: 0; }
+    }
+    @@keyframes glitchBottom {
+        0% { clip-path: inset(80% 0 0 0); }
+        20% { clip-path: inset(60% 0 0 0); left: -2px; }
+        40% { clip-path: inset(40% 0 0 0); left: 2px; }
+        60% { clip-path: inset(20% 0 0 0); left: -2px; }
+        80% { clip-path: inset(60% 0 0 0); left: 2px; }
+        100% { clip-path: inset(80% 0 0 0); left: 0; }
+    }
 </style>
 
 <div id="global-timer"></div>
@@ -63,10 +119,15 @@
     <div id="errorFlash" class="error-flotante">@TempData["Error"]</div>
 }
 
-<h2>Elegí bien tu camino...</h2>
-<p>En esta ciudad todo parece igual, pero solo un camino te lleva a la oficina correcta.</p>
-
-<img id="imagenColectivos" src="/img/colectivos.png" alt="Rutas de colectivos" class="imagen-colectivos" />
+<!-- Mensaje temporal -->
+<div id="mensajeTemporal" class="glitch" data-text="En esta ciudad todo parece igual, pero solo un camino te lleva a la oficina correcta." style="text-align:center; font-size:1.2em; margin: 30px 0; width:100%;"></div>
+<!-- Fragmentos en cuadrícula, ocultos al inicio -->
+<div id="cuadriculaFragmentos" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; width:90%; max-width:800px; margin:40px auto; gap:0; display:none;">
+    <img id="fragmento1" src="/img/colectivo1.png" alt="Fragmento 1" class="imagen-colectivos" style="width:100%; height:auto; grid-column:1; grid-row:1; margin:0; padding:0; opacity:0; transition:opacity 0.5s;" />
+    <img id="fragmento2" src="/img/colectivo2.png" alt="Fragmento 2" class="imagen-colectivos" style="width:100%; height:auto; grid-column:1; grid-row:2; margin:0; padding:0; opacity:0; transition:opacity 0.5s;" />
+    <img id="fragmento3" src="/img/colectivo3.png" alt="Fragmento 3" class="imagen-colectivos" style="width:100%; height:auto; grid-column:2; grid-row:1; margin:0; padding:0; opacity:0; transition:opacity 0.5s;" />
+    <img id="fragmento4" src="/img/colectivo4.png" alt="Fragmento 4" class="imagen-colectivos" style="width:100%; height:auto; grid-column:2; grid-row:2; margin:0; padding:0; opacity:0; transition:opacity 0.5s;" />
+</div>
 
 <div style="text-align:center; margin-top: 40px;">
     <form asp-action="FalloRuta" method="post" style="display:inline-block; margin:10px;">
@@ -85,9 +146,20 @@
 
 <script>
     let totalSeconds = @totalSeconds;
-    let ciclo = 0;
-    const img = document.getElementById("imagenColectivos");
+    const fragmentos = [
+        document.getElementById("fragmento1"),
+        document.getElementById("fragmento2"),
+        document.getElementById("fragmento3"),
+        document.getElementById("fragmento4")
+    ];
     const cicloContador = document.getElementById("cicloContador");
+
+    const errorFlash = document.getElementById("errorFlash");
+    if (errorFlash) {
+        setTimeout(() => {
+            errorFlash.style.opacity = "0";
+        }, 1000);
+    }
 
     function iniciarReloj() {
         const global = document.getElementById("global-timer");
@@ -107,25 +179,33 @@
         setInterval(actualizar, 1000);
     }
 
-    function manejarCiclo() {
-        setInterval(() => {
-            ciclo = (ciclo + 1) % 12;
-            if (ciclo < 4) {
-                img.style.opacity = 1;
-            } else {
-                img.style.opacity = 0;
-            }
-            cicloContador.innerText = (12 - ciclo) + "";
-        }, 1000);
-    }
-
-    const errorFlash = document.getElementById("errorFlash");
-    if (errorFlash) {
-        setTimeout(() => {
-            errorFlash.style.opacity = "0";
-        }, 1000);
-    }
-
     iniciarReloj();
-    manejarCiclo();
+
+    // Mostrar mensaje con glitch solo al inicio y al final
+    const mensaje = document.getElementById('mensajeTemporal');
+    mensaje.innerText = mensaje.getAttribute('data-text');
+    mensaje.classList.add('glitch-anim');
+    document.getElementById('cuadriculaFragmentos').style.display = 'none';
+    setTimeout(() => {
+        mensaje.classList.remove('glitch-anim');
+    }, 700); // Duración del glitch de entrada
+    setTimeout(() => {
+        mensaje.classList.add('glitch-anim');
+    }, 4000 - 700); // Glitch de salida antes de ocultar
+    setTimeout(() => {
+        mensaje.style.display = 'none';
+        document.getElementById('cuadriculaFragmentos').style.display = 'grid';
+        mostrarUnoPorVez();
+    }, 4000);
+
+    // Animación para mostrar un fragmento a la vez
+    let idx = 0;
+    function mostrarUnoPorVez() {
+        setInterval(() => {
+            fragmentos.forEach((img, i) => {
+                img.style.opacity = (i === idx) ? 1 : 0;
+            });
+            idx = (idx + 1) % fragmentos.length;
+        }, 1000);
+    }
 </script>

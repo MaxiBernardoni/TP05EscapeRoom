@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WCdsDjMa5SsNHVpOGPx8LJCiMGHKZ9Nyopb4JV0RZ2U=",
+  "Hash": "DK1tJx3/TCMtuJbXT3VdsgaXwP5qVUR4/Gr+0/W4MD4=",
   "Source": "TP05-EscapeRoom",
   "BasePath": "_content/TP05-EscapeRoom",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\colectivos.png"
+    },
+    {
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\entrandoColectivo.mp4",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "img/entrandoColectivo.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\entrandoColectivo.mp4"
     },
     {
       "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\site.js",

@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\img\\colectivos.png"
     },
     {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\entrandoColectivo.mp4",
+      "PackagePath": "staticwebassets\\img\\entrandoColectivo.mp4"
+    },
+    {
       "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

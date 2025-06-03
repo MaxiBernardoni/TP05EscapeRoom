@@ -1,31 +1,10 @@
 @{
     ViewData["Title"] = "Habitación 2";
-    ViewData["Resumen"] = "Estás en Palermo, tu barrio. Debes encontrar el colectivo correcto para llegar a la oficina.";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
 
 <style>
-    .contador-ciclo {
-        position: fixed;
-        top: 50px;
-        right: 20px;
-        font-size: 16px;
-        color: white;
-        font-family: monospace;
-        background: rgba(0,0,0,0.4);
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
-
-    .imagen-colectivos {
-        transition: opacity 1s ease-in-out;
-        opacity: 1;
-        width: 90%;
-        max-width: 800px;
-        margin: 40px auto;
-    }
-
     #global-timer {
         position: fixed;
         top: 10px;
@@ -38,174 +17,105 @@
         padding: 5px 10px;
         border-radius: 5px;
     }
-
-    .error-flotante {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(255, 0, 0, 0.85);
-        color: white;
-        padding: 20px 40px;
-        font-size: 20px;
+    .pipe-puzzle-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+    }
+    .pipe-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 64px);
+        grid-template-rows: repeat(7, 64px);
+        gap: 2px;
+        background: #222;
         border-radius: 10px;
-        z-index: 99999;
-        opacity: 1;
-        transition: opacity 0.5s ease;
+        box-shadow: 0 0 10px #00eaff88;
+        width: 456px;
+        height: 456px;
+        margin: 0 auto;
     }
-
-    .glitch {
-        color: white;
+    .pipe-piece {
+        width: 64px;
+        height: 64px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        user-select: none;
+    }
+    .pipe-piece.locked {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    .pipe-puzzle-btns {
+        margin-top: 20px;
+    }
+    .pipe-puzzle-btns button {
+        margin: 0 10px;
+        padding: 8px 20px;
+        font-size: 1em;
+        border-radius: 5px;
+        border: none;
+        background: #00eaff;
+        color: #222;
         font-weight: bold;
-        position: relative;
-        display: inline-block;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .pipe-puzzle-btns button:hover {
+        background: #00b8c6;
+    }
+    .pipe-puzzle-message {
+        margin-top: 20px;
         font-size: 1.2em;
-        text-align: center;
-        left: 50%;
-        transform: translateX(-50%);
+        color: #ff3c3c;
+        font-weight: bold;
     }
-    .glitch.glitch-anim {
-        animation: glitch-anim 0.7s linear 1;
-    }
-    .glitch.glitch-anim::before, .glitch.glitch-anim::after {
-        content: attr(data-text);
-        position: absolute;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        color: #ff00c8;
-        z-index: 1;
-    }
-    .glitch.glitch-anim::before {
-        animation: glitchTop 0.7s linear 1;
-        top: -2px;
-    }
-    .glitch.glitch-anim::after {
-        animation: glitchBottom 0.7s linear 1;
-        top: 2px;
-        color: #00fff9;
-    }
-    @@keyframes glitch-anim {
-        0% { text-shadow: 2px 0 #ff00c8, -2px 0 #00fff9; }
-        20% { text-shadow: -2px 0 #ff00c8, 2px 0 #00fff9; }
-        40% { text-shadow: 2px 2px #ff00c8, -2px -2px #00fff9; }
-        60% { text-shadow: -2px 2px #ff00c8, 2px -2px #00fff9; }
-        80% { text-shadow: 2px 0 #ff00c8, -2px 0 #00fff9; }
-        100% { text-shadow: none; }
-    }
-    @@keyframes glitchTop {
-        0% { clip-path: inset(0 0 80% 0); }
-        20% { clip-path: inset(0 0 60% 0); left: 2px; }
-        40% { clip-path: inset(0 0 40% 0); left: -2px; }
-        60% { clip-path: inset(0 0 20% 0); left: 2px; }
-        80% { clip-path: inset(0 0 60% 0); left: -2px; }
-        100% { clip-path: inset(0 0 80% 0); left: 0; }
-    }
-    @@keyframes glitchBottom {
-        0% { clip-path: inset(80% 0 0 0); }
-        20% { clip-path: inset(60% 0 0 0); left: -2px; }
-        40% { clip-path: inset(40% 0 0 0); left: 2px; }
-        60% { clip-path: inset(20% 0 0 0); left: -2px; }
-        80% { clip-path: inset(60% 0 0 0); left: 2px; }
-        100% { clip-path: inset(80% 0 0 0); left: 0; }
+    .emoji-row {
+        width: 456px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2px;
+        margin-top: 2px;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>
 
 <div id="global-timer"></div>
-<div class="contador-ciclo" id="cicloContador"> </div>
-
-@if (TempData["Error"] != null)
-{
-    <div id="errorFlash" class="error-flotante">@TempData["Error"]</div>
-}
-
-<!-- Mensaje temporal -->
-<div id="mensajeTemporal" class="glitch" data-text="En esta ciudad todo parece igual, pero solo un camino te lleva a la oficina correcta." style="text-align:center; font-size:1.2em; margin: 30px 0; width:100%;"></div>
-<!-- Fragmentos en cuadrícula, ocultos al inicio -->
-<div id="cuadriculaFragmentos" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; width:90%; max-width:800px; margin:40px auto; gap:0; display:none;">
-    <img id="fragmento1" src="/img/colectivo1.png" alt="Fragmento 1" class="imagen-colectivos" style="width:100%; height:auto; grid-column:1; grid-row:1; margin:0; padding:0; opacity:0; transition:opacity 0.5s;" />
-    <img id="fragmento2" src="/img/colectivo2.png" alt="Fragmento 2" class="imagen-colectivos" style="width:100%; height:auto; grid-column:1; grid-row:2; margin:0; padding:0; opacity:0; transition:opacity 0.5s;" />
-    <img id="fragmento3" src="/img/colectivo3.png" alt="Fragmento 3" class="imagen-colectivos" style="width:100%; height:auto; grid-column:2; grid-row:1; margin:0; padding:0; opacity:0; transition:opacity 0.5s;" />
-    <img id="fragmento4" src="/img/colectivo4.png" alt="Fragmento 4" class="imagen-colectivos" style="width:100%; height:auto; grid-column:2; grid-row:2; margin:0; padding:0; opacity:0; transition:opacity 0.5s;" />
+<div class="pipe-puzzle-container">
+    <h2>¡Conecta el camino del colectivo a la oficina!</h2>
+    <div class="emoji-row">
+        <span style="font-size: 2em; visibility: hidden;">x</span>
+        <span style="font-size: 2em;">💼</span>
+    </div>
+    <div id="pipeGrid" class="pipe-grid"></div>
+    <div class="emoji-row">
+        <span style="font-size: 2em;">🏠</span>
+        <span style="font-size: 2em; visibility: hidden;">x</span>
+    </div>
+    <div class="pipe-puzzle-btns">
+        <button onclick="reiniciarPuzzle()">Reiniciar</button>
+        <button onclick="verificarPuzzle()">Verificar</button>
+    </div>
+    <div id="puzzleMessage" class="pipe-puzzle-message"></div>
 </div>
 
-<div style="text-align:center; margin-top: 40px;">
-    <form asp-action="FalloRuta" method="post" style="display:inline-block; margin:10px;">
-        <button type="submit">🚌 Colectivo 29</button>
-    </form>
-    <form asp-action="AciertoRuta" method="post" style="display:inline-block; margin:10px;">
-        <button type="submit">🚌 Colectivo 15</button>
-    </form>
-    <form asp-action="FalloRuta" method="post" style="display:inline-block; margin:10px;">
-        <button type="submit">🚌 Colectivo 64</button>
-    </form>
-    <form asp-action="FalloRuta" method="post" style="display:inline-block; margin:10px;">
-        <button type="submit">🚌 Colectivo 160</button>
-    </form>
-</div>
-
+<script src="/js/pipepuzzle.js"></script>
 <script>
     let totalSeconds = @totalSeconds;
-    const fragmentos = [
-        document.getElementById("fragmento1"),
-        document.getElementById("fragmento2"),
-        document.getElementById("fragmento3"),
-        document.getElementById("fragmento4")
-    ];
-    const cicloContador = document.getElementById("cicloContador");
-
-    const errorFlash = document.getElementById("errorFlash");
-    if (errorFlash) {
-        setTimeout(() => {
-            errorFlash.style.opacity = "0";
-        }, 1000);
-    }
-
     function iniciarReloj() {
         const global = document.getElementById("global-timer");
-
         function actualizar() {
             totalSeconds++;
             const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
             const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
             const mins = (totalMin % 60).toString().padStart(2, '0');
             const segs = (totalSeconds % 60).toString().padStart(2, '0');
-
             global.innerText = `${horas}:${mins}:${segs}`;
             fetch(`/home/updateclock?seconds=${totalSeconds}`);
         }
-
         actualizar();
         setInterval(actualizar, 1000);
     }
-
     iniciarReloj();
-
-    // Mostrar mensaje con glitch solo al inicio y al final
-    const mensaje = document.getElementById('mensajeTemporal');
-    mensaje.innerText = mensaje.getAttribute('data-text');
-    mensaje.classList.add('glitch-anim');
-    document.getElementById('cuadriculaFragmentos').style.display = 'none';
-    setTimeout(() => {
-        mensaje.classList.remove('glitch-anim');
-    }, 700); // Duración del glitch de entrada
-    setTimeout(() => {
-        mensaje.classList.add('glitch-anim');
-    }, 4000 - 700); // Glitch de salida antes de ocultar
-    setTimeout(() => {
-        mensaje.style.display = 'none';
-        document.getElementById('cuadriculaFragmentos').style.display = 'grid';
-        mostrarUnoPorVez();
-    }, 4000);
-
-    // Animación para mostrar un fragmento a la vez
-    let idx = 0;
-    function mostrarUnoPorVez() {
-        setInterval(() => {
-            fragmentos.forEach((img, i) => {
-                img.style.opacity = (i === idx) ? 1 : 0;
-            });
-            idx = (idx + 1) % fragmentos.length;
-        }, 1000);
-    }
 </script>

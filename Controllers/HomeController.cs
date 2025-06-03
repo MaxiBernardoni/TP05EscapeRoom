@@ -86,29 +86,15 @@ namespace TuProyecto.Controllers
         public IActionResult Habitacion2()
         {
             ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
-            ViewBag.Modelo = new Habitacion2Model();
             return View();
         }
 
-        [HttpPost]
-        public IActionResult FalloRuta()
+        [HttpGet]
+        public IActionResult TransicionColectivo()
         {
-            int seconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
-            seconds += 120;
-            HttpContext.Session.SetInt32("game_seconds", seconds);
-            TempData["Error"] = "Elegiste el colectivo incorrecto. Se restaron 2 minutos.";
-            return RedirectToAction("Habitacion2");
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
         }
-
-        [HttpPost]
-        public IActionResult AciertoRuta() => RedirectToAction("TransicionColectivo");
-
-[HttpGet]
-public IActionResult TransicionColectivo()
-{
-    ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
-    return View();
-}
 
         [HttpGet]
         public IActionResult JuegoColectivo()

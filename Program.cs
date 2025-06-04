@@ -1,12 +1,20 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Servicios habilitados
-builder.Services.AddSession(); 
+// Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Agregar soporte para sesión
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
-// Configuración del pipeline
+// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -19,7 +27,9 @@ app.UseStaticFiles(); // Habilita acceso a wwwroot (img, css, etc.)
 app.UseRouting();
 
 app.UseAuthorization();
-app.UseSession(); // Usar sesiones (HttpContext.Session)
+
+// Habilitar el uso de sesión
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

@@ -1,0 +1,223 @@
+@model TuProyecto.Models.JuegoColectivoModel
+@{
+    ViewData["Title"] = "Resultado del Juego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+}
+
+<style>
+    .resultado-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        color: #fff;
+    }
+
+    .versus-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 30px 0;
+        position: relative;
+    }
+
+    .jugador, .conductor {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .eleccion {
+        font-size: 4em;
+        margin: 20px 0;
+        animation: aparecer 0.5s ease-out;
+    }
+
+    .versus {
+        font-size: 2em;
+        color: #ff0000;
+        margin: 0 20px;
+        animation: pulsar 1s infinite;
+    }
+
+    .resultado {
+        font-size: 2.5em;
+        margin: 30px 0;
+        padding: 20px;
+        border-radius: 10px;
+        animation: aparecer 1s ease-out;
+    }
+
+    .resultado.ganaste {
+        background: linear-gradient(45deg, #4CAF50, #45a049);
+        color: white;
+    }
+
+    .resultado.perdiste {
+        background: linear-gradient(45deg, #f44336, #d32f2f);
+        color: white;
+    }
+
+    .resultado.empate {
+        background: linear-gradient(45deg, #ff9800, #f57c00);
+        color: white;
+    }
+
+    .mensaje-conductor {
+        font-size: 1.2em;
+        margin: 20px 0;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        animation: deslizar 0.5s ease-out;
+    }
+
+    .tiempo {
+        font-size: 1.5em;
+        margin: 20px 0;
+        color: @(Model.TiempoPenalizacion < 0 ? "#4CAF50" : (Model.TiempoPenalizacion > 0 ? "#f44336" : "#ff9800"));
+        animation: aparecer 0.5s ease-out;
+    }
+
+    .continuar-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        color: #fff;
+        background: linear-gradient(45deg, #2196F3, #1976D2);
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: aparecer 1s ease-out;
+    }
+
+    .continuar-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+    }
+
+    @@keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes pulsar {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0.7;
+        }
+    }
+
+    @@keyframes deslizar {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    #global-timer {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        font-size: 2em;
+        font-family: 'Digital-7', monospace;
+        color: #ff0000;
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.8);
+        padding: 10px 20px;
+        border-radius: 10px;
+        z-index: 1000;
+    }
+</style>
+
+<div id="global-timer"></div>
+
+<div class="resultado-container">
+    <h2>Resultado del Desafío</h2>
+
+    <div class="versus-container">
+        <div class="jugador">
+            <h3>Tu elección</h3>
+            <div class="eleccion">@Model.ObtenerEmoji(Model.EleccionJugador)</div>
+        </div>
+        <div class="versus">VS</div>
+        <div class="conductor">
+            <h3>Conductor</h3>
+            <div class="eleccion">@Model.ObtenerEmoji(Model.EleccionConductor)</div>
+        </div>
+    </div>
+
+    <div class="resultado @Model.Resultado.ToLower()">
+        ¡@Model.Resultado!
+    </div>
+
+    <div class="mensaje-conductor">
+        @Model.MensajeConductor
+    </div>
+
+    <div class="tiempo">
+        @if (Model.TiempoPenalizacion < 0)
+        {
+            <span>¡Ganaste @Math.Abs(Model.TiempoPenalizacion) segundos!</span>
+        }
+        else if (Model.TiempoPenalizacion > 0)
+        {
+            <span>Perdiste @Model.TiempoPenalizacion segundos...</span>
+        }
+        else
+        {
+            <span>El tiempo sigue igual</span>
+        }
+    </div>
+
+    <a href="@Url.Action("Habitacion3", "Home")" class="continuar-btn">
+        Continuar el viaje →
+    </a>
+</div>
+
+<script>
+    let totalSeconds = @totalSeconds;
+
+    function iniciarReloj() {
+        const global = document.getElementById("global-timer");
+
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+
+            global.innerText = `${horas}:${mins}:${segs}`;
+
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        iniciarReloj();
+    });
+</script> 

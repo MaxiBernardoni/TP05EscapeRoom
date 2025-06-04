@@ -99,30 +99,67 @@ namespace TuProyecto.Controllers
         [HttpGet]
         public IActionResult JuegoColectivo()
         {
-            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
-            return View();
+            var modelo = new JuegoColectivoModel();
+            HttpContext.Session.SetString("juego_colectivo", JsonSerializer.Serialize(modelo));
+            HttpContext.Session.SetInt32("game_seconds", HttpContext.Session.GetInt32("game_seconds") ?? 0);
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds");
+            return View(modelo);
         }
 
         [HttpPost]
         public IActionResult ResultadoColectivo(string eleccion)
         {
-            var modelo = new JuegoColectivoModel(eleccion);
-            int segundos = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            var juegoJson = HttpContext.Session.GetString("juego_colectivo");
+            var juegoAnterior = juegoJson != null 
+                ? JsonSerializer.Deserialize<JuegoColectivoModel>(juegoJson) 
+                : new JuegoColectivoModel();
 
-            if (modelo.Resultado == "Perdiste") segundos += 60;
-            if (modelo.Resultado == "Ganaste") segundos = Math.Max(0, segundos - 30);
+            var modelo = new JuegoColectivoModel(
+                eleccion, 
+                juegoAnterior.RondaActual,
+                juegoAnterior.VictoriasJugador,
+                juegoAnterior.VictoriasConductor
+            );
 
-            HttpContext.Session.SetInt32("game_seconds", segundos);
+            HttpContext.Session.SetString("juego_colectivo", JsonSerializer.Serialize(modelo));
+            var segundos = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+
+            if (modelo.JuegoTerminado)
+            {
+                if (modelo.GanadorFinal == "Jugador")
+                    segundos = Math.Max(0, segundos - 30);
+                else
+                    segundos += 60;
+
+                HttpContext.Session.SetInt32("game_seconds", segundos);
+                ViewBag.GameSeconds = segundos;
+                return View("ResultadoFinal", modelo);
+            }
+
             ViewBag.GameSeconds = segundos;
-            ViewBag.Modelo = modelo;
-            return View("ResultadoColectivo");
+            return View("ResultadoRonda", modelo);
         }
 
         [HttpGet]
-        public IActionResult Habitacion3()
+        public IActionResult SiguienteRonda()
         {
+            var juegoJson = HttpContext.Session.GetString("juego_colectivo");
+            if (juegoJson == null)
+            {
+                return RedirectToAction("JuegoColectivo");
+            }
+
+            var juegoAnterior = JsonSerializer.Deserialize<JuegoColectivoModel>(juegoJson);
+            var modelo = new JuegoColectivoModel
+            {
+                RondaActual = juegoAnterior.RondaActual + 1,
+                VictoriasJugador = juegoAnterior.VictoriasJugador,
+                VictoriasConductor = juegoAnterior.VictoriasConductor
+            };
+
+            HttpContext.Session.SetString("juego_colectivo", JsonSerializer.Serialize(modelo));
             ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
-            return View();
+            return View("JuegoColectivo", modelo);
         }
 
         [HttpGet]

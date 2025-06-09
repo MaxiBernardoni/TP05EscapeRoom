@@ -1,0 +1,142 @@
+@{
+    ViewData["Title"] = "Habitación 3: Almagro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+}
+
+<style>
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .barrio-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+    }
+    .npc-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 30px;
+    }
+    .npc {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .npc img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #222;
+        box-shadow: 0 0 8px #00eaff88;
+        background: #fff;
+    }
+    .npc-comment {
+        margin-top: 10px;
+        font-size: 1em;
+        color: #333;
+        min-height: 24px;
+        text-align: center;
+    }
+    .avanzar-btn {
+        margin-top: 40px;
+        padding: 12px 32px;
+        font-size: 1.2em;
+        border-radius: 8px;
+        border: none;
+        background: #00eaff;
+        color: #222;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .avanzar-btn:disabled {
+        background: #aaa;
+        color: #666;
+        cursor: not-allowed;
+    }
+</style>
+
+<div id="global-timer"></div>
+<div class="barrio-container">
+    <h2>Estás en Almagro. ¿A quién le preguntás por el edificio de Auraman?</h2>
+    <div class="npc-row">
+        <div class="npc" onmouseover="mostrarComentario('punga')" onmouseout="ocultarComentario('punga')">
+            <img src="/img/punga.png" alt="Punga" />
+            <div id="comentario-punga" class="npc-comment"></div>
+        </div>
+        <div class="npc" onmouseover="mostrarComentario('ignorado')" onmouseout="ocultarComentario('ignorado')">
+            <img src="/img/indiferente.png" alt="Ignorado" />
+            <div id="comentario-ignorado" class="npc-comment"></div>
+        </div>
+        <div class="npc" onmouseover="mostrarComentario('confundido')" onmouseout="ocultarComentario('confundido')">
+            <img src="/img/oficinista.png" alt="Confundido" />
+            <div id="comentario-confundido" class="npc-comment"></div>
+        </div>
+    </div>
+    <div class="npc-row">
+        <div class="npc" onmouseover="mostrarComentario('insistente')" onmouseout="ocultarComentario('insistente')">
+            <img src="/img/kiosquero.png" alt="Insistente" />
+            <div id="comentario-insistente" class="npc-comment"></div>
+        </div>
+        <div class="npc" onmouseover="mostrarComentario('ayuda')" onmouseout="ocultarComentario('ayuda')">
+            <img src="/img/pistolita.png" alt="El que ayuda" />
+            <div id="comentario-ayuda" class="npc-comment"></div>
+        </div>
+        <div class="npc" onmouseover="mostrarComentario('nervioso')" onmouseout="ocultarComentario('nervioso')">
+            <img src="/img/nervioso.png" alt="Nervioso" />
+            <div id="comentario-nervioso" class="npc-comment"></div>
+        </div>
+    </div>
+    <form method="post" action="/Home/AvanzarHabitacion3">
+        <button type="submit" class="avanzar-btn" @(modelo != null && modelo.PuedeAvanzar ? "" : "disabled")>Avanzar</button>
+    </form>
+</div>
+
+<script>
+    let comentarios = {
+        punga: "Uhhh, una pinta de chorro este.",
+        ignorado: "Este no me contesta ni a palos.",
+        confundido: "Este me responde seguro.",
+        insistente: "Este seguro me quiere vender algo...",
+        ayuda: "Este parece buena onda.",
+        nervioso: "Este está re nervioso, ¿qué le pasa?"
+    };
+    function mostrarComentario(npc) {
+        document.getElementById('comentario-' + npc).innerText = comentarios[npc];
+    }
+    function ocultarComentario(npc) {
+        document.getElementById('comentario-' + npc).innerText = '';
+    }
+    let totalSeconds = @totalSeconds;
+    function iniciarReloj() {
+        const global = document.getElementById("global-timer");
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+            global.innerText = `${horas}:${mins}:${segs}`;
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+    iniciarReloj();
+</script> 

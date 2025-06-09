@@ -168,6 +168,28 @@ namespace TuProyecto.Controllers
             HttpContext.Session.SetInt32("game_seconds", seconds);
             return Ok();
         }
+
+        [HttpGet]
+        public IActionResult Habitacion3()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new Habitacion3Model()
+                : JsonSerializer.Deserialize<Habitacion3Model>(modeloJson);
+
+            ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult IniciarHabitacion3()
+        {
+            var modelo = new Habitacion3Model();
+            var modeloJson = JsonSerializer.Serialize(modelo);
+            HttpContext.Session.SetString("habitacion3", modeloJson);
+            return RedirectToAction("Habitacion3");
+        }
     }
 }
 

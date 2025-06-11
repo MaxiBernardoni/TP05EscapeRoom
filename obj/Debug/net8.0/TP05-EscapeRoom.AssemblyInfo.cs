@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TP05-EscapeRoom")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01eddacdbc9943ae70c2d69cd2c1166437400de7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a3f1679e42e50049e327bd697f8a8cc6e5d6aa1")]
 [assembly: System.Reflection.AssemblyProductAttribute("TP05-EscapeRoom")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TP05-EscapeRoom")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

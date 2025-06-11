@@ -73,8 +73,40 @@
       "PackagePath": "staticwebassets\\img\\curva_3.png"
     },
     {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\dinero.png",
+      "PackagePath": "staticwebassets\\img\\dinero.png"
+    },
+    {
       "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\entrandoColectivo.mp4",
       "PackagePath": "staticwebassets\\img\\entrandoColectivo.mp4"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\indiferente.png",
+      "PackagePath": "staticwebassets\\img\\indiferente.png"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\kiosquero.png",
+      "PackagePath": "staticwebassets\\img\\kiosquero.png"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\nervioso.png",
+      "PackagePath": "staticwebassets\\img\\nervioso.png"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\oficinista.png",
+      "PackagePath": "staticwebassets\\img\\oficinista.png"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\pistolita.png",
+      "PackagePath": "staticwebassets\\img\\pistolita.png"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\punga.png",
+      "PackagePath": "staticwebassets\\img\\punga.png"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\rechazar.png",
+      "PackagePath": "staticwebassets\\img\\rechazar.png"
     },
     {
       "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_0.png",
@@ -91,6 +123,14 @@
     {
       "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_3.png",
       "PackagePath": "staticwebassets\\img\\recta_3.png"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\usuario.png",
+      "PackagePath": "staticwebassets\\img\\usuario.png"
+    },
+    {
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\volver.png",
+      "PackagePath": "staticwebassets\\img\\volver.png"
     },
     {
       "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\pipepuzzle.js",

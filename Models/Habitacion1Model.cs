@@ -10,14 +10,14 @@ namespace TuProyecto.Models
         public List<string> ObjetosSeleccionados { get; set; } = new List<string>();
         public static string[] ObjetosFijos = new string[]
         {
-            "📘 Libro",
-            "👕 Ropa",
             "🔑 Llaves",
+            "🚌 SUBE",
             "☕ Café",
             "🍞 Tostadas",
-            "👜 Mochila",
-            "🧍‍♂️ Espejo",
-            "🚌 SUBE"
+            "🪞 Espejo",
+            "👓 Lentes",
+            "💵 Dinero",
+            "🎒 Mochila"
         };
 
         public Habitacion1Model()

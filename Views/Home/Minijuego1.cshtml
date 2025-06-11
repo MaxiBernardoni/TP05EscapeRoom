@@ -1,0 +1,110 @@
+@{
+    ViewData["Title"] = "Minijuego 1 - Encuentra el emoji diferente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+}
+
+<style>
+    .minijuego-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .emoji-grid {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 10px;
+        margin: 20px;
+        max-width: 800px;
+    }
+    .emoji {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        transition: transform 0.2s;
+    }
+    .emoji:hover {
+        transform: scale(1.1);
+        border-color: #00eaff;
+    }
+    .ronda-info {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<div id="global-timer"></div>
+
+<div class="minijuego-container">
+    <h2>Encuentra el emoji diferente</h2>
+    <div class="ronda-info">Ronda @modelo.RondaActualEmoji de 10</div>
+    
+    <div class="emoji-grid">
+        @{
+            var random = new Random();
+            var emojiCorrecto = random.Next(50);
+            var emojiBase = "😀";
+            var emojiDiferente = "🤔";
+            
+            for (int i = 0; i < 50; i++)
+            {
+                var isEmojiCorrecto = i == emojiCorrecto;
+                <div class="emoji" onclick="seleccionarEmoji(@i)">
+                    @(isEmojiCorrecto ? emojiDiferente : emojiBase)
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<script>
+    let totalSeconds = @totalSeconds;
+    
+    function iniciarReloj() {
+        const global = document.getElementById("global-timer");
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+            global.innerText = `${horas}:${mins}:${segs}`;
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+
+    function seleccionarEmoji(indice) {
+        fetch('/Home/ResolverMinijuego1', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `emojiSeleccionado=${indice}`
+        }).then(() => window.location.reload());
+    }
+
+    iniciarReloj();
+</script> 

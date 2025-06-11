@@ -1,0 +1,297 @@
+@{
+    ViewData["Title"] = "Minijuego 3 - Usa tu cerebro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+}
+
+<style>
+    .minijuego-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .puzzle-container {
+        width: 800px;
+        height: 500px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        margin: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .huevo {
+        width: 150px;
+        height: 200px;
+        background: #fff;
+        border-radius: 50%;
+        margin: 20px;
+        cursor: pointer;
+        transition: transform 0.3s;
+        display: inline-block;
+    }
+    .huevo:hover {
+        transform: scale(1.1);
+    }
+    .huevo.agitado {
+        animation: shake 0.5s;
+    }
+    @@keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+    }
+    .caja-tesoro {
+        width: 400px;
+        height: 400px;
+        background: #f0f0f0;
+        margin: 20px auto;
+        position: relative;
+    }
+    .pieza {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        cursor: move;
+    }
+    .ventana {
+        width: 600px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.8);
+        margin: 20px auto;
+        position: relative;
+        cursor: pointer;
+    }
+    .ventana-contenido {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url('/img/sprite-oculto.png');
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .progreso-limpieza {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 20px;
+        background: #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .barra-progreso {
+        height: 100%;
+        background: #00eaff;
+        width: 0%;
+        transition: width 0.3s;
+    }
+    .instrucciones {
+        margin: 20px;
+        padding: 15px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        max-width: 600px;
+        text-align: center;
+    }
+</style>
+
+<div id="global-timer"></div>
+
+<div class="minijuego-container">
+    <h2>Minijuego 3 - Usa tu cerebro</h2>
+    
+    @if (modelo.PuzzleActual == 1)
+    {
+        <div class="instrucciones">
+            Hay tres huevos, pero solo uno tiene una sorpresa dentro.
+            Agita los huevos con el mouse para descubrir cuál suena diferente.
+        </div>
+        <div class="puzzle-container" id="puzzle-huevos">
+            <div class="huevo" data-id="huevo1" onclick="agitarHuevo(this)"></div>
+            <div class="huevo" data-id="huevo2" onclick="agitarHuevo(this)"></div>
+            <div class="huevo" data-id="huevo3" onclick="agitarHuevo(this)"></div>
+        </div>
+    }
+    else if (modelo.PuzzleActual == 2)
+    {
+        <div class="instrucciones">
+            Hay una caja del tesoro que se abre con una combinación visual.
+            Mueve las piezas para formar una estrella.
+        </div>
+        <div class="puzzle-container">
+            <div class="caja-tesoro" id="puzzle-caja">
+                <div class="pieza" data-forma="triangulo" style="left: 50px; top: 50px;"></div>
+                <div class="pieza" data-forma="triangulo" style="left: 150px; top: 50px;"></div>
+                <div class="pieza" data-forma="triangulo" style="left: 250px; top: 50px;"></div>
+                <div class="pieza" data-forma="triangulo" style="left: 50px; top: 150px;"></div>
+                <div class="pieza" data-forma="triangulo" style="left: 150px; top: 150px;"></div>
+            </div>
+        </div>
+    }
+    else if (modelo.PuzzleActual == 3)
+    {
+        <div class="instrucciones">
+            La ventana está empañada. Algo está escondido detrás.
+            Usa el mouse como trapo para limpiar y descubrir qué hay detrás.
+        </div>
+        <div class="puzzle-container">
+            <div class="ventana" id="puzzle-ventana" onmousemove="limpiarVentana(event)">
+                <div class="ventana-contenido"></div>
+                <div class="progreso-limpieza">
+                    <div class="barra-progreso" id="barra-limpieza"></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    let totalSeconds = @totalSeconds;
+    let porcentajeLimpieza = 0;
+    
+    function iniciarReloj() {
+        const global = document.getElementById("global-timer");
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+            global.innerText = `${horas}:${mins}:${segs}`;
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+
+    // Puzzle 1: Huevos
+    function agitarHuevo(elemento) {
+        elemento.classList.add('agitado');
+        
+        // Reproducir sonido según el huevo
+        const sonido = new Audio();
+        if (elemento.dataset.id === 'huevo2') {
+            sonido.src = '/sounds/huevo-especial.mp3';
+        } else {
+            sonido.src = '/sounds/huevo-normal.mp3';
+        }
+        sonido.play();
+
+        setTimeout(() => {
+            elemento.classList.remove('agitado');
+            verificarHuevo(elemento.dataset.id);
+        }, 500);
+    }
+
+    function verificarHuevo(huevoId) {
+        fetch('/Home/ResolverMinijuego3', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `puzzleId=1&solucion=${huevoId}`
+        }).then(() => window.location.reload());
+    }
+
+    // Puzzle 2: Caja del tesoro
+    if (document.getElementById('puzzle-caja')) {
+        const piezas = document.querySelectorAll('.pieza');
+        let formaActual = '';
+
+        piezas.forEach(pieza => {
+            pieza.addEventListener('dragstart', e => {
+                e.dataTransfer.setData('text/plain', e.target.dataset.forma);
+            });
+
+            pieza.addEventListener('dragend', () => {
+                verificarForma();
+            });
+        });
+
+        function verificarForma() {
+            // Verificar si las piezas forman una estrella
+            const posiciones = Array.from(piezas).map(p => ({
+                x: parseInt(p.style.left),
+                y: parseInt(p.style.top)
+            }));
+
+            // Lógica simplificada: si las piezas están en posición de estrella
+            const formaEstrella = posiciones.every(p => 
+                (p.x >= 100 && p.x <= 300) && 
+                (p.y >= 100 && p.y <= 300)
+            );
+
+            if (formaEstrella) {
+                fetch('/Home/ResolverMinijuego3', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'puzzleId=2&solucion=estrella'
+                }).then(() => window.location.reload());
+            }
+        }
+    }
+
+    // Puzzle 3: Ventana empañada
+    function limpiarVentana(e) {
+        if (!e.target.classList.contains('ventana')) return;
+
+        const rect = e.target.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Simular limpieza en un radio alrededor del cursor
+        const radio = 30;
+        const ctx = e.target.getContext('2d');
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, radio, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Actualizar progreso
+        porcentajeLimpieza = Math.min(100, porcentajeLimpieza + 1);
+        document.getElementById('barra-limpieza').style.width = porcentajeLimpieza + '%';
+
+        if (porcentajeLimpieza >= 80) {
+            fetch('/Home/ResolverMinijuego3', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `puzzleId=3&solucion=${porcentajeLimpieza}`
+            }).then(() => window.location.reload());
+        }
+    }
+
+    iniciarReloj();
+
+    // Inicializar el canvas para la ventana empañada si existe
+    if (document.getElementById('puzzle-ventana')) {
+        const ventana = document.getElementById('puzzle-ventana');
+        const canvas = document.createElement('canvas');
+        canvas.width = ventana.offsetWidth;
+        canvas.height = ventana.offsetHeight;
+        canvas.style.position = 'absolute';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        ventana.appendChild(canvas);
+    }
+</script> 

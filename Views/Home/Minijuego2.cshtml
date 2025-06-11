@@ -1,0 +1,168 @@
+@{
+    ViewData["Title"] = "Minijuego 2 - Juego de Memoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+}
+
+<style>
+    .minijuego-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .memoria-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        margin: 20px;
+        max-width: 700px;
+    }
+    .cuadrado {
+        width: 80px;
+        height: 80px;
+        background: #00eaff;
+        border: 2px solid #0099cc;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .cuadrado.blanco {
+        background: white;
+    }
+    .cuadrado.seleccionado {
+        background: #ffeb3b;
+        border-color: #ffc107;
+    }
+    .ronda-info {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .controles {
+        margin-top: 20px;
+    }
+    .btn-verificar {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none;
+    }
+    .btn-verificar:hover {
+        background: #45a049;
+    }
+    .instrucciones {
+        margin: 20px;
+        padding: 15px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        max-width: 600px;
+        text-align: center;
+    }
+</style>
+
+<div id="global-timer"></div>
+
+<div class="minijuego-container">
+    <h2>Juego de Memoria</h2>
+    <div class="ronda-info">Ronda @modelo.RondaActualMemoria de 7</div>
+    
+    <div class="instrucciones">
+        Memoriza los cuadrados que se iluminarán en blanco.
+        Cuando desaparezcan, selecciona los mismos cuadrados y presiona verificar.
+    </div>
+    
+    <div class="memoria-grid">
+        @for (int i = 0; i < 49; i++)
+        {
+            <div class="cuadrado" data-index="@i" onclick="toggleCuadrado(this)"></div>
+        }
+    </div>
+
+    <div class="controles">
+        <button class="btn-verificar" onclick="verificarSecuencia()">Verificar</button>
+    </div>
+</div>
+
+<script>
+    let totalSeconds = @totalSeconds;
+    let secuenciaSeleccionada = [];
+    let secuenciaOriginal = @Html.Raw(Json.Serialize(modelo.SecuenciaMemoria));
+    let mostrandoSecuencia = true;
+    
+    function iniciarReloj() {
+        const global = document.getElementById("global-timer");
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+            global.innerText = `${horas}:${mins}:${segs}`;
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+
+    function mostrarSecuenciaInicial() {
+        secuenciaOriginal.forEach(index => {
+            document.querySelector(`[data-index="${index}"]`).classList.add('blanco');
+        });
+
+        setTimeout(() => {
+            document.querySelectorAll('.cuadrado').forEach(cuadrado => {
+                cuadrado.classList.remove('blanco');
+            });
+            mostrandoSecuencia = false;
+            document.querySelector('.btn-verificar').style.display = 'block';
+        }, 2000);
+    }
+
+    function toggleCuadrado(elemento) {
+        if (mostrandoSecuencia) return;
+        
+        const index = parseInt(elemento.dataset.index);
+        const indexEnSecuencia = secuenciaSeleccionada.indexOf(index);
+        
+        if (indexEnSecuencia === -1) {
+            if (secuenciaSeleccionada.length < secuenciaOriginal.length) {
+                secuenciaSeleccionada.push(index);
+                elemento.classList.add('seleccionado');
+            }
+        } else {
+            secuenciaSeleccionada.splice(indexEnSecuencia, 1);
+            elemento.classList.remove('seleccionado');
+        }
+    }
+
+    function verificarSecuencia() {
+        fetch('/Home/ResolverMinijuego2', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `secuencia=${secuenciaSeleccionada.join(',')}`
+        }).then(() => window.location.reload());
+    }
+
+    iniciarReloj();
+    mostrarSecuenciaInicial();
+</script> 

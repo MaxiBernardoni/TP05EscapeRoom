@@ -18,12 +18,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\49432830\Downloads\TP05EscapeRoom
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/DialogoInsistente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaWFsb2dvSW5zaXN0ZW50ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/DialogoPunga.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaWFsb2dvUHVuZ2EuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/Habitacion1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/Habitacion2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/Habitacion3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uMy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/Index.cshtml]
@@ -40,6 +52,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/JuegoColectivo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxKdWVnb0NvbGVjdGl2by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/Minijuego1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaW5panVlZ28xLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/Minijuego2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaW5panVlZ28yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/Minijuego3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaW5panVlZ28zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/49432830/Downloads/TP05EscapeRoom/Views/Home/ResultadoColectivo.cshtml]

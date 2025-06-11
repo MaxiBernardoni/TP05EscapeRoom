@@ -33,10 +33,30 @@
     }
     .npc {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
         cursor: pointer;
-        transition: transform 0.2s;
+        transition: transform 0.2s, filter 0.3s;
+        position: relative;
+        padding-top: 40px; /* Espacio para el mensaje */
+    }
+    .npc:hover {
+        transform: scale(1.05);
+    }
+    .npc.resuelto {
+        opacity: 0.6;
+        cursor: default;
+    }
+    .npc.resuelto:hover {
+        transform: none;
+    }
+    .npc.bloqueado {
+        filter: grayscale(100%) brightness(50%);
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+    .npc.bloqueado:hover {
+        transform: none;
     }
     .npc img {
         width: 100px;
@@ -46,12 +66,35 @@
         box-shadow: 0 0 8px #00eaff88;
         background: #fff;
     }
+    .npc.bloqueado img {
+        box-shadow: none;
+    }
     .npc-comment {
-        margin-top: 10px;
+        margin-bottom: 10px;
         font-size: 1em;
         color: #333;
         min-height: 24px;
         text-align: center;
+        position: absolute;
+        bottom: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 8px 12px;
+        border-radius: 8px;
+        display: none;
+        z-index: 100;
+        width: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        border: 1px solid #ddd;
+        margin-bottom: 5px;
+    }
+    .npc:hover .npc-comment {
+        display: block;
+    }
+    .npc.bloqueado .npc-comment {
+        background: rgba(200, 200, 200, 0.95);
+        color: #666;
     }
     .avanzar-btn {
         margin-top: 40px;
@@ -70,60 +113,212 @@
         color: #666;
         cursor: not-allowed;
     }
+    .minijuego-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        z-index: 1000;
+        display: none;
+    }
+    .minijuego-container.active {
+        display: block;
+    }
+    .vasos-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .vaso {
+        width: 80px;
+        height: 120px;
+        background: #00eaff;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .vaso:hover {
+        transform: translateY(-10px);
+    }
+    .pistolita-container {
+        text-align: center;
+    }
+    .pistolita-btn {
+        margin: 10px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background: #00eaff;
+    }
+    .pistolita-btn:disabled {
+        background: #aaa;
+        cursor: not-allowed;
+    }
+    .estado-juego {
+        margin-top: 20px;
+        padding: 10px;
+        background: #f0f0f0;
+        border-radius: 5px;
+    }
+    .inventario {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.8);
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+    }
+    .inventario-item {
+        margin: 5px 0;
+    }
+    .inventario-item.active {
+        color: #00eaff;
+    }
+    .cuadra-indicator {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
 </style>
 
 <div id="global-timer"></div>
+
+<div class="cuadra-indicator">
+    Cuadra actual: @(modelo.CuadraActual)
+</div>
+
 <div class="barrio-container">
     <h2>Estás en Almagro. ¿A quién le preguntás por el edificio de Auraman?</h2>
+    
     <div class="npc-row">
-        <div class="npc" onmouseover="mostrarComentario('punga')" onmouseout="ocultarComentario('punga')">
+        <div class="npc @(modelo.PungaResuelto ? "resuelto" : "") @(!modelo.TienePlata ? "bloqueado" : "")" onclick="interactuarNPC('punga')">
             <img src="/img/punga.png" alt="Punga" />
-            <div id="comentario-punga" class="npc-comment"></div>
+            <div class="npc-comment">
+                @if (modelo.PungaResuelto)
+                {
+                    <text>Ya jugaste con este.</text>
+                }
+                else if (!modelo.TienePlata)
+                {
+                    <text>Necesitás dinero para interactuar con él.</text>
+                }
+                else
+                {
+                    <text>Uhhh, una pinta de chorro este.</text>
+                }
+            </div>
         </div>
-        <div class="npc" onmouseover="mostrarComentario('ignorado')" onmouseout="ocultarComentario('ignorado')">
+        <div class="npc @(modelo.IgnoradoInteractuado ? "resuelto" : "")" onclick="interactuarNPC('ignorado')">
             <img src="/img/indiferente.png" alt="Ignorado" />
-            <div id="comentario-ignorado" class="npc-comment"></div>
+            <div class="npc-comment">@(modelo.IgnoradoInteractuado ? "No me da bola." : "Este no me contesta ni a palos.")</div>
         </div>
-        <div class="npc" onmouseover="mostrarComentario('confundido')" onmouseout="ocultarComentario('confundido')">
+        <div class="npc @(modelo.ConfundidoInteractuado ? "resuelto" : "") @(!modelo.TieneLentes ? "bloqueado" : "")" onclick="interactuarNPC('confundido')">
             <img src="/img/oficinista.png" alt="Confundido" />
-            <div id="comentario-confundido" class="npc-comment"></div>
+            <div class="npc-comment">
+                @if (modelo.ConfundidoInteractuado)
+                {
+                    <text>No sabe nada.</text>
+                }
+                else if (!modelo.TieneLentes)
+                {
+                    <text>Necesitás los lentes para ver bien a este personaje.</text>
+                }
+                else
+                {
+                    <text>Este me responde seguro.</text>
+                }
+            </div>
         </div>
     </div>
+    
     <div class="npc-row">
-        <div class="npc" onmouseover="mostrarComentario('insistente')" onmouseout="ocultarComentario('insistente')">
+        <div class="npc @(modelo.InsistenteResuelto ? "resuelto" : "") @(!modelo.TienePlata ? "bloqueado" : "")" onclick="interactuarNPC('insistente')">
             <img src="/img/kiosquero.png" alt="Insistente" />
-            <div id="comentario-insistente" class="npc-comment"></div>
+            <div class="npc-comment">
+                @if (modelo.InsistenteResuelto)
+                {
+                    <text>Ya intenté con este.</text>
+                }
+                else if (!modelo.TienePlata)
+                {
+                    <text>Necesitás dinero para comprarle algo.</text>
+                }
+                else
+                {
+                    <text>Este seguro me quiere vender algo...</text>
+                }
+            </div>
         </div>
-        <div class="npc" onmouseover="mostrarComentario('ayuda')" onmouseout="ocultarComentario('ayuda')">
+        <div class="npc @(modelo.AyudaResuelto ? "resuelto" : "")" onclick="interactuarNPC('ayuda')">
             <img src="/img/pistolita.png" alt="El que ayuda" />
-            <div id="comentario-ayuda" class="npc-comment"></div>
+            <div class="npc-comment">@(modelo.AyudaResuelto ? "Ya me ayudó." : "Este parece buena onda.")</div>
         </div>
-        <div class="npc" onmouseover="mostrarComentario('nervioso')" onmouseout="ocultarComentario('nervioso')">
+        <div class="npc @(modelo.NerviosoResuelto ? "resuelto" : "") @(!modelo.TieneEspejo ? "bloqueado" : "")" onclick="interactuarNPC('nervioso')">
             <img src="/img/nervioso.png" alt="Nervioso" />
-            <div id="comentario-nervioso" class="npc-comment"></div>
+            <div class="npc-comment">
+                @if (modelo.NerviosoResuelto)
+                {
+                    <text>Ya lo ayudé.</text>
+                }
+                else if (!modelo.TieneEspejo)
+                {
+                    <text>Necesitás un espejo para ayudarlo.</text>
+                }
+                else
+                {
+                    <text>Este está re nervioso, ¿qué le pasa?</text>
+                }
+            </div>
         </div>
     </div>
+
     <form method="post" action="/Home/AvanzarHabitacion3">
-        <button type="submit" class="avanzar-btn" @(modelo != null && modelo.PuedeAvanzar ? "" : "disabled")>Avanzar</button>
+        <button type="submit" class="avanzar-btn" @(modelo.PuedeAvanzar ? "" : "disabled")>Avanzar</button>
     </form>
 </div>
 
+<div class="inventario">
+    <div class="inventario-item @(modelo.TienePlata ? "active" : "")">Dinero</div>
+    <div class="inventario-item @(modelo.TieneEspejo ? "active" : "")">Espejo</div>
+    <div class="inventario-item @(modelo.TieneLentes ? "active" : "")">Lentes</div>
+</div>
+
+<!-- Minijuego Punga (Vasos) -->
+<div id="juego-vasos" class="minijuego-container @(modelo.JuegoPungaEnCurso ? "active" : "")">
+    <h3>¡Encuentra la pelota!</h3>
+    <div class="vasos-container">
+        <div class="vaso" onclick="seleccionarVaso(0)"></div>
+        <div class="vaso" onclick="seleccionarVaso(1)"></div>
+        <div class="vaso" onclick="seleccionarVaso(2)"></div>
+    </div>
+</div>
+
+<!-- Minijuego Pistolita -->
+<div id="juego-pistolita" class="minijuego-container @(modelo.JuegoPistolitaEnCurso ? "active" : "")">
+    <h3>¡Duelo de pistolas!</h3>
+    <div class="pistolita-container">
+        <div class="estado-juego">
+            Tus balas: @modelo.BalasJugador | Escudos usados: @modelo.EscudosUsados
+        </div>
+        <button class="pistolita-btn" onclick="accionPistolita('disparar')" @(modelo.BalasJugador == 0 ? "disabled" : "")>Disparar</button>
+        <button class="pistolita-btn" onclick="accionPistolita('escudo')" @(modelo.EscudosUsados >= 3 ? "disabled" : "")>Escudo</button>
+        <button class="pistolita-btn" onclick="accionPistolita('recargar')">Recargar</button>
+    </div>
+</div>
+
 <script>
-    let comentarios = {
-        punga: "Uhhh, una pinta de chorro este.",
-        ignorado: "Este no me contesta ni a palos.",
-        confundido: "Este me responde seguro.",
-        insistente: "Este seguro me quiere vender algo...",
-        ayuda: "Este parece buena onda.",
-        nervioso: "Este está re nervioso, ¿qué le pasa?"
-    };
-    function mostrarComentario(npc) {
-        document.getElementById('comentario-' + npc).innerText = comentarios[npc];
-    }
-    function ocultarComentario(npc) {
-        document.getElementById('comentario-' + npc).innerText = '';
-    }
     let totalSeconds = @totalSeconds;
+    
     function iniciarReloj() {
         const global = document.getElementById("global-timer");
         function actualizar() {
@@ -138,5 +333,41 @@
         actualizar();
         setInterval(actualizar, 1000);
     }
+
+    function interactuarNPC(npc) {
+        const form = document.createElement('form');
+        form.method = 'post';
+        form.action = '/Home/InteractuarNPC';
+        
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'npc';
+        input.value = npc;
+        
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    function seleccionarVaso(vaso) {
+        fetch('/Home/JugarVasos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `vaso=${vaso}`
+        }).then(() => window.location.reload());
+    }
+
+    function accionPistolita(accion) {
+        fetch('/Home/JugarPistolita', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `accion=${accion}`
+        }).then(() => window.location.reload());
+    }
+
     iniciarReloj();
 </script> 

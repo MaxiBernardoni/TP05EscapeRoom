@@ -1,0 +1,245 @@
+@{
+    ViewData["Title"] = "Diálogo con el Punga";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: #000;
+    }
+
+    .scene-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background-image: url('/img/almagro-bg.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .character {
+        position: absolute;
+        height: 80vh;
+        bottom: 20vh;
+        transition: opacity 0.3s;
+    }
+
+    .character.left {
+        left: 10%;
+    }
+
+    .character.right {
+        right: 10%;
+    }
+
+    .character.speaking {
+        opacity: 1;
+    }
+
+    .character.not-speaking {
+        opacity: 0.7;
+    }
+
+    .dialog-box {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 20px;
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .speaker-name {
+        color: #00eaff;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .dialog-text {
+        font-size: 1.1em;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .dialog-options {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .dialog-option {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid #00eaff;
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .dialog-option:hover {
+        background: rgba(0, 234, 255, 0.2);
+    }
+
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .minigame-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #00eaff;
+        color: white;
+        text-align: center;
+    }
+
+    .vasos-container {
+        display: flex;
+        gap: 30px;
+        margin: 20px 0;
+        justify-content: center;
+    }
+
+    .vaso {
+        width: 100px;
+        height: 150px;
+        background: linear-gradient(45deg, #00eaff, #0077ff);
+        cursor: pointer;
+        transition: transform 0.3s;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .vaso:hover {
+        transform: translateY(-10px);
+    }
+
+    .vaso.selected {
+        background: linear-gradient(45deg, #4CAF50, #45a049);
+    }
+</style>
+
+<div id="global-timer"></div>
+
+<div class="scene-container">
+    @if (!modelo.JuegoPungaEnCurso && !modelo.PungaResuelto)
+    {
+        <img src="/img/punga-full.png" class="character right speaking" alt="Punga">
+        <img src="/img/usuario-full.png" class="character left not-speaking" alt="Usuario">
+        
+        <div class="dialog-box">
+            <div class="speaker-name">Punga</div>
+            <div class="dialog-text">
+                Eh amigo, ¿me podés ayudar? Necesito plata para el bondi... ¿No me das una ayudita?
+            </div>
+            <div class="dialog-options">
+                <form method="post" action="/Home/IniciarJuegoPunga">
+                    <button type="submit" class="dialog-option">Jugar a los vasos</button>
+                </form>
+                <form method="post" action="/Home/Habitacion3">
+                    <button type="submit" class="dialog-option">Volver</button>
+                </form>
+            </div>
+        </div>
+    }
+    else if (modelo.JuegoPungaEnCurso)
+    {
+        <div class="minigame-container">
+            <h3>Encontrá la pelotita</h3>
+            <div class="vasos-container">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <div class="vaso @(modelo.VasoSeleccionado == i ? "selected" : "")" onclick="seleccionarVaso(@i)"></div>
+                }
+            </div>
+        </div>
+    }
+    else if (modelo.PungaResuelto)
+    {
+        <img src="/img/punga-full.png" class="character right speaking" alt="Punga">
+        <img src="/img/usuario-full.png" class="character left not-speaking" alt="Usuario">
+        
+        <div class="dialog-box">
+            <div class="speaker-name">Punga</div>
+            <div class="dialog-text">
+                Ahhh, que suerte que tenés wachin...
+            </div>
+            <div class="dialog-options">
+                <form method="post" action="/Home/Habitacion3">
+                    <button type="submit" class="dialog-option">Volver</button>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <img src="/img/punga-full.png" class="character right speaking" alt="Punga">
+        <img src="/img/usuario-full.png" class="character left not-speaking" alt="Usuario">
+        
+        <div class="dialog-box">
+            <div class="speaker-name">Punga</div>
+            <div class="dialog-text">
+                Perdiste amigo. Ahora dame todo lo que tenés.
+            </div>
+            <div class="dialog-options">
+                <form method="post" action="/Home/ReiniciarJuego">
+                    <button type="submit" class="dialog-option">Reiniciar juego</button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    let totalSeconds = @totalSeconds;
+    
+    function iniciarReloj() {
+        const global = document.getElementById("global-timer");
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+            global.innerText = `${horas}:${mins}:${segs}`;
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+        actualizar();
+        setInterval(actualizar, 1000);
+    }
+
+    function seleccionarVaso(vaso) {
+        fetch('/Home/JugarVasos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `vaso=${vaso}`
+        }).then(() => window.location.reload());
+    }
+
+    iniciarReloj();
+</script> 

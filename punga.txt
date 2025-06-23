@@ -1,0 +1,45 @@
+. Un punga: te intenta robar, si pasas un juego te salvas del ladrón y continuas con el juego pero si pierdes, te roba toda la ropa, plata y sube. El juego se termina y tenés que reiniciar.
+
+Usuario: Uhhh, una pinta de chorro este. (Comentario)
+
+Punga: Hola capo, mostro, genio. Como estas? como anda la familia? espero que muy bien. Mirá yo te vengo a pedir un poco de plata para mi familia que estamos en una mala situación…
+
+Usuario: No pa. No tengo nada, disculpá.
+
+Punga: Ta bien amigo. No hay drama.
+
+(El usuario se da vuelta y recibe un manotazo de atrás)
+
+Usuario: Para amigo. ¿Qué hacés?
+
+Punga: Y bueno gato. Te regalaste ameo.
+
+Usuario: Bueno bueno, flaquito, cortala o te mato.
+
+Punga: ¿A quién vas a matar vos? piscuin.
+
+Usuario: Y bueno pa. No te hagas el picante porque no te sale, gil.
+
+Punga: Hagamos así. Jugamos a esto, hay 3 vasos y una pelota. Si adivinás en qué vaso está la pelota, ganaste. Si no, te robo todo ameo.
+
+El juego: Hay tres vasos y en uno hay una pelota dentro. El ladrón mueve de lugar los vasos y tenés que seleccionar el que tiene la pelota.
+Si lo hacés, el ladrón te perdona y se va. Si no, te roba y se termina la sala.
+
+Si ganás:
+Usuario: ¡Vamos por dios!
+
+Punga: Ahhh, que suerte que tene wachin.
+
+Usuario: Chau, nos re vimos papa.
+
+Si pierdes:
+Usuario: No, porfavor, no me hagas nada.
+
+Punga: Aceptaste el desafio, ahora tene que cumpli la consecuencia.
+
+Usuario: Noooo, porfavor.
+
+El punga te roba todo lo que tenes y la ropa, lo que no te permite seguir jugando y tenes que reiniciar.
+
+Si ya hablaste con él antes: 
+Punga: Otra vez vos... dale, jugá de nuevo si te animás.

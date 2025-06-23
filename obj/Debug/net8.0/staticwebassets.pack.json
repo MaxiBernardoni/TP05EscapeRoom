@@ -1,191 +1,191 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\css\\index.css",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\css\\index.css",
       "PackagePath": "staticwebassets\\css\\index.css"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\fonts\\digital-7.ttf",
       "PackagePath": "staticwebassets\\fonts\\digital-7.ttf"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
       "PackagePath": "staticwebassets\\img\\apple-iphone13-blue-portrait.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo.png",
       "PackagePath": "staticwebassets\\img\\colectivo.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo1.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo1.png",
       "PackagePath": "staticwebassets\\img\\colectivo1.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo2.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo2.png",
       "PackagePath": "staticwebassets\\img\\colectivo2.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo3.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo3.png",
       "PackagePath": "staticwebassets\\img\\colectivo3.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo4.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo4.png",
       "PackagePath": "staticwebassets\\img\\colectivo4.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\crucet_0.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\crucet_0.png",
       "PackagePath": "staticwebassets\\img\\crucet_0.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\crucet_1.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\crucet_1.png",
       "PackagePath": "staticwebassets\\img\\crucet_1.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\crucet_2.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\crucet_2.png",
       "PackagePath": "staticwebassets\\img\\crucet_2.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\crucet_3.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\crucet_3.png",
       "PackagePath": "staticwebassets\\img\\crucet_3.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\curva_0.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\curva_0.png",
       "PackagePath": "staticwebassets\\img\\curva_0.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\curva_1.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\curva_1.png",
       "PackagePath": "staticwebassets\\img\\curva_1.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\curva_2.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\curva_2.png",
       "PackagePath": "staticwebassets\\img\\curva_2.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\curva_3.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\curva_3.png",
       "PackagePath": "staticwebassets\\img\\curva_3.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\dinero.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\dinero.png",
       "PackagePath": "staticwebassets\\img\\dinero.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\entrandoColectivo.mp4",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\entrandoColectivo.mp4",
       "PackagePath": "staticwebassets\\img\\entrandoColectivo.mp4"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\indiferente.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\indiferente.png",
       "PackagePath": "staticwebassets\\img\\indiferente.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\kiosquero.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\kiosquero.png",
       "PackagePath": "staticwebassets\\img\\kiosquero.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\nervioso.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\nervioso.png",
       "PackagePath": "staticwebassets\\img\\nervioso.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\oficinista.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\oficinista.png",
       "PackagePath": "staticwebassets\\img\\oficinista.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\pistolita.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\pistolita.png",
       "PackagePath": "staticwebassets\\img\\pistolita.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\punga.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\punga.png",
       "PackagePath": "staticwebassets\\img\\punga.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\rechazar.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\rechazar.png",
       "PackagePath": "staticwebassets\\img\\rechazar.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_0.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\recta_0.png",
       "PackagePath": "staticwebassets\\img\\recta_0.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_1.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\recta_1.png",
       "PackagePath": "staticwebassets\\img\\recta_1.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_2.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\recta_2.png",
       "PackagePath": "staticwebassets\\img\\recta_2.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_3.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\recta_3.png",
       "PackagePath": "staticwebassets\\img\\recta_3.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\usuario.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\usuario.png",
       "PackagePath": "staticwebassets\\img\\usuario.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\volver.png",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\volver.png",
       "PackagePath": "staticwebassets\\img\\volver.png"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\pipepuzzle.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\js\\pipepuzzle.js",
       "PackagePath": "staticwebassets\\js\\pipepuzzle.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

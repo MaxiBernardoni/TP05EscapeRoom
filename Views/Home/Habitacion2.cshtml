@@ -5,18 +5,6 @@
 }
 
 <style>
-    #global-timer {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        font-size: 20px;
-        font-family: 'Courier New', monospace;
-        color: #ff3c3c;
-        z-index: 9999;
-        background: black;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
     .pipe-puzzle-container {
         display: flex;
         flex-direction: column;
@@ -81,7 +69,6 @@
     }
 </style>
 
-<div id="global-timer"></div>
 <div class="pipe-puzzle-container">
     <h2>¡Conecta el camino del colectivo a la oficina!</h2>
     <div class="emoji-row">
@@ -101,21 +88,3 @@
 </div>
 
 <script src="/js/pipepuzzle.js"></script>
-<script>
-    let totalSeconds = @totalSeconds;
-    function iniciarReloj() {
-        const global = document.getElementById("global-timer");
-        function actualizar() {
-            totalSeconds++;
-            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
-            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
-            const mins = (totalMin % 60).toString().padStart(2, '0');
-            const segs = (totalSeconds % 60).toString().padStart(2, '0');
-            global.innerText = `${horas}:${mins}:${segs}`;
-            fetch(`/home/updateclock?seconds=${totalSeconds}`);
-        }
-        actualizar();
-        setInterval(actualizar, 1000);
-    }
-    iniciarReloj();
-</script>

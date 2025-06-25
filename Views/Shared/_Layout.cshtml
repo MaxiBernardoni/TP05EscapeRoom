@@ -19,6 +19,20 @@
             }
         </header>
 
+        <div id="global-timer" style="position:fixed;top:10px;left:70px;font-size:20px;font-family:'Courier New',monospace;color:#ff3c3c;z-index:9999;background:black;padding:5px 10px;border-radius:5px;display:none;"></div>
+        <div id="tiempo-agotado" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);color:#ff3c3c;font-size:40px;font-weight:bold;font-family:'Courier New',monospace;background:black;padding:20px;border:3px solid red;display:none;z-index:10000;">TIEMPO AGOTADO</div>
+
+        <div id="menu-hamburguesa" class="menu-hamburguesa" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="menu-desplegable" class="menu-desplegable">
+            <form method="post" action="/Home/ReiniciarJuego" style="margin-bottom: 20px;">
+                <button type="submit">Reiniciar sala</button>
+            </form>
+        </div>
+
         <main role="main">
             @RenderBody()
         </main>
@@ -27,6 +41,67 @@
             &copy; @DateTime.Now.Year - Sala de escape
         </footer>
     </div>
+
+    <script>
+    (function() {
+        const burger = document.getElementById('menu-hamburguesa');
+        const menu = document.getElementById('menu-desplegable');
+        // Toggle menú
+        burger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menu.classList.toggle('abierto');
+        });
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (menu.classList.contains('abierto') && !menu.contains(e.target) && !burger.contains(e.target)) {
+                menu.classList.remove('abierto');
+            }
+        });
+        // Cerrar menú con Esc
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') menu.classList.remove('abierto');
+        });
+        // Cerrar menú al navegar (cualquier submit del menú)
+        menu.querySelectorAll('form').forEach(f => {
+            f.addEventListener('submit', () => menu.classList.remove('abierto'));
+        });
+        // Habilitar botones según progreso
+        window.addEventListener('DOMContentLoaded', function() {
+            fetch('/Home/MenuProgreso')
+                .then(r => r.json())
+                .then(data => {
+                    if(data.hab1) document.getElementById('btn-hab1').disabled = false;
+                    if(data.hab2) document.getElementById('btn-hab2').disabled = false;
+                    if(data.hab3) document.getElementById('btn-hab3').disabled = false;
+                });
+        });
+    })();
+
+    // Reloj global
+    let totalSeconds = @(ViewBag.GameSeconds ?? 0);
+    function iniciarRelojGlobal() {
+        const global = document.getElementById("global-timer");
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+            global.innerText = `${horas}:${mins}:${segs}`;
+            if (horas === "09" && mins === "30" && segs === "00") {
+                document.getElementById("tiempo-agotado").style.display = "block";
+                clearInterval(intervalo);
+            }
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+        global.style.display = "block";
+        actualizar();
+        var intervalo = setInterval(actualizar, 1000);
+    }
+    window.addEventListener('DOMContentLoaded', function() {
+        iniciarRelojGlobal();
+    });
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

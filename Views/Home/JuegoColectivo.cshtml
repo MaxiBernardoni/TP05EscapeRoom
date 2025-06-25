@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Piedra, Papel o Tijera con el Conductor";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
 
 <style>
@@ -128,20 +127,6 @@
         margin-right: 10px;
     }
 
-    #global-timer {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        font-size: 2em;
-        font-family: 'Digital-7', monospace;
-        color: #ff0000;
-        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-        background: rgba(0, 0, 0, 0.8);
-        padding: 10px 20px;
-        border-radius: 10px;
-        z-index: 1000;
-    }
-
     .instrucciones {
         background: rgba(0, 255, 255, 0.1);
         padding: 15px;
@@ -159,8 +144,6 @@
         animation: shake 0.5s ease-in-out infinite;
     }
 </style>
-
-<div id="global-timer"></div>
 
 <div class="juego-container">
     <h2 class="mb-4">¡Desafío del Conductor!</h2>
@@ -204,44 +187,3 @@
         </div>
     </form>
 </div>
-
-<script>
-    let totalSeconds = @totalSeconds;
-
-    function iniciarReloj() {
-        const global = document.getElementById("global-timer");
-
-        function actualizar() {
-            totalSeconds++;
-            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
-            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
-            const mins = (totalMin % 60).toString().padStart(2, '0');
-            const segs = (totalSeconds % 60).toString().padStart(2, '0');
-
-            global.innerText = `${horas}:${mins}:${segs}`;
-
-            fetch(`/home/updateclock?seconds=${totalSeconds}`);
-        }
-
-        actualizar();
-        setInterval(actualizar, 1000);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        iniciarReloj();
-
-        const buttons = document.querySelectorAll('.opcion-btn');
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                buttons.forEach(b => b.style.transform = 'scale(0.95)');
-                this.style.transform = 'scale(1.1)';
-            });
-        });
-
-        const conductor = document.querySelector('.conductor');
-        setInterval(() => {
-            conductor.classList.add('shake');
-            setTimeout(() => conductor.classList.remove('shake'), 500);
-        }, 3000);
-    });
-</script>

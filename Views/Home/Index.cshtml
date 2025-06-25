@@ -1,8 +1,147 @@
 ﻿@{
     Layout = null;
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
+<style>
+    body {
+        margin: 0;
+        background: black;
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .intro-text {
+        text-align: center;
+        font-size: 24px;
+        padding: 30px;
+        animation: fadeout 2s ease 6s forwards;
+    }
+
+    @@keyframes fadeout {
+        to {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    .alarma-container {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #boton-apagar {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #ff3c3c;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    #global-timer {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        color: #ff3c3c;
+        z-index: 9999;
+        background: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: none;
+    }
+
+    #tiempo-agotado {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ff3c3c;
+        font-size: 40px;
+        font-weight: bold;
+        font-family: 'Courier New', monospace;
+        background: black;
+        padding: 20px;
+        border: 3px solid red;
+        display: none;
+        z-index: 10000;
+    }
+
+    .reloj-alarma {
+        font-size: 64px;
+        color: #ff3c3c;
+        font-family: 'Courier New', monospace;
+        margin-bottom: 20px;
+        animation: alarmaBlink 1s steps(2, start) infinite;
+        letter-spacing: 4px;
+        text-shadow: 0 0 10px #ff3c3c, 0 0 20px #ff3c3c;
+    }
+
+    @@keyframes alarmaBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.2; }
+    }
+</style>
+
+<div class="intro-text" id="intro">
+    Una mañana cualquiera... recibís una notificación. El Director Auraman quiere entrevistarte. La entrevista es a las 09:00. Te despertás a las 08:00. Pero... no podés salir de tu casa.
+</div>
+
+<div class="alarma-container" id="alarma">
+    <div class="reloj-alarma" id="reloj-alarma">08:00</div>
+    <form method="post" action="/home/startgame">
+        <button id="boton-apagar" type="submit">Apagar alarma</button>
+    </form>
+</div>
+
+<div id="global-timer"></div>
+<div id="tiempo-agotado">TIEMPO AGOTADO</div>
+
 <script>
-    window.location.href = "/Home/Intro";
+    setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("alarma").style.display = "flex";
+        document.getElementById("global-timer").style.display = "block";
+        iniciarReloj();
+    }, 7000);
+
+    let totalSeconds = @totalSeconds;
+
+    function iniciarReloj() {
+        const reloj = document.getElementById("reloj-digital");
+        const global = document.getElementById("global-timer");
+
+        function actualizar() {
+            totalSeconds++;
+            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
+            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
+            const mins = (totalMin % 60).toString().padStart(2, '0');
+            const segs = (totalSeconds % 60).toString().padStart(2, '0');
+
+            reloj.innerText = `${horas}:${mins}`;
+            global.innerText = `${horas}:${mins}:${segs}`;
+
+            if (horas === "09" && mins === "30" && segs === "00") {
+                document.getElementById("tiempo-agotado").style.display = "block";
+                clearInterval(intervalo);
+            }
+
+            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+        }
+
+        actualizar();
+        const intervalo = setInterval(actualizar, 1000);
+    }
 </script>
 
 

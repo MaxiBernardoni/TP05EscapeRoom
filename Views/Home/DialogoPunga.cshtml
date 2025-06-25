@@ -42,9 +42,12 @@
         <b>Punga:</b> ¿A quién vas a matar vos? Piscuin.<br/>
         <b>Usuario:</b> Y bueno pa. No te hagas el picante porque no te sale, gil.<br/>
         <b>Punga:</b> Hagamos así. Jugamos a esto, hay 3 vasos y una pelota. Si adivinás en qué vaso está la pelota, ganaste. Si no, te robo todo amigo.<br/>
-        <div style="margin-top: 20px; text-align:center;">
-            <form asp-action="AceptarDesafioPunga" method="post">
+        <div style="margin-top: 20px; text-align:center; display: flex; gap: 20px; justify-content: center;">
+            <form asp-action="AceptarDesafioPunga" method="post" style="display:inline;">
                 <button type="submit" class="btn btn-danger">Aceptar el desafío</button>
+            </form>
+            <form asp-action="RechazarDesafioPunga" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-secondary">Rechazar y salir</button>
             </form>
         </div>
     </div>

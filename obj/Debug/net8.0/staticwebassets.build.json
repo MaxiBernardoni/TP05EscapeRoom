@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Vy3DdWUHmGI6oOuNvEd9oJ5hueyv+u4NTxqbA9V8MyI=",
+  "Hash": "rnsHbUIuKdfzWWpcdrpushNiyz+sP+LHzK1dg9gyyQc=",
   "Source": "TP05-EscapeRoom",
   "BasePath": "_content/TP05-EscapeRoom",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "TP05-EscapeRoom\\wwwroot",
       "Source": "TP05-EscapeRoom",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\css\\index.css",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\css\\index.css",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "css/index.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\css\\site.css",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\favicon.ico",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\fonts\\digital-7.ttf",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "fonts/digital-7.ttf",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\digital-7.ttf"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/apple-iphone13-blue-portrait.png",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\img\\apple-iphone13-blue-portrait.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/colectivo.png",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\img\\colectivo.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo1.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo1.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/colectivo1.png",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\img\\colectivo1.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo2.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo2.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/colectivo2.png",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\img\\colectivo2.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo3.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo3.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/colectivo3.png",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\img\\colectivo3.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\colectivo4.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\colectivo4.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/colectivo4.png",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\img\\colectivo4.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\crucet_0.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\crucet_0.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/crucet_0.png",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\img\\crucet_0.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\crucet_1.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\crucet_1.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/crucet_1.png",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\img\\crucet_1.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\crucet_2.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\crucet_2.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/crucet_2.png",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\img\\crucet_2.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\crucet_3.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\crucet_3.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/crucet_3.png",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\img\\crucet_3.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\curva_0.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\curva_0.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/curva_0.png",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\img\\curva_0.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\curva_1.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\curva_1.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/curva_1.png",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\img\\curva_1.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\curva_2.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\curva_2.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/curva_2.png",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\img\\curva_2.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\curva_3.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\curva_3.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/curva_3.png",
       "AssetKind": "All",
@@ -359,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\img\\curva_3.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\dinero.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\dinero.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/dinero.png",
       "AssetKind": "All",
@@ -378,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\img\\dinero.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\entrandoColectivo.mp4",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\entrandoColectivo.mp4",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/entrandoColectivo.mp4",
       "AssetKind": "All",
@@ -397,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\img\\entrandoColectivo.mp4"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\indiferente.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\indiferente.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/indiferente.png",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\img\\indiferente.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\kiosquero.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\kiosquero.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/kiosquero.png",
       "AssetKind": "All",
@@ -435,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\img\\kiosquero.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\nervioso.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\nervioso.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/nervioso.png",
       "AssetKind": "All",
@@ -454,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\img\\nervioso.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\oficinista.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\oficinista.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/oficinista.png",
       "AssetKind": "All",
@@ -473,10 +473,29 @@
       "OriginalItemSpec": "wwwroot\\img\\oficinista.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\pistolita.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\pelota.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "img/pelota.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\pelota.png"
+    },
+    {
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\pistolita.png",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/pistolita.png",
       "AssetKind": "All",
@@ -492,10 +511,10 @@
       "OriginalItemSpec": "wwwroot\\img\\pistolita.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\punga.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\punga.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/punga.png",
       "AssetKind": "All",
@@ -511,10 +530,10 @@
       "OriginalItemSpec": "wwwroot\\img\\punga.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\rechazar.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\rechazar.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/rechazar.png",
       "AssetKind": "All",
@@ -530,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\img\\rechazar.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\recta_0.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_0.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/recta_0.png",
       "AssetKind": "All",
@@ -549,10 +568,10 @@
       "OriginalItemSpec": "wwwroot\\img\\recta_0.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\recta_1.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_1.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/recta_1.png",
       "AssetKind": "All",
@@ -568,10 +587,10 @@
       "OriginalItemSpec": "wwwroot\\img\\recta_1.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\recta_2.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_2.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/recta_2.png",
       "AssetKind": "All",
@@ -587,10 +606,10 @@
       "OriginalItemSpec": "wwwroot\\img\\recta_2.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\recta_3.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\recta_3.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/recta_3.png",
       "AssetKind": "All",
@@ -606,10 +625,10 @@
       "OriginalItemSpec": "wwwroot\\img\\recta_3.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\usuario.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\usuario.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/usuario.png",
       "AssetKind": "All",
@@ -625,10 +644,29 @@
       "OriginalItemSpec": "wwwroot\\img\\usuario.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\img\\volver.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\vaso.webp",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "img/vaso.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\vaso.webp"
+    },
+    {
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\volver.png",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "img/volver.png",
       "AssetKind": "All",
@@ -644,10 +682,10 @@
       "OriginalItemSpec": "wwwroot\\img\\volver.png"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\js\\pipepuzzle.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\pipepuzzle.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "js/pipepuzzle.js",
       "AssetKind": "All",
@@ -663,10 +701,10 @@
       "OriginalItemSpec": "wwwroot\\js\\pipepuzzle.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\js\\site.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -682,10 +720,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -701,10 +739,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -720,10 +758,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -739,10 +777,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -758,10 +796,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -777,10 +815,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -796,10 +834,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -815,10 +853,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -834,10 +872,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -853,10 +891,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -872,10 +910,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -891,10 +929,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",

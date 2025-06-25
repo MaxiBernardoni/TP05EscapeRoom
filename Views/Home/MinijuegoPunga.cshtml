@@ -1,0 +1,83 @@
+@{
+    ViewBag.Title = "Minijuego de los Vasos";
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
+    bool yaEligio = modelo?.VasoSeleccionado >= 0;
+}
+<style>
+.minijuego-vasos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 30px;
+}
+.vasos-row {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 30px;
+}
+.vaso-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.2s;
+    position: relative;
+}
+.vaso-btn.selected {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00ffc3;
+}
+.vaso-img {
+    width: 100px;
+    height: 120px;
+    transition: filter 0.2s;
+}
+.pelota-img {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, 10px);
+    z-index: 2;
+}
+@media (max-width: 600px) {
+    .vasos-row { gap: 20px; }
+    .vaso-img { width: 60px; height: 70px; }
+    .pelota-img { width: 30px; height: 30px; }
+}
+</style>
+<div class="minijuego-vasos-container">
+    <h2>¿En qué vaso está la pelota?</h2>
+    <form asp-action="ResolverPunga" method="post">
+        <div class="vasos-row">
+            @for (int i = 0; i < 3; i++) {
+                var selected = modelo?.VasoSeleccionado == i;
+                <button type="submit" name="vasoElegido" value="@i" class="vaso-btn @(selected ? "selected" : "")" @(yaEligio ? "disabled" : "")>
+                    <img src="/img/vaso.webp" class="vaso-img" alt="Vaso @(i+1)" />
+                    @if (yaEligio && modelo.VasoCorrecto == i) {
+                        <img src="/img/pelota.png" class="pelota-img" alt="Pelota" />
+                    }
+                </button>
+            }
+        </div>
+        @if (!yaEligio) {
+            <div style="margin-top: 20px;">
+                <span>Elegí un vaso para ver si acertás.</span>
+            </div>
+        } else {
+            <div style="margin-top: 20px;">
+                @if (modelo.VasoSeleccionado == modelo.VasoCorrecto) {
+                    <span style="color: #4caf50; font-weight: bold;">¡Acertaste! El punga se va y podés seguir jugando.</span>
+                } else {
+                    <span style="color: #f44336; font-weight: bold;">Perdiste. El punga te robó todo y tenés que reiniciar la sala.</span>
+                }
+            </div>
+            <div style="margin-top: 20px;">
+                <a href="/Home/Habitacion3" class="btn btn-primary">Volver a la habitación</a>
+            </div>
+        }
+    </form>
+</div> 

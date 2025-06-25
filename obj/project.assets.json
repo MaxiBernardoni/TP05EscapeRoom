@@ -1202,11 +1202,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\TP05-EscapeRoom.csproj",
+      "projectUniqueName": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\TP05-EscapeRoom.csproj",
       "projectName": "TP05-EscapeRoom",
-      "projectPath": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\TP05-EscapeRoom.csproj",
+      "projectPath": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\TP05-EscapeRoom.csproj",
       "packagesPath": "C:\\Users\\49432830\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom-1\\obj\\",
+      "outputPath": "C:\\Users\\49432830\\Downloads\\TP05EscapeRoom\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

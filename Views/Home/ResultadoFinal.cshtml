@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Resultado Final del Juego";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
 
 <style>
@@ -92,23 +91,7 @@
             transform: translateY(0);
         }
     }
-
-    #global-timer {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        font-size: 2em;
-        font-family: 'Digital-7', monospace;
-        color: #ff0000;
-        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-        background: rgba(0, 0, 0, 0.8);
-        padding: 10px 20px;
-        border-radius: 10px;
-        z-index: 1000;
-    }
 </style>
-
-<div id="global-timer"></div>
 
 <div class="resultado-final-container">
     <h2>¡Fin del Desafío!</h2>
@@ -144,31 +127,4 @@
     <a href="@Url.Action("Habitacion3", "Home")" class="continuar-btn">
         Continuar el viaje →
     </a>
-</div>
-
-<script>
-    let totalSeconds = @totalSeconds;
-
-    function iniciarReloj() {
-        const global = document.getElementById("global-timer");
-
-        function actualizar() {
-            totalSeconds++;
-            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
-            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
-            const mins = (totalMin % 60).toString().padStart(2, '0');
-            const segs = (totalSeconds % 60).toString().padStart(2, '0');
-
-            global.innerText = `${horas}:${mins}:${segs}`;
-
-            fetch(`/home/updateclock?seconds=${totalSeconds}`);
-        }
-
-        actualizar();
-        setInterval(actualizar, 1000);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        iniciarReloj();
-    });
-</script> 
+</div> 

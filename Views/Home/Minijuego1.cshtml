@@ -2,7 +2,6 @@
     ViewData["Title"] = "Minijuego 1 - Encuentra el emoji diferente";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
-    int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
 
 <style>
@@ -40,21 +39,7 @@
         margin-bottom: 20px;
         color: #333;
     }
-    #global-timer {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        font-size: 20px;
-        font-family: 'Courier New', monospace;
-        color: #ff3c3c;
-        z-index: 9999;
-        background: black;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
 </style>
-
-<div id="global-timer"></div>
 
 <div class="minijuego-container">
     <h2>Encuentra el emoji diferente</h2>
@@ -79,23 +64,6 @@
 </div>
 
 <script>
-    let totalSeconds = @totalSeconds;
-    
-    function iniciarReloj() {
-        const global = document.getElementById("global-timer");
-        function actualizar() {
-            totalSeconds++;
-            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
-            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
-            const mins = (totalMin % 60).toString().padStart(2, '0');
-            const segs = (totalSeconds % 60).toString().padStart(2, '0');
-            global.innerText = `${horas}:${mins}:${segs}`;
-            fetch(`/home/updateclock?seconds=${totalSeconds}`);
-        }
-        actualizar();
-        setInterval(actualizar, 1000);
-    }
-
     function seleccionarEmoji(indice) {
         fetch('/Home/ResolverMinijuego1', {
             method: 'POST',
@@ -105,6 +73,4 @@
             body: `emojiSeleccionado=${indice}`
         }).then(() => window.location.reload());
     }
-
-    iniciarReloj();
 </script> 

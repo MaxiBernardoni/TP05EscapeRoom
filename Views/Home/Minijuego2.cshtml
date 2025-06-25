@@ -2,7 +2,6 @@
     ViewData["Title"] = "Minijuego 2 - Juego de Memoria";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
-    int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
 
 <style>
@@ -40,18 +39,6 @@
         margin-bottom: 20px;
         color: #333;
     }
-    #global-timer {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        font-size: 20px;
-        font-family: 'Courier New', monospace;
-        color: #ff3c3c;
-        z-index: 9999;
-        background: black;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
     .controles {
         margin-top: 20px;
     }
@@ -78,8 +65,6 @@
     }
 </style>
 
-<div id="global-timer"></div>
-
 <div class="minijuego-container">
     <h2>Juego de Memoria</h2>
     <div class="ronda-info">Ronda @modelo.RondaActualMemoria de 7</div>
@@ -102,26 +87,10 @@
 </div>
 
 <script>
-    let totalSeconds = @totalSeconds;
     let secuenciaSeleccionada = [];
     let secuenciaOriginal = @Html.Raw(Json.Serialize(modelo.SecuenciaMemoria));
     let mostrandoSecuencia = true;
     
-    function iniciarReloj() {
-        const global = document.getElementById("global-timer");
-        function actualizar() {
-            totalSeconds++;
-            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
-            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
-            const mins = (totalMin % 60).toString().padStart(2, '0');
-            const segs = (totalSeconds % 60).toString().padStart(2, '0');
-            global.innerText = `${horas}:${mins}:${segs}`;
-            fetch(`/home/updateclock?seconds=${totalSeconds}`);
-        }
-        actualizar();
-        setInterval(actualizar, 1000);
-    }
-
     function mostrarSecuenciaInicial() {
         secuenciaOriginal.forEach(index => {
             document.querySelector(`[data-index="${index}"]`).classList.add('blanco');
@@ -163,6 +132,5 @@
         }).then(() => window.location.reload());
     }
 
-    iniciarReloj();
     mostrarSecuenciaInicial();
 </script> 

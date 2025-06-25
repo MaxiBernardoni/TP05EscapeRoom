@@ -64,3 +64,77 @@ form {
   100% { opacity: 1; transform: translateY(-2px); }
 }
 
+/* Menú hamburguesa */
+.menu-hamburguesa {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  width: 40px;
+  height: 40px;
+  z-index: 11000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.menu-hamburguesa div {
+  height: 6px;
+  background: #00ffc3;
+  border-radius: 3px;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+.menu-desplegable {
+  position: fixed;
+  top: 65px;
+  left: 18px;
+  background: rgba(20, 20, 20, 0.98);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px #000a;
+  padding: 28px 24px 18px 24px;
+  z-index: 12000;
+  min-width: 220px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+.menu-desplegable.abierto {
+  display: flex;
+}
+.menu-desplegable button {
+  width: 100%;
+  margin: 0 0 10px 0;
+  border-radius: 6px;
+  font-size: 1em;
+  background: #00ffc3;
+  color: #222;
+  border: none;
+  text-transform: none;
+  font-family: inherit;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.menu-desplegable button:disabled {
+  background: #444;
+  color: #aaa;
+  cursor: not-allowed;
+}
+.menu-desplegable button:not(:disabled):hover {
+  background: #00bfa3;
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .menu-hamburguesa {
+    top: 10px;
+    left: 10px;
+    width: 32px;
+    height: 32px;
+  }
+  .menu-desplegable {
+    top: 50px;
+    left: 10px;
+    min-width: 160px;
+    padding: 18px 10px 10px 10px;
+  }
+}
+

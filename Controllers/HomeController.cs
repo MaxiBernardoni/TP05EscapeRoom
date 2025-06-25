@@ -8,10 +8,7 @@ namespace TuProyecto.Controllers
     public class HomeController : Controller
     {
         [HttpGet]
-        public IActionResult Index() => View();
-
-        [HttpGet]
-        public IActionResult Intro()
+        public IActionResult Index()
         {
             int seconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
             ViewBag.GameSeconds = seconds;
@@ -176,9 +173,8 @@ namespace TuProyecto.Controllers
         {
             // Limpiar la sesión
             HttpContext.Session.Clear();
-            
-            // Reiniciar el juego desde el principio
-            return RedirectToAction("StartGame");
+            // Redirigir al index
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -250,7 +246,8 @@ namespace TuProyecto.Controllers
                 ? new TuProyecto.Models.Habitacion3Model()
                 : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
 
-            if (!modelo.JuegoPungaEnCurso)
+            // Si el juego no está en curso y no hay resultado, volver al diálogo
+            if (!modelo.JuegoPungaEnCurso && modelo.VasoSeleccionado < 0)
                 return RedirectToAction("DialogoPunga");
 
             ViewBag.Modelo = modelo;
@@ -289,6 +286,60 @@ namespace TuProyecto.Controllers
         {
             ViewBag.Resultado = TempData["ResultadoPunga"];
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult MenuProgreso()
+        {
+            bool hab1 = false, hab2 = false, hab3 = false;
+            var hab1Json = HttpContext.Session.GetString("habitacion1");
+            if (!string.IsNullOrEmpty(hab1Json))
+            {
+                var modelo1 = JsonSerializer.Deserialize<Habitacion1Model>(hab1Json);
+                hab1 = modelo1.PuedeSalir();
+            }
+            var hab2Json = HttpContext.Session.GetString("habitacion2");
+            if (!string.IsNullOrEmpty(hab2Json))
+            {
+                var modelo2 = JsonSerializer.Deserialize<Habitacion2Model>(hab2Json);
+                hab2 = modelo2.JuegoGanado;
+            }
+            var hab3Json = HttpContext.Session.GetString("habitacion3");
+            if (!string.IsNullOrEmpty(hab3Json))
+            {
+                hab3 = true;
+            }
+            return Json(new { hab1, hab2, hab3 });
+        }
+
+        [HttpPost]
+        public IActionResult VolverHabitacion(int habitacion)
+        {
+            // Borra el progreso posterior a la habitación elegida
+            if (habitacion == 1)
+            {
+                HttpContext.Session.Remove("habitacion2");
+                HttpContext.Session.Remove("habitacion3");
+                HttpContext.Session.Remove("juego_colectivo");
+            }
+            else if (habitacion == 2)
+            {
+                HttpContext.Session.Remove("habitacion3");
+            }
+            // Redirige a la habitación correspondiente
+            switch (habitacion)
+            {
+                case 1: return RedirectToAction("Habitacion1");
+                case 2: return RedirectToAction("Habitacion2");
+                case 3: return RedirectToAction("Habitacion3");
+                default: return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult RechazarDesafioPunga()
+        {
+            return RedirectToAction("Habitacion3");
         }
     }
 }

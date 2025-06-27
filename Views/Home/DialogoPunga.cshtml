@@ -2,54 +2,127 @@
     ViewBag.Title = "Diálogo con el Punga";
 }
 <style>
-.dialogo-punga-container {
+.dialogo-chat-container {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
     margin-top: 60px;
+    min-height: 400px;
 }
-.dialogo-punga-burbuja {
+.burbuja-chat {
+    display: none;
+    max-width: 600px;
+    margin-bottom: 12px;
+    padding: 16px 22px;
+    border-radius: 16px;
+    font-size: 1.12em;
+    box-shadow: 0 2px 12px #0003;
     background: #23272f;
     color: #f7f7f7;
-    border-radius: 16px;
-    padding: 28px 28px 20px 28px;
-    max-width: 600px;
-    font-size: 1.15em;
-    box-shadow: 0 4px 24px #000a;
+    position: relative;
 }
-.dialogo-punga-container img {
-    width: 120px;
+.burbuja-usuario {
+    align-self: flex-end;
+    background: #005c4b;
+    color: #fff;
+}
+.burbuja-punga {
+    align-self: flex-start;
+    background: #23272f;
+    color: #f7f7f7;
+}
+.burbuja-narrador {
+    align-self: center;
+    background: #444;
+    color: #eee;
+    font-style: italic;
+}
+.btn-container {
+    margin-top: 30px;
+    text-align: center;
+}
+.dialogo-chat-imgs {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+.dialogo-chat-imgs img {
+    width: 90px;
     height: auto;
     border-radius: 10px;
     background: #222;
     box-shadow: 0 2px 12px #0005;
-    border: none;
+    border: 3px solid #00eaff;
 }
 </style>
-<div class="dialogo-punga-container">
-    <img src="/img/usuario.png" alt="Usuario" />
-    <div class="dialogo-punga-burbuja">
-        <b>Usuario:</b> Uhbb, una pinta de chorro este. (Comentario)<br/>
-        <b>Punga:</b> Hola capo, mostro, genio. ¿Cómo estás? ¿Cómo anda la familia? Espero que muy bien. Mirá yo te vengo a pedir un poco de plata para mi familia que estamos en una mala situación…<br/>
-        <b>Usuario:</b> No pa. No tengo nada, disculpá.<br/>
-        <b>Punga:</b> Ta bien amigo. No hay drama.<br/>
-        <i>(El usuario se da vuelta y recibe un manotazo de atrás)</i><br/>
-        <b>Usuario:</b> Para amigo. ¿Qué hacés?<br/>
-        <b>Punga:</b> Y bueno gato. Te regalaste amigo.<br/>
-        <b>Usuario:</b> Bueno bueno, flaquito, cortala o te mato.<br/>
-        <b>Punga:</b> ¿A quién vas a matar vos? Piscuin.<br/>
-        <b>Usuario:</b> Y bueno pa. No te hagas el picante porque no te sale, gil.<br/>
-        <b>Punga:</b> Hagamos así. Jugamos a esto, hay 3 vasos y una pelota. Si adivinás en qué vaso está la pelota, ganaste. Si no, te robo todo amigo.<br/>
-        <div style="margin-top: 20px; text-align:center; display: flex; gap: 20px; justify-content: center;">
-            <form asp-action="AceptarDesafioPunga" method="post" style="display:inline;">
-                <button type="submit" class="btn btn-danger">Aceptar el desafío</button>
-            </form>
-            <form asp-action="RechazarDesafioPunga" method="post" style="display:inline;">
-                <button type="submit" class="btn btn-secondary">Rechazar y salir</button>
-            </form>
-        </div>
+<div class="dialogo-chat-container">
+    <div class="dialogo-chat-imgs">
+        <img src="/img/usuario.png" alt="Usuario" />
+        <img src="/img/punga.png" alt="Punga" />
     </div>
-    <img src="/img/punga.png" alt="Punga" />
+    <div id="chat-burbujas" style="max-height: 400px; overflow-y: auto;">
+        <div class="burbuja-chat burbuja-usuario">Uhhh, una pinta de chorro este. (Comentario)</div>
+        <div class="burbuja-chat burbuja-punga">Hola capo, mostro, genio. ¿Cómo estás? ¿Cómo anda la familia? Espero que muy bien. Mirá yo te vengo a pedir un poco de plata para mi familia que estamos en una mala situación…</div>
+        <div class="burbuja-chat burbuja-usuario">No pa. No tengo nada, disculpá.</div>
+        <div class="burbuja-chat burbuja-punga">Ta bien amigo. No hay drama.</div>
+        <div class="burbuja-chat burbuja-narrador">(El usuario se da vuelta y recibe un manotazo de atrás)</div>
+        <div class="burbuja-chat burbuja-usuario">Para amigo. ¿Qué hacés?</div>
+        <div class="burbuja-chat burbuja-punga">Y bueno gato. Te regalaste amigo.</div>
+        <div class="burbuja-chat burbuja-usuario">Bueno bueno, flaquito, cortala o te mato.</div>
+        <div class="burbuja-chat burbuja-punga">¿A quién vas a matar vos? Piscuin.</div>
+        <div class="burbuja-chat burbuja-usuario">Y bueno pa. No te hagas el picante porque no te sale, gil.</div>
+        <div class="burbuja-chat burbuja-punga">Hagamos así. Jugamos a esto, hay 3 vasos y una pelota. Si adivinás en qué vaso está la pelota, ganaste. Si no, te robo todo amigo.</div>
+    </div>
+    <button id="btn-avanzar" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
+    <button id="btn-acelerar" class="btn btn-secondary" style="margin-top:10px;margin-left:10px;">Acelerar</button>
+    <div class="btn-container" id="btn-desafio" style="display:none;">
+        <form asp-action="AceptarDesafioPunga" method="post" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Aceptar el desafío</button>
+        </form>
+    </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const burbujas = document.querySelectorAll('.burbuja-chat');
+    let i = 0;
+    const btnAvanzar = document.getElementById('btn-avanzar');
+    const btnAcelerar = document.getElementById('btn-acelerar');
+    const chatBurbujas = document.getElementById('chat-burbujas');
+    let velocidadDialogo = 2000;
+    function scrollToBottom() {
+        chatBurbujas.scrollTop = chatBurbujas.scrollHeight;
+    }
+    function mostrarSiguienteBurbuja() {
+        if (i < burbujas.length) {
+            burbujas[i].style.display = 'block';
+            i++;
+            scrollToBottom();
+            if (i === 1) {
+                btnAvanzar.style.display = 'block';
+            } else if (i === 2) {
+                btnAvanzar.style.display = 'none';
+                setTimeout(mostrarSiguienteBurbuja, velocidadDialogo);
+            } else if (i < burbujas.length) {
+                setTimeout(mostrarSiguienteBurbuja, velocidadDialogo);
+            } else {
+                document.getElementById('btn-desafio').style.display = 'block';
+            }
+        }
+    }
+    // Mostrar el primer mensaje al cargar
+    burbujas[0].style.display = 'block';
+    i = 1;
+    btnAvanzar.style.display = 'block';
+    scrollToBottom();
+    btnAvanzar.onclick = function() {
+        mostrarSiguienteBurbuja();
+    };
+    btnAcelerar.onclick = function() {
+        velocidadDialogo = 1000;
+        btnAcelerar.style.display = 'none';
+    };
+});
+</script>

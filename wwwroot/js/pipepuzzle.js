@@ -77,13 +77,16 @@ function verificarPuzzle() {
     // Aquí solo mostramos un mensaje de ejemplo
     const correcto = esSolucionCorrecta();
     renderizarTablero(); // <-- Asegura que el error se muestre
+    puzzleMessage.classList.remove('success');
     if (correcto) {
         puzzleMessage.innerText = '¡Camino correcto! El colectivo llega a la oficina.';
+        puzzleMessage.classList.add('success');
         setTimeout(() => {
             window.location.href = '/Home/TransicionColectivo';
         }, 1500);
     } else {
         puzzleMessage.innerText = 'El camino está incompleto o mal conectado. Intenta de nuevo.';
+        puzzleMessage.classList.remove('success');
     }
 }
 

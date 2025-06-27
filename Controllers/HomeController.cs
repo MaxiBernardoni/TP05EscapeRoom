@@ -269,16 +269,14 @@ namespace TuProyecto.Controllers
             if (gano)
             {
                 modelo.PungaResuelto = true;
-                TempData["ResultadoPunga"] = "¡Ganaste! El punga se va y podés seguir jugando.";
             }
             else
             {
                 modelo.TienePlata = false;
-                TempData["ResultadoPunga"] = "Perdiste. El punga te robó todo y tenés que reiniciar la sala.";
             }
 
             HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
-            return RedirectToAction("ResultadoPunga");
+            return RedirectToAction("MinijuegoPunga");
         }
 
         [HttpGet]
@@ -336,9 +334,53 @@ namespace TuProyecto.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult RechazarDesafioPunga()
+        [HttpGet]
+        public IActionResult DialogoIgnorado()
         {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            ViewBag.Modelo = modelo;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult FinalizarDialogoIgnorado()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            modelo.IgnoradoInteractuado = true;
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return RedirectToAction("Habitacion3");
+        }
+
+        [HttpGet]
+        public IActionResult DialogoAyudar()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            ViewBag.Modelo = modelo;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult FinalizarDialogoAyudar()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            modelo.AyudaResuelto = true;
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
             return RedirectToAction("Habitacion3");
         }
     }

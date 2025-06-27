@@ -33,15 +33,16 @@
     align-items: center;
     cursor: pointer;
     position: relative;
-    padding-top: 40px;
+    
 }
 .npc img {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    border: 3px solid #00eaff;
+    /* border: 3px solid #00eaff; */
     background: #fff;
-    box-shadow: 0 0 12px #00eaff55;
+    /* box-shadow: 0 0 12px #00eaff55; */
+    border: none !important;
 }
 .npc-comment {
     margin-bottom: 10px;
@@ -66,6 +67,11 @@
 .npc:hover .npc-comment {
     display: block;
 }
+.npc-row a:focus, .npc-row a:active {
+    outline: none !important;
+    box-shadow: none !important;
+    background: none !important;
+}
 </style>
 
 <div class="barrio-container">
@@ -74,26 +80,81 @@
         <span style="color:#00eaff;">Usuario:</span> bueno. ya estamos en almagro. ahora, a buscar el edificio de auraman. ¿a quién le pregunto?
     </div>
     <div class="npc-row">
-        <a href="/Home/DialogoPunga" style="text-decoration:none;color:inherit;">
-            <div class="npc">
-                <img src="/img/punga.png" alt="Punga" style="border:none;" />
-                <div class="npc-comment">Uhhh, una pinta de chorro este.</div>
+        @if (ViewBag.Modelo?.PungaResuelto == true)
+        {
+            <div class="npc" style="cursor:default;opacity:0.5;">
+                <img src="/img/punga.png" alt="Punga" />
+                <div class="npc-comment">Ya le hablé, el punga se fue.</div>
             </div>
-        </a>
-        <div class="npc">
-            <img src="/img/indiferente.png" alt="Ignorado" />
-            <div class="npc-comment">Este no me contesta ni a palos.</div>
-        </div>
-        <div class="npc">
-            <img src="/img/oficinista.png" alt="Confundido" />
-            <div class="npc-comment">Este me responde seguro.</div>
-        </div>
+        }
+        else
+        {
+            <a href="/Home/DialogoPunga" style="text-decoration:none;color:inherit;">
+                <div class="npc">
+                    <img src="/img/punga.png" alt="Punga" style="border:none;" />
+                    <div class="npc-comment">Uhhh, una pinta de chorro este.</div>
+                </div>
+            </a>
+        }
+        @* Ignorado *@
+        @if (ViewBag.Modelo?.IgnoradoInteractuado == true)
+        {
+            <div class="npc" style="cursor:default;opacity:0.5;">
+                <img src="/img/indiferente.png" alt="Ignorado" />
+                <div class="npc-comment">Ya le hablé, no va a decir nada.</div>
+            </div>
+        }
+        else
+        {
+            <a href="/Home/DialogoIgnorado" style="text-decoration:none;color:inherit;">
+                <div class="npc">
+                    <img src="/img/indiferente.png" alt="Ignorado" />
+                    <div class="npc-comment">Este no me contesta ni a palos.</div>
+                </div>
+            </a>
+        }
+        @* Ayudador *@
+        @if (ViewBag.Modelo?.AyudaResuelto == true)
+        {
+            <div class="npc" style="cursor:default;opacity:0.5;">
+                <img src="/img/oficinista.png" alt="Confundido" />
+                <div class="npc-comment">Ya le pregunté, no sabe nada.</div>
+            </div>
+        }
+        else
+        {
+            <a href="/Home/DialogoAyudar" style="text-decoration:none;color:inherit;">
+                <div class="npc">
+                    <img src="/img/oficinista.png" alt="Confundido" />
+                    <div class="npc-comment">Este me responde seguro.</div>
+                </div>
+            </a>
+        }
     </div>
     <div class="npc-row">
-        <div class="npc">
-            <img src="/img/kiosquero.png" alt="Insistente" />
-            <div class="npc-comment">Este seguro me quiere vender algo...</div>
-        </div>
+        @if (ViewBag.Modelo?.InsistenteResuelto == true)
+        {
+            <div class="npc" style="cursor:default;opacity:0.5;">
+                <img src="/img/kiosquero.png" alt="Insistente" />
+                <div class="npc-comment">Ya le pregunté, no me sirve.</div>
+            </div>
+        }
+        else if (!TuProyecto.Models.InventarioGlobal.CargarDeSession(Context.Session).TieneObjeto("💵 Dinero"))
+        {
+            <div class="npc" style="cursor:default;opacity:0.5;">
+                <img src="/img/kiosquero.png" alt="Insistente" />
+                <div class="npc-comment">Necesitás tener plata para hablar con él.</div>
+            </div>
+        }
+        else
+        {
+            <a href="/Home/DialogoInsistente" style="text-decoration:none;color:inherit;">
+                <div class="npc">
+                    <img src="/img/kiosquero.png" alt="Insistente" />
+                    <div class="npc-comment">Este seguro me quiere vender algo...</div>
+                </div>
+            </a>
+        }
         <div class="npc">
             <img src="/img/pistolita.png" alt="El que ayuda" />
             <div class="npc-comment">Este parece buena onda.</div>

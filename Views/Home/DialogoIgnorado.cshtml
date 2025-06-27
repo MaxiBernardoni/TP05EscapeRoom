@@ -1,0 +1,125 @@
+@{
+    ViewBag.Title = "Diálogo con el Ignorado";
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
+    bool yaHablo = modelo?.IgnoradoInteractuado == true;
+}
+<style>
+.dialogo-chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    min-height: 300px;
+}
+.burbuja-chat {
+    display: none;
+    max-width: 600px;
+    margin-bottom: 12px;
+    padding: 16px 22px;
+    border-radius: 16px;
+    font-size: 1.12em;
+    box-shadow: 0 2px 12px #0003;
+    background: #23272f;
+    color: #f7f7f7;
+    position: relative;
+}
+.burbuja-usuario {
+    align-self: flex-end;
+    background: #005c4b;
+    color: #fff;
+}
+.burbuja-ignorado {
+    align-self: flex-start;
+    background: #23272f;
+    color: #f7f7f7;
+}
+.burbuja-narrador {
+    align-self: center;
+    background: #444;
+    color: #eee;
+    font-style: italic;
+}
+.btn-container {
+    margin-top: 30px;
+    text-align: center;
+}
+.dialogo-chat-imgs {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+.dialogo-chat-imgs img {
+    width: 90px;
+    height: auto;
+    border-radius: 10px;
+    background: #222;
+    box-shadow: 0 2px 12px #0005;
+    border: 3px solid #00eaff;
+}
+</style>
+<div class="dialogo-chat-container">
+    <div class="dialogo-chat-imgs">
+        <img src="/img/usuario.png" alt="Usuario" />
+        <img src="/img/indiferente.png" alt="Ignorado" />
+    </div>
+    <div id="chat-burbujas" style="max-height: 400px; overflow-y: auto;">
+        @if (!yaHablo)
+        {
+            <div class="burbuja-chat burbuja-usuario">Disculpá. ¿Me decís dónde está el edificio de Auraman?</div>
+            <div class="burbuja-chat burbuja-narrador">(Ignorado)</div>
+            <div class="burbuja-chat burbuja-usuario">Na amigo, que maleducado. (-1000 de aura)</div>
+        }
+        else
+        {
+            <div class="burbuja-chat burbuja-usuario">A este ya le hablé, no va a decir nada...</div>
+        }
+    </div>
+    <button id="btn-avanzar" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
+    <button id="btn-acelerar" class="btn btn-secondary" style="margin-top:10px;margin-left:10px;">Acelerar</button>
+    <div class="btn-container" id="btn-continuar" style="display:none;">
+        <form asp-action="FinalizarDialogoIgnorado" method="post" style="display:inline;">
+            <button type="submit" class="btn btn-primary">Continuar</button>
+        </form>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const burbujas = document.querySelectorAll('.burbuja-chat');
+    let i = 0;
+    const btnAvanzar = document.getElementById('btn-avanzar');
+    const btnAcelerar = document.getElementById('btn-acelerar');
+    const btnContinuar = document.getElementById('btn-continuar');
+    const chatBurbujas = document.getElementById('chat-burbujas');
+    let velocidadDialogo = 2000;
+    function scrollToBottom() {
+        chatBurbujas.scrollTop = chatBurbujas.scrollHeight;
+    }
+    burbujas[0].style.display = 'block';
+    i = 1;
+    btnAvanzar.style.display = 'block';
+    scrollToBottom();
+    btnAvanzar.onclick = function() {
+        btnAvanzar.style.display = 'none';
+        function mostrarBurbujasSecuencial() {
+            if (i < burbujas.length) {
+                burbujas[i].style.display = 'block';
+                i++;
+                scrollToBottom();
+                setTimeout(mostrarBurbujasSecuencial, velocidadDialogo);
+            } else {
+                btnContinuar.style.display = 'block';
+            }
+        }
+        if (burbujas.length > 0) {
+            mostrarBurbujasSecuencial();
+        }
+    };
+    btnAcelerar.onclick = function() {
+        velocidadDialogo = 1000;
+        btnAcelerar.style.display = 'none';
+    };
+});
+</script> 

@@ -16,6 +16,7 @@
     display: flex;
     gap: 60px;
     margin-bottom: 30px;
+    position: relative;
 }
 .vaso-btn {
     background: none;
@@ -42,8 +43,9 @@
     top: 100%;
     transform: translate(-50%, 10px);
     z-index: 2;
+    transition: top 0.7s cubic-bezier(.68,-0.55,.27,1.55), left 0.7s cubic-bezier(.68,-0.55,.27,1.55);
 }
-@media (max-width: 600px) {
+@@media (max-width: 600px) {
     .vasos-row { gap: 20px; }
     .vaso-img { width: 60px; height: 70px; }
     .pelota-img { width: 30px; height: 30px; }
@@ -51,8 +53,8 @@
 </style>
 <div class="minijuego-vasos-container">
     <h2>¿En qué vaso está la pelota?</h2>
-    <form asp-action="ResolverPunga" method="post">
-        <div class="vasos-row">
+    <form asp-action="ResolverPunga" method="post" id="form-vasos" @(yaEligio ? "onsubmit='return false;'" : "")>
+        <div class="vasos-row" id="vasos-row">
             @for (int i = 0; i < 3; i++) {
                 var selected = modelo?.VasoSeleccionado == i;
                 <button type="submit" name="vasoElegido" value="@i" class="vaso-btn @(selected ? "selected" : "")" @(yaEligio ? "disabled" : "")>
@@ -64,8 +66,8 @@
             }
         </div>
         @if (!yaEligio) {
-            <div style="margin-top: 20px;">
-                <span>Elegí un vaso para ver si acertás.</span>
+            <div style="margin-top: 20px;" id="msg-instruccion">
+                <span>Esperá que se mezclen los vasos...</span>
             </div>
         } else {
             <div style="margin-top: 20px;">
@@ -80,4 +82,77 @@
             </div>
         }
     </form>
-</div> 
+</div>
+@if (!yaEligio) {
+<script>
+    // Parámetros de animación
+    const vasoCorrecto = @modelo.VasoCorrecto;
+    const vasosRow = document.getElementById('vasos-row');
+    const formVasos = document.getElementById('form-vasos');
+    const botones = vasosRow.querySelectorAll('.vaso-btn');
+    let pelota = null;
+    // Crear la pelotita animada SOLO en el medio y eliminar antes de mezclar
+    function animarPelotaSoloEnMedio(callback) {
+        const vasoMedio = 1;
+        pelota = document.createElement('img');
+        pelota.src = '/img/pelota.png';
+        pelota.className = 'pelota-img';
+        pelota.style.top = '-70px';
+        pelota.style.left = (vasosRow.children[vasoMedio].offsetLeft + 50) + 'px';
+        pelota.style.position = 'absolute';
+        pelota.style.zIndex = '10';
+        vasosRow.appendChild(pelota);
+        // Baja al vaso del medio
+        setTimeout(() => {
+            pelota.style.top = '70px';
+            // Espera a que termine de bajar y luego elimina la pelota antes de mezclar
+            setTimeout(() => {
+                if (pelota) pelota.remove();
+                if (callback) callback();
+            }, 700);
+        }, 200);
+    }
+    // Mezclar los vasos
+    function mezclarVasos(callback) {
+        let orden = [0,1,2];
+        let pasos = 8;
+        let duracion = 2000;
+        let intervalo = duracion / pasos;
+        let paso = 0;
+        function swapAnim(a, b) {
+            const btnA = botones[a];
+            const btnB = botones[b];
+            btnA.style.transition = btnB.style.transition = 'transform 0.18s';
+            btnA.style.transform = `translateX(${(b-a)*120}px)`;
+            btnB.style.transform = `translateX(${(a-b)*120}px)`;
+            setTimeout(() => {
+                btnA.style.transition = btnB.style.transition = '';
+                btnA.style.transform = btnB.style.transform = '';
+                vasosRow.insertBefore(btnB, btnA);
+            }, 180);
+        }
+        function mezclarPaso() {
+            if (paso >= pasos) {
+                if (callback) callback();
+                return;
+            }
+            // Elegir dos vasos al azar para intercambiar
+            let a = Math.floor(Math.random()*3);
+            let b;
+            do { b = Math.floor(Math.random()*3); } while (b === a);
+            swapAnim(a, b);
+            paso++;
+            setTimeout(mezclarPaso, intervalo);
+        }
+        mezclarPaso();
+    }
+    // Deshabilitar botones al inicio
+    botones.forEach(btn => btn.disabled = true);
+    animarPelotaSoloEnMedio(() => {
+        mezclarVasos(() => {
+            document.getElementById('msg-instruccion').innerHTML = '<span>Elegí un vaso para ver si acertás.</span>';
+            botones.forEach(btn => btn.disabled = false);
+        });
+    });
+</script>
+} 

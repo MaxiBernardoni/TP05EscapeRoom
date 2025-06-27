@@ -14,20 +14,21 @@ h1, h2 {
 
 a, button {
   background: none;
-  border: 2px solid #00ffc3;
+  
   color: #00ffc3;
-  padding: 10px 20px;
+  
   font-family: inherit;
   text-transform: uppercase;
   cursor: pointer;
   margin: 10px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 a:hover, button:hover {
   background-color: #00ffc3;
   color: black;
   box-shadow: 0 0 10px #00ffc3;
+  
 }
 
 input {

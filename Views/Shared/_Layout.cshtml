@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Escape Room UTN</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @RenderSection("Head", required: false)
 </head>
 <body>
     <div class="container">
@@ -30,6 +31,9 @@
         <div id="menu-desplegable" class="menu-desplegable">
             <form method="post" action="/Home/ReiniciarJuego" style="margin-bottom: 20px;">
                 <button type="submit">Reiniciar sala</button>
+            </form>
+            <form method="post" action="/Home/ReiniciarNivel" id="form-reiniciar-nivel">
+                <button type="submit">Reiniciar este nivel</button>
             </form>
         </div>
 

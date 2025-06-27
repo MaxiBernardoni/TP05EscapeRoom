@@ -72,6 +72,11 @@
     box-shadow: none !important;
     background: none !important;
 }
+.npc-row a {
+    border-radius: 50%;
+    display: inline-block;
+    transition: box-shadow 0.3s;
+}
 </style>
 
 <div class="barrio-container">
@@ -155,10 +160,12 @@
                 </div>
             </a>
         }
-        <div class="npc">
-            <img src="/img/pistolita.png" alt="El que ayuda" />
-            <div class="npc-comment">Este parece buena onda.</div>
-        </div>
+        <a href="/Home/DialogoAyudar2" style="text-decoration:none;color:inherit;">
+            <div class="npc">
+                <img src="/img/pistolita.png" alt="El que ayuda" />
+                <div class="npc-comment">Este parece buena onda.</div>
+            </div>
+        </a>
         <div class="npc">
             <img src="/img/nervioso.png" alt="Nervioso" />
             <div class="npc-comment">Este está re nervioso, ¿qué le pasa?</div>

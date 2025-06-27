@@ -383,6 +383,104 @@ namespace TuProyecto.Controllers
             HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
             return RedirectToAction("Habitacion3");
         }
+
+        [HttpGet]
+        public IActionResult DialogoInsistente()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            ViewBag.Modelo = modelo;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AceptarInsistente()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            modelo.CompraRealizada = true;
+            modelo.InsistenteResuelto = true;
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return RedirectToAction("DialogoInsistente");
+        }
+
+        [HttpPost]
+        public IActionResult RechazarInsistente()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            if (modelo.IntentosRechazo == null) modelo.IntentosRechazo = 0;
+            modelo.IntentosRechazo++;
+            if (modelo.IntentosRechazo >= 2)
+                modelo.InsistenteResuelto = true;
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return RedirectToAction("DialogoInsistente");
+        }
+
+        [HttpPost]
+        public IActionResult FinalizarDialogoInsistente()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            modelo.InsistenteResuelto = true;
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return RedirectToAction("Habitacion3");
+        }
+
+        [HttpPost]
+        public IActionResult ReiniciarNivel()
+        {
+            // Detectar la habitación actual por el referer o por TempData/ViewBag si se implementa
+            string referer = Request.Headers["Referer"].ToString().ToLower();
+            if (referer.Contains("habitacion1"))
+            {
+                HttpContext.Session.Remove("habitacion1");
+                return RedirectToAction("Habitacion1");
+            }
+            if (referer.Contains("habitacion2"))
+            {
+                HttpContext.Session.Remove("habitacion2");
+                return RedirectToAction("Habitacion2");
+            }
+            // Por defecto, o si es un diálogo de la 3, reinicia la 3
+            HttpContext.Session.Remove("habitacion3");
+            return RedirectToAction("Habitacion3");
+        }
+
+        [HttpGet]
+        public IActionResult DialogoAyudar2()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            // Inicializar estado del minijuego si es la primera vez
+            if (modelo.Ayudar2BalasUsuario == 0 && modelo.Ayudar2BalasNPC == 0 && !modelo.Ayudar2Resuelto && !modelo.Ayudar2Perdio)
+            {
+                modelo.Ayudar2BalasUsuario = 0;
+                modelo.Ayudar2BalasNPC = 0;
+                modelo.Ayudar2EscudoConsecutivo = 0;
+                modelo.Ayudar2UltimaAccionUsuario = null;
+                modelo.Ayudar2UltimaAccionNPC = null;
+                modelo.Ayudar2Dialogo = 0;
+            }
+
+            ViewBag.Modelo = modelo;
+            return View();
+        }
     }
 }
 

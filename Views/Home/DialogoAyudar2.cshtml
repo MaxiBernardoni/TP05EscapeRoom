@@ -1,0 +1,204 @@
+@section Head {
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+}
+@{
+    ViewBag.Title = "Diálogo con el que ayuda (Pistolita)";
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
+    bool yaGano = modelo?.Ayudar2Resuelto == true;
+    bool yaPerdio = modelo?.Ayudar2Perdio == true;
+    bool enJuego = modelo?.Ayudar2EnCurso == true;
+    int balasUsuario = modelo?.Ayudar2BalasUsuario ?? 0;
+    int balasNPC = modelo?.Ayudar2BalasNPC ?? 0;
+    int escudoConsecutivo = modelo?.Ayudar2EscudoConsecutivo ?? 0;
+    string ultimaAccionUsuario = modelo?.Ayudar2UltimaAccionUsuario;
+    string ultimaAccionNPC = modelo?.Ayudar2UltimaAccionNPC;
+    var historial = modelo?.Ayudar2Historial ?? new List<string>();
+}
+<style>
+.dialogo-chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    min-height: 400px;
+}
+.burbuja-chat {
+    display: none;
+    max-width: 600px;
+    margin-bottom: 12px;
+    padding: 18px 28px;
+    border-radius: 22px;
+    font-size: 1.13em;
+    font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    box-shadow: 0 4px 24px #0006;
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+}
+.burbuja-chat.visible {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.burbuja-usuario {
+    align-self: flex-end;
+    background: linear-gradient(90deg, #00c9a7 0%, #005c4b 100%);
+    color: #fff;
+}
+.burbuja-ayudar {
+    align-self: flex-start;
+    background: linear-gradient(90deg, #3a1c71 0%, #d76d77 100%);
+    color: #fff;
+}
+.burbuja-narrador {
+    align-self: center;
+    background: #444;
+    color: #eee;
+    font-style: italic;
+}
+.dialogo-chat-imgs {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+.dialogo-chat-imgs img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #00ffc3;
+    box-shadow: 0 0 16px 4px #00ffc3, 0 0 32px 8px #00ffc355;
+    animation: neonPulse 2s infinite alternate;
+    background: #222;
+}
+@@keyframes neonPulse {
+    0% { box-shadow: 0 0 16px 4px #00ffc3, 0 0 32px 8px #00ffc355; }
+    100% { box-shadow: 0 0 32px 8px #00ffc3, 0 0 48px 16px #00ffc355; }
+}
+#typing-indicator {
+    display: none;
+    text-align: left;
+    padding: 10px 0 10px 20px;
+    width: 100%;
+}
+.dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    margin-right: 3px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: blink 1.2s infinite both;
+}
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+@@keyframes blink {
+    0%, 80%, 100% { opacity: 0.5; }
+    40% { opacity: 1; }
+}
+.pistolita-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    background: #181818;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px #0008;
+    padding: 24px 32px;
+    min-width: 320px;
+}
+.pistolita-acciones {
+    display: flex;
+    gap: 30px;
+    margin-top: 18px;
+}
+.pistolita-btn {
+    font-size: 2.2em;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.15s;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    box-shadow: 0 2px 12px #0005;
+    outline: none;
+}
+.pistolita-btn:active {
+    transform: scale(1.15);
+    box-shadow: 0 0 24px #00ffc3;
+}
+.pistolita-info {
+    margin-top: 10px;
+    color: #00ffc3;
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 1.1em;
+}
+.pistolita-anim {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 18px;
+    min-height: 60px;
+}
+.pistolita-emoji {
+    font-size: 2.5em;
+    transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+}
+.pistolita-emoji.disparo {
+    animation: disparo 0.5s linear;
+}
+.pistolita-emoji.escudo {
+    animation: escudo 0.5s linear;
+}
+.pistolita-emoji.recarga {
+    animation: recarga 0.7s linear;
+}
+@@keyframes disparo {
+    0% { transform: translateX(0); }
+    60% { transform: translateX(40px) scale(1.2); }
+    100% { transform: translateX(0); }
+}
+@@keyframes escudo {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25) rotate(-10deg); }
+    100% { transform: scale(1); }
+}
+@@keyframes recarga {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+<div class="dialogo-chat-container">
+    <div class="dialogo-chat-imgs">
+        <img src="/img/usuario.png" alt="Usuario" />
+        <img src="/img/pistolita.png" alt="El que ayuda" />
+    </div>
+    <div id="chat-burbujas" style="max-height: 400px; overflow-y: auto; width:100%;">
+        <div id="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <!-- Diálogo inicial, minijuego y resultado se renderizan aquí con JS -->
+    </div>
+    <div id="pistolita-panel" class="pistolita-panel" style="display:none;">
+        <div class="pistolita-info" id="pistolita-info"></div>
+        <div class="pistolita-acciones">
+            <button class="pistolita-btn" id="btn-disparo" title="Disparar">🔫</button>
+            <button class="pistolita-btn" id="btn-escudo" title="Escudo">🛡️</button>
+            <button class="pistolita-btn" id="btn-recarga" title="Recargar">🔄</button>
+        </div>
+        <div class="pistolita-anim" id="pistolita-anim"></div>
+    </div>
+    <div class="btn-container" id="btn-reiniciar-pistolita" style="display:none;">
+        <form asp-action="DialogoAyudar2" method="get" style="display:inline;">
+            <button type="submit" class="btn btn-danger">Reiniciar minijuego</button>
+        </form>
+    </div>
+    <div class="btn-container" id="btn-volver-hab3" style="display:none;">
+        <a href="/Home/Habitacion3" class="btn btn-secondary">Volver a la habitación</a>
+    </div>
+</div>
+<script>
+// El JS para el flujo, diálogo y minijuego se implementa aquí (ver siguiente paso)
+</script>

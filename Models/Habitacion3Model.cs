@@ -53,6 +53,18 @@ namespace TuProyecto.Models
         public bool InsistenteRechazado { get; set; } = false;
         public int IntentosRechazo { get; set; } = 0;
 
+        // Estado y minijuego de Ayudar2 (pistolita)
+        public bool Ayudar2Resuelto { get; set; } = false;
+        public bool Ayudar2Perdio { get; set; } = false;
+        public int Ayudar2BalasUsuario { get; set; } = 0;
+        public int Ayudar2BalasNPC { get; set; } = 0;
+        public int Ayudar2EscudoConsecutivo { get; set; } = 0;
+        public string Ayudar2UltimaAccionUsuario { get; set; } = null;
+        public string Ayudar2UltimaAccionNPC { get; set; } = null;
+        public int Ayudar2Dialogo { get; set; } = 0;
+        public bool Ayudar2EnCurso { get; set; } = false;
+        public List<string> Ayudar2Historial { get; set; } = new List<string>();
+
         // Métodos de ayuda
         public bool TodosLosMinijuegosCompletados()
         {

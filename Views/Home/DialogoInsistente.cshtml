@@ -1,3 +1,6 @@
+@section Head {
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+}
 @{
     ViewBag.Title = "Diálogo con el vendedor";
     var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
@@ -18,23 +21,29 @@
     display: none;
     max-width: 600px;
     margin-bottom: 12px;
-    padding: 16px 22px;
-    border-radius: 16px;
-    font-size: 1.12em;
-    box-shadow: 0 2px 12px #0003;
-    background: #23272f;
-    color: #f7f7f7;
-    position: relative;
+    padding: 18px 28px;
+    border-radius: 22px;
+    font-size: 1.13em;
+    font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    box-shadow: 0 4px 24px #0006;
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+}
+.burbuja-chat.visible {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 .burbuja-usuario {
     align-self: flex-end;
-    background: #005c4b;
+    background: linear-gradient(90deg, #00c9a7 0%, #005c4b 100%);
     color: #fff;
 }
 .burbuja-insistente {
     align-self: flex-start;
-    background: #23272f;
-    color: #f7f7f7;
+    background: linear-gradient(90deg, #3a1c71 0%, #d76d77 100%);
+    color: #fff;
 }
 .burbuja-narrador {
     align-self: center;
@@ -55,11 +64,37 @@
 }
 .dialogo-chat-imgs img {
     width: 90px;
-    height: auto;
-    border-radius: 10px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #00ffc3;
+    box-shadow: 0 0 16px 4px #00ffc3, 0 0 32px 8px #00ffc355;
+    animation: neonPulse 2s infinite alternate;
     background: #222;
-    box-shadow: 0 2px 12px #0005;
-    border: 3px solid #00eaff;
+}
+@@keyframes neonPulse {
+    0% { box-shadow: 0 0 16px 4px #00ffc3, 0 0 32px 8px #00ffc355; }
+    100% { box-shadow: 0 0 32px 8px #00ffc3, 0 0 48px 16px #00ffc355; }
+}
+#typing-indicator {
+    display: none;
+    text-align: left;
+    padding: 10px 0 10px 20px;
+    width: 100%;
+}
+.dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    margin-right: 3px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: blink 1.2s infinite both;
+}
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+@@keyframes blink {
+    0%, 80%, 100% { opacity: 0.5; }
+    40% { opacity: 1; }
 }
 </style>
 <div class="dialogo-chat-container">
@@ -67,16 +102,17 @@
         <img src="/img/usuario.png" alt="Usuario" />
         <img src="/img/kiosquero.png" alt="Vendedor" />
     </div>
-    <div id="chat-burbujas">
+    <div id="chat-burbujas" style="max-height: 400px; overflow-y: auto; width:100%;">
+        <div id="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
         @if (!resuelto && rechazos == 0 && !compra)
         {
-            <div class="burbuja-chat burbuja-usuario">Este seguro me quiere vender algo...</div>
-            <div class="burbuja-chat burbuja-insistente">Hola amigo, ¿sabés dónde queda el edificio de Auraman? Mirá, yo te digo, pero primero tenés que comprarme algo.</div>
+            <div class="burbuja-chat burbuja-insistente">Che, ¿sabés dónde queda el edificio de Auraman? Mirá, yo te digo, pero primero tenés que comprarme algo.</div>
             <div class="burbuja-chat burbuja-insistente">¿Aceptás o rechazás?</div>
         }
         else if (!resuelto && rechazos == 1 && !compra)
         {
             <div class="burbuja-chat burbuja-insistente">¿Seguro que no querés comprar? Si no comprás, puede haber consecuencias peores...</div>
+            <div class="burbuja-chat burbuja-insistente">¿Aceptás o rechazás?</div>
         }
         else if (compra)
         {
@@ -86,7 +122,7 @@
         }
         else if (rechazos >= 2)
         {
-            <div class="burbuja-chat burbuja-narrador">No te vende nada. Se va enojado.</div>
+            <div class="burbuja-chat burbuja-insistente">Bueno, hacé lo que quieras. No te vendo nada. Se va muy enojado.</div>
         }
     </div>
     @if (!resuelto && rechazos == 0 && !compra)
@@ -105,19 +141,25 @@
     @if (!resuelto && rechazos == 1 && !compra)
     {
         <button id="btn-avanzar-amenaza" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
-        <div class="btn-container" id="btn-continuar-amenaza" style="display:none;">
+        <button id="btn-acelerar" class="btn btn-secondary" style="margin-top:10px;margin-left:10px;">Acelerar</button>
+        <div class="btn-container" id="btn-acciones" style="display:none;">
+            <form asp-action="AceptarInsistente" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-success">Aceptar</button>
+            </form>
             <form asp-action="RechazarInsistente" method="post" style="display:inline;">
-                <button type="submit" class="btn btn-primary">Continuar</button>
+                <button type="submit" class="btn btn-danger">Rechazar</button>
             </form>
         </div>
     }
     @if (compra)
     {
         <button id="btn-avanzar-compra" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
+        <button id="btn-acelerar" class="btn btn-secondary" style="margin-top:10px;margin-left:10px;">Acelerar</button>
         <div class="btn-container" id="btn-continuar-compra" style="display:none;">
             <form asp-action="FinalizarDialogoInsistente" method="post" style="display:inline;">
                 <button type="submit" class="btn btn-primary">Continuar</button>
             </form>
+            <a href="/Home/Habitacion3" class="btn btn-secondary" style="margin-left:10px;">Salir</a>
         </div>
     }
     @if (resuelto || rechazos >= 2)
@@ -136,25 +178,40 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnAvanzar = document.getElementById('btn-avanzar');
     const btnAcciones = document.getElementById('btn-acciones');
     const btnAvanzarAmenaza = document.getElementById('btn-avanzar-amenaza');
-    const btnContinuarAmenaza = document.getElementById('btn-continuar-amenaza');
     const btnAvanzarCompra = document.getElementById('btn-avanzar-compra');
-    const btnContinuarCompra = document.getElementById('btn-continuar-compra');
-    const btnContinuarFinal = document.getElementById('btn-continuar-final');
     const btnAcelerar = document.getElementById('btn-acelerar');
+    const chatBurbujas = document.getElementById('chat-burbujas');
+    const typing = document.getElementById('typing-indicator');
     let velocidadDialogo = 2000;
     btnAcelerar.onclick = function() {
         velocidadDialogo = 1000;
         btnAcelerar.style.display = 'none';
     };
+    function scrollToBottom() {
+        chatBurbujas.scrollTop = chatBurbujas.scrollHeight;
+    }
+    function mostrarBurbujaAnimada(idx) {
+        typing.style.display = 'block';
+        setTimeout(() => {
+            typing.style.display = 'none';
+            if (burbujas[idx]) {
+                burbujas[idx].style.display = 'block';
+                setTimeout(() => {
+                    burbujas[idx].classList.add('visible');
+                    scrollToBottom();
+                }, 10);
+            }
+        }, 700);
+    }
     if (btnAvanzar) {
-        burbujas[0].style.display = 'block';
+        mostrarBurbujaAnimada(0);
         i = 1;
         btnAvanzar.style.display = 'block';
         btnAvanzar.onclick = function() {
             btnAvanzar.style.display = 'none';
             function mostrarBurbujasSecuencial() {
                 if (i < burbujas.length) {
-                    burbujas[i].style.display = 'block';
+                    mostrarBurbujaAnimada(i);
                     i++;
                     setTimeout(mostrarBurbujasSecuencial, velocidadDialogo);
                 } else {
@@ -166,18 +223,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
     } else if (btnAvanzarAmenaza) {
-        burbujas[0].style.display = 'block';
+        mostrarBurbujaAnimada(0);
         i = 1;
         btnAvanzarAmenaza.style.display = 'block';
         btnAvanzarAmenaza.onclick = function() {
             btnAvanzarAmenaza.style.display = 'none';
             function mostrarBurbujasSecuencial() {
                 if (i < burbujas.length) {
-                    burbujas[i].style.display = 'block';
+                    mostrarBurbujaAnimada(i);
                     i++;
                     setTimeout(mostrarBurbujasSecuencial, velocidadDialogo);
                 } else {
-                    if (btnContinuarAmenaza) btnContinuarAmenaza.style.display = 'block';
+                    if (btnAcciones) btnAcciones.style.display = 'block';
                 }
             }
             if (burbujas.length > 0) {
@@ -185,43 +242,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
     } else if (btnAvanzarCompra) {
-        burbujas[0].style.display = 'block';
+        mostrarBurbujaAnimada(0);
         i = 1;
         btnAvanzarCompra.style.display = 'block';
         btnAvanzarCompra.onclick = function() {
             btnAvanzarCompra.style.display = 'none';
             function mostrarBurbujasSecuencial() {
                 if (i < burbujas.length) {
-                    burbujas[i].style.display = 'block';
+                    mostrarBurbujaAnimada(i);
                     i++;
                     setTimeout(mostrarBurbujasSecuencial, velocidadDialogo);
                 } else {
-                    if (btnContinuarCompra) btnContinuarCompra.style.display = 'block';
+                    if (btnAcciones) btnAcciones.style.display = 'block';
                 }
             }
             if (burbujas.length > 0) {
                 mostrarBurbujasSecuencial();
             }
         };
-    } else if (btnContinuarFinal) {
-        burbujas[0].style.display = 'block';
-        i = 1;
-        function mostrarBurbujasSecuencial() {
-            if (i < burbujas.length) {
-                burbujas[i].style.display = 'block';
-                i++;
-                setTimeout(mostrarBurbujasSecuencial, velocidadDialogo);
-            } else {
-                btnContinuarFinal.style.display = 'block';
-            }
-        }
-        if (burbujas.length > 0) {
-            mostrarBurbujasSecuencial();
-        }
     } else {
         function mostrarBurbujasSecuencial() {
             if (i < burbujas.length) {
-                burbujas[i].style.display = 'block';
+                mostrarBurbujaAnimada(i);
                 i++;
                 setTimeout(mostrarBurbujasSecuencial, velocidadDialogo);
             }

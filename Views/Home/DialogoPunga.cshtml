@@ -10,8 +10,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
-    min-height: 400px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
 }
 .burbuja-chat {
     display: none;
@@ -25,6 +31,7 @@
     opacity: 0;
     transform: translateY(30px) scale(0.98);
     transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+    text-align: center;
 }
 .burbuja-chat.visible {
     display: block !important;
@@ -92,6 +99,15 @@
     0%, 80%, 100% { opacity: 0.5; }
     40% { opacity: 1; }
 }
+#chat-burbujas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
 </style>
 <div class="dialogo-chat-container">
     <div class="dialogo-chat-imgs">
@@ -113,7 +129,6 @@
         <div class="burbuja-chat burbuja-punga">Hagamos así. Jugamos a esto, hay 3 vasos y una pelota. Si adivinás en qué vaso está la pelota, ganaste. Si no, te robo todo amigo.</div>
     </div>
     <button id="btn-avanzar" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
-    <button id="btn-acelerar" class="btn btn-secondary" style="margin-top:10px;margin-left:10px;">Acelerar</button>
     <div class="btn-container" id="btn-desafio" style="display:none;">
         <form asp-action="AceptarDesafioPunga" method="post" style="display:inline;">
             <button type="submit" class="btn btn-danger">Aceptar el desafío</button>
@@ -125,14 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const burbujas = document.querySelectorAll('.burbuja-chat');
     let i = 0;
     const btnAvanzar = document.getElementById('btn-avanzar');
-    const btnAcelerar = document.getElementById('btn-acelerar');
     const chatBurbujas = document.getElementById('chat-burbujas');
     const typing = document.getElementById('typing-indicator');
-    let velocidadDialogo = 2000;
-    btnAcelerar.onclick = function() {
-        velocidadDialogo = 1000;
-        btnAcelerar.style.display = 'none';
-    };
     function scrollToBottom() {
         chatBurbujas.scrollTop = chatBurbujas.scrollHeight;
     }
@@ -155,14 +164,18 @@ document.addEventListener('DOMContentLoaded', function() {
     btnAvanzar.style.display = 'block';
     scrollToBottom();
     btnAvanzar.onclick = function() {
-        mostrarBurbujaAnimada(i);
-        i++;
-        if (i < burbujas.length) {
-            setTimeout(function() {
-                btnAvanzar.style.display = 'block';
-            }, 1000);
-        } else {
-            document.getElementById('btn-desafio').style.display = 'block';
+        btnAvanzar.style.display = 'none';
+        function mostrarBurbujasSecuencial() {
+            if (i < burbujas.length) {
+                mostrarBurbujaAnimada(i);
+                i++;
+                setTimeout(mostrarBurbujasSecuencial, 2000);
+            } else {
+                document.getElementById('btn-desafio').style.display = 'block';
+            }
+        }
+        if (burbujas.length > 0) {
+            mostrarBurbujasSecuencial();
         }
     };
 });

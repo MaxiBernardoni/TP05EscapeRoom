@@ -30,6 +30,7 @@ namespace TuProyecto.Models
         public bool JuegoPungaEnCurso { get; set; } = false;
         public int VasoSeleccionado { get; set; } = -1;
         public int VasoCorrecto { get; set; } = -1;
+        public List<int> OrdenVasos { get; set; } = new List<int> { 0, 1, 2 };
 
         // Minijuego de Pistolita
         public int IntentosPistolita { get; set; } = 0;

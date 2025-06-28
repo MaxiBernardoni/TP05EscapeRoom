@@ -9,8 +9,8 @@
         "🍞 Tostadas",
         "🪞 Espejo",
         "👓 Lentes",
-        "💵 Dinero",
-        "🎒 Mochila"
+        "🎒 Mochila",
+        "💵 Dinero"
     };
 }
 
@@ -69,12 +69,12 @@
 
 <div class="room-grid">
 @for (int i = 0; i < 9; i++) {
-    if (i == 6) {
+    if (i == 7) {
         <form asp-action="VerificarPuerta" method="post">
             <button type="submit" class="item">🚪 Puerta</button>
         </form>
     } else {
-        var obj = objetos[i < 6 ? i : i - 1];
+        var obj = objetos[i < 7 ? i : i - 1];
         <form asp-action="SeleccionarObjeto" method="post">
             <input type="hidden" name="objeto" value="@obj" />
             <button type="submit" class="item @(inventario.TieneObjeto(obj) ? "selected" : "")">@obj</button>
@@ -82,4 +82,3 @@
     }
 }
 </div>
-

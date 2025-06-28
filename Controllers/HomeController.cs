@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using TuProyecto.Models;
 using System.Text.Json;
+using System.Collections.Generic;
 
 namespace TuProyecto.Controllers
 {
@@ -10,7 +11,8 @@ namespace TuProyecto.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            int seconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            HttpContext.Session.Clear();
+            int seconds = 0;
             ViewBag.GameSeconds = seconds;
             ViewBag.GameClock = new GameClock(seconds);
             return View();
@@ -167,8 +169,8 @@ namespace TuProyecto.Controllers
             return Ok();
         }
 
-        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult ReiniciarJuego()
         {
             // Limpiar la sesión
@@ -222,6 +224,7 @@ namespace TuProyecto.Controllers
             }
 
             ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
             return View();
         }
 
@@ -251,11 +254,12 @@ namespace TuProyecto.Controllers
                 return RedirectToAction("DialogoPunga");
 
             ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
             return View();
         }
 
         [HttpPost]
-        public IActionResult ResolverPunga(int vasoElegido)
+        public IActionResult ResolverPunga(int vasoElegido, string ordenVasos)
         {
             var modeloJson = HttpContext.Session.GetString("habitacion3");
             var modelo = string.IsNullOrEmpty(modeloJson)
@@ -263,6 +267,11 @@ namespace TuProyecto.Controllers
                 : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
 
             modelo.VasoSeleccionado = vasoElegido;
+            if (!string.IsNullOrEmpty(ordenVasos))
+            {
+                try { modelo.OrdenVasos = System.Text.Json.JsonSerializer.Deserialize<List<int>>(ordenVasos); }
+                catch { modelo.OrdenVasos = new List<int> { 0, 1, 2 }; }
+            }
             bool gano = (vasoElegido == modelo.VasoCorrecto);
             modelo.JuegoPungaEnCurso = false;
 
@@ -343,6 +352,7 @@ namespace TuProyecto.Controllers
                 : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
 
             ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
             return View();
         }
 
@@ -368,6 +378,7 @@ namespace TuProyecto.Controllers
                 : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
 
             ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
             return View();
         }
 
@@ -393,6 +404,7 @@ namespace TuProyecto.Controllers
                 : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
 
             ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
             return View();
         }
 
@@ -479,6 +491,7 @@ namespace TuProyecto.Controllers
             }
 
             ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
             return View();
         }
     }

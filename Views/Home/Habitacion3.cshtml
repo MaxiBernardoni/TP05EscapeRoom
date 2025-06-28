@@ -21,11 +21,13 @@
     text-align: center;
 }
 .npc-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: start;
+    gap: 60px 60px;
     margin-bottom: 30px;
+    padding: 45px;
 }
 .npc {
     display: flex;
@@ -33,15 +35,13 @@
     align-items: center;
     cursor: pointer;
     position: relative;
-    
 }
 .npc img {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    /* border: 3px solid #00eaff; */
-    background: #fff;
-    /* box-shadow: 0 0 12px #00eaff55; */
+    border: 3px solid #00eaff;
+    background: #fff;ZZ
     border: none !important;
 }
 .npc-comment {
@@ -85,7 +85,7 @@
         <span style="color:#00eaff;">Usuario:</span> bueno. ya estamos en almagro. ahora, a buscar el edificio de auraman. ¿a quién le pregunto?
     </div>
     <div class="npc-row">
-        @if (ViewBag.Modelo?.PungaResuelto == true)
+        @if (ViewBag.Modelo?.PungaResuelto == true || ViewBag.Modelo?.TienePlata == false)
         {
             <div class="npc" style="cursor:default;opacity:0.5;">
                 <img src="/img/punga.png" alt="Punga" />
@@ -96,7 +96,7 @@
         {
             <a href="/Home/DialogoPunga" style="text-decoration:none;color:inherit;">
                 <div class="npc">
-                    <img src="/img/punga.png" alt="Punga" style="border:none;" />
+                    <img src="/img/punga.png" alt="Punga" />
                     <div class="npc-comment">Uhhh, una pinta de chorro este.</div>
                 </div>
             </a>

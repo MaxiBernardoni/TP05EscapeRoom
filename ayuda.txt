@@ -1,0 +1,23 @@
+. Uno que te quiera ayudar pero no sabe donde es: Se detiene cuando le preguntas, intenta pensar dónde queda pero no sabe dónde está el edificio.
+
+Usuario: Este me responde seguro. (Comentario)
+
+Usuario: Hola capo. ¿Sabrías decirme, dónde está el edificio de Auraman?
+
+Chabón: Hola amigo. Auraman. Me suena ese apellido, es de algo de tecnología no?
+
+Usuario: Si algo así, ¿sabés dónde queda su edificio?
+
+Chabón: Ah, porque me suena.
+
+Usuario: Que bien. Más o menos, tenés idea donde queda?
+
+Chabón: Creo que sí. No quedaba en el barrio de Villa Soldati?
+
+Usuario: No amigo. Queda acá en Almagro. Cerca de acá. Pero sabés la ubicación exacta.
+
+Chabón: La verdad que no. Perdón.
+
+Usuario: Bueno. No hay drama.
+
+(Si ya hablaste con él antes) Chabón: Ya te dije, amigo. No tengo idea.

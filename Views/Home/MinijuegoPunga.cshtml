@@ -45,6 +45,10 @@
     z-index: 2;
     transition: top 0.7s cubic-bezier(.68,-0.55,.27,1.55), left 0.7s cubic-bezier(.68,-0.55,.27,1.55);
 }
+.gris {
+    filter: grayscale(1) brightness(0.6);
+    color: #888 !important;
+}
 @@media (max-width: 600px) {
     .vasos-row { gap: 20px; }
     .vaso-img { width: 60px; height: 70px; }
@@ -56,12 +60,9 @@
     <form asp-action="ResolverPunga" method="post" id="form-vasos">
         <div class="vasos-row" id="vasos-row">
             @for (int i = 0; i < 3; i++) {
-                var selected = modelo?.VasoSeleccionado == i;
+                var selected = modelo?.OrdenVasos != null && modelo.OrdenVasos.Count == 3 && modelo.OrdenVasos[i] == modelo.VasoSeleccionado;
                 <button type="submit" name="vasoElegido" value="@i" class="vaso-btn @(selected ? "selected" : "")" @(yaEligio ? "disabled" : "")>
                     <img src="/img/vaso.webp" class="vaso-img" alt="Vaso @(i+1)" />
-                    @if (yaEligio && modelo.VasoCorrecto == i) {
-                        <img src="/img/pelota.png" class="pelota-img" alt="Pelota" />
-                    }
                 </button>
             }
         </div>
@@ -78,7 +79,11 @@
                 }
             </div>
             <div style="margin-top: 20px;">
-                <a href="/Home/Habitacion3" class="btn btn-primary">Volver a la habitación</a>
+                @if (modelo.VasoSeleccionado == modelo.VasoCorrecto) {
+                    <a href="/Home/Habitacion3" class="btn btn-primary">Continuar</a>
+                } else {
+                    <a href="/" class="btn btn-primary">Volver a empezar</a>
+                }
             </div>
         }
     </form>
@@ -91,30 +96,14 @@
     const formVasos = document.getElementById('form-vasos');
     const botones = vasosRow.querySelectorAll('.vaso-btn');
     let pelota = null;
-    // Crear la pelotita animada SOLO en el medio y eliminar antes de mezclar
+    // --- NUEVO: Mantener el orden real de los vasos ---
+    let orden = [0,1,2];
+    // Elimino la animación de la pelotita, solo mezclo los vasos directamente
     function animarPelotaSoloEnMedio(callback) {
-        const vasoMedio = 1;
-        pelota = document.createElement('img');
-        pelota.src = '/img/pelota.png';
-        pelota.className = 'pelota-img';
-        pelota.style.top = '-70px';
-        pelota.style.left = (vasosRow.children[vasoMedio].offsetLeft + 50) + 'px';
-        pelota.style.position = 'absolute';
-        pelota.style.zIndex = '10';
-        vasosRow.appendChild(pelota);
-        // Baja al vaso del medio
-        setTimeout(() => {
-            pelota.style.top = '70px';
-            // Espera a que termine de bajar y luego elimina la pelota antes de mezclar
-            setTimeout(() => {
-                if (pelota) pelota.remove();
-                if (callback) callback();
-            }, 700);
-        }, 200);
+        if (callback) callback();
     }
     // Mezclar los vasos
     function mezclarVasos(callback) {
-        let orden = [0,1,2];
         let pasos = 8;
         let duracion = 2000;
         let intervalo = duracion / pasos;
@@ -129,6 +118,10 @@
                 btnA.style.transition = btnB.style.transition = '';
                 btnA.style.transform = btnB.style.transform = '';
                 vasosRow.insertBefore(btnB, btnA);
+                // --- NUEVO: Actualizar el array de orden ---
+                let temp = orden[a];
+                orden[a] = orden[b];
+                orden[b] = temp;
             }, 180);
         }
         function mezclarPaso() {
@@ -152,6 +145,27 @@
         mezclarVasos(() => {
             document.getElementById('msg-instruccion').innerHTML = '<span>Elegí un vaso para ver si acertás.</span>';
             botones.forEach(btn => btn.disabled = false);
+        });
+    });
+    // --- NUEVO: Interceptar el submit y enviar el índice real ---
+    botones.forEach((btn, visualIdx) => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Buscar el índice lógico del vaso elegido
+            let vasoElegido = orden[visualIdx];
+            // Crear input oculto y enviar el formulario
+            let input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'vasoElegido';
+            input.value = vasoElegido;
+            formVasos.appendChild(input);
+            // --- NUEVO: enviar el orden de los vasos ---
+            let inputOrden = document.createElement('input');
+            inputOrden.type = 'hidden';
+            inputOrden.name = 'ordenVasos';
+            inputOrden.value = JSON.stringify(orden);
+            formVasos.appendChild(inputOrden);
+            formVasos.submit();
         });
     });
 </script>

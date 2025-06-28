@@ -20,8 +20,30 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
-    min-height: 400px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+}
+.dialogo-chat-imgs {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+#chat-burbujas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 .burbuja-chat {
     display: none;
@@ -35,6 +57,7 @@
     opacity: 0;
     transform: translateY(30px) scale(0.98);
     transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+    text-align: center;
 }
 .burbuja-chat.visible {
     display: block !important;
@@ -57,14 +80,7 @@
     color: #eee;
     font-style: italic;
 }
-.dialogo-chat-imgs {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    width: 100%;
-    margin-bottom: 18px;
-}
-.dialogo-chat-imgs img {
+.burbuja-chat img {
     width: 90px;
     height: 90px;
     border-radius: 50%;
@@ -190,6 +206,7 @@
         </div>
         <div class="pistolita-anim" id="pistolita-anim"></div>
     </div>
+    <button id="btn-avanzar" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
     <div class="btn-container" id="btn-reiniciar-pistolita" style="display:none;">
         <form asp-action="DialogoAyudar2" method="get" style="display:inline;">
             <button type="submit" class="btn btn-danger">Reiniciar minijuego</button>
@@ -200,5 +217,45 @@
     </div>
 </div>
 <script>
-// El JS para el flujo, diálogo y minijuego se implementa aquí (ver siguiente paso)
+document.addEventListener('DOMContentLoaded', function() {
+    const burbujas = document.querySelectorAll('.burbuja-chat');
+    let i = 0;
+    const btnAvanzar = document.getElementById('btn-avanzar');
+    const chatBurbujas = document.getElementById('chat-burbujas');
+    const typing = document.getElementById('typing-indicator');
+    function scrollToBottom() {
+        chatBurbujas.scrollTop = chatBurbujas.scrollHeight;
+    }
+    function mostrarBurbujaAnimada(idx) {
+        typing.style.display = 'block';
+        setTimeout(() => {
+            typing.style.display = 'none';
+            if (burbujas[idx]) {
+                burbujas[idx].style.display = 'block';
+                setTimeout(() => {
+                    burbujas[idx].classList.add('visible');
+                    scrollToBottom();
+                }, 10);
+            }
+        }, 700);
+    }
+    // Mostrar el primer mensaje al cargar
+    burbujas[0].style.display = 'block';
+    i = 1;
+    btnAvanzar.style.display = 'block';
+    scrollToBottom();
+    btnAvanzar.onclick = function() {
+        btnAvanzar.style.display = 'none';
+        function mostrarBurbujasSecuencial() {
+            if (i < burbujas.length) {
+                mostrarBurbujaAnimada(i);
+                i++;
+                setTimeout(mostrarBurbujasSecuencial, 2000);
+            }
+        }
+        if (burbujas.length > 0) {
+            mostrarBurbujasSecuencial();
+        }
+    };
+});
 </script>

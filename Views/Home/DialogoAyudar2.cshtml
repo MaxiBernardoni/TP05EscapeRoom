@@ -5,7 +5,7 @@
     ViewBag.Title = "Diálogo con el que ayuda (Pistolita)";
     var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
     bool yaGano = modelo?.Ayudar2Resuelto == true;
-    bool yaPerdio = modelo?.Ayudar2Perdio == true;
+    bool yaPerdio = modelo?.Ayudar2Perdio == true;  
     bool enJuego = modelo?.Ayudar2EnCurso == true;
     int balasUsuario = modelo?.Ayudar2BalasUsuario ?? 0;
     int balasNPC = modelo?.Ayudar2BalasNPC ?? 0;
@@ -195,7 +195,7 @@
     </div>
     <div id="chat-burbujas" style="max-height: 400px; overflow-y: auto; width:100%;">
         <div id="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-        <!-- Diálogo inicial, minijuego y resultado se renderizan aquí con JS -->
+        <!-- Diálogo, minijuego y resultado se renderizan aquí con JS -->
     </div>
     <div id="pistolita-panel" class="pistolita-panel" style="display:none;">
         <div class="pistolita-info" id="pistolita-info"></div>
@@ -206,7 +206,6 @@
         </div>
         <div class="pistolita-anim" id="pistolita-anim"></div>
     </div>
-    <button id="btn-avanzar" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
     <div class="btn-container" id="btn-reiniciar-pistolita" style="display:none;">
         <form asp-action="DialogoAyudar2" method="get" style="display:inline;">
             <button type="submit" class="btn btn-danger">Reiniciar minijuego</button>
@@ -217,45 +216,105 @@
     </div>
 </div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const burbujas = document.querySelectorAll('.burbuja-chat');
-    let i = 0;
-    const btnAvanzar = document.getElementById('btn-avanzar');
-    const chatBurbujas = document.getElementById('chat-burbujas');
+// Utilidades para burbujas y typing
+function crearBurbuja(texto, clase) {
+    const div = document.createElement('div');
+    div.className = 'burbuja-chat ' + clase;
+    div.innerText = texto;
+    return div;
+}
+function mostrarBurbujaSecuencial(burbujas, callback) {
+    const chat = document.getElementById('chat-burbujas');
     const typing = document.getElementById('typing-indicator');
-    function scrollToBottom() {
-        chatBurbujas.scrollTop = chatBurbujas.scrollHeight;
-    }
-    function mostrarBurbujaAnimada(idx) {
-        typing.style.display = 'block';
-        setTimeout(() => {
-            typing.style.display = 'none';
-            if (burbujas[idx]) {
-                burbujas[idx].style.display = 'block';
+    let i = 0;
+    function next() {
+        if (i < burbujas.length) {
+            typing.style.display = 'block';
+            setTimeout(() => {
+                typing.style.display = 'none';
+                chat.appendChild(burbujas[i]);
                 setTimeout(() => {
-                    burbujas[idx].classList.add('visible');
-                    scrollToBottom();
+                    burbujas[i].classList.add('visible');
+                    chat.scrollTop = chat.scrollHeight;
+                    i++;
+                    setTimeout(next, 900 + Math.random()*400);
                 }, 10);
-            }
-        }, 700);
+            }, 700);
+        } else if (callback) {
+            callback();
+        }
     }
-    // Mostrar el primer mensaje al cargar
-    burbujas[0].style.display = 'block';
-    i = 1;
-    btnAvanzar.style.display = 'block';
-    scrollToBottom();
-    btnAvanzar.onclick = function() {
-        btnAvanzar.style.display = 'none';
-        function mostrarBurbujasSecuencial() {
-            if (i < burbujas.length) {
-                mostrarBurbujaAnimada(i);
-                i++;
-                setTimeout(mostrarBurbujasSecuencial, 2000);
-            }
-        }
-        if (burbujas.length > 0) {
-            mostrarBurbujasSecuencial();
-        }
-    };
+    next();
+}
+
+// Flujo principal
+window.addEventListener('DOMContentLoaded', function() {
+    const chat = document.getElementById('chat-burbujas');
+    const typing = document.getElementById('typing-indicator');
+    const pistolitaPanel = document.getElementById('pistolita-panel');
+    const btnReiniciar = document.getElementById('btn-reiniciar-pistolita');
+    const btnVolver = document.getElementById('btn-volver-hab3');
+
+    // Limpia el chat
+    chat.innerHTML = '<div id="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>';
+
+    // Si ya ganó antes
+    if (@(yaGano.ToString().ToLower()) && !@(enJuego.ToString().ToLower())) {
+        const burb = crearBurbuja('¿Qué hacés de vuelta? ¿No te alcanzó una partida de pistolita?', 'burbuja-ayudar');
+        chat.appendChild(burb);
+        setTimeout(()=>burb.classList.add('visible'), 100);
+        pistolitaPanel.style.display = 'none';
+        btnReiniciar.style.display = 'none';
+        btnVolver.style.display = 'block';
+        return;
+    }
+
+    // Si perdió
+    if (@(yaPerdio.ToString().ToLower())) {
+        const secuencia = [
+            crearBurbuja('Na, amigo. Dale, decime igual.', 'burbuja-usuario'),
+            crearBurbuja('Jajaja no. Me hubieras ganado, capo. Ahora reiniciá el juego.', 'burbuja-ayudar')
+        ];
+        mostrarBurbujaSecuencial(secuencia, function() {
+            pistolitaPanel.style.display = 'none';
+            btnReiniciar.style.display = 'block';
+            btnVolver.style.display = 'none';
+        });
+        return;
+    }
+
+    // Si ganó
+    if (@(yaGano.ToString().ToLower()) && !@(enJuego.ToString().ToLower())) {
+        const secuencia = [
+            crearBurbuja('Listo. Te gané.', 'burbuja-usuario'),
+            crearBurbuja('Muy bien. El edificio es para allá. A 3 cuadras, ni más ni menos.', 'burbuja-ayudar'),
+            crearBurbuja('Upa. Gracias amigo.', 'burbuja-usuario'),
+            crearBurbuja('Denada pa.', 'burbuja-ayudar')
+        ];
+        mostrarBurbujaSecuencial(secuencia, function() {
+            pistolitaPanel.style.display = 'none';
+            btnReiniciar.style.display = 'none';
+            btnVolver.style.display = 'block';
+        });
+        return;
+    }
+
+    // Diálogo inicial antes del minijuego
+    const secuencia = [
+        crearBurbuja('Buenas, ¿cómo andás? ¿Sabés dónde está el edificio de Auraman?', 'burbuja-usuario'),
+        crearBurbuja('Sí pa, obvio.', 'burbuja-ayudar'),
+        crearBurbuja('Uyyy qué bueno. ¿Me decís?', 'burbuja-usuario'),
+        crearBurbuja('No es tan fácil.', 'burbuja-ayudar'),
+        crearBurbuja('Me imagino, debe quedar algo lejos y escondido.', 'burbuja-usuario'),
+        crearBurbuja('No es por eso.', 'burbuja-ayudar'),
+        crearBurbuja('¿Y por qué es?', 'burbuja-usuario'),
+        crearBurbuja('Porque para que te diga, me tenés que ganar en pistolita.', 'burbuja-ayudar'),
+        crearBurbuja('Mandale sopa.', 'burbuja-usuario')
+    ];
+    mostrarBurbujaSecuencial(secuencia, function() {
+        pistolitaPanel.style.display = 'flex';
+        btnReiniciar.style.display = 'none';
+        btnVolver.style.display = 'none';
+    });
 });
 </script>

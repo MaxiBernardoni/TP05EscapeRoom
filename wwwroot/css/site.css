@@ -65,6 +65,78 @@ form {
   100% { opacity: 1; transform: translateY(-2px); }
 }
 
+/* Control de música de fondo */
+#background-music {
+  display: none; /* Ocultar el elemento de audio por defecto */
+}
+
+.music-control {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  background: rgba(20, 20, 20, 0.8);
+  border: 2px solid #00ffc3;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 11000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  color: #00ffc3;
+}
+
+.music-control:hover {
+  background: rgba(0, 255, 195, 0.2);
+  box-shadow: 0 0 10px #00ffc3;
+}
+
+.music-control.muted {
+  opacity: 0.5;
+  border-color: #666;
+  color: #666;
+}
+
+.music-control.muted:hover {
+  opacity: 1;
+  border-color: #00ffc3;
+  color: #00ffc3;
+}
+
+.music-volume-container {
+  position: fixed;
+  top: 62px;
+  right: 18px;
+  width: 120px;
+  z-index: 11000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 20, 20, 0.8);
+  border-radius: 8px;
+  padding: 6px 10px 8px 10px;
+  box-shadow: 0 0 8px #00ffc3;
+  border: 1.5px solid #00ffc3;
+}
+
+#music-volume {
+  width: 100%;
+  accent-color: #00ffc3;
+  background: transparent;
+  height: 4px;
+  border-radius: 4px;
+  margin: 0;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+
+#music-volume:focus {
+  box-shadow: 0 0 8px #00ffc3;
+}
+
 /* Menú hamburguesa */
 .menu-hamburguesa {
   position: fixed;
@@ -136,6 +208,19 @@ form {
     left: 10px;
     min-width: 160px;
     padding: 18px 10px 10px 10px;
+  }
+  .music-control {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  .music-volume-container {
+    top: 46px;
+    right: 10px;
+    width: 80px;
+    padding: 4px 4px 6px 4px;
   }
 }
 

@@ -1,5 +1,4 @@
 ﻿@{
-    Layout = null;
     int totalSeconds = ViewBag.GameSeconds ?? 0;
 }
 <style>
@@ -91,7 +90,81 @@
         0%, 100% { opacity: 1; }
         50% { opacity: 0.2; }
     }
+
+    /* Ocultar elementos del layout principal en el index */
+    header, footer {
+        display: none !important;
+    }
+
+    .container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Control de música para el index */
+    .music-control {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        width: 40px;
+        height: 40px;
+        background: rgba(20, 20, 20, 0.8);
+        border: 2px solid #00ffc3;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 11000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        font-size: 18px;
+        color: #00ffc3;
+    }
+
+    .music-control:hover {
+        background: rgba(0, 255, 195, 0.2);
+        box-shadow: 0 0 10px #00ffc3;
+    }
+
+    .music-control.muted {
+        opacity: 0.5;
+        border-color: #666;
+        color: #666;
+    }
+
+    .music-control.muted:hover {
+        opacity: 1;
+        border-color: #00ffc3;
+        color: #00ffc3;
+    }
+
+    #background-music {
+        display: none;
+    }
 </style>
+
+<!-- Elemento de audio para la música de fondo -->
+<audio id="background-music" preload="auto" loop>
+    <source src="/img/balatrotheme.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+</audio>
+
+<!-- Control de música -->
+<div id="music-control" class="music-control" title="Silenciar/Activar música">
+    <span id="music-icon">♪</span>
+</div>
 
 <div class="intro-text" id="intro">
     Una mañana cualquiera... recibís una notificación. El Director Auraman quiere entrevistarte. La entrevista es a las 09:00. Te despertás a las 08:00. Pero... no podés salir de tu casa.
@@ -108,6 +181,9 @@
 <div id="tiempo-agotado">TIEMPO AGOTADO</div>
 
 <script>
+    // Sistema de música de fondo para el Index
+    
+    
     setTimeout(() => {
         document.getElementById("intro").style.display = "none";
         document.getElementById("alarma").style.display = "flex";

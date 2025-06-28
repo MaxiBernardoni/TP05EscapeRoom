@@ -8,6 +8,20 @@
     @RenderSection("Head", required: false)
 </head>
 <body>
+    <!-- Elemento de audio para la música de fondo -->
+    <audio id="background-music" preload="auto" loop>
+        <source src="/img/balatrotheme.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Control de música -->
+    <div id="music-control" class="music-control" title="Silenciar/Activar música">
+        <span id="music-icon">♪</span>
+    </div>
+    <div id="music-volume-container" class="music-volume-container">
+        <input type="range" id="music-volume" min="0" max="1" step="0.01" value="1">
+    </div>
+
     <div class="container">
         <header style="text-align:center; padding: 20px; font-size: 24px; text-shadow: 0 0 5px #00ffc3;">
             @if (ViewData["Resumen"] != null)
@@ -47,6 +61,118 @@
     </div>
 
     <script>
+    // Sistema de música de fondo
+    (function() {
+        const audio = document.getElementById('background-music');
+        const musicControl = document.getElementById('music-control');
+        const musicIcon = document.getElementById('music-icon');
+        const musicVolume = document.getElementById('music-volume');
+        const MUSIC_STORAGE_KEY = 'escape_room_music_position';
+        const MUSIC_STARTED_KEY = 'escape_room_music_started';
+        const MUSIC_MUTED_KEY = 'escape_room_music_muted';
+        const MUSIC_VOLUME_KEY = 'escape_room_music_volume';
+
+        // Función para guardar la posición actual de la música
+        function saveMusicPosition() {
+            if (audio && !audio.paused) {
+                sessionStorage.setItem(MUSIC_STORAGE_KEY, audio.currentTime.toString());
+            }
+        }
+
+        // Función para cargar y reproducir música desde la posición guardada
+        function loadAndPlayMusic() {
+            const savedPosition = sessionStorage.getItem(MUSIC_STORAGE_KEY);
+            const musicStarted = sessionStorage.getItem(MUSIC_STARTED_KEY);
+            const musicMuted = sessionStorage.getItem(MUSIC_MUTED_KEY);
+
+            if (musicStarted === 'true' && savedPosition) {
+                audio.currentTime = parseFloat(savedPosition);
+            }
+
+            // Verificar si estaba silenciada
+            if (musicMuted === 'true') {
+                audio.muted = true;
+                musicControl.classList.add('muted');
+                musicIcon.textContent = '🔇';
+            } else {
+                // Intentar reproducir la música
+                audio.play().catch(function(error) {
+                    console.log('No se pudo reproducir la música automáticamente:', error);
+                });
+            }
+
+            // Marcar que la música ha comenzado
+            sessionStorage.setItem(MUSIC_STARTED_KEY, 'true');
+        }
+
+        // Función para alternar mute/unmute
+        function toggleMusic() {
+            if (audio.muted) {
+                audio.muted = false;
+                musicControl.classList.remove('muted');
+                musicIcon.textContent = '♪';
+                sessionStorage.setItem(MUSIC_MUTED_KEY, 'false');
+                // Intentar reproducir si no está reproduciéndose
+                if (audio.paused) {
+                    audio.play().catch(() => {});
+                }
+            } else {
+                audio.muted = true;
+                musicControl.classList.add('muted');
+                musicIcon.textContent = '🔇';
+                sessionStorage.setItem(MUSIC_MUTED_KEY, 'true');
+            }
+        }
+
+        // Event listener para el control de música
+        musicControl.addEventListener('click', toggleMusic);
+
+        // Guardar posición antes de que se descargue la página
+        window.addEventListener('beforeunload', saveMusicPosition);
+        window.addEventListener('pagehide', saveMusicPosition);
+
+        // Iniciar música cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pequeño delay para asegurar que el audio esté cargado
+            setTimeout(loadAndPlayMusic, 100);
+        });
+
+        // Manejar errores de audio
+        audio.addEventListener('error', function(e) {
+            console.error('Error al cargar el audio:', e);
+        });
+
+        // Asegurar que la música continúe después de interrupciones
+        audio.addEventListener('pause', function() {
+            // Si se pausó por el usuario, no hacer nada
+            // Si se pausó por el navegador, intentar reanudar
+            if (!audio.ended && !audio.muted) {
+                setTimeout(() => {
+                    if (audio.paused) {
+                        audio.play().catch(() => {});
+                    }
+                }, 100);
+            }
+        });
+
+        // Volumen inicial
+        const savedVolume = sessionStorage.getItem(MUSIC_VOLUME_KEY);
+        if (savedVolume !== null) {
+            audio.volume = parseFloat(savedVolume);
+            musicVolume.value = savedVolume;
+        } else {
+            audio.volume = 1;
+            musicVolume.value = 1;
+        }
+
+        // Cambiar volumen
+        musicVolume.addEventListener('input', function() {
+            audio.volume = parseFloat(this.value);
+            sessionStorage.setItem(MUSIC_VOLUME_KEY, this.value);
+        });
+
+    })();
+
     (function() {
         const burger = document.getElementById('menu-hamburguesa');
         const menu = document.getElementById('menu-desplegable');

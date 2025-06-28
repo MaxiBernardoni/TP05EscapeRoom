@@ -1,293 +1,161 @@
 @{
-    ViewData["Title"] = "Minijuego 3 - Usa tu cerebro";
+    ViewData["Title"] = "Minijuego 3 - Cofre Numérico";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
     int totalSeconds = ViewBag.GameSeconds ?? 0;
+    var error = TempData["ErrorCofre"] as string;
 }
 
 <style>
-    .minijuego-container {
+    .cofre-container {
+        max-width: 500px;
+        margin: 40px auto;
+        background: #222b36;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px #000a;
+        padding: 32px 24px 24px 24px;
+        color: #fff;
+        font-family: 'Courier New', monospace;
+    }
+    .cofre-titulo {
+        font-size: 2em;
+        text-align: center;
+        margin-bottom: 18px;
+        color: #00ffc3;
+        letter-spacing: 2px;
+    }
+    .cofre-form {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 20px;
+        margin-bottom: 18px;
     }
-    .puzzle-container {
-        width: 800px;
-        height: 500px;
-        background: #f5f5f5;
-        border-radius: 10px;
-        margin: 20px;
-        position: relative;
-        overflow: hidden;
-    }
-    #global-timer {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        font-size: 20px;
-        font-family: 'Courier New', monospace;
-        color: #ff3c3c;
-        z-index: 9999;
-        background: black;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
-    .huevo {
-        width: 150px;
-        height: 200px;
-        background: #fff;
-        border-radius: 50%;
-        margin: 20px;
-        cursor: pointer;
-        transition: transform 0.3s;
-        display: inline-block;
-    }
-    .huevo:hover {
-        transform: scale(1.1);
-    }
-    .huevo.agitado {
-        animation: shake 0.5s;
-    }
-    @@keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-10px); }
-        75% { transform: translateX(10px); }
-    }
-    .caja-tesoro {
-        width: 400px;
-        height: 400px;
-        background: #f0f0f0;
-        margin: 20px auto;
-        position: relative;
-    }
-    .pieza {
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        cursor: move;
-    }
-    .ventana {
-        width: 600px;
-        height: 400px;
-        background: rgba(255, 255, 255, 0.8);
-        margin: 20px auto;
-        position: relative;
-        cursor: pointer;
-    }
-    .ventana-contenido {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-image: url('/img/sprite-oculto.png');
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    .progreso-limpieza {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-        height: 20px;
-        background: #ddd;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    .barra-progreso {
-        height: 100%;
-        background: #00eaff;
-        width: 0%;
-        transition: width 0.3s;
-    }
-    .instrucciones {
-        margin: 20px;
-        padding: 15px;
-        background: #f5f5f5;
-        border-radius: 8px;
-        max-width: 600px;
+    .cofre-input {
+        font-size: 2em;
+        width: 120px;
         text-align: center;
+        letter-spacing: 10px;
+        border: 2px solid #00ffc3;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        background: #111;
+        color: #fff;
+    }
+    .cofre-btn {
+        background: #00ffc3;
+        color: #222b36;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1em;
+        padding: 8px 24px;
+        cursor: pointer;
+        margin-top: 8px;
+        font-family: inherit;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .cofre-btn:hover {
+        background: #00bfae;
+    }
+    .cofre-intentos {
+        margin-top: 18px;
+        background: #1a222c;
+        border-radius: 8px;
+        padding: 12px;
+    }
+    .cofre-intentos h4 {
+        margin: 0 0 8px 0;
+        color: #00ffc3;
+        font-size: 1.1em;
+    }
+    .cofre-intentos-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .cofre-intentos-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 0;
+        border-bottom: 1px solid #3336;
+        font-size: 1.1em;
+    }
+    .cofre-error {
+        color: #ff3c3c;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .cofre-exito {
+        color: #0f0;
+        text-align: center;
+        font-size: 1.3em;
+        margin: 18px 0 10px 0;
+        font-weight: bold;
+    }
+    .cofre-fracaso {
+        color: #ff3c3c;
+        text-align: center;
+        font-size: 1.2em;
+        margin: 18px 0 10px 0;
+        font-weight: bold;
+    }
+    .cofre-intentos-restantes {
+        text-align: center;
+        color: #00ffc3;
+        margin-bottom: 10px;
+        font-size: 1.1em;
     }
 </style>
 
-<div class="minijuego-container">
-    <h2>Minijuego 3 - Usa tu cerebro</h2>
-    
-    @if (modelo.PuzzleActual == 1)
-    {
-        <div class="instrucciones">
-            Hay tres huevos, pero solo uno tiene una sorpresa dentro.
-            Agita los huevos con el mouse para descubrir cuál suena diferente.
-        </div>
-        <div class="puzzle-container" id="puzzle-huevos">
-            <div class="huevo" data-id="huevo1" onclick="agitarHuevo(this)"></div>
-            <div class="huevo" data-id="huevo2" onclick="agitarHuevo(this)"></div>
-            <div class="huevo" data-id="huevo3" onclick="agitarHuevo(this)"></div>
-        </div>
-    }
-    else if (modelo.PuzzleActual == 2)
-    {
-        <div class="instrucciones">
-            Hay una caja del tesoro que se abre con una combinación visual.
-            Mueve las piezas para formar una estrella.
-        </div>
-        <div class="puzzle-container">
-            <div class="caja-tesoro" id="puzzle-caja">
-                <div class="pieza" data-forma="triangulo" style="left: 50px; top: 50px;"></div>
-                <div class="pieza" data-forma="triangulo" style="left: 150px; top: 50px;"></div>
-                <div class="pieza" data-forma="triangulo" style="left: 250px; top: 50px;"></div>
-                <div class="pieza" data-forma="triangulo" style="left: 50px; top: 150px;"></div>
-                <div class="pieza" data-forma="triangulo" style="left: 150px; top: 150px;"></div>
-            </div>
-        </div>
-    }
-    else if (modelo.PuzzleActual == 3)
-    {
-        <div class="instrucciones">
-            La ventana está empañada. Algo está escondido detrás.
-            Usa el mouse como trapo para limpiar y descubrir qué hay detrás.
-        </div>
-        <div class="puzzle-container">
-            <div class="ventana" id="puzzle-ventana" onmousemove="limpiarVentana(event)">
-                <div class="ventana-contenido"></div>
-                <div class="progreso-limpieza">
-                    <div class="barra-progreso" id="barra-limpieza"></div>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+<div class="cofre-container">
+    <div class="cofre-titulo">Cofre Numérico</div>
+    <div style="text-align:center; margin-bottom:10px;">
+        Adivina el número secreto de 4 dígitos únicos.<br/>
+        Tienes @modelo.IntentosRestantesCofre intento(s).
+    </div>
+    <div style="background:#003344; color:#fff; border-radius:8px; padding:10px 18px; margin-bottom:18px; font-family:'Courier New',monospace; font-size:1.05em; max-width:420px; margin-left:auto; margin-right:auto;">
+        <b>¿Cómo funciona?</b><br/>
+        <b>E</b> = Exactos: dígitos correctos y en la posición correcta.<br/>
+        <b>D</b> = Desordenados: dígitos correctos pero en posición incorrecta.<br/>
+        Ejemplo: <span style="color:#0f0">1E-3D</span> significa 1 exacto y 3 desordenados.
+    </div>
 
-<script>
-    let totalSeconds = @totalSeconds;
-    let porcentajeLimpieza = 0;
-    
-    function iniciarReloj() {
-        const global = document.getElementById("global-timer");
-        function actualizar() {
-            totalSeconds++;
-            const totalMin = 60 * 8 + Math.floor(totalSeconds / 60);
-            const horas = Math.floor(totalMin / 60).toString().padStart(2, '0');
-            const mins = (totalMin % 60).toString().padStart(2, '0');
-            const segs = (totalSeconds % 60).toString().padStart(2, '0');
-            global.innerText = `${horas}:${mins}:${segs}`;
-            fetch(`/home/updateclock?seconds=${totalSeconds}`);
+    @if (!modelo.CofreResuelto && modelo.IntentosRestantesCofre > 0)
+    {
+        @if (!string.IsNullOrEmpty(error))
+        {
+            <div class="cofre-error">@error</div>
         }
-        actualizar();
-        setInterval(actualizar, 1000);
+        <form class="cofre-form" method="post" action="/Home/ResolverMinijuego3">
+            <input class="cofre-input" type="text" name="intento" maxlength="4" minlength="4" pattern="[0-9]{4}" autocomplete="off" required placeholder="----" />
+            <button class="cofre-btn" type="submit">Probar combinación</button>
+        </form>
     }
-
-    // Puzzle 1: Huevos
-    function agitarHuevo(elemento) {
-        elemento.classList.add('agitado');
-        
-        // Reproducir sonido según el huevo
-        const sonido = new Audio();
-        if (elemento.dataset.id === 'huevo2') {
-            sonido.src = '/sounds/huevo-especial.mp3';
-        } else {
-            sonido.src = '/sounds/huevo-normal.mp3';
-        }
-        sonido.play();
-
-        setTimeout(() => {
-            elemento.classList.remove('agitado');
-            verificarHuevo(elemento.dataset.id);
-        }, 500);
+    @if (modelo.CofreResuelto)
+    {
+        <div class="cofre-exito">¡Abriste el cofre! El número era <b>@modelo.NumeroSecretoCofre</b>.</div>
+        <form method="get" action="/Home/Habitacion3">
+            <button class="cofre-btn" type="submit">Continuar</button>
+        </form>
     }
-
-    function verificarHuevo(huevoId) {
-        fetch('/Home/ResolverMinijuego3', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `puzzleId=1&solucion=${huevoId}`
-        }).then(() => window.location.reload());
+    else if (modelo.IntentosRestantesCofre == 0 && !modelo.CofreResuelto)
+    {
+        <div class="cofre-fracaso">No lograste abrir el cofre.<br/>El número era <b>@modelo.NumeroSecretoCofre</b>.</div>
+        <form method="post" action="/Home/ReiniciarMinijuego3">
+            <button class="cofre-btn" type="submit">Reintentar</button>
+        </form>
     }
-
-    // Puzzle 2: Caja del tesoro
-    if (document.getElementById('puzzle-caja')) {
-        const piezas = document.querySelectorAll('.pieza');
-        let formaActual = '';
-
-        piezas.forEach(pieza => {
-            pieza.addEventListener('dragstart', e => {
-                e.dataTransfer.setData('text/plain', e.target.dataset.forma);
-            });
-
-            pieza.addEventListener('dragend', () => {
-                verificarForma();
-            });
-        });
-
-        function verificarForma() {
-            // Verificar si las piezas forman una estrella
-            const posiciones = Array.from(piezas).map(p => ({
-                x: parseInt(p.style.left),
-                y: parseInt(p.style.top)
-            }));
-
-            // Lógica simplificada: si las piezas están en posición de estrella
-            const formaEstrella = posiciones.every(p => 
-                (p.x >= 100 && p.x <= 300) && 
-                (p.y >= 100 && p.y <= 300)
-            );
-
-            if (formaEstrella) {
-                fetch('/Home/ResolverMinijuego3', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: 'puzzleId=2&solucion=estrella'
-                }).then(() => window.location.reload());
+    <div class="cofre-intentos">
+        <h4>Intentos previos</h4>
+        <ul class="cofre-intentos-list">
+            @for (int i = 0; i < modelo.IntentosCofre.Count; i++)
+            {
+                <li>
+                    <span>@modelo.IntentosCofre[i]</span>
+                    <span>@modelo.RespuestasCofre[i]</span>
+                </li>
             }
-        }
-    }
-
-    // Puzzle 3: Ventana empañada
-    function limpiarVentana(e) {
-        if (!e.target.classList.contains('ventana')) return;
-
-        const rect = e.target.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        // Simular limpieza en un radio alrededor del cursor
-        const radio = 30;
-        const ctx = e.target.getContext('2d');
-        ctx.globalCompositeOperation = 'destination-out';
-        ctx.beginPath();
-        ctx.arc(x, y, radio, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Actualizar progreso
-        porcentajeLimpieza = Math.min(100, porcentajeLimpieza + 1);
-        document.getElementById('barra-limpieza').style.width = porcentajeLimpieza + '%';
-
-        if (porcentajeLimpieza >= 80) {
-            fetch('/Home/ResolverMinijuego3', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `puzzleId=3&solucion=${porcentajeLimpieza}`
-            }).then(() => window.location.reload());
-        }
-    }
-
-    // Inicializar el canvas para la ventana empañada si existe
-    if (document.getElementById('puzzle-ventana')) {
-        const ventana = document.getElementById('puzzle-ventana');
-        const canvas = document.createElement('canvas');
-        canvas.width = ventana.offsetWidth;
-        canvas.height = ventana.offsetHeight;
-        canvas.style.position = 'absolute';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        ventana.appendChild(canvas);
-    }
-</script> 
+        </ul>
+    </div>
+</div> 

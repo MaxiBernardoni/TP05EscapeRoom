@@ -1,0 +1,402 @@
+@section Head {
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+}
+@{
+    ViewBag.Title = "Diálogo con el Nervioso";
+}
+<style>
+.dialogo-chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+}
+.dialogo-chat-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.dialogo-chat-imgs {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+.dialogo-chat-imgs img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #00ffc3;
+    box-shadow: 0 0 16px 4px #00ffc3, 0 0 32px 8px #00ffc355;
+    animation: neonPulse 2s infinite alternate;
+    background: #222;
+}
+#chat-burbujas {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.burbuja-chat {
+    display: none;
+    max-width: 600px;
+    margin-bottom: 12px;
+    padding: 18px 28px;
+    border-radius: 22px;
+    font-size: 1.13em;
+    font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    box-shadow: 0 4px 24px #0006;
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+    text-align: center;
+}
+.burbuja-chat.visible {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.burbuja-usuario {
+    align-self: flex-end;
+    background: linear-gradient(90deg, #00c9a7 0%, #005c4b 100%);
+    color: #fff;
+    margin-left: 20%;
+    margin-right: 0;
+}
+.burbuja-nervioso {
+    align-self: flex-start;
+    background: linear-gradient(90deg, #3a1c71 0%, #d76d77 100%);
+    color: #fff;
+    margin-right: 20%;
+    margin-left: 0;
+}
+.burbuja-narrador {
+    align-self: center;
+    background: #444;
+    color: #eee;
+    font-style: italic;
+}
+#typing-indicator {
+    display: none;
+    text-align: left;
+    padding: 10px 0 10px 20px;
+    width: 100%;
+}
+.dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    margin-right: 3px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: blink 1.2s infinite both;
+}
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+@@keyframes blink {
+    0%, 80%, 100% { opacity: 0.5; }
+    40% { opacity: 1; }
+}
+.minijuego-espejo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Fira Code', monospace;
+}
+.minijuego-espejo.visible {
+    display: flex;
+}
+.minijuego-espejo h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ff6b6b;
+    text-align: center;
+}
+.minijuego-espejo .timer {
+    font-size: 4em;
+    font-weight: bold;
+    color: #4ecdc4;
+    margin: 20px 0;
+    font-family: 'digital-7', monospace;
+}
+.minijuego-espejo .instrucciones {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 20px 0;
+    color: #ffe66d;
+}
+.minijuego-espejo .resultado {
+    font-size: 2em;
+    margin: 20px 0;
+    text-align: center;
+}
+.minijuego-espejo .resultado.gano {
+    color: #4ecdc4;
+}
+.minijuego-espejo .resultado.perdio {
+    color: #ff6b6b;
+}
+.btn-continuar {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+.btn-continuar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+}
+.btn-reintentar {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+.btn-reintentar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+</style>
+<div class="dialogo-chat-container">
+  <div class="dialogo-chat-inner">
+    @Html.AntiForgeryToken()
+    <div class="dialogo-chat-imgs">
+        <img src="/img/usuario.png" alt="Usuario" />
+        <img src="/img/nervioso.png" alt="Nervioso" />
+    </div>
+    <div id="chat-burbujas" style="max-height: 400px; overflow-y: auto; width:100%;">
+        <div id="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+    <button id="btn-avanzar" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
+  </div>
+</div>
+
+<div class="minijuego-espejo" id="minijuego-espejo">
+    <h2>¡SALVÁ EL ESPEJO!</h2>
+    <div class="timer" id="timer">3</div>
+    <div class="instrucciones">¡Presioná cualquier tecla antes de que se acabe el tiempo!</div>
+    <div class="resultado" id="resultado-espejo" style="display:none;"></div>
+    <button class="btn-continuar" id="btn-continuar-espejo" style="display:none;">Continuar</button>
+    <button class="btn-reintentar" id="btn-reintentar-espejo" style="display:none;">Volver a intentar</button>
+</div>
+
+<form id="form-minijuego1" method="get" action="/Home/Minijuego1" style="text-align:center; margin-top:20px; display:none;">
+    <button type="submit" class="btn btn-primary">Ir al primer minijuego</button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dialogos = [
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Hola amigo. ¿Sabés dónde queda el edificio de Auraman?' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Para, ahora no puedo. Estoy más apurado que vos.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: '¿A dónde vas tan elegante?' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'A una cita.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Piola, bien ahí, te deseo lo mejor.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Pero pará. Estoy presentable?' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Y, yo creo que sí. Andá.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Mmm no estoy muy seguro.' },
+        { clase: 'burbuja-chat burbuja-narrador', texto: '(Le das el espejo)' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Tomá maestro.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Uyyy. Me salvaste genio. Sos un ídolo, gracias gracias.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'De nada pa. Suerte en la cita.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Gracias. Ah sí. ¿Qué necesitabas? ¿Dónde queda el edificio de Auraman?' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Si eso. ¿Sabés?' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Sí. Queda a 3 cuadras a la derecha. Es el edificio más alto e imponente del barrio.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Que genio amigo. Gracias, nos vemos.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Que suerte que tengo.' },
+        { clase: 'burbuja-chat burbuja-narrador', texto: '(se le cae el espejo)' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Tené cuidado amigo.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Uhh si que tonto. Gracias pa, sos el mejor.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Bueno, me retiro.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Pará. Me acordé. Yo vivo en ese edificio.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Ah, mirá lo que te guardabas.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Jajaja sí perdón. Pero te puedo decir, que no te van a dejar pasar por la puerta sin el código.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: '¿Qué código?' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'Uno que tenemos los residentes para entrar y salir siempre que queramos.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Ah que bien.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'En la puerta está el portero del edificio que trabaja a mis servicios. Decile este código y te va a dejar pasar. Pero acordate que solo por la puerta podés pasar. En el edificio, no te pueden agarrar los otros seguridad porque te van a sacar.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Que info amigo. Gracias.' },
+        { clase: 'burbuja-chat burbuja-nervioso', texto: 'De nada. El código es. "01001000 01101111 01101100 01100001 00100000 01001101 01110101 01101110 01100100 01101111"' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Anotado amigo.' }
+    ];
+    
+    const chat = document.getElementById('chat-burbujas');
+    const typing = document.getElementById('typing-indicator');
+    const btnAvanzar = document.getElementById('btn-avanzar');
+    const minijuegoEspejo = document.getElementById('minijuego-espejo');
+    const timer = document.getElementById('timer');
+    const resultadoEspejo = document.getElementById('resultado-espejo');
+    const btnContinuarEspejo = document.getElementById('btn-continuar-espejo');
+    const btnReintentarEspejo = document.getElementById('btn-reintentar-espejo');
+    
+    let actual = 0;
+    let espejoSalvado = false;
+    let minijuegoCompletado = false;
+    let mostrarSecuencial;
+    
+    function mostrarBurbujaAnimada(idx) {
+        typing.style.display = 'block';
+        setTimeout(() => {
+            typing.style.display = 'none';
+            const div = chat.children[idx+1];
+            if (div) {
+                div.style.display = 'block';
+                setTimeout(() => {
+                    div.classList.add('visible');
+                    div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                }, 10);
+            }
+        }, 700);
+    }
+    
+    function iniciarMinijuegoEspejo() {
+        minijuegoEspejo.classList.add('visible');
+        let tiempoRestante = 3;
+        timer.textContent = tiempoRestante;
+        
+        const countdown = setInterval(() => {
+            tiempoRestante--;
+            timer.textContent = tiempoRestante;
+            
+            if (tiempoRestante <= 0) {
+                clearInterval(countdown);
+                if (!espejoSalvado) {
+                    // Perdió el minijuego
+                    resultadoEspejo.textContent = "¡Se rompió el espejo!";
+                    resultadoEspejo.className = "resultado perdio";
+                    btnReintentarEspejo.style.display = 'inline-block';
+                }
+            }
+        }, 1000);
+        
+        // Detectar tecla presionada
+        const keyHandler = (e) => {
+            if (tiempoRestante > 0 && !espejoSalvado) {
+                espejoSalvado = true;
+                clearInterval(countdown);
+                timer.textContent = "¡SALVADO!";
+                resultadoEspejo.textContent = "¡Salvaste el espejo!";
+                resultadoEspejo.className = "resultado gano";
+                btnContinuarEspejo.style.display = 'inline-block';
+                
+                // Enviar al servidor que salvó el espejo
+                fetch('/Home/SalvarEspejo', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value || ''
+                    }
+                });
+            }
+            document.removeEventListener('keydown', keyHandler);
+        };
+        
+        document.addEventListener('keydown', keyHandler);
+    }
+    
+    // Inicializar burbujas
+    dialogos.forEach(d => {
+        const div = document.createElement('div');
+        div.className = d.clase;
+        div.innerText = d.texto;
+        chat.appendChild(div);
+    });
+    
+    // Ocultar todas menos el typing
+    Array.from(chat.children).forEach((div, idx) => { if(idx>0) div.style.display='none'; });
+    
+    btnAvanzar.onclick = function() {
+        btnAvanzar.style.display = 'none';
+        
+        mostrarSecuencial = function() {
+            if (actual < dialogos.length) {
+                mostrarBurbujaAnimada(actual);
+                actual++;
+                
+                // Si es el mensaje del espejo (índice 17), iniciar minijuego
+                if (actual === 18) {
+                    setTimeout(() => {
+                        iniciarMinijuegoEspejo();
+                    }, 2000);
+                    return;
+                }
+                
+                setTimeout(mostrarSecuencial, 2000);
+            } else {
+                // Diálogo terminado, mostrar botón para continuar
+                setTimeout(() => {
+                    const btnFinalizar = document.createElement('button');
+                    btnFinalizar.className = 'btn btn-success';
+                    btnFinalizar.textContent = 'Continuar';
+                    btnFinalizar.style.marginTop = '10px';
+                    btnFinalizar.onclick = function() {
+                        window.location.href = '/Home/Minijuego1';
+                    };
+                    chat.parentNode.appendChild(btnFinalizar);
+                }, 2000);
+            }
+        };
+        
+        // Comenzar con el primer mensaje
+        mostrarSecuencial();
+    };
+    
+    btnContinuarEspejo.onclick = function() {
+        minijuegoEspejo.classList.remove('visible');
+        // Continuar con el diálogo
+        setTimeout(() => {
+            mostrarSecuencial();
+        }, 1000);
+    };
+    
+    btnReintentarEspejo.onclick = function() {
+        // Reiniciar el minijuego
+        espejoSalvado = false;
+        resultadoEspejo.style.display = 'none';
+        btnContinuarEspejo.style.display = 'none';
+        btnReintentarEspejo.style.display = 'none';
+        iniciarMinijuegoEspejo();
+    };
+});
+
+// Al finalizar el diálogo, mostrar el botón
+function mostrarBotonMinijuego() {
+    document.getElementById('form-minijuego1').style.display = 'block';
+}
+</script> 

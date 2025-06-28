@@ -52,11 +52,15 @@
     align-self: flex-end;
     background: linear-gradient(90deg, #00c9a7 0%, #005c4b 100%);
     color: #fff;
+    margin-left: 20%;
+    margin-right: 0;
 }
 .burbuja-ayudar {
     align-self: flex-start;
     background: linear-gradient(90deg, #3a1c71 0%, #d76d77 100%);
     color: #fff;
+    margin-right: 20%;
+    margin-left: 0;
 }
 .burbuja-narrador {
     align-self: center;
@@ -112,7 +116,7 @@
 #chat-burbujas {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     max-width: 600px;
     width: 100%;
     margin: 0 auto;
@@ -129,10 +133,10 @@
         <div id="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
         <div class="burbuja-chat burbuja-usuario">Este me responde seguro.</div>
         <div class="burbuja-chat burbuja-usuario">Hola capo. ¿Sabrías decirme, dónde está el edificio de Auraman?</div>
-        <div class="burbuja-chat burbuja-ayudar">Hola amigo. Auraman. Me suena ese apellido, es de algo de tecnología no?</div>
+        <div class="burbuja-chat burbuja-ayudar">Hola amigo. Auraman. Me suena ese apellido, ¿es de algo de tecnología no?</div>
         <div class="burbuja-chat burbuja-usuario">Si algo así, ¿sabés dónde queda su edificio?</div>
         <div class="burbuja-chat burbuja-ayudar">Ah, porque me suena.</div>
-        <div class="burbuja-chat burbuja-usuario">Que bien. Más o menos, tenés idea donde queda?</div>
+        <div class="burbuja-chat burbuja-usuario">Que bien. ¿Más o menos, tenés idea donde queda?</div>
         <div class="burbuja-chat burbuja-ayudar">Creo que sí. No quedaba en el barrio de Villa Soldati?</div>
         <div class="burbuja-chat burbuja-usuario">No amigo. Queda acá en Almagro. Cerca de acá. Pero sabés la ubicación exacta.</div>
         <div class="burbuja-chat burbuja-ayudar">La verdad que no. Perdón.</div>
@@ -154,20 +158,40 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnContinuar = document.getElementById('btn-continuar');
     const chatBurbujas = document.getElementById('chat-burbujas');
     const typing = document.getElementById('typing-indicator');
+    
     function scrollToBottom() {
         chatBurbujas.scrollTop = chatBurbujas.scrollHeight;
     }
+    
+    function mostrarBurbujaAnimada(idx) {
+        typing.style.display = 'block';
+        setTimeout(() => {
+            typing.style.display = 'none';
+            if (burbujas[idx]) {
+                burbujas[idx].style.display = 'block';
+                setTimeout(() => {
+                    burbujas[idx].classList.add('visible');
+                    scrollToBottom();
+                }, 10);
+            }
+        }, 700);
+    }
+    
+    // Mostrar el primer mensaje al cargar
     burbujas[0].style.display = 'block';
+    setTimeout(() => {
+        burbujas[0].classList.add('visible');
+    }, 10);
     i = 1;
     btnAvanzar.style.display = 'block';
     scrollToBottom();
+    
     btnAvanzar.onclick = function() {
         btnAvanzar.style.display = 'none';
         function mostrarBurbujasSecuencial() {
             if (i < burbujas.length) {
-                burbujas[i].style.display = 'block';
+                mostrarBurbujaAnimada(i);
                 i++;
-                scrollToBottom();
                 setTimeout(mostrarBurbujasSecuencial, 2000);
             } else {
                 btnContinuar.style.display = 'block';

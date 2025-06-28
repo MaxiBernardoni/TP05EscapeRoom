@@ -5,7 +5,7 @@
     ViewBag.Title = "Diálogo con el que ayuda (Pistolita)";
     var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
     bool yaGano = modelo?.Ayudar2Resuelto == true;
-    bool yaPerdio = modelo?.Ayudar2Perdio == true;  
+    bool yaPerdio = modelo?.Ayudar2Perdio == true;
     bool enJuego = modelo?.Ayudar2EnCurso == true;
     int balasUsuario = modelo?.Ayudar2BalasUsuario ?? 0;
     int balasNPC = modelo?.Ayudar2BalasNPC ?? 0;
@@ -29,6 +29,16 @@
     z-index: 1000;
     background: rgba(0, 0, 0, 0.8);
 }
+.dialogo-chat-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
 .dialogo-chat-imgs {
     display: flex;
     justify-content: center;
@@ -36,10 +46,19 @@
     width: 100%;
     margin-bottom: 18px;
 }
+.dialogo-chat-imgs img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #00ffc3;
+    box-shadow: 0 0 16px 4px #00ffc3, 0 0 32px 8px #00ffc355;
+    animation: neonPulse 2s infinite alternate;
+    background: #222;
+}
 #chat-burbujas {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     max-width: 600px;
     width: 100%;
     margin: 0 auto;
@@ -68,30 +87,21 @@
     align-self: flex-end;
     background: linear-gradient(90deg, #00c9a7 0%, #005c4b 100%);
     color: #fff;
+    margin-left: 20%;
+    margin-right: 0;
 }
 .burbuja-ayudar {
     align-self: flex-start;
     background: linear-gradient(90deg, #3a1c71 0%, #d76d77 100%);
     color: #fff;
+    margin-right: 20%;
+    margin-left: 0;
 }
 .burbuja-narrador {
     align-self: center;
     background: #444;
     color: #eee;
     font-style: italic;
-}
-.burbuja-chat img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 3px solid #00ffc3;
-    box-shadow: 0 0 16px 4px #00ffc3, 0 0 32px 8px #00ffc355;
-    animation: neonPulse 2s infinite alternate;
-    background: #222;
-}
-@@keyframes neonPulse {
-    0% { box-shadow: 0 0 16px 4px #00ffc3, 0 0 32px 8px #00ffc355; }
-    100% { box-shadow: 0 0 32px 8px #00ffc3, 0 0 48px 16px #00ffc355; }
 }
 #typing-indicator {
     display: none;
@@ -124,197 +134,691 @@
     box-shadow: 0 2px 16px #0008;
     padding: 24px 32px;
     min-width: 320px;
+    perspective: 1000px;
+    position: relative;
+    overflow: hidden;
+}
+.pistolita-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(0,255,195,0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+#pistolita-battle-view {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+}
+#enemigo-contenedor {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    transform-style: preserve-3d;
+}
+.npc-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #00ffc3;
+    box-shadow: 0 0 20px rgba(0,255,195,0.5);
+    background: #222;
+    z-index: 2;
+    position: relative;
+}
+#emoji-enemigo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    opacity: 0;
+    z-index: 3;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#emoji-enemigo.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+#jugador-contenedor {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 120px;
+    transform-style: preserve-3d;
+}
+.hand-img {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #333, #555);
+    border-radius: 50%;
+    border: 2px solid #00ffc3;
+    box-shadow: 0 0 15px rgba(0,255,195,0.3);
+    position: relative;
+    z-index: 2;
+}
+.hand-img::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 40px;
+    background: #222;
+    border-radius: 15px 15px 5px 5px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+}
+#emoji-jugador {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    opacity: 0;
+    z-index: 3;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#emoji-jugador.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2) rotate3d(1, 1, 0, 15deg);
 }
 .pistolita-acciones {
     display: flex;
     gap: 30px;
-    margin-top: 18px;
+    margin-top: 20px;
+    z-index: 3;
+    position: relative;
 }
 .pistolita-btn {
     font-size: 2.2em;
     border: none;
     background: none;
     cursor: pointer;
-    transition: transform 0.15s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 50%;
     width: 64px;
     height: 64px;
-    box-shadow: 0 2px 12px #0005;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     outline: none;
+    position: relative;
+    overflow: hidden;
+}
+.pistolita-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(0,255,195,0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.pistolita-btn:hover::before {
+    opacity: 1;
 }
 .pistolita-btn:active {
-    transform: scale(1.15);
-    box-shadow: 0 0 24px #00ffc3;
+    transform: scale(1.15) translateY(-2px);
+    box-shadow: 0 0 30px rgba(0,255,195,0.8);
+}
+.pistolita-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
 }
 .pistolita-info {
-    margin-top: 10px;
+    margin-top: 15px;
     color: #00ffc3;
     font-family: 'Fira Code', 'JetBrains Mono', monospace;
     font-size: 1.1em;
+    text-align: center;
+    z-index: 3;
+    position: relative;
 }
-.pistolita-anim {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 18px;
-    min-height: 60px;
+.emoji-3d {
+    filter: drop-shadow(0 0 10px rgba(0,255,195,0.5));
+    animation: float 2s ease-in-out infinite alternate;
 }
-.pistolita-emoji {
-    font-size: 2.5em;
-    transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+@@keyframes float {
+    0% { transform: translateY(0px) rotate3d(1, 1, 0, 0deg); }
+    100% { transform: translateY(-5px) rotate3d(1, 1, 0, 5deg); }
 }
-.pistolita-emoji.disparo {
-    animation: disparo 0.5s linear;
+.emoji-3d.disparo {
+    animation: disparo3d 0.8s ease-out;
 }
-.pistolita-emoji.escudo {
-    animation: escudo 0.5s linear;
+.emoji-3d.escudo {
+    animation: escudo3d 0.8s ease-out;
 }
-.pistolita-emoji.recarga {
-    animation: recarga 0.7s linear;
+.emoji-3d.recarga {
+    animation: recarga3d 1s ease-out;
 }
-@@keyframes disparo {
-    0% { transform: translateX(0); }
-    60% { transform: translateX(40px) scale(1.2); }
-    100% { transform: translateX(0); }
+@@keyframes disparo3d {
+    0% { 
+        transform: translate(-50%, -50%) scale(1) rotate3d(0, 0, 1, 0deg);
+        filter: drop-shadow(0 0 10px rgba(0,255,195,0.5));
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.3) rotate3d(0, 0, 1, 180deg);
+        filter: drop-shadow(0 0 20px rgba(255,0,0,0.8));
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1) rotate3d(0, 0, 1, 360deg);
+        filter: drop-shadow(0 0 10px rgba(0,255,195,0.5));
+    }
 }
-@@keyframes escudo {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.25) rotate(-10deg); }
-    100% { transform: scale(1); }
+@@keyframes escudo3d {
+    0% { 
+        transform: translate(-50%, -50%) scale(1) rotate3d(1, 0, 0, 0deg);
+        filter: drop-shadow(0 0 10px rgba(0,255,195,0.5));
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.4) rotate3d(1, 0, 0, 180deg);
+        filter: drop-shadow(0 0 25px rgba(0,255,195,0.9));
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1) rotate3d(1, 0, 0, 360deg);
+        filter: drop-shadow(0 0 10px rgba(0,255,195,0.5));
+    }
 }
-@@keyframes recarga {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@@keyframes recarga3d {
+    0% { 
+        transform: translate(-50%, -50%) scale(1) rotate3d(0, 1, 0, 0deg);
+        filter: drop-shadow(0 0 10px rgba(0,255,195,0.5));
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.2) rotate3d(0, 1, 0, 360deg);
+        filter: drop-shadow(0 0 15px rgba(0,255,195,0.7));
+    }
+}
+.hand-shake {
+    animation: handShake 0.3s ease-in-out;
+}
+@@keyframes handShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px) rotate(-2deg); }
+    75% { transform: translateX(3px) rotate(2deg); }
 }
 </style>
 <div class="dialogo-chat-container">
+  <div class="dialogo-chat-inner">
     <div class="dialogo-chat-imgs">
         <img src="/img/usuario.png" alt="Usuario" />
         <img src="/img/pistolita.png" alt="El que ayuda" />
     </div>
     <div id="chat-burbujas" style="max-height: 400px; overflow-y: auto; width:100%;">
         <div id="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-        <!-- Diálogo, minijuego y resultado se renderizan aquí con JS -->
+        @if (yaGano)
+        {
+            <div class="burbuja-chat burbuja-usuario">¿Qué hacés de vuelta, no te alcanzó una partida de pistolita?</div>
+        }
+        else if (yaPerdio)
+        {
+            <div class="burbuja-chat burbuja-usuario">Na, amigo. Dale, decime igual.</div>
+            <div class="burbuja-chat burbuja-ayudar">Jajaja no. Me hubieras ganado, capo. Ahora reinicia el juego y volvé a empezar.</div>
+        }
+        else
+        {
+            <div class="burbuja-chat burbuja-usuario">Buenas, ¿cómo andás? Sabés dónde está el edificio de Auraman?</div>
+            <div class="burbuja-chat burbuja-ayudar">Sí pa, obvio.</div>
+            <div class="burbuja-chat burbuja-usuario">Uyyy que bueno. ¿Me decís?</div>
+            <div class="burbuja-chat burbuja-ayudar">No es tan fácil.</div>
+            <div class="burbuja-chat burbuja-usuario">Me imagino, debe quedar algo lejos y escondido.</div>
+            <div class="burbuja-chat burbuja-ayudar">No es por eso.</div>
+            <div class="burbuja-chat burbuja-usuario">Y porque es?</div>
+            <div class="burbuja-chat burbuja-ayudar">Porque para que te diga, me tenés que ganar en pistolita.</div>
+            <div class="burbuja-chat burbuja-usuario">Mandale sopa.</div>
+        }
+        
+    <button id="btn-avanzar" class="btn btn-primary" style="margin-top:10px; margin-left: 44%; margin-right: 44%;">Avanzar</button>
+    </div>
+    <div class="btn-container" id="btn-jugar-pistolita" style="display:none;">
+        <button type="button" class="btn btn-success" onclick="iniciarPistolita()">Jugar Pistolita</button>
+    </div>
+    <div class="btn-container" id="btn-victoria" style="display:none;">
+        <a href="/Home/Minijuego1" class="btn btn-primary">Continuar</a>
+    </div>
+    <div class="btn-container" id="btn-reiniciar-pistolita" style="display:none;">
+        <button type="button" id="btn-mostrar-derrota" class="btn btn-danger">Continuar</button>
+        <button type="button" id="btn-reiniciar-final" class="btn btn-secondary" style="display:none;">Volver a empezar</button>
+    </div>
+    <div class="btn-container" id="btn-volver-hab3" style="display:none;">
+        <a href="/Home/Habitacion3" class="btn btn-secondary">Volver a la habitación</a>
     </div>
     <div id="pistolita-panel" class="pistolita-panel" style="display:none;">
         <div class="pistolita-info" id="pistolita-info"></div>
+        <div id="pistolita-battle-view">
+            <div id="enemigo-contenedor">
+                <img src="/img/pistolita.png" class="npc-img" alt="Pistolita" />
+                <div id="emoji-enemigo" class="emoji-3d"></div>
+            </div>
+            <div id="jugador-contenedor">
+                <div class="hand-img"></div>
+                <div id="emoji-jugador" class="emoji-3d"></div>
+            </div>
+        </div>
         <div class="pistolita-acciones">
             <button class="pistolita-btn" id="btn-disparo" title="Disparar">🔫</button>
             <button class="pistolita-btn" id="btn-escudo" title="Escudo">🛡️</button>
             <button class="pistolita-btn" id="btn-recarga" title="Recargar">🔄</button>
         </div>
-        <div class="pistolita-anim" id="pistolita-anim"></div>
-    </div>
-    <div class="btn-container" id="btn-reiniciar-pistolita" style="display:none;">
-        <form asp-action="DialogoAyudar2" method="get" style="display:inline;">
-            <button type="submit" class="btn btn-danger">Reiniciar minijuego</button>
-        </form>
-    </div>
-    <div class="btn-container" id="btn-volver-hab3" style="display:none;">
-        <a href="/Home/Habitacion3" class="btn btn-secondary">Volver a la habitación</a>
     </div>
 </div>
+@if (yaGano)
+{
+    <form id="form-minijuego1" method="get" action="/Home/Minijuego1" style="text-align:center; margin-top:20px; display:none;">
+        <button type="submit" class="btn btn-primary">Ir al primer minijuego</button>
+    </form>
+}
 <script>
-// Utilidades para burbujas y typing
-function crearBurbuja(texto, clase) {
-    const div = document.createElement('div');
-    div.className = 'burbuja-chat ' + clase;
-    div.innerText = texto;
-    return div;
-}
-function mostrarBurbujaSecuencial(burbujas, callback) {
-    const chat = document.getElementById('chat-burbujas');
-    const typing = document.getElementById('typing-indicator');
+document.addEventListener('DOMContentLoaded', function() {
+    const burbujas = document.querySelectorAll('.burbuja-chat');
     let i = 0;
-    function next() {
-        if (i < burbujas.length) {
-            typing.style.display = 'block';
-            setTimeout(() => {
-                typing.style.display = 'none';
-                chat.appendChild(burbujas[i]);
-                setTimeout(() => {
-                    burbujas[i].classList.add('visible');
-                    chat.scrollTop = chat.scrollHeight;
-                    i++;
-                    setTimeout(next, 900 + Math.random()*400);
-                }, 10);
-            }, 700);
-        } else if (callback) {
-            callback();
-        }
-    }
-    next();
-}
-
-// Flujo principal
-window.addEventListener('DOMContentLoaded', function() {
-    const chat = document.getElementById('chat-burbujas');
-    const typing = document.getElementById('typing-indicator');
-    const pistolitaPanel = document.getElementById('pistolita-panel');
+    const btnAvanzar = document.getElementById('btn-avanzar');
+    const btnJugarPistolita = document.getElementById('btn-jugar-pistolita');
+    const btnVictoria = document.getElementById('btn-victoria');
     const btnReiniciar = document.getElementById('btn-reiniciar-pistolita');
     const btnVolver = document.getElementById('btn-volver-hab3');
-
-    // Limpia el chat
-    chat.innerHTML = '<div id="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>';
-
-    // Si ya ganó antes
-    if (@(yaGano.ToString().ToLower()) && !@(enJuego.ToString().ToLower())) {
-        const burb = crearBurbuja('¿Qué hacés de vuelta? ¿No te alcanzó una partida de pistolita?', 'burbuja-ayudar');
-        chat.appendChild(burb);
-        setTimeout(()=>burb.classList.add('visible'), 100);
-        pistolitaPanel.style.display = 'none';
-        btnReiniciar.style.display = 'none';
-        btnVolver.style.display = 'block';
-        return;
+    const chatBurbujas = document.getElementById('chat-burbujas');
+    const typing = document.getElementById('typing-indicator');
+    // --- PISTOLITA ---
+    const pistolitaPanel = document.getElementById('pistolita-panel');
+    const pistolitaInfo = document.getElementById('pistolita-info');
+    const emojiJugador = document.getElementById('emoji-jugador');
+    const emojiEnemigo = document.getElementById('emoji-enemigo');
+    const handImg = document.querySelector('.hand-img');
+    const btnDisparo = document.getElementById('btn-disparo');
+    const btnEscudo = document.getElementById('btn-escudo');
+    const btnRecarga = document.getElementById('btn-recarga');
+    const pistolitaAnim = document.getElementById('pistolita-anim');
+    // Estado del juego
+    let balasUsuario = 0;
+    let balasNPC = 0;
+    let vidasUsuario = 1;
+    let vidasNPC = 1;
+    let escudoUsuario = false;
+    let escudoNPC = false;
+    let enJuego = false;
+    let ultimaAccionUsuario = null;
+    
+    function actualizarInfo() {
+        pistolitaInfo.innerHTML = `Tus balas: <b>${balasUsuario}</b> | Balas rival: <b>${balasNPC}</b>`;
+        btnDisparo.disabled = !enJuego || balasUsuario <= 0;
+        btnEscudo.disabled = !enJuego;
+        btnRecarga.disabled = !enJuego;
+        if (btnDisparo.disabled) {
+            btnDisparo.style.opacity = '0.5';
+            btnDisparo.style.cursor = 'not-allowed';
+        } else {
+            btnDisparo.style.opacity = '1';
+            btnDisparo.style.cursor = 'pointer';
+        }
+        btnEscudo.style.opacity = enJuego ? '1' : '0.5';
+        btnRecarga.style.opacity = enJuego ? '1' : '0.5';
     }
-
-    // Si perdió
-    if (@(yaPerdio.ToString().ToLower())) {
-        const secuencia = [
-            crearBurbuja('Na, amigo. Dale, decime igual.', 'burbuja-usuario'),
-            crearBurbuja('Jajaja no. Me hubieras ganado, capo. Ahora reiniciá el juego.', 'burbuja-ayudar')
-        ];
-        mostrarBurbujaSecuencial(secuencia, function() {
-            pistolitaPanel.style.display = 'none';
-            btnReiniciar.style.display = 'block';
-            btnVolver.style.display = 'none';
-        });
-        return;
+    
+    function mostrarEmoji3D(emoji, accion) {
+        emoji.textContent = accion === 'disparo' ? '🔫' : accion === 'escudo' ? '🛡️' : '🔄';
+        emoji.className = `emoji-3d ${accion}`;
+        emoji.classList.add('visible');
+        
+        // Remover clases después de la animación
+        setTimeout(() => {
+            emoji.classList.remove('visible', 'disparo', 'escudo', 'recarga');
+        }, 1000);
     }
-
-    // Si ganó
-    if (@(yaGano.ToString().ToLower()) && !@(enJuego.ToString().ToLower())) {
-        const secuencia = [
-            crearBurbuja('Listo. Te gané.', 'burbuja-usuario'),
-            crearBurbuja('Muy bien. El edificio es para allá. A 3 cuadras, ni más ni menos.', 'burbuja-ayudar'),
-            crearBurbuja('Upa. Gracias amigo.', 'burbuja-usuario'),
-            crearBurbuja('Denada pa.', 'burbuja-ayudar')
-        ];
-        mostrarBurbujaSecuencial(secuencia, function() {
-            pistolitaPanel.style.display = 'none';
-            btnReiniciar.style.display = 'none';
-            btnVolver.style.display = 'block';
-        });
-        return;
+    
+    function mostrarAnim(accionUsuario, accionNPC) {
+        // Mostrar emoji del jugador inmediatamente
+        mostrarEmoji3D(emojiJugador, accionUsuario);
+        
+        // Agregar vibración a la mano si dispara
+        if (accionUsuario === 'disparo') {
+            handImg.classList.add('hand-shake');
+            setTimeout(() => handImg.classList.remove('hand-shake'), 300);
+        }
+        
+        // Mostrar emoji del enemigo después de 0.8s
+        setTimeout(() => {
+            mostrarEmoji3D(emojiEnemigo, accionNPC);
+        }, 800);
     }
-
-    // Diálogo inicial antes del minijuego
-    const secuencia = [
-        crearBurbuja('Buenas, ¿cómo andás? ¿Sabés dónde está el edificio de Auraman?', 'burbuja-usuario'),
-        crearBurbuja('Sí pa, obvio.', 'burbuja-ayudar'),
-        crearBurbuja('Uyyy qué bueno. ¿Me decís?', 'burbuja-usuario'),
-        crearBurbuja('No es tan fácil.', 'burbuja-ayudar'),
-        crearBurbuja('Me imagino, debe quedar algo lejos y escondido.', 'burbuja-usuario'),
-        crearBurbuja('No es por eso.', 'burbuja-ayudar'),
-        crearBurbuja('¿Y por qué es?', 'burbuja-usuario'),
-        crearBurbuja('Porque para que te diga, me tenés que ganar en pistolita.', 'burbuja-ayudar'),
-        crearBurbuja('Mandale sopa.', 'burbuja-usuario')
-    ];
-    mostrarBurbujaSecuencial(secuencia, function() {
-        pistolitaPanel.style.display = 'flex';
-        btnReiniciar.style.display = 'none';
-        btnVolver.style.display = 'none';
-    });
+    
+    function elegirAccionNPC() {
+        // Lógica mejorada:
+        // - Si no tiene balas, 70% recarga, 30% escudo
+        // - Si tiene balas, 60% dispara, 20% recarga, 20% escudo
+        // - Si el usuario acaba de disparar, 50% escudo, 30% dispara, 20% recarga
+        let r = Math.random();
+        if (balasNPC === 0) {
+            if (r < 0.7) return 'recarga';
+            return 'escudo';
+        }
+        if (balasUsuario > 0 && ultimaAccionUsuario === 'disparo') {
+            if (r < 0.5) return 'escudo';
+            if (r < 0.8) return 'disparo';
+            return 'recarga';
+        }
+        if (balasNPC > 0) {
+            if (r < 0.6) return 'disparo';
+            if (r < 0.8) return 'recarga';
+            return 'escudo';
+        }
+        return 'recarga';
+    }
+    function turno(accionUsuario) {
+        if (!enJuego) return;
+        let accionNPC = elegirAccionNPC();
+        mostrarAnim(accionUsuario, accionNPC);
+        // Resolución de acciones
+        let usuarioDisparo = (accionUsuario === 'disparo' && balasUsuario > 0);
+        let npcDisparo = (accionNPC === 'disparo' && balasNPC > 0);
+        // Usuario
+        if (usuarioDisparo) {
+            balasUsuario--;
+            if (accionNPC !== 'escudo') vidasNPC--;
+        }
+        if (accionUsuario === 'recarga') balasUsuario++;
+        // NPC
+        if (npcDisparo) {
+            balasNPC--;
+            if (accionUsuario !== 'escudo') vidasUsuario--;
+        }
+        if (accionNPC === 'recarga') balasNPC++;
+        actualizarInfo();
+        setTimeout(() => {
+            // Si ambos disparan y ambos quedan con vida, sigue el juego
+            if (vidasUsuario > 0 && vidasNPC > 0) return;
+            if (vidasUsuario <= 0 && vidasNPC <= 0) {
+                pistolitaInfo.innerHTML = '<span style="color:#f55">¡Empate! Ambos cayeron.</span>';
+                enJuego = false;
+                setTimeout(() => {
+                    document.getElementById('pistolita-panel').style.display = 'none';
+                    document.getElementById('btn-reiniciar-pistolita').style.display = 'block';
+                }, 1200);
+            } else if (vidasUsuario <= 0) {
+                pistolitaInfo.innerHTML = '<span style="color:#f55">¡Perdiste! Te ganó el rival.</span>';
+                enJuego = false;
+                setTimeout(() => {
+                    document.getElementById('pistolita-panel').style.display = 'none';
+                    document.getElementById('btn-reiniciar-pistolita').style.display = 'block';
+                }, 1200);
+            } else if (vidasNPC <= 0) {
+                pistolitaInfo.innerHTML = '<span style="color:#0f8">¡Ganaste! Le ganaste al rival.</span>';
+                enJuego = false;
+                setTimeout(() => {
+                    document.getElementById('pistolita-panel').style.display = 'none';
+                    mostrarVictoria();
+                    document.getElementById('btn-victoria').style.display = 'block';
+                }, 1200);
+                // Elimina otros botones de continuar si existen
+                let panel = document.getElementById('pistolita-panel');
+                let btns = panel.querySelectorAll('button');
+                btns.forEach(b => b.remove());
+            }
+        }, 900);
+    }
+    function iniciarPistolita() {
+        console.log('Iniciando pistolita...');
+        btnJugarPistolita.style.display = 'none';
+        pistolitaPanel.style.display = 'block';
+        balasUsuario = 0;
+        balasNPC = 0;
+        vidasUsuario = 1;
+        vidasNPC = 1;
+        enJuego = true;
+        actualizarInfo();
+        pistolitaAnim.innerHTML = '';
+        console.log('enJuego:', enJuego);
+    }
+    window.iniciarPistolita = iniciarPistolita;
+    btnDisparo.onclick = function() {
+        console.log('Click disparo. enJuego:', enJuego, 'balasUsuario:', balasUsuario);
+        if (!enJuego || balasUsuario <= 0) return;
+        turno('disparo');
+    };
+    btnEscudo.onclick = function() {
+        console.log('Click escudo. enJuego:', enJuego);
+        if (!enJuego) return;
+        turno('escudo');
+    };
+    btnRecarga.onclick = function() {
+        console.log('Click recarga. enJuego:', enJuego);
+        if (!enJuego) return;
+        turno('recarga');
+    };
+    // --- FIN PISTOLITA ---
+    function scrollToBottom() {
+        chatBurbujas.scrollTop = chatBurbujas.scrollHeight;
+    }
+    function mostrarBurbujaAnimada(idx) {
+        typing.style.display = 'block';
+        setTimeout(() => {
+            typing.style.display = 'none';
+            if (burbujas[idx]) {
+                burbujas[idx].style.display = 'block';
+                setTimeout(() => {
+                    burbujas[idx].classList.add('visible');
+                    scrollToBottom();
+                }, 10);
+            }
+        }, 700);
+    }
+    // Mostrar el primer mensaje al cargar
+    if (burbujas.length > 0) {
+        burbujas[0].style.display = 'block';
+        setTimeout(() => {
+            burbujas[0].classList.add('visible');
+        }, 10);
+        i = 1;
+        btnAvanzar.style.display = 'block';
+        scrollToBottom();
+    }
+    btnAvanzar.onclick = function() {
+        btnAvanzar.style.display = 'none';
+        function mostrarBurbujasSecuencial() {
+            if (i < burbujas.length) {
+                mostrarBurbujaAnimada(i);
+                i++;
+                setTimeout(mostrarBurbujasSecuencial, 2000);
+            } else {
+                // Mostrar botón apropiado según el estado
+                if (@(yaGano ? "true" : "false")) {
+                    btnVolver.style.display = 'block';
+                } else if (@(yaPerdio ? "true" : "false")) {
+                    btnReiniciar.style.display = 'block';
+                } else {
+                    btnJugarPistolita.style.display = 'block';
+                    pistolitaPanel.style.display = 'none'; // Ocultar panel hasta que se inicie
+                }
+            }
+        }
+        if (burbujas.length > 0) {
+            mostrarBurbujasSecuencial();
+        }
+    };
+    // Al cargar la página, ocultar el panel de la pistolita hasta que se inicie
+    pistolitaPanel.style.display = 'none';
 });
+// Función para mostrar diálogo de victoria
+function mostrarVictoria() {
+    const dialogoVictoria = document.getElementById('dialogo-victoria');
+    const victoriaUsuario = document.getElementById('victoria-usuario');
+    const victoriaAyudar = document.getElementById('victoria-ayudar');
+    const victoriaUsuario2 = document.getElementById('victoria-usuario2');
+    const victoriaAyudar2 = document.getElementById('victoria-ayudar2');
+    const btnVictoria = document.getElementById('btn-victoria');
+    if (dialogoVictoria) {
+        dialogoVictoria.style.display = 'block';
+        setTimeout(() => {
+            dialogoVictoria.classList.add('visible');
+            setTimeout(() => {
+                if (victoriaUsuario) {
+                    victoriaUsuario.style.display = 'block';
+                    setTimeout(() => {
+                        victoriaUsuario.classList.add('visible');
+                        setTimeout(() => {
+                            if (victoriaAyudar) {
+                                victoriaAyudar.style.display = 'block';
+                                setTimeout(() => {
+                                    victoriaAyudar.classList.add('visible');
+                                    setTimeout(() => {
+                                        if (victoriaUsuario2) {
+                                            victoriaUsuario2.style.display = 'block';
+                                            setTimeout(() => {
+                                                victoriaUsuario2.classList.add('visible');
+                                                setTimeout(() => {
+                                                    if (victoriaAyudar2) {
+                                                        victoriaAyudar2.style.display = 'block';
+                                                        setTimeout(() => {
+                                                            victoriaAyudar2.classList.add('visible');
+                                                            setTimeout(() => {
+                                                                btnVictoria.style.display = 'block';
+                                                            }, 1000);
+                                                        }, 10);
+                                                    }
+                                                }, 2000);
+                                            }, 10);
+                                        }
+                                    }, 2000);
+                                }, 10);
+                            }
+                        }, 2000);
+                    }, 10);
+                }
+            }, 1000);
+        }, 10);
+    }
+}
+// Mostrar diálogo de victoria al continuar
+function mostrarDialogoVictoriaFinal() {
+    document.querySelector('.dialogo-chat-imgs').style.display = 'flex';
+    const chat = document.getElementById('chat-burbujas');
+    chat.innerHTML = '';
+    // Botón avanzar
+    const btnAvanzarVictoria = document.createElement('button');
+    btnAvanzarVictoria.className = 'btn btn-primary';
+    btnAvanzarVictoria.innerText = 'Avanzar';
+    btnAvanzarVictoria.style.margin = '20px auto 0 auto';
+    btnAvanzarVictoria.style.display = 'block';
+    chat.appendChild(btnAvanzarVictoria);
+    btnAvanzarVictoria.onclick = function() {
+        btnAvanzarVictoria.style.display = 'none';
+        mostrarDialogosSecuencialVictoria();
+    };
+    const dialogos = [
+        { clase: 'burbuja-chat burbuja-narrador', texto: '(Ganaste la pistolita)' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Listo. Te gané.' },
+        { clase: 'burbuja-chat burbuja-ayudar', texto: 'Muy bien. El edificio es para allá. A 3 cuadras, ni más ni menos.' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Upa. Gracias amigo.' },
+        { clase: 'burbuja-chat burbuja-ayudar', texto: 'Denada pa.' }
+    ];
+    let i = 0;
+    function mostrarDialogosSecuencialVictoria() {
+        if (i < dialogos.length) {
+            const d = dialogos[i];
+            const div = document.createElement('div');
+            div.className = d.clase;
+            div.innerText = d.texto;
+            chat.appendChild(div);
+            setTimeout(() => {
+                div.classList.add('visible');
+                i++;
+                setTimeout(mostrarDialogosSecuencialVictoria, 2000);
+            }, 10);
+        } else {
+            // Crear y agregar el botón justo después de la última burbuja
+            let btnMinijuego = document.createElement('button');
+            btnMinijuego.textContent = 'Ir al primer minijuego';
+            btnMinijuego.className = 'btn btn-primary';
+            btnMinijuego.style.margin = '32px auto 0 auto';
+            btnMinijuego.style.display = 'block';
+            btnMinijuego.onclick = function() {
+                window.location.href = '/Home/Minijuego1';
+            };
+            chat.appendChild(btnMinijuego);
+        }
+    }
+}
+// Mostrar diálogo de derrota al reiniciar
+function mostrarDialogoDerrotaFinal() {
+    document.querySelector('.dialogo-chat-imgs').style.display = 'flex';
+    const chat = document.getElementById('chat-burbujas');
+    chat.innerHTML = '';
+    // Botón avanzar
+    const btnAvanzarDerrota = document.createElement('button');
+    btnAvanzarDerrota.className = 'btn btn-primary';
+    btnAvanzarDerrota.innerText = 'Avanzar';
+    btnAvanzarDerrota.style.margin = '20px auto 0 auto';
+    btnAvanzarDerrota.style.display = 'block';
+    chat.appendChild(btnAvanzarDerrota);
+    btnAvanzarDerrota.onclick = function() {
+        btnAvanzarDerrota.style.display = 'none';
+        mostrarDialogosSecuencial();
+    };
+    const dialogos = [
+        { clase: 'burbuja-chat burbuja-narrador', texto: '(Perdiste la pistolita)' },
+        { clase: 'burbuja-chat burbuja-usuario', texto: 'Na, amigo. Dale, decime igual.' },
+        { clase: 'burbuja-chat burbuja-ayudar', texto: 'Jajaja no. Me hubieras ganado, capo. Ahora reinicia el juego y volvé a empezar.' }
+    ];
+    let i = 0;
+    function mostrarDialogosSecuencial() {
+        if (i < dialogos.length) {
+            const d = dialogos[i];
+            const div = document.createElement('div');
+            div.className = d.clase;
+            div.innerText = d.texto;
+            chat.appendChild(div);
+            setTimeout(() => {
+                div.classList.add('visible');
+                i++;
+                setTimeout(mostrarDialogosSecuencial, 2000);
+            }, 10);
+        } else {
+            document.getElementById('btn-reiniciar-final').style.display = 'block';
+        }
+    }
+}
+// Asignar eventos a los botones
+setTimeout(() => {
+    const btnContinuar = document.querySelector('#btn-victoria a, #btn-victoria button');
+    if (btnContinuar) {
+        btnContinuar.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('btn-victoria').style.display = 'none';
+            mostrarDialogoVictoriaFinal();
+        });
+    }
+    const btnMostrarDerrota = document.getElementById('btn-mostrar-derrota');
+    if (btnMostrarDerrota) {
+        btnMostrarDerrota.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('btn-mostrar-derrota').style.display = 'none';
+            mostrarDialogoDerrotaFinal();
+            document.getElementById('btn-reiniciar-final').style.display = 'block';
+        });
+    }
+    const btnReiniciarFinal = document.getElementById('btn-reiniciar-final');
+    if (btnReiniciarFinal) {
+        btnReiniciarFinal.addEventListener('click', function() {
+            window.location.href = '/';
+        });
+    }
+}, 1000);
+
+// Al finalizar el chat, mostrar el botón
+function mostrarBotonMinijuego() {
+    document.getElementById('form-minijuego1').style.display = 'block';
+}
 </script>

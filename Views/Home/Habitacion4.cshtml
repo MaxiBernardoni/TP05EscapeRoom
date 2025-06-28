@@ -1,0 +1,114 @@
+@{
+    ViewData["Title"] = "Habitación 4 - Edificio (Entrada)";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+    var modelo = ViewBag.Modelo as TuProyecto.Models.Habitacion3Model;
+    bool tieneCodigo = modelo != null && modelo.CodigoObtenido;
+    bool mostrarDialogo = ViewBag.MostrarDialogo ?? false;
+}
+
+<style>
+    body {
+        background: transparent !important;
+    }
+</style>
+@if (!mostrarDialogo)
+{
+    <div class="fondo-diagonal-h4" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:10000;background:linear-gradient(180deg, #000 0%, #16213e 70%, #00ffc3 100%);overflow:auto;">
+        <div style="max-width:800px;padding:40px;text-align:center;position:relative;z-index:1;margin:0 auto;top:10vh;">
+            <!-- Título épico y contenido -->
+            <div style="margin-bottom:40px;">
+                <h1 style="color:#00ffc3;font-size:3.5em;font-weight:bold;text-shadow:0 0 20px rgba(0,255,195,0.5);margin:0;letter-spacing:3px;text-transform:uppercase;">
+                    El Edificio
+                </h1>
+                <div style="width:200px;height:3px;background:linear-gradient(90deg, transparent, #00ffc3, transparent);margin:20px auto;"></div>
+            </div>
+            <div style="background:rgba(0,0,0,0.7);border:2px solid #00ffc3;border-radius:20px;padding:40px;margin:30px 0;box-shadow:0 0 30px rgba(0,255,195,0.3);">
+                <p style="font-size:1.4em;line-height:1.8;color:#fff;margin-bottom:25px;text-shadow:0 2px 4px rgba(0,0,0,0.8);">
+                    Llegaste al edificio pero no te dejan entrar. Tenés que infiltrarte y llegar al último piso, el 20. Ahí se encuentra la oficina del Director Auraman.
+                </p>
+                <p style="font-size:1.2em;color:#00ffc3;margin-bottom:20px;font-style:italic;text-shadow:0 0 10px rgba(0,255,195,0.5);">
+                    El edificio se alza imponente ante ti, sus ventanas reflejan la luz de la ciudad. Sabes que dentro está la clave para resolver todo este misterio.
+                </p>
+                <p style="font-size:1.1em;color:#888;font-style:italic;">
+                    La misión más peligrosa está por comenzar...
+                </p>
+            </div>
+            <form method="post" action="@Url.Action("MostrarDialogoPortero", "Home")" style="margin-top:40px;">
+                @Html.AntiForgeryToken()
+                <button type="submit" style="background:linear-gradient(45deg, #00ffc3, #00a8cc);color:#000;border:none;padding:20px 40px;border-radius:50px;font-size:1.3em;cursor:pointer;font-weight:bold;text-transform:uppercase;letter-spacing:2px;box-shadow:0 8px 25px rgba(0,255,195,0.4);transition:all 0.3s ease;position:relative;overflow:hidden;">
+                    <span style="position:relative;z-index:2;">Avanzar</span>
+                    <div style="position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);transition:left 0.5s ease;"></div>
+                </button>
+            </form>
+        </div>
+        <!-- Efectos de partículas animadas -->
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:2;">
+            <div class="particula-h4" style="position:absolute;top:20%;left:10%;width:2px;height:2px;background:#00ffc3;border-radius:50%;opacity:0.7;animation: particulaDiagonal1 8s linear infinite;"></div>
+            <div class="particula-h4" style="position:absolute;top:60%;right:15%;width:3px;height:3px;background:#00ffc3;border-radius:50%;opacity:0.7;animation: particulaDiagonal2 12s linear infinite;"></div>
+            <div class="particula-h4" style="position:absolute;bottom:30%;left:20%;width:1px;height:1px;background:#00ffc3;border-radius:50%;opacity:0.7;animation: particulaDiagonal3 10s linear infinite;"></div>
+            <div class="particula-h4" style="position:absolute;top:40%;left:80%;width:2.5px;height:2.5px;background:#00ffc3;border-radius:50%;opacity:0.6;animation: particulaDiagonal4 14s linear infinite;"></div>
+            <div class="particula-h4" style="position:absolute;top:80%;left:50%;width:1.5px;height:1.5px;background:#00ffc3;border-radius:50%;opacity:0.5;animation: particulaDiagonal5 11s linear infinite;"></div>
+        </div>
+    </div>
+    <style>
+        @@keyframes fondoDiagonalH4 {
+            0%   { background-position: 0 0, 0 0, 0 0, 0 0; }
+            100% { background-position: 100px 100px, 100px 100px, 100px 100px, 100px 100px; }
+        }
+        .fondo-diagonal-h4 {
+            animation: fondoDiagonalH4 18s linear infinite;
+        }
+        /* Animaciones de partículas */
+        @@keyframes particulaDiagonal1 {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(120px,120px); }
+        }
+        @@keyframes particulaDiagonal2 {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(-180px,180px); }
+        }
+        @@keyframes particulaDiagonal3 {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(80px,-100px); }
+        }
+        @@keyframes particulaDiagonal4 {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(-200px,100px); }
+        }
+        @@keyframes particulaDiagonal5 {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(100px,60px); }
+        }
+    </style>
+}
+else
+{
+    <div style="max-width:600px;margin:60px auto 0 auto;padding:32px 24px;background:#222b36;border-radius:16px;box-shadow:0 4px 24px #000a;text-align:center;color:#fff;">
+        <h2 style="color:#00ffc3;">Edificio</h2>
+        
+        @if (tieneCodigo)
+        {
+            <div style="margin:30px 0;text-align:left;">
+                <b>Portero:</b> Ey. ¿Y ese código?<br/>
+                <b>Usuario:</b> Me lo dijo un hombre muy elegante en la calle.<br/>
+                <b>Portero:</b> Ahh, sí. Mi jefe, ¿él te mandó cierto?<br/>
+                <b>Usuario:</b> Así es. ¿Puedo pasar?<br/>
+                <b>Portero:</b> Adelante. Pero anda con cuidado.<br/>
+            </div>
+        }
+        else
+        {
+            <div style="margin:30px 0;text-align:left;">
+                <b>Portero:</b> ¿Qué necesita?<br/>
+                <b>Usuario:</b> Tengo que pasar.<br/>
+                <b>Portero:</b> Alto. No puede, no es residente y no aceptamos visitantes.<br/>
+                <b>Usuario:</b> Pero tengo una reunión con el Señor Auraman.<br/>
+                <b>Portero:</b> No hay razón alguna. No puede pasar. Por favor, retírese.<br/>
+            </div>
+            <div style="margin:30px 0;">
+                Sales de la entrada y revisas alrededor del edificio. En un lado, hay una tubería y decides entrar por ahí.
+            </div>
+        }
+    </div>
+}

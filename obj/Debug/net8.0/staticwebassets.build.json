@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+x5hd1zRWBgaUPm0pi6kYUd27+X44hu3jnVbmBJOuW4=",
+  "Hash": "2ea5k3R57ogfk195dJp2nW+IhOAfcyLJIztEMvtlYWc=",
   "Source": "TP05-EscapeRoom",
   "BasePath": "_content/TP05-EscapeRoom",
   "Mode": "Default",
@@ -10,5163 +10,961 @@
     {
       "Name": "TP05-EscapeRoom\\wwwroot",
       "Source": "TP05-EscapeRoom",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\css\\index.css",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\css\\index.css",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "css/index#[.{fingerprint}]?.css",
+      "RelativePath": "css/index.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "o0i60etuse",
-      "Integrity": "SBciaC5uwuKqNNRbaMuucmIXrvAsAUv8W4c+AO/kl9Q=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\css\\site.css",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "css/site#[.{fingerprint}]?.css",
+      "RelativePath": "css/site.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "34k6n1rrl8",
-      "Integrity": "rcn29F1Opr65FV78AQdxWIFEMPuEsBDsBb23TNA/0jM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\favicon.ico",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "favicon#[.{fingerprint}]?.ico",
+      "RelativePath": "favicon.ico",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "61n19gt1b8",
-      "Integrity": "Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "fonts/digital-7#[.{fingerprint}]?.ttf",
+      "RelativePath": "fonts/digital-7.ttf",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "py0vwd0m2t",
-      "Integrity": "oQpEq+wOO6wBimSOyKcScoEhNA730ip7lzGUd85cm7s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\fonts\\digital-7.ttf"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/apple-iphone13-blue-portrait#[.{fingerprint}]?.png",
+      "RelativePath": "img/apple-iphone13-blue-portrait.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "y254btfgus",
-      "Integrity": "umG1gJv0Jqx7aIVpSETJDuVkp5YiR4h8o7gehz6bmEU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\apple-iphone13-blue-portrait.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\balatrotheme.mp3",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\balatrotheme.mp3",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/balatrotheme#[.{fingerprint}]?.mp3",
+      "RelativePath": "img/balatrotheme.mp3",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "7khfb6i9ul",
-      "Integrity": "pynmwfYVz7J6JK77yiDr+9zfijoazMKOtwVr604ptdY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\balatrotheme.mp3"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\colectivo.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/colectivo#[.{fingerprint}]?.png",
+      "RelativePath": "img/colectivo.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "3sz3543kb5",
-      "Integrity": "HUOZAqtP/HHdGZYVndMyy4QyWKhEfEjX1oG9zBxKQlk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\colectivo.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo1.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\colectivo1.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/colectivo1#[.{fingerprint}]?.png",
+      "RelativePath": "img/colectivo1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "pwy6v8ubrd",
-      "Integrity": "OTWkdVIExIFF3UQd6TbHZ2ZhK0MTrNzb/hwLCaSm4dc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\colectivo1.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo2.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\colectivo2.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/colectivo2#[.{fingerprint}]?.png",
+      "RelativePath": "img/colectivo2.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "6pn4wulfkp",
-      "Integrity": "+rgArnFA6zxsmjc2mqpGwTXhpdW6n6mJDpQ1fZoPOkE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\colectivo2.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo3.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\colectivo3.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/colectivo3#[.{fingerprint}]?.png",
+      "RelativePath": "img/colectivo3.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xkr5ts9c0x",
-      "Integrity": "HyiUFtt3yUmH0djxtZhcCA08UQxZTuO+i3GF0FWnP5Q=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\colectivo3.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo4.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\colectivo4.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/colectivo4#[.{fingerprint}]?.png",
+      "RelativePath": "img/colectivo4.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "thbo0k202y",
-      "Integrity": "z78hsxpDQJu+cFc3CKDijmUbFhxYgcOucz6D+haJwqQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\colectivo4.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_0.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\crucet_0.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/crucet_0#[.{fingerprint}]?.png",
+      "RelativePath": "img/crucet_0.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "npejlfcez8",
-      "Integrity": "xR3ZWXW4o1SJn6+ke1x5m3/Vr9DJ/opni6GNaadZOdg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\crucet_0.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_1.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\crucet_1.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/crucet_1#[.{fingerprint}]?.png",
+      "RelativePath": "img/crucet_1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "wtacpbkgb3",
-      "Integrity": "LDm5n0PE72ij03YpxT0xE7H4DlxGXGKMyAGqNc2yOKQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\crucet_1.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_2.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\crucet_2.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/crucet_2#[.{fingerprint}]?.png",
+      "RelativePath": "img/crucet_2.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "nrf7f093ia",
-      "Integrity": "kwqyjaUxnck9SYOZjA5CJb5DCyJ4au54c7GcZGDvjCg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\crucet_2.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_3.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\crucet_3.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/crucet_3#[.{fingerprint}]?.png",
+      "RelativePath": "img/crucet_3.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "j0sspcd77g",
-      "Integrity": "LYqcC5VjGtK6vi/TQ2nKZvqox/25Q4ShxH6tNZWkdLw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\crucet_3.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_0.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\curva_0.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/curva_0#[.{fingerprint}]?.png",
+      "RelativePath": "img/curva_0.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "297kzqshq3",
-      "Integrity": "SvNtZRpGp4qIa7NNTLsL5MIX8Ttv2cz79Li4f0DqO+g=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\curva_0.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_1.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\curva_1.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/curva_1#[.{fingerprint}]?.png",
+      "RelativePath": "img/curva_1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "jgikqzc8z5",
-      "Integrity": "cyBr20dGlYYHi+A/pnU/CzrpWGrpx5NNjdAVN9tj96M=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\curva_1.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_2.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\curva_2.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/curva_2#[.{fingerprint}]?.png",
+      "RelativePath": "img/curva_2.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "q9y4km2ygk",
-      "Integrity": "ftIA48cHpTY6AR2TN9EX0cZOlD0o+8aRcyklqLrObjc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\curva_2.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_3.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\curva_3.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/curva_3#[.{fingerprint}]?.png",
+      "RelativePath": "img/curva_3.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "1z27iekzmb",
-      "Integrity": "zVS5DjYhlNJV1f9NO/1BYc1YWSo37bTEqOk4iIGH4bA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\curva_3.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\dinero.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\dinero.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/dinero#[.{fingerprint}]?.png",
+      "RelativePath": "img/dinero.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "3wd5g24dhn",
-      "Integrity": "k61VPk68mD9vRZ2B+gEhrsCC1pkWnOgQfx6xgdGhbU8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\dinero.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\entrandoColectivo.mp4",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\entrandoColectivo.mp4",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/entrandoColectivo#[.{fingerprint}]?.mp4",
+      "RelativePath": "img/entrandoColectivo.mp4",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "v0b2xwap6s",
-      "Integrity": "T8W0CAcQ7HYAHXPNWQWEUR+czLqaVeARLdZv//zhxXU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\entrandoColectivo.mp4"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\indiferente.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\indiferente.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/indiferente#[.{fingerprint}]?.png",
+      "RelativePath": "img/indiferente.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "j09uo1a63c",
-      "Integrity": "I2U21c7yCa8WKUA2IHjzsBqO1+BQxcPSKtnYiQlbTSU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\indiferente.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\kiosquero.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\kiosquero.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/kiosquero#[.{fingerprint}]?.png",
+      "RelativePath": "img/kiosquero.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "lmjugj3f0z",
-      "Integrity": "IxWH6D1DPUjQZbZB9lPwuDWZVYy36ArgOfm1C+oWG8U=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\kiosquero.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\nervioso.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\nervioso.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/nervioso#[.{fingerprint}]?.png",
+      "RelativePath": "img/nervioso.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "kfmvbkxo9z",
-      "Integrity": "UE6hJemDwjdxxyouOKpFfbSpi8xHi7zvoo1hE1UtFTE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\nervioso.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\oficinista.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\oficinista.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/oficinista#[.{fingerprint}]?.png",
+      "RelativePath": "img/oficinista.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "n682ekge7i",
-      "Integrity": "EUwryEBao6rTEpVcrltwYrHVwrRLblue7JSyV+kqMBA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\oficinista.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\pelota.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\pelota.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/pelota#[.{fingerprint}]?.png",
+      "RelativePath": "img/pelota.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "52ct7tmxwa",
-      "Integrity": "TX2WkuXH5OcS6z6wRdicnL3Im737AmgOGr+2YA+olKE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\pelota.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\pistolita.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\pistolita.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/pistolita#[.{fingerprint}]?.png",
+      "RelativePath": "img/pistolita.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "smcgwgslyp",
-      "Integrity": "DPz+BFyh1N7/87OhvlsFyLgYsxlK66wrJM98aiPTBuE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\pistolita.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\punga.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\punga.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/punga#[.{fingerprint}]?.png",
+      "RelativePath": "img/punga.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "j5hcnmdbub",
-      "Integrity": "Kf+EPQ1zd5baFWST3DBrgNkQeT8qf19iHYFZpCWhy1I=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\punga.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\rechazar.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\rechazar.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/rechazar#[.{fingerprint}]?.png",
+      "RelativePath": "img/rechazar.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "b202riltxb",
-      "Integrity": "039r+3+stHUbX8YkVoXGLjoo6a8BeeGL7XBUIRdOqdM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\rechazar.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_0.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\recta_0.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/recta_0#[.{fingerprint}]?.png",
+      "RelativePath": "img/recta_0.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "pa1pzhx56t",
-      "Integrity": "0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\recta_0.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_1.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\recta_1.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/recta_1#[.{fingerprint}]?.png",
+      "RelativePath": "img/recta_1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "exzu4jvz23",
-      "Integrity": "YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\recta_1.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_2.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\recta_2.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/recta_2#[.{fingerprint}]?.png",
+      "RelativePath": "img/recta_2.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "pa1pzhx56t",
-      "Integrity": "0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\recta_2.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_3.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\recta_3.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/recta_3#[.{fingerprint}]?.png",
+      "RelativePath": "img/recta_3.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "exzu4jvz23",
-      "Integrity": "YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\recta_3.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\usuario.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\usuario.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/usuario#[.{fingerprint}]?.png",
+      "RelativePath": "img/usuario.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "6qzxx58loi",
-      "Integrity": "HugeO+LqSCospiw2MM4eZR2i/B6hh2ouAmJlcFMn48c=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\usuario.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\vaso.webp",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\vaso.webp",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/vaso#[.{fingerprint}]?.webp",
+      "RelativePath": "img/vaso.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "9c162idcu5",
-      "Integrity": "SeYXfdBLMt473w79QzgounaYJuZ/5wTRfKmkVnY4EZc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\vaso.webp"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\volver.png",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\img\\volver.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "img/volver#[.{fingerprint}]?.png",
+      "RelativePath": "img/volver.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "kmcsnfxcf7",
-      "Integrity": "FK4X52Bifz3wCPSpwTGq7zbmXM1Yf80Mhk1AuyX11YM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\volver.png"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\js\\pipepuzzle.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\js\\pipepuzzle.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "js/pipepuzzle#[.{fingerprint}]?.js",
+      "RelativePath": "js/pipepuzzle.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "cjabq49188",
-      "Integrity": "6DuFdFZFD36nszOs1sCthUmeQI0v2Ndcfym/OCnbjFI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\pipepuzzle.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\js\\site.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "js/site#[.{fingerprint}]?.js",
+      "RelativePath": "js/site.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xtxxf3hu2r",
-      "Integrity": "hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "03hjc8e09r",
-      "Integrity": "xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "48y08845bh",
-      "Integrity": "RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE#[.{fingerprint}]?.txt",
+      "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "356vix0kms",
-      "Integrity": "16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery-validation/dist/additional-methods#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ay5nd8zt9x",
-      "Integrity": "4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery-validation/dist/additional-methods.min#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "9oaff4kq20",
-      "Integrity": "N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery-validation/dist/jquery.validate#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "6d0lkjaslc",
-      "Integrity": "5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery-validation/dist/jquery.validate.min#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "l1zq2mitth",
-      "Integrity": "6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery-validation/LICENSE#[.{fingerprint}]?.md",
+      "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "x0q3zqp4vz",
-      "Integrity": "geHEkw/WGPdaHQMRq5HuNY9snliNzU/y2OW8ycnhGXw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery/dist/jquery#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "7s2n0ol71w",
-      "Integrity": "KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.js",
+      "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ehgnz7f14e",
-      "Integrity": "zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery/dist/jquery.min#[.{fingerprint}]?.map",
+      "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "5pze98is44",
-      "Integrity": "OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\wwwroot\\",
       "BasePath": "_content/TP05-EscapeRoom",
-      "RelativePath": "lib/jquery/LICENSE#[.{fingerprint}]?.txt",
+      "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
+      "AssetMergeBehavior": "PreferTarget",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "mlv21k5csn",
-      "Integrity": "hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
-    }
-  ],
-  "Endpoints": [
-    {
-      "Route": "css/index.css",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\css\\index.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1265"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"SBciaC5uwuKqNNRbaMuucmIXrvAsAUv8W4c+AO/kl9Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-SBciaC5uwuKqNNRbaMuucmIXrvAsAUv8W4c+AO/kl9Q="
-        }
-      ]
-    },
-    {
-      "Route": "css/index.o0i60etuse.css",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\css\\index.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1265"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"SBciaC5uwuKqNNRbaMuucmIXrvAsAUv8W4c+AO/kl9Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "o0i60etuse"
-        },
-        {
-          "Name": "label",
-          "Value": "css/index.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-SBciaC5uwuKqNNRbaMuucmIXrvAsAUv8W4c+AO/kl9Q="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.34k6n1rrl8.css",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3462"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"rcn29F1Opr65FV78AQdxWIFEMPuEsBDsBb23TNA/0jM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 17:09:37 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "34k6n1rrl8"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-rcn29F1Opr65FV78AQdxWIFEMPuEsBDsBb23TNA/0jM="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3462"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"rcn29F1Opr65FV78AQdxWIFEMPuEsBDsBb23TNA/0jM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 17:09:37 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-rcn29F1Opr65FV78AQdxWIFEMPuEsBDsBb23TNA/0jM="
-        }
-      ]
-    },
-    {
-      "Route": "favicon.61n19gt1b8.ico",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\favicon.ico",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5430"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/x-icon"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "61n19gt1b8"
-        },
-        {
-          "Name": "label",
-          "Value": "favicon.ico"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
-        }
-      ]
-    },
-    {
-      "Route": "favicon.ico",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\favicon.ico",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5430"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/x-icon"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
-        }
-      ]
-    },
-    {
-      "Route": "fonts/digital-7.py0vwd0m2t.ttf",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "34360"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/x-font-ttf"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oQpEq+wOO6wBimSOyKcScoEhNA730ip7lzGUd85cm7s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "py0vwd0m2t"
-        },
-        {
-          "Name": "label",
-          "Value": "fonts/digital-7.ttf"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-oQpEq+wOO6wBimSOyKcScoEhNA730ip7lzGUd85cm7s="
-        }
-      ]
-    },
-    {
-      "Route": "fonts/digital-7.ttf",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\fonts\\digital-7.ttf",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "34360"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/x-font-ttf"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oQpEq+wOO6wBimSOyKcScoEhNA730ip7lzGUd85cm7s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-oQpEq+wOO6wBimSOyKcScoEhNA730ip7lzGUd85cm7s="
-        }
-      ]
-    },
-    {
-      "Route": "img/apple-iphone13-blue-portrait.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "287411"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"umG1gJv0Jqx7aIVpSETJDuVkp5YiR4h8o7gehz6bmEU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-umG1gJv0Jqx7aIVpSETJDuVkp5YiR4h8o7gehz6bmEU="
-        }
-      ]
-    },
-    {
-      "Route": "img/apple-iphone13-blue-portrait.y254btfgus.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\apple-iphone13-blue-portrait.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "287411"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"umG1gJv0Jqx7aIVpSETJDuVkp5YiR4h8o7gehz6bmEU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "y254btfgus"
-        },
-        {
-          "Name": "label",
-          "Value": "img/apple-iphone13-blue-portrait.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-umG1gJv0Jqx7aIVpSETJDuVkp5YiR4h8o7gehz6bmEU="
-        }
-      ]
-    },
-    {
-      "Route": "img/balatrotheme.7khfb6i9ul.mp3",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\balatrotheme.mp3",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5789916"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "audio/mpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pynmwfYVz7J6JK77yiDr+9zfijoazMKOtwVr604ptdY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 25 Jun 2025 20:58:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "7khfb6i9ul"
-        },
-        {
-          "Name": "label",
-          "Value": "img/balatrotheme.mp3"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-pynmwfYVz7J6JK77yiDr+9zfijoazMKOtwVr604ptdY="
-        }
-      ]
-    },
-    {
-      "Route": "img/balatrotheme.mp3",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\balatrotheme.mp3",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5789916"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "audio/mpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pynmwfYVz7J6JK77yiDr+9zfijoazMKOtwVr604ptdY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 25 Jun 2025 20:58:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-pynmwfYVz7J6JK77yiDr+9zfijoazMKOtwVr604ptdY="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo.3sz3543kb5.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1548610"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"HUOZAqtP/HHdGZYVndMyy4QyWKhEfEjX1oG9zBxKQlk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "3sz3543kb5"
-        },
-        {
-          "Name": "label",
-          "Value": "img/colectivo.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-HUOZAqtP/HHdGZYVndMyy4QyWKhEfEjX1oG9zBxKQlk="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1548610"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"HUOZAqtP/HHdGZYVndMyy4QyWKhEfEjX1oG9zBxKQlk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-HUOZAqtP/HHdGZYVndMyy4QyWKhEfEjX1oG9zBxKQlk="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo1.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "391078"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"OTWkdVIExIFF3UQd6TbHZ2ZhK0MTrNzb/hwLCaSm4dc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-OTWkdVIExIFF3UQd6TbHZ2ZhK0MTrNzb/hwLCaSm4dc="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo1.pwy6v8ubrd.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "391078"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"OTWkdVIExIFF3UQd6TbHZ2ZhK0MTrNzb/hwLCaSm4dc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "pwy6v8ubrd"
-        },
-        {
-          "Name": "label",
-          "Value": "img/colectivo1.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-OTWkdVIExIFF3UQd6TbHZ2ZhK0MTrNzb/hwLCaSm4dc="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo2.6pn4wulfkp.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo2.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "426707"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"+rgArnFA6zxsmjc2mqpGwTXhpdW6n6mJDpQ1fZoPOkE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6pn4wulfkp"
-        },
-        {
-          "Name": "label",
-          "Value": "img/colectivo2.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-+rgArnFA6zxsmjc2mqpGwTXhpdW6n6mJDpQ1fZoPOkE="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo2.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo2.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "426707"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"+rgArnFA6zxsmjc2mqpGwTXhpdW6n6mJDpQ1fZoPOkE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-+rgArnFA6zxsmjc2mqpGwTXhpdW6n6mJDpQ1fZoPOkE="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo3.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo3.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "404460"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"HyiUFtt3yUmH0djxtZhcCA08UQxZTuO+i3GF0FWnP5Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-HyiUFtt3yUmH0djxtZhcCA08UQxZTuO+i3GF0FWnP5Q="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo3.xkr5ts9c0x.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo3.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "404460"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"HyiUFtt3yUmH0djxtZhcCA08UQxZTuO+i3GF0FWnP5Q=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "xkr5ts9c0x"
-        },
-        {
-          "Name": "label",
-          "Value": "img/colectivo3.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-HyiUFtt3yUmH0djxtZhcCA08UQxZTuO+i3GF0FWnP5Q="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo4.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo4.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "401030"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"z78hsxpDQJu+cFc3CKDijmUbFhxYgcOucz6D+haJwqQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-z78hsxpDQJu+cFc3CKDijmUbFhxYgcOucz6D+haJwqQ="
-        }
-      ]
-    },
-    {
-      "Route": "img/colectivo4.thbo0k202y.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\colectivo4.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "401030"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"z78hsxpDQJu+cFc3CKDijmUbFhxYgcOucz6D+haJwqQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "thbo0k202y"
-        },
-        {
-          "Name": "label",
-          "Value": "img/colectivo4.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-z78hsxpDQJu+cFc3CKDijmUbFhxYgcOucz6D+haJwqQ="
-        }
-      ]
-    },
-    {
-      "Route": "img/crucet_0.npejlfcez8.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_0.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "796281"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"xR3ZWXW4o1SJn6+ke1x5m3/Vr9DJ/opni6GNaadZOdg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "npejlfcez8"
-        },
-        {
-          "Name": "label",
-          "Value": "img/crucet_0.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-xR3ZWXW4o1SJn6+ke1x5m3/Vr9DJ/opni6GNaadZOdg="
-        }
-      ]
-    },
-    {
-      "Route": "img/crucet_0.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_0.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "796281"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"xR3ZWXW4o1SJn6+ke1x5m3/Vr9DJ/opni6GNaadZOdg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-xR3ZWXW4o1SJn6+ke1x5m3/Vr9DJ/opni6GNaadZOdg="
-        }
-      ]
-    },
-    {
-      "Route": "img/crucet_1.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "779409"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"LDm5n0PE72ij03YpxT0xE7H4DlxGXGKMyAGqNc2yOKQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-LDm5n0PE72ij03YpxT0xE7H4DlxGXGKMyAGqNc2yOKQ="
-        }
-      ]
-    },
-    {
-      "Route": "img/crucet_1.wtacpbkgb3.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "779409"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"LDm5n0PE72ij03YpxT0xE7H4DlxGXGKMyAGqNc2yOKQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "wtacpbkgb3"
-        },
-        {
-          "Name": "label",
-          "Value": "img/crucet_1.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-LDm5n0PE72ij03YpxT0xE7H4DlxGXGKMyAGqNc2yOKQ="
-        }
-      ]
-    },
-    {
-      "Route": "img/crucet_2.nrf7f093ia.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_2.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "796890"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kwqyjaUxnck9SYOZjA5CJb5DCyJ4au54c7GcZGDvjCg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "nrf7f093ia"
-        },
-        {
-          "Name": "label",
-          "Value": "img/crucet_2.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-kwqyjaUxnck9SYOZjA5CJb5DCyJ4au54c7GcZGDvjCg="
-        }
-      ]
-    },
-    {
-      "Route": "img/crucet_2.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_2.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "796890"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kwqyjaUxnck9SYOZjA5CJb5DCyJ4au54c7GcZGDvjCg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-kwqyjaUxnck9SYOZjA5CJb5DCyJ4au54c7GcZGDvjCg="
-        }
-      ]
-    },
-    {
-      "Route": "img/crucet_3.j0sspcd77g.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_3.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1801285"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"LYqcC5VjGtK6vi/TQ2nKZvqox/25Q4ShxH6tNZWkdLw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "j0sspcd77g"
-        },
-        {
-          "Name": "label",
-          "Value": "img/crucet_3.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-LYqcC5VjGtK6vi/TQ2nKZvqox/25Q4ShxH6tNZWkdLw="
-        }
-      ]
-    },
-    {
-      "Route": "img/crucet_3.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\crucet_3.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1801285"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"LYqcC5VjGtK6vi/TQ2nKZvqox/25Q4ShxH6tNZWkdLw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-LYqcC5VjGtK6vi/TQ2nKZvqox/25Q4ShxH6tNZWkdLw="
-        }
-      ]
-    },
-    {
-      "Route": "img/curva_0.297kzqshq3.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_0.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "385170"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"SvNtZRpGp4qIa7NNTLsL5MIX8Ttv2cz79Li4f0DqO+g=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "297kzqshq3"
-        },
-        {
-          "Name": "label",
-          "Value": "img/curva_0.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-SvNtZRpGp4qIa7NNTLsL5MIX8Ttv2cz79Li4f0DqO+g="
-        }
-      ]
-    },
-    {
-      "Route": "img/curva_0.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_0.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "385170"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"SvNtZRpGp4qIa7NNTLsL5MIX8Ttv2cz79Li4f0DqO+g=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-SvNtZRpGp4qIa7NNTLsL5MIX8Ttv2cz79Li4f0DqO+g="
-        }
-      ]
-    },
-    {
-      "Route": "img/curva_1.jgikqzc8z5.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1399047"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"cyBr20dGlYYHi+A/pnU/CzrpWGrpx5NNjdAVN9tj96M=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "jgikqzc8z5"
-        },
-        {
-          "Name": "label",
-          "Value": "img/curva_1.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-cyBr20dGlYYHi+A/pnU/CzrpWGrpx5NNjdAVN9tj96M="
-        }
-      ]
-    },
-    {
-      "Route": "img/curva_1.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1399047"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"cyBr20dGlYYHi+A/pnU/CzrpWGrpx5NNjdAVN9tj96M=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-cyBr20dGlYYHi+A/pnU/CzrpWGrpx5NNjdAVN9tj96M="
-        }
-      ]
-    },
-    {
-      "Route": "img/curva_2.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_2.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "385759"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ftIA48cHpTY6AR2TN9EX0cZOlD0o+8aRcyklqLrObjc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-ftIA48cHpTY6AR2TN9EX0cZOlD0o+8aRcyklqLrObjc="
-        }
-      ]
-    },
-    {
-      "Route": "img/curva_2.q9y4km2ygk.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_2.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "385759"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ftIA48cHpTY6AR2TN9EX0cZOlD0o+8aRcyklqLrObjc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "q9y4km2ygk"
-        },
-        {
-          "Name": "label",
-          "Value": "img/curva_2.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-ftIA48cHpTY6AR2TN9EX0cZOlD0o+8aRcyklqLrObjc="
-        }
-      ]
-    },
-    {
-      "Route": "img/curva_3.1z27iekzmb.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_3.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "390872"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zVS5DjYhlNJV1f9NO/1BYc1YWSo37bTEqOk4iIGH4bA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "1z27iekzmb"
-        },
-        {
-          "Name": "label",
-          "Value": "img/curva_3.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-zVS5DjYhlNJV1f9NO/1BYc1YWSo37bTEqOk4iIGH4bA="
-        }
-      ]
-    },
-    {
-      "Route": "img/curva_3.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\curva_3.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "390872"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zVS5DjYhlNJV1f9NO/1BYc1YWSo37bTEqOk4iIGH4bA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-zVS5DjYhlNJV1f9NO/1BYc1YWSo37bTEqOk4iIGH4bA="
-        }
-      ]
-    },
-    {
-      "Route": "img/dinero.3wd5g24dhn.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\dinero.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1303846"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"k61VPk68mD9vRZ2B+gEhrsCC1pkWnOgQfx6xgdGhbU8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "3wd5g24dhn"
-        },
-        {
-          "Name": "label",
-          "Value": "img/dinero.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-k61VPk68mD9vRZ2B+gEhrsCC1pkWnOgQfx6xgdGhbU8="
-        }
-      ]
-    },
-    {
-      "Route": "img/dinero.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\dinero.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1303846"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"k61VPk68mD9vRZ2B+gEhrsCC1pkWnOgQfx6xgdGhbU8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-k61VPk68mD9vRZ2B+gEhrsCC1pkWnOgQfx6xgdGhbU8="
-        }
-      ]
-    },
-    {
-      "Route": "img/entrandoColectivo.mp4",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\entrandoColectivo.mp4",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1271390"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "video/mp4"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"T8W0CAcQ7HYAHXPNWQWEUR+czLqaVeARLdZv//zhxXU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-T8W0CAcQ7HYAHXPNWQWEUR+czLqaVeARLdZv//zhxXU="
-        }
-      ]
-    },
-    {
-      "Route": "img/entrandoColectivo.v0b2xwap6s.mp4",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\entrandoColectivo.mp4",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1271390"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "video/mp4"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"T8W0CAcQ7HYAHXPNWQWEUR+czLqaVeARLdZv//zhxXU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "v0b2xwap6s"
-        },
-        {
-          "Name": "label",
-          "Value": "img/entrandoColectivo.mp4"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-T8W0CAcQ7HYAHXPNWQWEUR+czLqaVeARLdZv//zhxXU="
-        }
-      ]
-    },
-    {
-      "Route": "img/indiferente.j09uo1a63c.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\indiferente.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2028644"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"I2U21c7yCa8WKUA2IHjzsBqO1+BQxcPSKtnYiQlbTSU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "j09uo1a63c"
-        },
-        {
-          "Name": "label",
-          "Value": "img/indiferente.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-I2U21c7yCa8WKUA2IHjzsBqO1+BQxcPSKtnYiQlbTSU="
-        }
-      ]
-    },
-    {
-      "Route": "img/indiferente.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\indiferente.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2028644"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"I2U21c7yCa8WKUA2IHjzsBqO1+BQxcPSKtnYiQlbTSU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-I2U21c7yCa8WKUA2IHjzsBqO1+BQxcPSKtnYiQlbTSU="
-        }
-      ]
-    },
-    {
-      "Route": "img/kiosquero.lmjugj3f0z.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\kiosquero.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2166883"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"IxWH6D1DPUjQZbZB9lPwuDWZVYy36ArgOfm1C+oWG8U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "lmjugj3f0z"
-        },
-        {
-          "Name": "label",
-          "Value": "img/kiosquero.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-IxWH6D1DPUjQZbZB9lPwuDWZVYy36ArgOfm1C+oWG8U="
-        }
-      ]
-    },
-    {
-      "Route": "img/kiosquero.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\kiosquero.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2166883"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"IxWH6D1DPUjQZbZB9lPwuDWZVYy36ArgOfm1C+oWG8U=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-IxWH6D1DPUjQZbZB9lPwuDWZVYy36ArgOfm1C+oWG8U="
-        }
-      ]
-    },
-    {
-      "Route": "img/nervioso.kfmvbkxo9z.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\nervioso.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2226218"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"UE6hJemDwjdxxyouOKpFfbSpi8xHi7zvoo1hE1UtFTE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "kfmvbkxo9z"
-        },
-        {
-          "Name": "label",
-          "Value": "img/nervioso.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-UE6hJemDwjdxxyouOKpFfbSpi8xHi7zvoo1hE1UtFTE="
-        }
-      ]
-    },
-    {
-      "Route": "img/nervioso.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\nervioso.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2226218"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"UE6hJemDwjdxxyouOKpFfbSpi8xHi7zvoo1hE1UtFTE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-UE6hJemDwjdxxyouOKpFfbSpi8xHi7zvoo1hE1UtFTE="
-        }
-      ]
-    },
-    {
-      "Route": "img/oficinista.n682ekge7i.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\oficinista.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2145891"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"EUwryEBao6rTEpVcrltwYrHVwrRLblue7JSyV+kqMBA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "n682ekge7i"
-        },
-        {
-          "Name": "label",
-          "Value": "img/oficinista.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-EUwryEBao6rTEpVcrltwYrHVwrRLblue7JSyV+kqMBA="
-        }
-      ]
-    },
-    {
-      "Route": "img/oficinista.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\oficinista.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2145891"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"EUwryEBao6rTEpVcrltwYrHVwrRLblue7JSyV+kqMBA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-EUwryEBao6rTEpVcrltwYrHVwrRLblue7JSyV+kqMBA="
-        }
-      ]
-    },
-    {
-      "Route": "img/pelota.52ct7tmxwa.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\pelota.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "133226"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"TX2WkuXH5OcS6z6wRdicnL3Im737AmgOGr+2YA+olKE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "52ct7tmxwa"
-        },
-        {
-          "Name": "label",
-          "Value": "img/pelota.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-TX2WkuXH5OcS6z6wRdicnL3Im737AmgOGr+2YA+olKE="
-        }
-      ]
-    },
-    {
-      "Route": "img/pelota.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\pelota.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "133226"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"TX2WkuXH5OcS6z6wRdicnL3Im737AmgOGr+2YA+olKE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-TX2WkuXH5OcS6z6wRdicnL3Im737AmgOGr+2YA+olKE="
-        }
-      ]
-    },
-    {
-      "Route": "img/pistolita.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\pistolita.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2064721"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DPz+BFyh1N7/87OhvlsFyLgYsxlK66wrJM98aiPTBuE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-DPz+BFyh1N7/87OhvlsFyLgYsxlK66wrJM98aiPTBuE="
-        }
-      ]
-    },
-    {
-      "Route": "img/pistolita.smcgwgslyp.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\pistolita.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2064721"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"DPz+BFyh1N7/87OhvlsFyLgYsxlK66wrJM98aiPTBuE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "smcgwgslyp"
-        },
-        {
-          "Name": "label",
-          "Value": "img/pistolita.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-DPz+BFyh1N7/87OhvlsFyLgYsxlK66wrJM98aiPTBuE="
-        }
-      ]
-    },
-    {
-      "Route": "img/punga.j5hcnmdbub.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\punga.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2071064"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Kf+EPQ1zd5baFWST3DBrgNkQeT8qf19iHYFZpCWhy1I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "j5hcnmdbub"
-        },
-        {
-          "Name": "label",
-          "Value": "img/punga.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Kf+EPQ1zd5baFWST3DBrgNkQeT8qf19iHYFZpCWhy1I="
-        }
-      ]
-    },
-    {
-      "Route": "img/punga.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\punga.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2071064"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Kf+EPQ1zd5baFWST3DBrgNkQeT8qf19iHYFZpCWhy1I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Kf+EPQ1zd5baFWST3DBrgNkQeT8qf19iHYFZpCWhy1I="
-        }
-      ]
-    },
-    {
-      "Route": "img/rechazar.b202riltxb.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\rechazar.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1482391"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"039r+3+stHUbX8YkVoXGLjoo6a8BeeGL7XBUIRdOqdM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "b202riltxb"
-        },
-        {
-          "Name": "label",
-          "Value": "img/rechazar.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-039r+3+stHUbX8YkVoXGLjoo6a8BeeGL7XBUIRdOqdM="
-        }
-      ]
-    },
-    {
-      "Route": "img/rechazar.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\rechazar.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1482391"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"039r+3+stHUbX8YkVoXGLjoo6a8BeeGL7XBUIRdOqdM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-039r+3+stHUbX8YkVoXGLjoo6a8BeeGL7XBUIRdOqdM="
-        }
-      ]
-    },
-    {
-      "Route": "img/recta_0.pa1pzhx56t.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_0.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "625254"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "pa1pzhx56t"
-        },
-        {
-          "Name": "label",
-          "Value": "img/recta_0.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc="
-        }
-      ]
-    },
-    {
-      "Route": "img/recta_0.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_0.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "625254"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc="
-        }
-      ]
-    },
-    {
-      "Route": "img/recta_1.exzu4jvz23.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1459404"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "exzu4jvz23"
-        },
-        {
-          "Name": "label",
-          "Value": "img/recta_1.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas="
-        }
-      ]
-    },
-    {
-      "Route": "img/recta_1.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_1.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1459404"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas="
-        }
-      ]
-    },
-    {
-      "Route": "img/recta_2.pa1pzhx56t.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_2.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "625254"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "pa1pzhx56t"
-        },
-        {
-          "Name": "label",
-          "Value": "img/recta_2.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc="
-        }
-      ]
-    },
-    {
-      "Route": "img/recta_2.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_2.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "625254"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-0Qk6RFEsM351yzrDcLVfZkz9VaA5oZoeCd5xh2o4lPc="
-        }
-      ]
-    },
-    {
-      "Route": "img/recta_3.exzu4jvz23.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_3.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1459404"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "exzu4jvz23"
-        },
-        {
-          "Name": "label",
-          "Value": "img/recta_3.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas="
-        }
-      ]
-    },
-    {
-      "Route": "img/recta_3.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\recta_3.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1459404"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-YnF6l5OPah9ptGsK+P3UOGYynH25v866hyvoZG3kdas="
-        }
-      ]
-    },
-    {
-      "Route": "img/usuario.6qzxx58loi.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\usuario.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1179136"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"HugeO+LqSCospiw2MM4eZR2i/B6hh2ouAmJlcFMn48c=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6qzxx58loi"
-        },
-        {
-          "Name": "label",
-          "Value": "img/usuario.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-HugeO+LqSCospiw2MM4eZR2i/B6hh2ouAmJlcFMn48c="
-        }
-      ]
-    },
-    {
-      "Route": "img/usuario.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\usuario.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1179136"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"HugeO+LqSCospiw2MM4eZR2i/B6hh2ouAmJlcFMn48c=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-HugeO+LqSCospiw2MM4eZR2i/B6hh2ouAmJlcFMn48c="
-        }
-      ]
-    },
-    {
-      "Route": "img/vaso.9c162idcu5.webp",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\vaso.webp",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "10556"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/webp"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"SeYXfdBLMt473w79QzgounaYJuZ/5wTRfKmkVnY4EZc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "9c162idcu5"
-        },
-        {
-          "Name": "label",
-          "Value": "img/vaso.webp"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-SeYXfdBLMt473w79QzgounaYJuZ/5wTRfKmkVnY4EZc="
-        }
-      ]
-    },
-    {
-      "Route": "img/vaso.webp",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\vaso.webp",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "10556"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/webp"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"SeYXfdBLMt473w79QzgounaYJuZ/5wTRfKmkVnY4EZc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-SeYXfdBLMt473w79QzgounaYJuZ/5wTRfKmkVnY4EZc="
-        }
-      ]
-    },
-    {
-      "Route": "img/volver.kmcsnfxcf7.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\volver.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1396603"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"FK4X52Bifz3wCPSpwTGq7zbmXM1Yf80Mhk1AuyX11YM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "kmcsnfxcf7"
-        },
-        {
-          "Name": "label",
-          "Value": "img/volver.png"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-FK4X52Bifz3wCPSpwTGq7zbmXM1Yf80Mhk1AuyX11YM="
-        }
-      ]
-    },
-    {
-      "Route": "img/volver.png",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\img\\volver.png",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1396603"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/png"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"FK4X52Bifz3wCPSpwTGq7zbmXM1Yf80Mhk1AuyX11YM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-FK4X52Bifz3wCPSpwTGq7zbmXM1Yf80Mhk1AuyX11YM="
-        }
-      ]
-    },
-    {
-      "Route": "js/pipepuzzle.cjabq49188.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\js\\pipepuzzle.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "7415"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"6DuFdFZFD36nszOs1sCthUmeQI0v2Ndcfym/OCnbjFI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "cjabq49188"
-        },
-        {
-          "Name": "label",
-          "Value": "js/pipepuzzle.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-6DuFdFZFD36nszOs1sCthUmeQI0v2Ndcfym/OCnbjFI="
-        }
-      ]
-    },
-    {
-      "Route": "js/pipepuzzle.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\js\\pipepuzzle.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "7415"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"6DuFdFZFD36nszOs1sCthUmeQI0v2Ndcfym/OCnbjFI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-6DuFdFZFD36nszOs1sCthUmeQI0v2Ndcfym/OCnbjFI="
-        }
-      ]
-    },
-    {
-      "Route": "js/site.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\js\\site.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "231"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo="
-        }
-      ]
-    },
-    {
-      "Route": "js/site.xtxxf3hu2r.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\js\\site.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "231"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "xtxxf3hu2r"
-        },
-        {
-          "Name": "label",
-          "Value": "js/site.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.03hjc8e09r.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "19820"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "03hjc8e09r"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "19820"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-xJbBMLGhYbXlPrrrddrSVmduyF6KEtbxEsYxw7hYZV4="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.48y08845bh.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "48y08845bh"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-RFWFWIIPsjB4DucR4jqwxTWw13ZmtI+s6tVR2LJmZXk="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation-unobtrusive/LICENSE.356vix0kms.txt",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1139"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "356vix0kms"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation-unobtrusive/LICENSE.txt"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation-unobtrusive/LICENSE.txt",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1139"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/additional-methods.ay5nd8zt9x.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "52977"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ay5nd8zt9x"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation/dist/additional-methods.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/additional-methods.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "52977"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-4jrcLBsi0Ugm8iLKdqDsAyaCDjkscYZdoGuNH/zqs4E="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/additional-methods.min.9oaff4kq20.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "22177"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "9oaff4kq20"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation/dist/additional-methods.min.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/additional-methods.min.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "22177"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-N11IyJpHTgDcSCb3AfX4VrBnpGQeem1NoNzzgcXVyCc="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/jquery.validate.6d0lkjaslc.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "52831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6d0lkjaslc"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation/dist/jquery.validate.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/jquery.validate.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "52831"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-5qqb5VxQ2t2a6Zx/neW5uppLLvaGn4nn0NdYp6g8Lyg="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/jquery.validate.min.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "24604"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/dist/jquery.validate.min.l1zq2mitth.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "24604"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "l1zq2mitth"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation/dist/jquery.validate.min.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-6e0N+WJiVKBeTitK1GKSwPi3rbdPpLtuqaiitZjeD2w="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/LICENSE.md",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1117"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/markdown"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"geHEkw/WGPdaHQMRq5HuNY9snliNzU/y2OW8ycnhGXw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-geHEkw/WGPdaHQMRq5HuNY9snliNzU/y2OW8ycnhGXw="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery-validation/LICENSE.x0q3zqp4vz.md",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1117"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/markdown"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"geHEkw/WGPdaHQMRq5HuNY9snliNzU/y2OW8ycnhGXw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "x0q3zqp4vz"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery-validation/LICENSE.md"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-geHEkw/WGPdaHQMRq5HuNY9snliNzU/y2OW8ycnhGXw="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/dist/jquery.7s2n0ol71w.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "299461"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "7s2n0ol71w"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery/dist/jquery.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/dist/jquery.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "299461"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-KSI/3xxCrCexCupdzQJRP1B6Iqg+2NA+X2u38cQdqq8="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/dist/jquery.min.5pze98is44.map",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "137972"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "5pze98is44"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery/dist/jquery.min.map"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/dist/jquery.min.ehgnz7f14e.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "89503"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ehgnz7f14e"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery/dist/jquery.min.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/dist/jquery.min.js",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "89503"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-zp0HUArZHsK1JMJwdk7EyaM+eDINjTdOxADt5Ij2JRs="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/dist/jquery.min.map",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "137972"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/LICENSE.mlv21k5csn.txt",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1117"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "mlv21k5csn"
-        },
-        {
-          "Name": "label",
-          "Value": "lib/jquery/LICENSE.txt"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
-        }
-      ]
-    },
-    {
-      "Route": "lib/jquery/LICENSE.txt",
-      "AssetFile": "C:\\Users\\knk\\Downloads\\asdasd\\TP05EscapeRoom\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1117"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/plain"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 28 Jun 2025 16:57:21 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-hjIBkvmgxQXbNXK3B9YQ3t06RwLuQSQzC/dpvuB/lMk="
-        }
-      ]
     }
   ]
 }

@@ -14,7 +14,7 @@
         Tu navegador no soporta el elemento de audio.
     </audio>
 
-    <!-- Control de música -->
+    <!-- Control de música (fuera de .container) -->
     <div id="music-control" class="music-control" title="Silenciar/Activar música">
         <span id="music-icon">♪</span>
     </div>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="container">
-        <header style="text-align:center; padding: 20px; font-size: 24px; text-shadow: 0 0 5px #00ffc3;">
+        <header style="text-align:center; padding: 20px; font-size: 24px; text-shadow: 0 0 5px #00ffc3; background: transparent;">
             @if (ViewData["Resumen"] != null)
             {
                 @ViewData["Resumen"]
@@ -44,6 +44,7 @@
         </div>
         <div id="menu-desplegable" class="menu-desplegable">
             <form method="post" action="/Home/ReiniciarJuego" style="margin-bottom: 20px;">
+                @Html.AntiForgeryToken()
                 <button type="submit">Reiniciar sala</button>
             </form>
             <form method="post" action="/Home/ReiniciarNivel" id="form-reiniciar-nivel">
@@ -59,7 +60,6 @@
             &copy; @DateTime.Now.Year - Sala de escape
         </footer>
     </div>
-
     <script>
     // Sistema de música de fondo
     (function() {
@@ -206,7 +206,9 @@
                 });
         });
     })();
+    </script>
 
+    <script>
     // Reloj global
     let totalSeconds = @(ViewBag.GameSeconds ?? 0);
     function iniciarRelojGlobal() {
@@ -236,4 +238,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-

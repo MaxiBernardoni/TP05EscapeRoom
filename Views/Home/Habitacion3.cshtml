@@ -166,9 +166,21 @@
                 <div class="npc-comment">Este parece buena onda.</div>
             </div>
         </a>
-        <div class="npc">
-            <img src="/img/nervioso.png" alt="Nervioso" />
-            <div class="npc-comment">Este está re nervioso, ¿qué le pasa?</div>
-        </div>
+        @if (ViewBag.Modelo?.NerviosoResuelto == true)
+        {
+            <div class="npc" style="cursor:default;opacity:0.5;">
+                <img src="/img/nervioso.png" alt="Nervioso" />
+                <div class="npc-comment">Ya le hablé, me dio el código del edificio.</div>
+            </div>
+        }
+        else
+        {
+            <a href="/Home/DialogoNervioso" style="text-decoration:none;color:inherit;">
+                <div class="npc">
+                    <img src="/img/nervioso.png" alt="Nervioso" />
+                    <div class="npc-comment">Este está re nervioso, ¿qué le pasa?</div>
+                </div>
+            </a>
+        }
     </div>
 </div>

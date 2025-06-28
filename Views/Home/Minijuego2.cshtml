@@ -58,10 +58,14 @@
     .instrucciones {
         margin: 20px;
         padding: 15px;
-        background: #f5f5f5;
+        background: #003344;
         border-radius: 8px;
         max-width: 600px;
         text-align: center;
+        color: #fff;
+        font-family: 'Courier New', monospace;
+        font-size: 1.1em;
+        box-shadow: 0 2px 10px #0008;
     }
 </style>
 
@@ -69,21 +73,29 @@
     <h2>Juego de Memoria</h2>
     <div class="ronda-info">Ronda @modelo.RondaActualMemoria de 7</div>
     
-    <div class="instrucciones">
-        Memoriza los cuadrados que se iluminarán en blanco.
-        Cuando desaparezcan, selecciona los mismos cuadrados y presiona verificar.
-    </div>
-    
-    <div class="memoria-grid">
-        @for (int i = 0; i < 49; i++)
-        {
-            <div class="cuadrado" data-index="@i" onclick="toggleCuadrado(this)"></div>
-        }
-    </div>
-
-    <div class="controles">
-        <button class="btn-verificar" onclick="verificarSecuencia()">Verificar</button>
-    </div>
+    @if (modelo.RondaActualMemoria > 7)
+    {
+        <div style="margin:30px; font-size:1.3em; color:#0c0;">¡Completaste el minijuego!</div>
+        <form method="get" action="/Home/Minijuego3">
+            <button type="submit" class="btn btn-success">Ir al minijuego 3</button>
+        </form>
+    }
+    else
+    {
+        <div class="instrucciones">
+            Memoriza los cuadrados que se iluminarán en blanco.
+            Cuando desaparezcan, selecciona los mismos cuadrados y presiona verificar.
+        </div>
+        <div class="memoria-grid">
+            @for (int i = 0; i < 49; i++)
+            {
+                <div class="cuadrado" data-index="@i" onclick="toggleCuadrado(this)"></div>
+            }
+        </div>
+        <div class="controles">
+            <button class="btn-verificar" onclick="verificarSecuencia()">Verificar</button>
+        </div>
+    }
 </div>
 
 <script>
@@ -102,7 +114,7 @@
             });
             mostrandoSecuencia = false;
             document.querySelector('.btn-verificar').style.display = 'block';
-        }, 2000);
+        }, 1000);
     }
 
     function toggleCuadrado(elemento) {

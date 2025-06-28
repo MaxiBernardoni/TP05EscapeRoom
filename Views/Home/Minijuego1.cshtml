@@ -41,30 +41,78 @@
     }
 </style>
 
-<div class="minijuego-container">
+<div class="minijuego-container" id="minijuego-container">
     <h2>Encuentra el emoji diferente</h2>
+    <div id="cronometro" style="font-size:1.5em; color:#00eaff; margin-bottom:10px;"></div>
     <div class="ronda-info">Ronda @modelo.RondaActualEmoji de 10</div>
-    
-    <div class="emoji-grid">
-        @{
-            var random = new Random();
-            var emojiCorrecto = random.Next(50);
-            var emojiBase = "😀";
-            var emojiDiferente = "🤔";
-            
-            for (int i = 0; i < 50; i++)
-            {
-                var isEmojiCorrecto = i == emojiCorrecto;
-                <div class="emoji" onclick="seleccionarEmoji(@i)">
-                    @(isEmojiCorrecto ? emojiDiferente : emojiBase)
-                </div>
+    @if (modelo.RondaActualEmoji > 10)
+    {
+        <div style="margin:30px; font-size:1.3em; color:#0c0;">¡Completaste el minijuego!</div>
+        <form method="get" action="/Home/Minijuego2">
+            <button type="submit" class="btn btn-success">Ir al minijuego 2</button>
+        </form>
+    }
+    else if (ViewBag.TiempoTerminado == true)
+    {
+        <div style="margin:30px; font-size:1.3em; color:#c00;">¡Se acabó el tiempo! Intenta de nuevo.</div>
+        <form method="get" action="/Home/Minijuego1">
+            <button type="submit" class="btn btn-danger">Reintentar</button>
+        </form>
+    }
+    else
+    {
+        <div class="emoji-grid">
+            @{
+                var emojiCorrecto = modelo.EmojiCorrectoActual;
+                var emojiBase = "😀";
+                var emojiDiferente = "😁";
+                for (int i = 0; i < 50; i++)
+                {
+                    var isEmojiCorrecto = i == emojiCorrecto;
+                    <div class="emoji" onclick="seleccionarEmoji(@i)">
+                        @(isEmojiCorrecto ? emojiDiferente : emojiBase)
+                    </div>
+                }
             }
-        }
-    </div>
+        </div>
+    }
 </div>
 
 <script>
-    function seleccionarEmoji(indice) {
+let tiempoRestante = sessionStorage.getItem('tiempoEmoji') ? parseInt(sessionStorage.getItem('tiempoEmoji')) : 60;
+let intervalo = null;
+const cronometro = document.getElementById('cronometro');
+function actualizarCronometro() {
+    let min = Math.floor(tiempoRestante / 60);
+    let seg = tiempoRestante % 60;
+    cronometro.textContent = `Tiempo restante: ${min}:${seg.toString().padStart(2, '0')}`;
+}
+function tick() {
+    if (tiempoRestante > 0) {
+        tiempoRestante--;
+        sessionStorage.setItem('tiempoEmoji', tiempoRestante);
+        actualizarCronometro();
+        if (tiempoRestante === 0) {
+            sessionStorage.removeItem('tiempoEmoji');
+            window.location.href = '/Home/Minijuego1?tiempoTerminado=1';
+        }
+    }
+}
+// Limpiar cualquier intervalo anterior
+if (window.intervaloEmoji) clearInterval(window.intervaloEmoji);
+window.intervaloEmoji = null;
+if (@(modelo.RondaActualEmoji) <= 10 && !(ViewBag.TiempoTerminado == true)) {
+    actualizarCronometro();
+    window.intervaloEmoji = setInterval(tick, 1000);
+}
+if (@(modelo.RondaActualEmoji) > 10 || (ViewBag.TiempoTerminado == true)) {
+    sessionStorage.removeItem('tiempoEmoji');
+    if (window.intervaloEmoji) clearInterval(window.intervaloEmoji);
+    window.intervaloEmoji = null;
+}
+function seleccionarEmoji(indice) {
+    var emojiCorrecto = @modelo.EmojiCorrectoActual;
+    if (indice === emojiCorrecto) {
         fetch('/Home/ResolverMinijuego1', {
             method: 'POST',
             headers: {
@@ -73,4 +121,6 @@
             body: `emojiSeleccionado=${indice}`
         }).then(() => window.location.reload());
     }
+    // Si selecciona incorrecto, no pasa nada
+}
 </script> 

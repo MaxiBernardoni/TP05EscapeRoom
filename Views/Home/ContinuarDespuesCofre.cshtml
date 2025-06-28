@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "¡Cofre Resuelto!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int totalSeconds = ViewBag.GameSeconds ?? 0;
+}
+
+<div style="max-width:600px;margin:60px auto 0 auto;padding:32px 24px;background:#222b36;border-radius:16px;box-shadow:0 4px 24px #000a;text-align:center;color:#fff;">
+    <h2 style="color:#00ffc3;">¡Excelente!</h2>
+    <p style="font-size:1.2em;margin:20px 0;">Has resuelto el cofre numérico exitosamente.</p>
+    <p style="font-size:1.1em;margin:20px 0;color:#00ffc3;">El código te ha llevado hasta el edificio donde se encuentra la oficina del Director Auraman.</p>
+    
+    <form method="post" action="@Url.Action("ContinuarAHabitacion4", "Home")" style="margin-top:30px;">
+        @Html.AntiForgeryToken()
+        <button type="submit" style="background:#00ffc3;color:#000;border:none;padding:12px 24px;border-radius:8px;font-size:1.1em;cursor:pointer;font-weight:bold;">
+            Continuar
+        </button>
+    </form>
+</div> 

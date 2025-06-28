@@ -11,6 +11,7 @@ namespace TuProyecto.Models
         public bool InsistenteResuelto { get; set; } = false;
         public bool AyudaResuelto { get; set; } = false;
         public bool NerviosoResuelto { get; set; } = false;
+        public bool EspejoSalvado { get; set; } = false;
 
         // Inventario
         public bool TienePlata { get; set; } = true; // Comienza con dinero
@@ -66,6 +67,13 @@ namespace TuProyecto.Models
         public bool Ayudar2EnCurso { get; set; } = false;
         public List<string> Ayudar2Historial { get; set; } = new List<string>();
 
+        // Minijuego 3: Cofre Numérico
+        public string NumeroSecretoCofre { get; set; } = null;
+        public List<string> IntentosCofre { get; set; } = new List<string>();
+        public List<string> RespuestasCofre { get; set; } = new List<string>(); // formato: "2E-1D" (2 exactos, 1 desordenado)
+        public int IntentosRestantesCofre { get; set; } = 6;
+        public bool CofreResuelto { get; set; } = false;
+
         // Métodos de ayuda
         public bool TodosLosMinijuegosCompletados()
         {
@@ -102,5 +110,7 @@ namespace TuProyecto.Models
         {
             return TodosLosMinijuegosCompletados() && CodigoObtenido;
         }
+
+        public int EmojiCorrectoActual { get; set; } = 0;
     }
 } 

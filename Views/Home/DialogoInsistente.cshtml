@@ -46,11 +46,15 @@
     align-self: flex-end;
     background: linear-gradient(90deg, #00c9a7 0%, #005c4b 100%);
     color: #fff;
+    margin-left: 20%;
+    margin-right: 0;
 }
 .burbuja-insistente {
     align-self: flex-start;
     background: linear-gradient(90deg, #3a1c71 0%, #d76d77 100%);
     color: #fff;
+    margin-right: 20%;
+    margin-left: 0;
 }
 .burbuja-narrador {
     align-self: center;
@@ -106,7 +110,7 @@
 #chat-burbujas {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     max-width: 600px;
     width: 100%;
     margin: 0 auto;
@@ -122,7 +126,8 @@
         <div id="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
         @if (!resuelto && rechazos == 0 && !compra)
         {
-            <div class="burbuja-chat burbuja-insistente">Che, ¿sabés dónde queda el edificio de Auraman? Mirá, yo te digo, pero primero tenés que comprarme algo.</div>
+            <div class="burbuja-chat burbuja-usuario">Che, ¿sabés dónde queda el edificio de Auraman?</div>
+            <div class="burbuja-chat burbuja-insistente">Mirá, yo te digo, pero primero tenés que comprarme algo.</div>
             <div class="burbuja-chat burbuja-insistente">¿Aceptás o rechazás?</div>
         }
         else if (!resuelto && rechazos == 1 && !compra)
@@ -138,7 +143,10 @@
         }
         else if (rechazos >= 2)
         {
-            <div class="burbuja-chat burbuja-insistente">Bueno, hacé lo que quieras. No te vendo nada. Se va muy enojado.</div>
+            <div class="burbuja-chat burbuja-usuario">No, no quiero comprar nada.</div>
+            <div class="burbuja-chat burbuja-insistente">Bueno, hacé lo que quieras. No te vendo nada.</div>
+            <div class="burbuja-chat burbuja-narrador">Se va muy enojado.</div>
+            <div class="burbuja-chat burbuja-usuario">Que tipo molesto...</div>
         }
     </div>
     @if (!resuelto && rechazos == 0 && !compra)
@@ -172,11 +180,11 @@
             <form asp-action="FinalizarDialogoInsistente" method="post" style="display:inline;">
                 <button type="submit" class="btn btn-primary">Continuar</button>
             </form>
-            <a href="/Home/Habitacion3" class="btn btn-secondary" style="margin-left:10px;">Salir</a>
         </div>
     }
     @if (resuelto || rechazos >= 2)
     {
+        <button id="btn-avanzar-final" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
         <div class="btn-container" id="btn-continuar-final" style="display:none;">
             <form asp-action="FinalizarDialogoInsistente" method="post" style="display:inline;">
                 <button type="submit" class="btn btn-primary">Continuar</button>
@@ -191,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnAvanzar = document.getElementById('btn-avanzar');
     const btnAvanzarAmenaza = document.getElementById('btn-avanzar-amenaza');
     const btnAvanzarCompra = document.getElementById('btn-avanzar-compra');
+    const btnAvanzarFinal = document.getElementById('btn-avanzar-final');
     const btnAcciones = document.getElementById('btn-acciones');
     const btnContinuarCompra = document.getElementById('btn-continuar-compra');
     const btnContinuarFinal = document.getElementById('btn-continuar-final');
@@ -215,6 +224,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mostrar el primer mensaje al cargar
     if(btnAvanzar) {
         burbujas[0].style.display = 'block';
+        setTimeout(() => {
+            burbujas[0].classList.add('visible');
+        }, 10);
         i = 1;
         btnAvanzar.style.display = 'block';
         scrollToBottom();
@@ -236,6 +248,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if(btnAvanzarAmenaza) {
         burbujas[0].style.display = 'block';
+        setTimeout(() => {
+            burbujas[0].classList.add('visible');
+        }, 10);
         i = 1;
         btnAvanzarAmenaza.style.display = 'block';
         scrollToBottom();
@@ -257,6 +272,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if(btnAvanzarCompra) {
         burbujas[0].style.display = 'block';
+        setTimeout(() => {
+            burbujas[0].classList.add('visible');
+        }, 10);
         i = 1;
         btnAvanzarCompra.style.display = 'block';
         scrollToBottom();
@@ -269,6 +287,30 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(mostrarBurbujasSecuencial, 2000);
                 } else {
                     btnContinuarCompra.style.display = 'block';
+                }
+            }
+            if (burbujas.length > 0) {
+                mostrarBurbujasSecuencial();
+            }
+        };
+    }
+    if(btnAvanzarFinal) {
+        burbujas[0].style.display = 'block';
+        setTimeout(() => {
+            burbujas[0].classList.add('visible');
+        }, 10);
+        i = 1;
+        btnAvanzarFinal.style.display = 'block';
+        scrollToBottom();
+        btnAvanzarFinal.onclick = function() {
+            btnAvanzarFinal.style.display = 'none';
+            function mostrarBurbujasSecuencial() {
+                if (i < burbujas.length) {
+                    mostrarBurbujaAnimada(i);
+                    i++;
+                    setTimeout(mostrarBurbujasSecuencial, 2000);
+                } else {
+                    btnContinuarFinal.style.display = 'block';
                 }
             }
             if (burbujas.length > 0) {

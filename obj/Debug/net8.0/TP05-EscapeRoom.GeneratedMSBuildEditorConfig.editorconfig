@@ -9,105 +9,115 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TP05-EscapeRoom
 build_property.RootNamespace = TP05-EscapeRoom
-build_property.ProjectDir = C:\Users\knk\Downloads\asdasd\TP05EscapeRoom\
+build_property.ProjectDir = C:\Users\nacho\OneDrive\Desktop\TP05EscapeRoom\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\knk\Downloads\asdasd\TP05EscapeRoom
+build_property.MSBuildProjectDirectory = C:\Users\nacho\OneDrive\Desktop\TP05EscapeRoom
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 8.0
-build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/BarrioAlmagro.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/BarrioAlmagro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCYXJyaW9BbG1hZ3JvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/DialogoAyudar.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/ContinuarDespuesCofre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250aW51YXJEZXNwdWVzQ29mcmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/DialogoAyudar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaWFsb2dvQXl1ZGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/DialogoAyudar2.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/DialogoAyudar2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaWFsb2dvQXl1ZGFyMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/DialogoIgnorado.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/DialogoIgnorado.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaWFsb2dvSWdub3JhZG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/DialogoInsistente.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/DialogoInsistente.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaWFsb2dvSW5zaXN0ZW50ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/DialogoPunga.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/DialogoNervioso.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaWFsb2dvTmVydmlvc28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/DialogoPunga.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEaWFsb2dvUHVuZ2EuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/Habitacion1.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/Habitacion1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/Habitacion2.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/Habitacion2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/Habitacion3.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/Habitacion3.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uMy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/Index.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/Habitacion4.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uNC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/JuegoColectivo.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/JuegoColectivo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxKdWVnb0NvbGVjdGl2by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/Minijuego1.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/Minijuego1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaW5panVlZ28xLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/Minijuego2.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/Minijuego2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaW5panVlZ28yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/Minijuego3.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/Minijuego3.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaW5panVlZ28zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/MinijuegoPunga.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/MinijuegoPunga.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaW5panVlZ29QdW5nYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/ResultadoColectivo.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/ResultadoColectivo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXN1bHRhZG9Db2xlY3Rpdm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/ResultadoFinal.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/ResultadoFinal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXN1bHRhZG9GaW5hbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/ResultadoRonda.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/ResultadoRonda.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXN1bHRhZG9Sb25kYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Home/TransicionColectivo.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Home/TransicionColectivo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFuc2ljaW9uQ29sZWN0aXZvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Shared/_Layout.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/_ViewImports.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/knk/Downloads/asdasd/TP05EscapeRoom/Views/_ViewStart.cshtml]
+[C:/Users/nacho/OneDrive/Desktop/TP05EscapeRoom/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

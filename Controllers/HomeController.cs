@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using TuProyecto.Models;
 using System.Text.Json;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TuProyecto.Controllers
 {
@@ -493,6 +494,315 @@ namespace TuProyecto.Controllers
             ViewBag.Modelo = modelo;
             ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult DialogoNervioso()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SalvarEspejo()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            modelo.EspejoSalvado = true;
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public IActionResult FinalizarDialogoNervioso()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            modelo.NerviosoResuelto = true;
+            modelo.CodigoObtenido = true;
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return RedirectToAction("Habitacion3");
+        }
+
+        [HttpPost]
+        public IActionResult AvanzarCuadra()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            // Avanzar cuadra
+            modelo.CuadraActual++;
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+
+            // Redirigir al minijuego correspondiente
+            if (modelo.CuadraActual == 1)
+                return RedirectToAction("Minijuego1");
+            else if (modelo.CuadraActual == 2)
+                return RedirectToAction("Minijuego2");
+            else if (modelo.CuadraActual == 3)
+                return RedirectToAction("Minijuego3");
+            else
+                return RedirectToAction("Habitacion3"); // O final del juego
+        }
+
+        [HttpGet]
+        public IActionResult Minijuego1()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            // Si la ronda no está completada, generar y guardar el emoji correcto
+            if (modelo.RondaActualEmoji <= 10)
+            {
+                var random = new System.Random();
+                modelo.EmojiCorrectoActual = random.Next(50);
+                HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            }
+
+            ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Minijuego2()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            // Si la secuencia no está generada para la ronda actual, generarla
+            if (modelo.SecuenciaMemoria == null || modelo.SecuenciaMemoria.Count == 0 || modelo.RondaActualMemoria == 1)
+            {
+                var random = new System.Random();
+                modelo.SecuenciaMemoria = new List<int>();
+                var indices = Enumerable.Range(0, 49).OrderBy(_ => random.Next()).Take(5).ToList();
+                modelo.SecuenciaMemoria.AddRange(indices);
+                HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            }
+
+            ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Minijuego3()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            // Inicializar el número secreto si no existe
+            if (string.IsNullOrEmpty(modelo.NumeroSecretoCofre))
+            {
+                var random = new System.Random();
+                var digitos = Enumerable.Range(0, 10).OrderBy(_ => random.Next()).Take(4).ToArray();
+                modelo.NumeroSecretoCofre = string.Join("", digitos);
+                modelo.IntentosCofre = new List<string>();
+                modelo.RespuestasCofre = new List<string>();
+                modelo.IntentosRestantesCofre = 11;
+                modelo.CofreResuelto = false;
+                HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            }
+
+            ViewBag.Modelo = modelo;
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ResolverMinijuego1(int emojiSeleccionado)
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            // Usar el emoji correcto guardado
+            int emojiCorrecto = modelo.EmojiCorrectoActual;
+
+            // Si el usuario acierta, avanza de ronda
+            if (emojiSeleccionado == emojiCorrecto)
+            {
+                modelo.RondaActualEmoji++;
+                if (modelo.RondaActualEmoji > 10)
+                {
+                    modelo.Minijuego1Completado = true;
+                }
+            }
+            // No modificar el emojiCorrecto aquí
+
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return RedirectToAction("Minijuego1");
+        }
+
+        [HttpPost]
+        public IActionResult ResolverMinijuego2(string secuencia)
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            // Convertir la secuencia recibida a lista de int
+            var seleccionUsuario = new List<int>();
+            if (!string.IsNullOrEmpty(secuencia))
+            {
+                seleccionUsuario = secuencia.Split(',').Select(s => int.Parse(s)).ToList();
+            }
+
+            // Verificar si la secuencia es correcta
+            bool acerto = seleccionUsuario.Count == modelo.SecuenciaMemoria.Count &&
+                seleccionUsuario.All(idx => modelo.SecuenciaMemoria.Contains(idx)) &&
+                modelo.SecuenciaMemoria.All(idx => seleccionUsuario.Contains(idx));
+
+            if (acerto)
+            {
+                modelo.RondaActualMemoria++;
+                if (modelo.RondaActualMemoria > 7)
+                {
+                    modelo.Minijuego2Completado = true;
+                }
+                else
+                {
+                    // Generar nueva secuencia para la siguiente ronda
+                    var random = new System.Random();
+                    modelo.SecuenciaMemoria = new List<int>();
+                    var indices = Enumerable.Range(0, 49).OrderBy(_ => random.Next()).Take(5).ToList();
+                    modelo.SecuenciaMemoria.AddRange(indices);
+                }
+            }
+            // Si no acierta, no avanza de ronda, puede reintentar
+
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return RedirectToAction("Minijuego2");
+        }
+
+        [HttpPost]
+        public IActionResult ResolverMinijuego3(string intento)
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            if (modelo.CofreResuelto || modelo.IntentosRestantesCofre <= 0)
+                return RedirectToAction("Minijuego3");
+
+            // Validar intento
+            if (string.IsNullOrEmpty(intento) || intento.Length != 4 || intento.Distinct().Count() != 4 || !intento.All(char.IsDigit))
+            {
+                TempData["ErrorCofre"] = "El intento debe ser un número de 4 dígitos distintos.";
+                return RedirectToAction("Minijuego3");
+            }
+
+            // Calcular exactos y desordenados
+            int exactos = 0, desordenados = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                if (intento[i] == modelo.NumeroSecretoCofre[i]) exactos++;
+                else if (modelo.NumeroSecretoCofre.Contains(intento[i])) desordenados++;
+            }
+
+            modelo.IntentosCofre.Add(intento);
+            modelo.RespuestasCofre.Add($"{exactos}E-{desordenados}D");
+            modelo.IntentosRestantesCofre--;
+
+            if (exactos == 4)
+            {
+                modelo.CofreResuelto = true;
+                HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+                return RedirectToAction("ContinuarDespuesCofre");
+            }
+
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return RedirectToAction("Minijuego3");
+        }
+
+        [HttpPost]
+        public IActionResult ReiniciarMinijuego3()
+        {
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+
+            var random = new System.Random();
+            var digitos = Enumerable.Range(0, 10).OrderBy(_ => random.Next()).Take(4).ToArray();
+            modelo.NumeroSecretoCofre = string.Join("", digitos);
+            modelo.IntentosCofre = new List<string>();
+            modelo.RespuestasCofre = new List<string>();
+            modelo.IntentosRestantesCofre = 11;
+            modelo.CofreResuelto = false;
+            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+            return RedirectToAction("Minijuego3");
+        }
+
+        [HttpGet]
+        public IActionResult ContinuarDespuesCofre()
+        {
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ContinuarAHabitacion4()
+        {
+            return RedirectToAction("Habitacion4");
+        }
+
+        [HttpGet]
+        public IActionResult Habitacion4()
+        {
+            // Aquí puedes inicializar el modelo o lógica de la habitación 4 si lo necesitas
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            ViewBag.MostrarDialogo = false;
+            
+            // Cargar el modelo de la habitación 3 para verificar si tiene el código
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+            ViewBag.Modelo = modelo;
+            
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult MostrarDialogoPortero()
+        {
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            ViewBag.MostrarDialogo = true;
+            
+            // Cargar el modelo de la habitación 3 para verificar si tiene el código
+            var modeloJson = HttpContext.Session.GetString("habitacion3");
+            var modelo = string.IsNullOrEmpty(modeloJson)
+                ? new TuProyecto.Models.Habitacion3Model()
+                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
+            ViewBag.Modelo = modelo;
+            
+            return View("Habitacion4");
         }
     }
 }

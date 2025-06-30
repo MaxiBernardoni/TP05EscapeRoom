@@ -1,0 +1,241 @@
+@{
+    ViewData["Title"] = "Firma del Contrato";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+.firma-container {
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+}
+.dialogo-final {
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #00ffc3;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 30px 0;
+    box-shadow: 0 0 30px rgba(0, 255, 195, 0.3);
+    color: #fff;
+}
+.dialogo-final h3 {
+    color: #00ffc3;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+.dialogo-final p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+.contrato-digital {
+    background: rgba(0, 0, 0, 0.9);
+    border: 3px solid #00ffc3;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 255, 195, 0.4);
+}
+.contrato-titulo {
+    font-size: 2em;
+    color: #00ffc3;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 195, 0.5);
+}
+.contrato-contenido {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: left;
+}
+.firma-area {
+    border: 2px dashed #00ffc3;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    background: rgba(0, 255, 195, 0.1);
+}
+#firma-canvas {
+    border: 1px solid #00ffc3;
+    border-radius: 5px;
+    background: #fff;
+    cursor: crosshair;
+}
+.btn-firma {
+    background: linear-gradient(45deg, #00ffc3, #00a8a8);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 8px 25px rgba(0, 255, 195, 0.4);
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+.btn-firma:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 255, 195, 0.6);
+}
+.btn-firma:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+.contrato-firmado {
+    display: none;
+    background: rgba(0, 255, 0, 0.2);
+    border: 2px solid #00ff00;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    color: #00ff00;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+@@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+</style>
+
+<div class="firma-container">
+    <div class="dialogo-final">
+        <h3>🎯 ¡Misión Completada! 🎯</h3>
+        <p><strong>Auraman:</strong> Lo lograste. Defendiste el núcleo como nadie.</p>
+        <p><strong>Auraman:</strong> Ahora firmá. Ya no sos solo un candidato, sos parte de mi sistema.</p>
+        <p><strong>Usuario:</strong> Después de todo esto… me lo gané.</p>
+        <p><strong>Auraman:</strong> Bienvenido. Mañana a las 10:00 en Yatay 240. No llegues tarde.</p>
+        <p><strong>Usuario:</strong> No pienso llegar tarde nunca más.</p>
+    </div>
+    
+    <div class="contrato-digital">
+        <div class="contrato-titulo">📄 CONTRATO DIGITAL</div>
+        <div class="contrato-contenido">
+            <p><strong>CONTRATO DE EMPLEO</strong></p>
+            <p><strong>Empresa:</strong> Sistema Auraman</p>
+            <p><strong>Posición:</strong> Desarrollador Senior</p>
+            <p><strong>Ubicación:</strong> Yatay 240, Buenos Aires</p>
+            <p><strong>Horario:</strong> Lunes a Viernes, 10:00 - 18:00</p>
+            <p><strong>Salario:</strong> Competitivo según experiencia</p>
+            <br/>
+            <p>Por la presente, el candidato confirma su aceptación del puesto y se compromete a:</p>
+            <ul>
+                <li>Llegar puntualmente todos los días</li>
+                <li>Demostrar habilidades técnicas excepcionales</li>
+                <li>Mantener la integridad del sistema</li>
+                <li>Colaborar efectivamente con el equipo</li>
+            </ul>
+            <p><strong>Fecha de inicio:</strong> Mañana</p>
+        </div>
+        
+        <div class="firma-area">
+            <p style="color: #00ffc3; margin-bottom: 15px;">Firma digital:</p>
+            <canvas id="firma-canvas" width="400" height="150"></canvas>
+            <br/>
+            <button onclick="limpiarFirma()" class="btn-firma">Limpiar Firma</button>
+            <button onclick="firmarContrato()" class="btn-firma" id="btn-firmar">Firmar Contrato</button>
+        </div>
+    </div>
+    
+    <div class="contrato-firmado" id="contrato-firmado">
+        <h3>✅ CONTRATO FIRMADO ✅</h3>
+        <p>¡Felicidades! Has completado exitosamente la entrevista.</p>
+        <p>Mañana a las 10:00 en Yatay 240.</p>
+        <form method="post" action="/Home/FinalizarJuego">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn-firma">Finalizar Juego</button>
+        </form>
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById('firma-canvas');
+const ctx = canvas.getContext('2d');
+let firmando = false;
+let firmaRealizada = false;
+
+// Configurar canvas
+ctx.fillStyle = '#fff';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.strokeStyle = '#000';
+ctx.lineWidth = 2;
+ctx.lineCap = 'round';
+
+// Eventos del mouse
+canvas.addEventListener('mousedown', iniciarFirma);
+canvas.addEventListener('mousemove', dibujarFirma);
+canvas.addEventListener('mouseup', terminarFirma);
+canvas.addEventListener('mouseout', terminarFirma);
+
+// Eventos táctiles para móviles
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    iniciarFirma({ clientX: x, clientY: y });
+});
+
+canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    dibujarFirma({ clientX: x, clientY: y });
+});
+
+canvas.addEventListener('touchend', terminarFirma);
+
+function iniciarFirma(e) {
+    firmando = true;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+}
+
+function dibujarFirma(e) {
+    if (!firmando) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    firmaRealizada = true;
+}
+
+function terminarFirma() {
+    firmando = false;
+}
+
+function limpiarFirma() {
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    firmaRealizada = false;
+}
+
+function firmarContrato() {
+    if (!firmaRealizada) {
+        alert('Por favor, realiza una firma antes de continuar.');
+        return;
+    }
+    
+    // Ocultar área de firma y mostrar confirmación
+    document.querySelector('.firma-area').style.display = 'none';
+    document.getElementById('contrato-firmado').style.display = 'block';
+    
+    // Efecto de animación
+    const contratoFirmado = document.getElementById('contrato-firmado');
+    contratoFirmado.style.animation = 'pulse 2s infinite';
+}
+</script> 

@@ -1,0 +1,67 @@
+
+Mejorar el juego final del núcleo (Boss Final) — Prompt para Cursor
+
+Objetivo principal:
+Quiero que el juego final del núcleo sea mucho más desafiante, entretenido y visualmente atractivo. Debe sentirse como un verdadero boss final de videojuego, con jugabilidad fluida y estética pro.
+
+Mejoras de jugabilidad:
+- Hacer el movimiento del jugador fluido y responsivo, con aceleración y frenado suave.
+- Incluir dash (impulso corto) y doble salto para mayor dinamismo y verticalidad.
+- Más plataformas distribuidas en distintas alturas y posiciones, para crear caminos alternativos y estrategias diversas.
+- Ampliar la área de juego: que ocupe mayor parte de la pantalla, evitando la sensación de “caja pequeña”.
+- Incorporar power-ups en plataformas alejadas (pulso de área, escudo personal, etc.).
+
+Virus y oleadas:
+- Virus con diferentes comportamientos:
+  - Virus lentos y básicos.
+  - Virus rápidos que obligan a reacción veloz.
+  - Virus que se dividen en dos pequeños al ser golpeados.
+- Oleadas dinámicas y progresivas que incrementen el ritmo y dificultad.
+
+Switches y escenario:
+- Switches que no solo activen trampas fijas, sino que alteren el mapa:
+  - Plataformas que aparecen/desaparecen.
+  - Escudos temporales.
+  - Puertas de energía.
+- Switches distribuidos estratégicamente en todo el mapa, incentivando el recorrido completo.
+
+Láseres (importante):
+- Mejorar completamente el diseño de los láseres:
+  - No usar simples líneas verticales.
+  - Crear láseres con efecto glow, pulsantes, que se vean potentes y futuristas.
+  - Usar texturas o gradientes para simular energía y calor.
+  - Opcional: agregar una ligera animación ondulante o vibratoria, para que se sientan vivos y peligrosos.
+- Posibilidad de activar/desactivar láseres desde switches.
+
+Defensa activa del núcleo:
+- Permitir que el jugador pueda activar un escudo temporal cerca del núcleo.
+- O lanzar un pulso defensivo que empuje a los virus hacia atrás (requiere recarga).
+
+Tamaño del escenario:
+- Aumentar el tamaño general del escenario para que ocupe gran parte de la pantalla (casi full screen o al menos 80% del alto y ancho visible).
+- Más espacio para moverse, más libertad estratégica.
+
+Narrativa y feedback:
+- Mensajes dinámicos de Auraman durante la partida ("¡No bajes la guardia!", "¡Excelente reflejos!", "¡Vienen más rápido!").
+- Barra de integridad del núcleo con animaciones y cambios de color (verde > amarillo > rojo).
+- Feedback visual fuerte al eliminar virus: efectos de explosión digital, contadores animados.
+
+Resumen clave para la jugabilidad:
+- Movimiento fluido con dash y doble salto.
+- Mapas más grandes y con más plataformas.
+- Virus variados y oleadas dinámicas.
+- Switches que alteran el escenario y activan trampas potentes.
+- Láseres mejor diseñados: glow, efectos vivos, no solo líneas.
+- Defensa activa del núcleo.
+- Feedback narrativo y visual en todo momento.
+
+Resumen corto para Cursor (copy directo):
+Mejorar el juego final del núcleo:
+- Movimiento suave, dash y doble salto.
+- Más plataformas, mapa más grande, ocupa casi toda la pantalla.
+- Virus con diferentes comportamientos y oleadas progresivas.
+- Switches que alteren mapa y activen trampas potentes.
+- Mejorar láseres: glow, efectos dinámicos, no solo líneas.
+- Defensa activa del núcleo: escudo o pulso.
+- Más feedback visual y mensajes dinámicos de Auraman.
+- Estética sci-fi, boss final memorable.

@@ -1,0 +1,1003 @@
+@{
+    ViewData["Title"] = "Juego del Núcleo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+body {
+    background: linear-gradient(120deg, #0f2027, #2c5364 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+.nucleo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+.nucleo-hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 18px 30px;
+    background: rgba(10, 30, 40, 0.95);
+    border: 2.5px solid #00ffc3;
+    border-radius: 16px;
+    color: #fff;
+    box-shadow: 0 0 32px #00ffc355, 0 0 8px #00ffc3;
+    font-size: 1.2em;
+    min-width: 900px;
+    max-width: 1200px;
+}
+.integridad-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.barra-integridad {
+    width: 260px;
+    height: 26px;
+    background: #181818;
+    border: 2.5px solid #00ffc3;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 0 16px #00ffc355;
+    position: relative;
+}
+.barra-integridad-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ffea, #00ff6a 60%, #fff 100%);
+    box-shadow: 0 0 16px #00ffc3cc, 0 0 32px #00ffc355;
+    transition: width 0.3s cubic-bezier(.4,2,.6,1), background 0.3s;
+    will-change: width, background;
+}
+.barra-integridad-fill.pulse {
+    animation: barraPulse 0.5s;
+}
+@@keyframes barraPulse {
+    0% { filter: brightness(1.5); }
+    100% { filter: brightness(1); }
+}
+#integridad-porcentaje {
+    font-weight: bold;
+    text-shadow: 0 0 8px #00ffc3, 0 0 2px #fff;
+    font-size: 1.1em;
+}
+.contador-virus {
+    font-size: 1.2em;
+    color: #00ffc3;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.virus-icon {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 0 8px #ff0055cc) drop-shadow(0 0 2px #fff);
+    vertical-align: middle;
+    animation: virusPulse 1.2s infinite alternate;
+}
+@@keyframes virusPulse {
+    0% { filter: drop-shadow(0 0 8px #ff0055cc) drop-shadow(0 0 2px #fff); }
+    100% { filter: drop-shadow(0 0 18px #ff0055cc) drop-shadow(0 0 8px #fff); }
+}
+.nucleo-canvas-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 0 64px #00ffc355, 0 0 16px #00ffc3;
+    border-radius: 24px;
+    background: rgba(10, 30, 40, 0.85);
+    overflow: visible;
+    width: 1200px;
+    height: 700px;
+    max-width: 95vw;
+    max-height: 80vh;
+}
+#nucleo-canvas {
+    border: 4px solid #00ffc3;
+    border-radius: 24px;
+    background: transparent;
+    box-shadow: 0 0 64px #00ffc355, 0 0 16px #00ffc3;
+    z-index: 2;
+    display: block;
+    margin: 0 auto;
+}
+.nucleo-video {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 110px;
+    border: 4px solid #00ffc3;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 5;
+    box-shadow: 0 0 32px #00ffc3cc, 0 0 64px #00ffc355;
+    animation: glowNucleo 2s infinite alternate;
+}
+@@keyframes glowNucleo {
+    0% { box-shadow: 0 0 32px #00ffc3cc, 0 0 64px #00ffc355; }
+    100% { box-shadow: 0 0 64px #00ffc3cc, 0 0 128px #00ffc355; }
+}
+.game-over, .victory {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    background: rgba(10, 30, 40, 0.98);
+    color: #fff;
+    padding: 40px 50px 30px 50px;
+    border: 3px solid #00ffc3;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 32px #ff0055cc, 0 0 8px #fff;
+    display: none;
+    z-index: 10;
+    font-size: 1.5em;
+    animation: popIn 0.7s cubic-bezier(.4,2,.6,1);
+}
+@@keyframes popIn {
+    0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+.victory {
+    border-color: #00ff6a;
+    box-shadow: 0 0 32px #00ff6a99, 0 0 8px #fff;
+    color: #00ff6a;
+}
+.fondo-animado {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.auraman-msg {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10,30,40,0.97);
+    color: #00ffc3;
+    border: 2px solid #00ffc3;
+    border-radius: 14px;
+    padding: 18px 32px;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow: 0 0 24px #00ffc3cc;
+    z-index: 20;
+    min-width: 320px;
+    display: none;
+    animation: popIn 0.7s cubic-bezier(.4,2,.6,1);
+}
+.pulso-btn, .escudo-btn {
+    position: absolute;
+    z-index: 15;
+    background: #00ffc3;
+    color: #181818;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 14px 28px;
+    box-shadow: 0 0 16px #00ffc3cc;
+    cursor: pointer;
+    margin-left: 16px;
+    transition: background 0.2s, left 0.5s, top 0.5s;
+    left: 0;
+    bottom: 0;
+    opacity: 1;
+}
+.escudo-btn.hide {
+    animation: escudoFade 0.4s forwards;
+}
+@@keyframes escudoFade {
+    0% { opacity: 1; filter: brightness(1.5); }
+    100% { opacity: 0; filter: brightness(2.5); }
+}
+.escudo-nucleo {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #00ffc388 60%, transparent 100%);
+    box-shadow: 0 0 64px #00ffc3cc, 0 0 128px #00ffc355;
+    z-index: 8;
+    pointer-events: none;
+    display: none;
+    animation: escudoPulse 1.2s infinite alternate;
+}
+@@keyframes escudoPulse {
+    0% { box-shadow: 0 0 64px #00ffc3cc, 0 0 128px #00ffc355; }
+    100% { box-shadow: 0 0 128px #00ffc3cc, 0 0 256px #00ffc355; }
+}
+.explosion {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, #00ffc3 40%, #ff0055 100%);
+    opacity: 0.8;
+    animation: explota 0.5s linear forwards;
+    z-index: 30;
+}
+@@keyframes explota {
+    0% { opacity: 1; transform: scale(0.5); }
+    100% { opacity: 0; transform: scale(2.2); }
+}
+.powerup {
+    position: absolute;
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    box-shadow: 0 0 16px #00ffc3cc;
+    background: radial-gradient(circle, #fff 0%, #00ffc3 60%, #00ff6a 100%);
+    opacity: 1;
+    transition: opacity 0.2s;
+    animation: none;
+}
+.powerup.titilar {
+    animation: titilar 0.3s alternate infinite;
+}
+@@keyframes titilar {
+    0% { opacity: 1; filter: brightness(1.5); }
+    100% { opacity: 0.3; filter: brightness(2.5); }
+}
+</style>
+<div class="fondo-animado">
+    <canvas id="fondo-animado-canvas"></canvas>
+</div>
+<div class="nucleo-container">
+    <h2 style="color: #00ffc3; margin-bottom: 20px; text-shadow: 0 0 16px #00ffc3, 0 0 2px #fff; letter-spacing: 2px; font-size:2.2em;">Defender el Núcleo Digital</h2>
+    <div class="nucleo-hud">
+        <div class="integridad-container">
+            <span>Integridad del Núcleo:</span>
+            <div class="barra-integridad">
+                <div id="barra-integridad-fill" class="barra-integridad-fill" style="width: 100%;"></div>
+            </div>
+            <span id="integridad-porcentaje">100%</span>
+        </div>
+        <div class="contador-virus">
+            <img src="/img/virus.png" class="virus-icon" alt="Virus" />
+            Virus Eliminados: <span id="virus-eliminados">0</span>
+        </div>
+    </div>
+    <div class="nucleo-canvas-container">
+        <canvas id="nucleo-canvas" width="1200" height="700"></canvas>
+        <div id="escudo-nucleo" class="escudo-nucleo"></div>
+        <video id="nucleo-video" class="nucleo-video" autoplay loop muted>
+            <source src="/img/nucleo.mp4" type="video/mp4">
+        </video>
+        <div id="game-over" class="game-over">
+            <h3>¡Núcleo Comprometido!</h3>
+            <p>Los virus han dañado el núcleo críticamente.</p>
+            <button onclick="reiniciarJuego()" class="btn btn-danger">Reintentar</button>
+        </div>
+        <div id="victory" class="victory">
+            <h3>¡Núcleo Defendido!</h3>
+            <p>Has logrado proteger el núcleo de todos los ataques.</p>
+            <form method="post" action="/Home/CompletarHabitacion5">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-success">Continuar</button>
+            </form>
+        </div>
+        <div id="auraman-msg" class="auraman-msg"></div>
+    </div>
+</div>
+<script>
+// Fondo animado tipo partículas
+const fondoCanvas = document.getElementById('fondo-animado-canvas');
+const fondoCtx = fondoCanvas.getContext('2d');
+function resizeFondo() {
+    fondoCanvas.width = window.innerWidth;
+    fondoCanvas.height = window.innerHeight;
+}
+resizeFondo();
+window.addEventListener('resize', resizeFondo);
+let particulas = [];
+for (let i = 0; i < 60; i++) {
+    particulas.push({
+        x: Math.random() * fondoCanvas.width,
+        y: Math.random() * fondoCanvas.height,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: (Math.random() - 0.5) * 0.3,
+        alpha: Math.random() * 0.5 + 0.2
+    });
+}
+function animarFondo() {
+    fondoCtx.clearRect(0, 0, fondoCanvas.width, fondoCanvas.height);
+    particulas.forEach(p => {
+        fondoCtx.save();
+        fondoCtx.globalAlpha = p.alpha;
+        fondoCtx.beginPath();
+        fondoCtx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+        fondoCtx.fillStyle = '#00ffc3';
+        fondoCtx.shadowColor = '#00ffc3';
+        fondoCtx.shadowBlur = 16;
+        fondoCtx.fill();
+        fondoCtx.restore();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0) p.x = fondoCanvas.width;
+        if (p.x > fondoCanvas.width) p.x = 0;
+        if (p.y < 0) p.y = fondoCanvas.height;
+        if (p.y > fondoCanvas.height) p.y = 0;
+    });
+    requestAnimationFrame(animarFondo);
+}
+animarFondo();
+// --- Fin fondo animado ---
+
+// Cargar imágenes
+const virusImg = new Image();
+virusImg.src = '/img/virus.png';
+const switchImg = new Image();
+switchImg.src = '/img/switch.png';
+// Configuración del juego
+const canvas = document.getElementById('nucleo-canvas');
+const ctx = canvas.getContext('2d');
+const CANVAS_WIDTH = canvas.width;
+const CANVAS_HEIGHT = canvas.height;
+// Estado del juego
+let gameState = {
+    nucleoIntegridad: 100,
+    virusEliminados: 0,
+    tiempoJuego: 0,
+    jugando: true
+};
+// Jugador
+const jugador = {
+    x: 100,
+    y: CANVAS_HEIGHT - 120,
+    width: 40,
+    height: 60,
+    velocidadX: 0,
+    velocidadY: 0,
+    aceleracion: 1.2,
+    friccion: 0.85,
+    maxVel: 12,
+    enSuelo: false,
+    saltos: 0,
+    maxSaltos: 2,
+    puedeDash: true,
+    dashActivo: false,
+    dashTiempo: 0,
+    dashDuracion: 12,
+    dashVel: 22,
+    direccionDash: 0
+};
+// Núcleo (ahora es un video, pero mantenemos las coordenadas para colisiones)
+const nucleo = {
+    x: CANVAS_WIDTH/2 - 70,
+    y: CANVAS_HEIGHT - 180,
+    width: 140,
+    height: 140
+};
+// Plataformas
+let plataformas = [
+    { x: 0, y: CANVAS_HEIGHT - 20, width: CANVAS_WIDTH, height: 20 },
+    { x: 200, y: CANVAS_HEIGHT - 180, width: 200, height: 22 },
+    { x: 600, y: CANVAS_HEIGHT - 320, width: 220, height: 22 },
+    { x: 1100, y: CANVAS_HEIGHT - 220, width: 180, height: 22 },
+    { x: 900, y: CANVAS_HEIGHT - 500, width: 200, height: 22 },
+    { x: 400, y: CANVAS_HEIGHT - 600, width: 220, height: 22 },
+    { x: 100, y: CANVAS_HEIGHT - 400, width: 180, height: 22 },
+    { x: 1200, y: CANVAS_HEIGHT - 700, width: 120, height: 22 },
+    { x: 700, y: CANVAS_HEIGHT - 750, width: 200, height: 22 }
+];
+// Plataformas dinámicas (aparecen/desaparecen)
+let plataformasDinamicas = [
+    { x: 500, y: CANVAS_HEIGHT - 400, width: 120, height: 22, visible: false, timer: 0, duracion: 180 },
+    { x: 300, y: CANVAS_HEIGHT - 700, width: 120, height: 22, visible: false, timer: 0, duracion: 180 }
+];
+// Switches
+let switches = [
+    { x: 220, y: CANVAS_HEIGHT - 202, width: 60, height: 40, tipo: 'plataforma', activado: false },
+    { x: 1120, y: CANVAS_HEIGHT - 242, width: 60, height: 40, tipo: 'escudo', activado: false },
+    { x: 950, y: CANVAS_HEIGHT - 522, width: 60, height: 40, tipo: 'laser', activado: false },
+    { x: 720, y: CANVAS_HEIGHT - 772, width: 60, height: 40, tipo: 'puerta', activado: false }
+];
+let puertaEnergia = { x: 1300, y: CANVAS_HEIGHT - 180, width: 20, height: 120, activa: true };
+// Láseres (trampas)
+let laseres = [
+    // Horizontal, arriba del núcleo
+    { x: CANVAS_WIDTH/2 - 120, y: CANVAS_HEIGHT - 200, width: 240, height: 14, activo: false, anim: 0 }
+];
+// Virus
+let virus = [];
+let oleada = 1;
+let virusPorOleada = 8;
+let virusVivos = 0;
+let virusSpawnTimer = 0;
+let virusTipos = ['basico','rapido','divisor'];
+// Powerups
+let powerupActual = null;
+let powerupTimer = 0;
+let powerupTitilar = false;
+let powerupTipos = ['pulso','escudo'];
+// Defensa activa
+let escudoNucleoActivo = false;
+let escudoNucleoTimer = 0;
+let escudoDisponible = false;
+let escudoBtnPlataforma = 1;
+// Feedback y mensajes
+let auramanMensajes = [
+    "¡No bajes la guardia!",
+    "¡Excelente reflejos!",
+    "¡Vienen más rápido!",
+    "¡Activa los switches para cambiar el mapa!",
+    "¡Usa el pulso defensivo si te rodean!",
+    "¡Recoge los power-ups en las plataformas altas!"
+];
+let auramanMsgTimer = 0;
+let auramanMsgActual = "";
+// Explosiones
+let explosiones = [];
+// Controles
+const teclas = {};
+document.addEventListener('keydown', (e) => {
+    console.log('Tecla presionada:', e.key);
+    teclas[e.key.toLowerCase()] = true;
+    if (e.key === 'e' || e.key === 'E') activarSwitches();
+    if (e.key === ' ' || e.key === 'Spacebar') salto();
+    if (e.key === 'Shift') dash();
+});
+document.addEventListener('keyup', (e) => {
+    console.log('Tecla soltada:', e.key);
+    teclas[e.key.toLowerCase()] = false;
+});
+function salto() {
+    if (jugador.saltos < jugador.maxSaltos) {
+        jugador.velocidadY = -16;
+        jugador.saltos++;
+    }
+}
+function dash() {
+    if (jugador.puedeDash && !jugador.dashActivo) {
+        jugador.dashActivo = true;
+        jugador.dashTiempo = 0;
+        jugador.direccionDash = teclas['arrowleft'] || teclas['a'] ? -1 : 1;
+        jugador.puedeDash = false;
+    }
+}
+function actualizarJugador() {
+    // Debug: verificar controles
+    if (teclas['arrowleft'] || teclas['a'] || teclas['arrowright'] || teclas['d']) {
+        console.log('Teclas presionadas:', Object.keys(teclas).filter(k => teclas[k]));
+    }
+    
+    // Movimiento horizontal suave
+    let dir = 0;
+    if (teclas['arrowleft'] || teclas['a']) dir -= 1;
+    if (teclas['arrowright'] || teclas['d']) dir += 1;
+    if (!jugador.dashActivo) {
+        jugador.velocidadX += dir * jugador.aceleracion;
+        jugador.velocidadX *= jugador.friccion;
+        if (jugador.velocidadX > jugador.maxVel) jugador.velocidadX = jugador.maxVel;
+        if (jugador.velocidadX < -jugador.maxVel) jugador.velocidadX = -jugador.maxVel;
+    }
+    // Dash
+    if (jugador.dashActivo) {
+        jugador.velocidadX = jugador.direccionDash * jugador.dashVel;
+        jugador.dashTiempo++;
+        if (jugador.dashTiempo > jugador.dashDuracion) {
+            jugador.dashActivo = false;
+        }
+    }
+    // Gravedad
+    jugador.velocidadY += 0.9;
+    // Actualizar posición
+    jugador.x += jugador.velocidadX;
+    jugador.y += jugador.velocidadY;
+    // Límites
+    if (jugador.x < 0) jugador.x = 0;
+    if (jugador.x + jugador.width > CANVAS_WIDTH) jugador.x = CANVAS_WIDTH - jugador.width;
+    // Colisión con plataformas
+    jugador.enSuelo = false;
+    let plataformasTotales = plataformas.concat(plataformasDinamicas.filter(p=>p.visible));
+    plataformasTotales.forEach(plataforma => {
+        if (jugador.x < plataforma.x + plataforma.width &&
+            jugador.x + jugador.width > plataforma.x &&
+            jugador.y < plataforma.y + plataforma.height &&
+            jugador.y + jugador.height > plataforma.y) {
+            if (jugador.velocidadY > 0) {
+                jugador.y = plataforma.y - jugador.height;
+                jugador.velocidadY = 0;
+                jugador.enSuelo = true;
+                jugador.saltos = 0;
+                jugador.puedeDash = true;
+            }
+        }
+    });
+}
+function activarSwitches() {
+    switches.forEach((switch_, idx) => {
+        if (jugador.x < switch_.x + switch_.width &&
+            jugador.x + jugador.width > switch_.x &&
+            jugador.y < switch_.y + switch_.height &&
+            jugador.y + jugador.height > switch_.y) {
+            // Acción según el tipo de switch
+            if (switch_.tipo === 'plataforma') {
+                // Alterna la visibilidad de la primera plataforma dinámica
+                if (plataformasDinamicas.length > 0) {
+                    plataformasDinamicas[0].visible = !plataformasDinamicas[0].visible;
+                    plataformasDinamicas[0].timer = 0;
+                }
+            }
+            if (switch_.tipo === 'escudo') {
+                // Activa el escudo del núcleo
+                if (!escudoNucleoActivo) {
+                    escudoNucleoActivo = true;
+                    escudoNucleoTimer = 0;
+                    document.getElementById('escudo-nucleo').style.display = 'block';
+                }
+            }
+            if (switch_.tipo === 'laser') {
+                // Alterna el láser principal
+                if (laseres.length > 0) {
+                    laseres[0].activo = !laseres[0].activo;
+                }
+            }
+            if (switch_.tipo === 'puerta') {
+                // Alterna la puerta de energía
+                puertaEnergia.activa = !puertaEnergia.activa;
+            }
+            switch_.activado = !switch_.activado;
+        }
+    });
+}
+function actualizarPowerup() {
+    // Generar powerup aleatorio cada cierto tiempo
+    if (!powerupActual && Math.random() < 0.005) {
+        let tipo = powerupTipos[Math.floor(Math.random() * powerupTipos.length)];
+        let plat = plataformas[Math.floor(Math.random() * plataformas.length)];
+        powerupActual = {
+            x: plat.x + plat.width/2 - 18,
+            y: plat.y - 40,
+            width: 36,
+            height: 36,
+            tipo: tipo,
+            timer: 0
+        };
+    }
+    
+    // Actualizar powerup existente
+    if (powerupActual) {
+        powerupActual.timer++;
+        
+        // Hacer titilar cuando está por desaparecer
+        if (powerupActual.timer > 300) {
+            powerupTitilar = true;
+        }
+        
+        // Eliminar powerup después de cierto tiempo
+        if (powerupActual.timer > 420) {
+            powerupActual = null;
+            powerupTitilar = false;
+        }
+        
+        // Colisión con jugador
+        if (jugador.x < powerupActual.x + powerupActual.width &&
+            jugador.x + jugador.width > powerupActual.x &&
+            jugador.y < powerupActual.y + powerupActual.height &&
+            jugador.y + jugador.height > powerupActual.y) {
+            
+            if (powerupActual.tipo === 'pulso') {
+                // Pulso defensivo - empuja virus lejos
+                virus.forEach(v => {
+                    let dx = v.x - jugador.x;
+                    let dy = v.y - jugador.y;
+                    let dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 200) {
+                        v.velocidadX = (dx/dist) * 8;
+                        v.velocidadY = (dy/dist) * 8;
+                    }
+                });
+                mostrarMensajeAuraman("¡Pulso defensivo activado!");
+            } else if (powerupActual.tipo === 'escudo') {
+                // Escudo temporal
+                escudoNucleoActivo = true;
+                escudoNucleoTimer = 0;
+                document.getElementById('escudo-nucleo').style.display = 'block';
+                mostrarMensajeAuraman("¡Escudo temporal activado!");
+            }
+            
+            powerupActual = null;
+            powerupTitilar = false;
+        }
+    }
+}
+function spawnVirus() {
+    if (virusVivos >= virusPorOleada) return;
+    virusSpawnTimer++;
+    if (virusSpawnTimer < 40 - Math.min(oleada*2, 30)) return;
+    virusSpawnTimer = 0;
+    let tipo = virusTipos[Math.floor(Math.random()*Math.min(1+Math.floor(oleada/2), virusTipos.length))];
+    let v = {
+        x: Math.random() * (CANVAS_WIDTH - 40),
+        y: -40,
+        width: 32,
+        height: 32,
+        velocidadX: (Math.random() - 0.5) * (tipo==='rapido'?6:2),
+        velocidadY: tipo==='rapido'?4+Math.random()*2:2+Math.random()*2,
+        tipo: tipo,
+        anim: Math.random()*100,
+        vida: tipo==='divisor'?2:1
+    };
+    virus.push(v);
+    virusVivos++;
+}
+function actualizarVirus() {
+    for (let i = virus.length - 1; i >= 0; i--) {
+        let v = virus[i];
+        v.x += v.velocidadX;
+        v.y += v.velocidadY;
+        v.anim += 0.1;
+        // Comportamiento especial
+        if (v.tipo === 'rapido') v.x += Math.sin(v.anim)*2;
+        // Colisión con láseres
+        laseres.forEach(laser => {
+            if (laser.activo && v.x < laser.x + laser.width && v.x + v.width > laser.x && v.y < laser.y + laser.height && v.y + v.height > laser.y) {
+                crearExplosion(v.x+v.width/2, v.y+v.height/2, 32);
+                virus.splice(i, 1);
+                gameState.virusEliminados++;
+                virusVivos--;
+                mostrarMensajeAuraman("¡Buen uso del láser!");
+            }
+        });
+        // Colisión con pulso
+        if (escudoNucleoActivo && distancia(v.x+v.width/2, v.y+v.height/2, nucleo.x+nucleo.width/2, nucleo.y+nucleo.height/2) < 160) {
+            v.velocidadY = -8-Math.random()*4;
+            v.velocidadX = (v.x+nucleo.width/2 < nucleo.x+nucleo.width/2 ? -1 : 1) * (4+Math.random()*2);
+            crearExplosion(v.x+v.width/2, v.y+v.height/2, 32);
+        }
+        // Colisión con núcleo
+        if (v.x < nucleo.x + nucleo.width && v.x + v.width > nucleo.x && v.y < nucleo.y + nucleo.height && v.y + v.height > nucleo.y) {
+            if (escudoNucleoActivo) {
+                crearExplosion(v.x+v.width/2, v.y+v.height/2, 32);
+                virus.splice(i, 1);
+                virusVivos--;
+                mostrarMensajeAuraman("¡El escudo te salvó!");
+            } else {
+                crearExplosion(v.x+v.width/2, v.y+v.height/2, 32);
+                virus.splice(i, 1);
+                gameState.nucleoIntegridad -= 10;
+                actualizarHUD();
+                virusVivos--;
+                mostrarMensajeAuraman("¡Cuidado con el núcleo!");
+                if (gameState.nucleoIntegridad <= 0) gameOver();
+            }
+        }
+        // Eliminar virus que salen de pantalla
+        if (v.y > CANVAS_HEIGHT+40) {
+            virus.splice(i, 1);
+            virusVivos--;
+        }
+        // Virus divisor: se divide al morir
+        if (v.vida === 0) {
+            virus.splice(i, 1);
+            virusVivos--;
+            for (let d = 0; d < 2; d++) {
+                virus.push({
+                    x: v.x,
+                    y: v.y,
+                    width: 18,
+                    height: 18,
+                    velocidadX: (Math.random()-0.5)*6,
+                    velocidadY: 3+Math.random()*2,
+                    tipo: 'basico',
+                    anim: Math.random()*100,
+                    vida: 1
+                });
+                virusVivos++;
+            }
+        }
+    }
+}
+function actualizarOleada() {
+    if (gameState.virusEliminados > 0 && gameState.virusEliminados % virusPorOleada === 0) {
+        oleada++;
+        virusPorOleada += 4;
+        mostrarMensajeAuraman("¡Vienen más rápido!");
+    }
+}
+function actualizarPlataformasDinamicas() {
+    plataformasDinamicas.forEach(p => {
+        if (p.visible) {
+            p.timer++;
+            if (p.timer > p.duracion) {
+                p.visible = false;
+                p.timer = 0;
+            }
+        }
+    });
+}
+function dibujarLaserSciFi(laser) {
+    ctx.save();
+    let grad = ctx.createLinearGradient(laser.x, laser.y, laser.x + laser.width, laser.y + laser.height);
+    grad.addColorStop(0, '#fff');
+    grad.addColorStop(0.2, '#ff0055');
+    grad.addColorStop(0.8, '#ff0055');
+    grad.addColorStop(1, '#fff');
+    ctx.globalAlpha = 0.85 + 0.15 * Math.sin(Date.now()/100 + laser.x);
+    ctx.shadowColor = '#ff0055';
+    ctx.shadowBlur = 32 + 16*Math.sin(Date.now()/200+laser.x);
+    ctx.fillStyle = grad;
+    ctx.fillRect(laser.x, laser.y, laser.width, laser.height);
+    // Efecto ondulante
+    for (let i = 0; i < laser.width; i += 12) {
+        ctx.globalAlpha = 0.3;
+        ctx.beginPath();
+        ctx.arc(laser.x+i, laser.y+laser.height/2 + Math.sin(Date.now()/100+i)*4, 8, 0, 2*Math.PI);
+        ctx.fillStyle = '#ff0055';
+        ctx.fill();
+    }
+    ctx.restore();
+}
+function crearExplosion(x, y, r) {
+    let div = document.createElement('div');
+    div.className = 'explosion';
+    div.style.left = (x-0.5*r) + 'px';
+    div.style.top = (y-0.5*r) + 'px';
+    div.style.width = r + 'px';
+    div.style.height = r + 'px';
+    document.querySelector('.nucleo-canvas-container').appendChild(div);
+    setTimeout(()=>div.remove(), 500);
+}
+function mostrarMensajeAuraman(msg) {
+    let el = document.getElementById('auraman-msg');
+    el.textContent = msg;
+    el.style.display = 'block';
+    setTimeout(()=>{ el.style.display = 'none'; }, 1800);
+}
+function mensajesAuramanRandom() {
+    if (auramanMsgTimer > 0) {
+        auramanMsgTimer--;
+        return;
+    }
+    if (Math.random() < 0.01) {
+        let msg = auramanMensajes[Math.floor(Math.random()*auramanMensajes.length)];
+        mostrarMensajeAuraman(msg);
+        auramanMsgTimer = 300;
+    }
+}
+function dibujar() {
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    // Glow exterior
+    ctx.save();
+    ctx.shadowColor = '#00ffc3';
+    ctx.shadowBlur = 32;
+    ctx.strokeStyle = '#00ffc3';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.restore();
+    // Plataformas
+    plataformas.forEach((plataforma, idx) => {
+        ctx.save();
+        ctx.shadowColor = '#00ffc3';
+        ctx.shadowBlur = 16;
+        ctx.fillStyle = idx % 2 === 0 ? '#1a2a3a' : '#223a4a';
+        ctx.fillRect(plataforma.x, plataforma.y, plataforma.width, plataforma.height);
+        ctx.strokeStyle = '#00ffc3';
+        ctx.lineWidth = 2.5;
+        ctx.strokeRect(plataforma.x, plataforma.y, plataforma.width, plataforma.height);
+        ctx.globalAlpha = 0.3;
+        ctx.fillStyle = '#000';
+        ctx.fillRect(plataforma.x, plataforma.y + plataforma.height, plataforma.width, 8);
+        ctx.globalAlpha = 1;
+        ctx.restore();
+    });
+    plataformasDinamicas.filter(p=>p.visible).forEach((plataforma, idx) => {
+        ctx.save();
+        ctx.shadowColor = '#00ff6a';
+        ctx.shadowBlur = 24;
+        ctx.fillStyle = '#1a3a2a';
+        ctx.fillRect(plataforma.x, plataforma.y, plataforma.width, plataforma.height);
+        ctx.strokeStyle = '#00ff6a';
+        ctx.lineWidth = 2.5;
+        ctx.strokeRect(plataforma.x, plataforma.y, plataforma.width, plataforma.height);
+        ctx.restore();
+    });
+    // Switches
+    switches.forEach(switch_ => {
+        ctx.save();
+        if (switchImg.complete) {
+            ctx.globalAlpha = 0.95;
+            ctx.drawImage(switchImg, switch_.x, switch_.y, switch_.width, switch_.height);
+        } else {
+            ctx.fillStyle = switch_.activado ? '#00ff6a' : '#00ffc3';
+            ctx.fillRect(switch_.x, switch_.y, switch_.width, switch_.height);
+        }
+        if (switch_.activado) {
+            ctx.shadowColor = '#00ff6a';
+            ctx.shadowBlur = 16;
+        } else {
+            ctx.shadowColor = '#00ffc3';
+            ctx.shadowBlur = 8;
+        }
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(switch_.x, switch_.y, switch_.width, switch_.height);
+        // --- Dibuja el nombre arriba del switch ---
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1;
+        ctx.font = 'bold 20px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#fff';
+        let nombre = '';
+        if (switch_.tipo === 'plataforma') nombre = 'Plataforma';
+        else if (switch_.tipo === 'escudo') nombre = 'Escudo';
+        else if (switch_.tipo === 'laser') nombre = 'Láser';
+        else if (switch_.tipo === 'puerta') nombre = 'Puerta';
+        ctx.fillText(nombre, switch_.x + switch_.width/2, switch_.y - 10);
+        ctx.restore();
+    });
+    // Powerups
+    if (powerupActual) {
+        ctx.save();
+        ctx.shadowColor = '#00ffc3';
+        ctx.shadowBlur = 24;
+        ctx.beginPath();
+        ctx.arc(powerupActual.x+powerupActual.width/2, powerupActual.y+powerupActual.height/2, 18, 0, 2*Math.PI);
+        ctx.fillStyle = '#00ffc3';
+        ctx.globalAlpha = 0.8;
+        ctx.fill();
+        ctx.restore();
+    }
+    // Puerta de energía
+    if (puertaEnergia.activa) {
+        ctx.save();
+        ctx.shadowColor = '#ff0055';
+        ctx.shadowBlur = 32;
+        ctx.fillStyle = '#ff0055';
+        ctx.fillRect(puertaEnergia.x, puertaEnergia.y, puertaEnergia.width, puertaEnergia.height);
+        ctx.restore();
+    }
+    // Láseres
+    laseres.forEach(laser => { if (laser.activo) dibujarLaserSciFi(laser); });
+    // Virus
+    virus.forEach(v => {
+        ctx.save();
+        ctx.translate(v.x + v.width/2, v.y + v.height/2);
+        let scale = 1 + Math.sin(v.anim) * 0.08;
+        ctx.scale(scale, scale);
+        ctx.translate(-v.width/2, -v.height/2);
+        if (virusImg.complete) {
+            ctx.globalAlpha = 0.95;
+            ctx.shadowColor = '#ff0055';
+            ctx.shadowBlur = 24;
+            ctx.drawImage(virusImg, 0, 0, v.width, v.height);
+        } else {
+            ctx.fillStyle = '#ff0055';
+            ctx.shadowColor = '#ff0055';
+            ctx.shadowBlur = 24;
+            ctx.fillRect(0, 0, v.width, v.height);
+        }
+        ctx.restore();
+    });
+    // Jugador
+    ctx.save();
+    ctx.shadowColor = '#00ffc3';
+    ctx.shadowBlur = 24;
+    let grad = ctx.createLinearGradient(jugador.x, jugador.y, jugador.x, jugador.y + jugador.height);
+    grad.addColorStop(0, '#fff');
+    grad.addColorStop(0.5, '#00ffc3');
+    grad.addColorStop(1, '#005a7a');
+    ctx.fillStyle = grad;
+    ctx.fillRect(jugador.x, jugador.y, jugador.width, jugador.height);
+    ctx.globalAlpha = 0.3;
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = '#000';
+    ctx.beginPath();
+    ctx.ellipse(jugador.x + jugador.width/2, jugador.y + jugador.height, jugador.width/2, 8, 0, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.restore();
+    // El núcleo es el video y el escudo (no se dibuja en canvas)
+}
+function actualizarHUD() {
+    let barra = document.getElementById('barra-integridad-fill');
+    let porcentaje = Math.max(0, gameState.nucleoIntegridad);
+    barra.style.width = porcentaje + '%';
+    document.getElementById('integridad-porcentaje').textContent = porcentaje + '%';
+    document.getElementById('virus-eliminados').textContent = gameState.virusEliminados;
+    if (porcentaje > 60) {
+        barra.style.background = 'linear-gradient(90deg, #00ffea, #00ff6a 60%, #fff 100%)';
+    } else if (porcentaje > 30) {
+        barra.style.background = 'linear-gradient(90deg, #ffff00, #ffae00 60%, #fff 100%)';
+    } else {
+        barra.style.background = 'linear-gradient(90deg, #ff0055, #ff0000 60%, #fff 100%)';
+    }
+    barra.classList.remove('pulse');
+    void barra.offsetWidth;
+    barra.classList.add('pulse');
+}
+function iniciarJuego() {
+    console.log('Iniciando juego del núcleo...');
+    actualizarHUD();
+    dibujar();
+    console.log('GameLoop iniciado');
+    requestAnimationFrame(gameLoop);
+}
+function gameLoop() {
+    if (!gameState.jugando) return;
+    
+    // Debug: verificar que el gameLoop se ejecute
+    if (Math.random() < 0.001) {
+        console.log('GameLoop ejecutándose, teclas:', Object.keys(teclas).filter(k => teclas[k]));
+    }
+    
+    actualizarJugador();
+    actualizarPowerup();
+    spawnVirus();
+    actualizarVirus();
+    dibujar();
+    mensajesAuramanRandom();
+    // Defensa activa timers
+    if (escudoNucleoActivo) {
+        escudoNucleoTimer++;
+        if (escudoNucleoTimer > 240) {
+            escudoNucleoActivo = false;
+            document.getElementById('escudo-nucleo').style.display = 'none';
+        }
+    }
+    // Condición de victoria (3 oleadas)
+    if (oleada > 3 && virusVivos === 0) {
+        victoria();
+        return;
+    }
+    requestAnimationFrame(gameLoop);
+}
+function gameOver() {
+    gameState.jugando = false;
+    document.getElementById('game-over').style.display = 'block';
+}
+function victoria() {
+    gameState.jugando = false;
+    document.getElementById('victory').style.display = 'block';
+}
+function reiniciarJuego() {
+    // Resetear todo
+    Object.assign(gameState, { nucleoIntegridad: 100, virusEliminados: 0, tiempoJuego: 0, jugando: true });
+    jugador.x = 100; jugador.y = CANVAS_HEIGHT - 120; jugador.velocidadX = 0; jugador.velocidadY = 0; jugador.saltos = 0; jugador.puedeDash = true; jugador.dashActivo = false;
+    virus = [];
+    virusVivos = 0;
+    oleada = 1;
+    virusPorOleada = 8;
+    plataformasDinamicas.forEach(p=>{p.visible=false;p.timer=0;});
+    switches.forEach(s=>s.activado=false);
+    puertaEnergia.activa = true;
+    laseres.forEach(l=>l.activo=false);
+    powerupActual = null;
+    escudoDisponible = false;
+    document.getElementById('escudo-nucleo').style.display = 'none';
+    actualizarHUD();
+    document.getElementById('game-over').style.display = 'none';
+    document.getElementById('victory').style.display = 'none';
+    requestAnimationFrame(gameLoop);
+}
+function distancia(x1, y1, x2, y2) {
+    return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+}
+if (virusImg.complete && switchImg.complete) {
+    iniciarJuego();
+} else {
+    virusImg.onload = function() { if (switchImg.complete) iniciarJuego(); };
+    switchImg.onload = function() { if (virusImg.complete) iniciarJuego(); };
+}
+</script> 

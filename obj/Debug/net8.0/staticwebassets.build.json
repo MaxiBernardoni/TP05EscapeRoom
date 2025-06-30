@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pNNtGahZMgy8id+WIdlkRnOdJV8jDgL0zBqA/hIWCnQ=",
+  "Hash": "bipSWvKVYpriAKA+EN4oUVtQpix57VxvIJDC5ouh66A=",
   "Source": "TP05-EscapeRoom",
   "BasePath": "_content/TP05-EscapeRoom",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\ascensor.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\auraman.png",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "img/auraman.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\auraman.png"
     },
     {
       "Identity": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\balatrotheme.mp3",
@@ -530,6 +549,25 @@
       "OriginalItemSpec": "wwwroot\\img\\nervioso.png"
     },
     {
+      "Identity": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\nucleo.mp4",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "img/nucleo.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\nucleo.mp4"
+    },
+    {
       "Identity": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\oficinista.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
@@ -739,6 +777,25 @@
       "OriginalItemSpec": "wwwroot\\img\\seguridad.png"
     },
     {
+      "Identity": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\switch.png",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "img/switch.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\switch.png"
+    },
+    {
       "Identity": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\usuario.png",
       "SourceId": "TP05-EscapeRoom",
       "SourceType": "Discovered",
@@ -775,6 +832,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\vaso.webp"
+    },
+    {
+      "Identity": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\virus.png",
+      "SourceId": "TP05-EscapeRoom",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\",
+      "BasePath": "_content/TP05-EscapeRoom",
+      "RelativePath": "img/virus.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\virus.png"
     },
     {
       "Identity": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\volver.png",

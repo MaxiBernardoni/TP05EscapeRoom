@@ -312,7 +312,7 @@ namespace TuProyecto.Controllers
         [HttpGet]
         public IActionResult MenuProgreso()
         {
-            bool hab1 = false, hab2 = false, hab3 = false;
+            bool hab1 = false, hab2 = false, hab3 = false, hab4 = false, hab5 = false;
             var hab1Json = HttpContext.Session.GetString("habitacion1");
             if (!string.IsNullOrEmpty(hab1Json))
             {
@@ -330,7 +330,17 @@ namespace TuProyecto.Controllers
             {
                 hab3 = true;
             }
-            return Json(new { hab1, hab2, hab3 });
+            var hab4Json = HttpContext.Session.GetString("habitacion4_completada");
+            if (!string.IsNullOrEmpty(hab4Json))
+            {
+                hab4 = true;
+            }
+            var hab5Json = HttpContext.Session.GetString("habitacion5_completada");
+            if (!string.IsNullOrEmpty(hab5Json))
+            {
+                hab5 = true;
+            }
+            return Json(new { hab1, hab2, hab3, hab4, hab5 });
         }
 
         [HttpPost]
@@ -341,11 +351,24 @@ namespace TuProyecto.Controllers
             {
                 HttpContext.Session.Remove("habitacion2");
                 HttpContext.Session.Remove("habitacion3");
+                HttpContext.Session.Remove("habitacion4_completada");
+                HttpContext.Session.Remove("habitacion5_completada");
                 HttpContext.Session.Remove("juego_colectivo");
             }
             else if (habitacion == 2)
             {
                 HttpContext.Session.Remove("habitacion3");
+                HttpContext.Session.Remove("habitacion4_completada");
+                HttpContext.Session.Remove("habitacion5_completada");
+            }
+            else if (habitacion == 3)
+            {
+                HttpContext.Session.Remove("habitacion4_completada");
+                HttpContext.Session.Remove("habitacion5_completada");
+            }
+            else if (habitacion == 4)
+            {
+                HttpContext.Session.Remove("habitacion5_completada");
             }
             // Redirige a la habitación correspondiente
             switch (habitacion)
@@ -353,6 +376,8 @@ namespace TuProyecto.Controllers
                 case 1: return RedirectToAction("Habitacion1");
                 case 2: return RedirectToAction("Habitacion2");
                 case 3: return RedirectToAction("Habitacion3");
+                case 4: return RedirectToAction("Habitacion4");
+                case 5: return RedirectToAction("Habitacion5");
                 default: return RedirectToAction("Index");
             }
         }
@@ -497,6 +522,15 @@ namespace TuProyecto.Controllers
             {
                 // La Habitación 4 no tiene estado persistente en session, solo redirigir
                 return RedirectToAction("Habitacion4");
+            }
+            
+            // Habitación 5 y todas sus rutas
+            if (referer.Contains("habitacion5") || referer.Contains("juegonucleo") || 
+                referer.Contains("completarhabitacion5") || referer.Contains("firmacontrato") ||
+                referer.Contains("finalizarjuego"))
+            {
+                // La Habitación 5 no tiene estado persistente en session, solo redirigir
+                return RedirectToAction("Habitacion5");
             }
             
             // Habitación 3 y todas sus rutas (por defecto)
@@ -895,6 +929,49 @@ namespace TuProyecto.Controllers
         public IActionResult DialogoPortero()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Habitacion5()
+        {
+            // Habitación 5 - El Despacho de Auraman
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult JuegoNucleo()
+        {
+            // Inicializar el juego del núcleo
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CompletarHabitacion5()
+        {
+            // Marcar la habitación 5 como completada
+            HttpContext.Session.SetString("habitacion5_completada", "true");
+            return RedirectToAction("FirmaContrato");
+        }
+
+        [HttpGet]
+        public IActionResult FirmaContrato()
+        {
+            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult FinalizarJuego()
+        {
+            // Marcar la habitación 4 como completada si no está marcada
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("habitacion4_completada")))
+            {
+                HttpContext.Session.SetString("habitacion4_completada", "true");
+            }
+            // Final del juego completo
+            return RedirectToAction("ResultadoFinal");
         }
     }
 }

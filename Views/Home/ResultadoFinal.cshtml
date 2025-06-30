@@ -1,130 +1,230 @@
-@model TuProyecto.Models.JuegoColectivoModel
 @{
-    ViewData["Title"] = "Resultado Final del Juego";
+    ViewData["Title"] = "Final del Juego - Escape Room Completado";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <style>
-    .resultado-final-container {
-        max-width: 800px;
+    .final-completo-container {
+        max-width: 900px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 40px;
         text-align: center;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        background: rgba(0, 0, 0, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 255, 195, 0.3);
         color: #fff;
+        border: 2px solid #00ffc3;
     }
 
-    .marcador {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin: 30px 0;
-        font-size: 2em;
-    }
-
-    .jugador-score, .conductor-score {
-        padding: 20px;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.1);
-        min-width: 150px;
-    }
-
-    .victoria-badge {
+    .titulo-final {
         font-size: 3em;
-        margin: 20px 0;
+        color: #00ffc3;
+        margin-bottom: 30px;
+        text-shadow: 0 0 20px rgba(0, 255, 195, 0.5);
         animation: aparecer 1s ease-out;
+    }
+
+    .subtitulo-final {
+        font-size: 1.5em;
+        color: #00a8a8;
+        margin-bottom: 40px;
+        animation: aparecer 1s ease-out 0.3s both;
+    }
+
+    .resumen-aventura {
+        background: rgba(0, 255, 195, 0.1);
+        border: 1px solid #00ffc3;
+        border-radius: 15px;
+        padding: 30px;
+        margin: 30px 0;
+        text-align: left;
+        animation: aparecer 1s ease-out 0.6s both;
+    }
+
+    .resumen-aventura h3 {
+        color: #00ffc3;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .habitacion-resumen {
+        margin: 15px 0;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        border-left: 4px solid #00ffc3;
+    }
+
+    .habitacion-resumen h4 {
+        color: #00ffc3;
+        margin-bottom: 10px;
     }
 
     .mensaje-final {
-        font-size: 1.5em;
-        margin: 30px 0;
-        padding: 20px;
-        border-radius: 10px;
-        background: linear-gradient(45deg, 
-            @(Model.GanadorFinal == "Jugador" ? "#4CAF50, #45a049" : "#f44336, #d32f2f"));
-        animation: aparecer 1s ease-out;
+        font-size: 1.3em;
+        margin: 40px 0;
+        padding: 30px;
+        border-radius: 15px;
+        background: linear-gradient(45deg, #00ffc3, #00a8a8);
+        color: #000;
+        font-weight: bold;
+        animation: aparecer 1s ease-out 0.9s both;
     }
 
-    .tiempo-final {
-        font-size: 1.5em;
-        margin: 20px 0;
-        color: @(Model.TiempoPenalizacion < 0 ? "#4CAF50" : "#f44336");
-        animation: aparecer 0.5s ease-out;
+    .opciones-finales {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
+        animation: aparecer 1s ease-out 1.2s both;
     }
 
-    .continuar-btn {
-        display: inline-block;
-        margin-top: 20px;
+    .btn-final {
         padding: 15px 30px;
         font-size: 1.2em;
-        color: #fff;
-        background: linear-gradient(45deg, #2196F3, #1976D2);
         border: none;
-        border-radius: 25px;
+        border-radius: 50px;
         cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
         text-decoration: none;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: aparecer 1s ease-out;
+        display: inline-block;
     }
 
-    .continuar-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+    .btn-reiniciar {
+        background: linear-gradient(45deg, #00ffc3, #00a8a8);
+        color: #000;
+        box-shadow: 0 8px 25px rgba(0, 255, 195, 0.4);
     }
 
-    .resumen-rondas {
+    .btn-reiniciar:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 35px rgba(0, 255, 195, 0.6);
+    }
+
+    .btn-salir {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+        color: #fff;
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    }
+
+    .btn-salir:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+    }
+
+    .estadisticas-finales {
+        display: flex;
+        justify-content: space-around;
         margin: 30px 0;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
+        animation: aparecer 1s ease-out 0.9s both;
     }
 
+    .stat {
+        text-align: center;
+        padding: 20px;
+        background: rgba(0, 255, 195, 0.1);
+        border-radius: 10px;
+        border: 1px solid #00ffc3;
+    }
+
+    .stat-numero {
+        font-size: 2.5em;
+        color: #00ffc3;
+        font-weight: bold;
+    }
+
+    .stat-texto {
+        font-size: 1.1em;
+        color: #00a8a8;
+    }
+
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+    
     @@keyframes aparecer {
         from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
         }
         to {
             opacity: 1;
             transform: translateY(0);
         }
     }
+
+    @@keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
 </style>
 
-<div class="resultado-final-container">
-    <h2>¡Fin del Desafío!</h2>
+<div class="final-completo-container">
+    <h1 class="titulo-final">🎉 ¡ESCAPE ROOM COMPLETADO! 🎉</h1>
+    
+    <p class="subtitulo-final">Has logrado superar todos los desafíos y conseguir el trabajo</p>
 
-    <div class="victoria-badge">
-        @(Model.GanadorFinal == "Jugador" ? "🏆" : "🚦")
-    </div>
-
-    <div class="marcador">
-        <div class="jugador-score">
-            Tú: @Model.VictoriasJugador
+    <div class="estadisticas-finales">
+        <div class="stat">
+            <div class="stat-numero">5</div>
+            <div class="stat-texto">Habitaciones Superadas</div>
         </div>
-        <div class="conductor-score">
-            Conductor: @Model.VictoriasConductor
+        <div class="stat">
+            <div class="stat-numero">∞</div>
+            <div class="stat-texto">Desafíos Completados</div>
+        </div>
+        <div class="stat">
+            <div class="stat-numero">100%</div>
+            <div class="stat-texto">Éxito</div>
         </div>
     </div>
 
-    <div class="mensaje-final">
-        @Model.MensajeConductor
+    <div class="resumen-aventura">
+        <h3>📋 Resumen de tu Aventura</h3>
+        
+        <div class="habitacion-resumen">
+            <h4>🏠 Habitación 1 - El Despertar</h4>
+            <p>Recolectaste objetos esenciales: llaves, SUBE, café y tostadas. Aprendiste la importancia de estar preparado para el día.</p>
+        </div>
+        
+        <div class="habitacion-resumen">
+            <h4>🚌 Habitación 2 - El Viaje</h4>
+            <p>Te enfrentaste al conductor del colectivo en un juego de estrategia. Demostraste que puedes manejar situaciones tensas con calma.</p>
+        </div>
+        
+        <div class="habitacion-resumen">
+            <h4>🏙️ Habitación 3 - Almagro</h4>
+            <p>Interactuaste con diversos personajes: el punga, el oficinista, el kiosquero, el nervioso y el indiferente. Cada uno te enseñó algo diferente sobre la vida en la ciudad.</p>
+        </div>
+        
+        <div class="habitacion-resumen">
+            <h4>🏢 Habitación 4 - El Edificio</h4>
+            <p>Te infiltraste en el edificio de Auraman, superando sistemas de seguridad cada vez más complejos. Conociste a Binker, quien te ayudó a llegar al piso 20.</p>
+        </div>
+        
+        <div class="habitacion-resumen">
+            <h4>💻 Habitación 5 - El Despacho</h4>
+            <p>Defendiste el núcleo digital de Auraman de ataques de virus. Demostraste habilidades técnicas excepcionales y firmaste tu contrato de trabajo.</p>
+        </div>
     </div>
 
-    <div class="tiempo-final">
-        @if (Model.TiempoPenalizacion < 0)
-        {
-            <span>¡Ganaste @Math.Abs(Model.TiempoPenalizacion) segundos! El conductor tomará atajos.</span>
-        }
-        else
-        {
-            <span>Perdiste @Model.TiempoPenalizacion segundos... El conductor tomará la ruta más larga.</span>
-        }
+    <div class="mensaje-final pulse">
+        <h3>🎯 ¡FELICITACIONES! 🎯</h3>
+        <p>Has demostrado ser el candidato perfecto para el puesto.</p>
+        <p>Mañana a las 10:00 en Yatay 240, Buenos Aires.</p>
+        <p><strong>¡No llegues tarde!</strong></p>
     </div>
 
-    <a href="@Url.Action("Habitacion3", "Home")" class="continuar-btn">
-        Continuar el viaje →
-    </a>
+    <div class="opciones-finales">
+        <form method="post" action="/Home/ReiniciarJuego" style="display: inline;">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn-final btn-reiniciar">🔄 Jugar de Nuevo</button>
+        </form>
+        <a href="/" class="btn-final btn-salir">🚪 Salir del Juego</a>
+    </div>
 </div> 

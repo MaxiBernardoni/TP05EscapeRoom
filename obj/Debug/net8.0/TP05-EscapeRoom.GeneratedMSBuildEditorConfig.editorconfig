@@ -22,10 +22,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBc2NlbnNvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Max/Downloads/TP05EscapeRoom/Views/Home/BarrioAlmagro.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCYXJyaW9BbG1hZ3JvLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Max/Downloads/TP05EscapeRoom/Views/Home/ContinuarDespuesCofre.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250aW51YXJEZXNwdWVzQ29mcmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -70,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGaW5hbEhhYml0YWNpb240LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Max/Downloads/TP05EscapeRoom/Views/Home/FirmaContrato.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGaXJtYUNvbnRyYXRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Max/Downloads/TP05EscapeRoom/Views/Home/Habitacion1.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uMS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -86,12 +86,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uNC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Max/Downloads/TP05EscapeRoom/Views/Home/Habitacion5.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWJpdGFjaW9uNS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Max/Downloads/TP05EscapeRoom/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Max/Downloads/TP05EscapeRoom/Views/Home/JuegoColectivo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxKdWVnb0NvbGVjdGl2by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Max/Downloads/TP05EscapeRoom/Views/Home/JuegoNucleo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxKdWVnb051Y2xlby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Max/Downloads/TP05EscapeRoom/Views/Home/Minijuego1.cshtml]

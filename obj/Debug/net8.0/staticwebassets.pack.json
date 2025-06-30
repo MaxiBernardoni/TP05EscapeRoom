@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\img\\ascensor.jpg"
     },
     {
+      "Id": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\auraman.png",
+      "PackagePath": "staticwebassets\\img\\auraman.png"
+    },
+    {
       "Id": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\balatrotheme.mp3",
       "PackagePath": "staticwebassets\\img\\balatrotheme.mp3"
     },
@@ -109,6 +113,10 @@
       "PackagePath": "staticwebassets\\img\\nervioso.png"
     },
     {
+      "Id": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\nucleo.mp4",
+      "PackagePath": "staticwebassets\\img\\nucleo.mp4"
+    },
+    {
       "Id": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\oficinista.png",
       "PackagePath": "staticwebassets\\img\\oficinista.png"
     },
@@ -153,12 +161,20 @@
       "PackagePath": "staticwebassets\\img\\seguridad.png"
     },
     {
+      "Id": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\switch.png",
+      "PackagePath": "staticwebassets\\img\\switch.png"
+    },
+    {
       "Id": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\usuario.png",
       "PackagePath": "staticwebassets\\img\\usuario.png"
     },
     {
       "Id": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\vaso.webp",
       "PackagePath": "staticwebassets\\img\\vaso.webp"
+    },
+    {
+      "Id": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\virus.png",
+      "PackagePath": "staticwebassets\\img\\virus.png"
     },
     {
       "Id": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\wwwroot\\img\\volver.png",

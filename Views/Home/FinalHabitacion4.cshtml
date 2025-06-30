@@ -2,15 +2,58 @@
     ViewData["Title"] = "Final Habitación 4";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+.contexto-epico {
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #00ffc3;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 30px 0;
+    box-shadow: 0 0 30px rgba(0, 255, 195, 0.3);
+    text-align: center;
+    color: #fff;
+}
+.contexto-epico h3 {
+    color: #00ffc3;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 195, 0.5);
+}
+.contexto-epico p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+.btn-contexto {
+    background: linear-gradient(45deg, #00ffc3, #00a8a8);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 8px 25px rgba(0, 255, 195, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+.btn-contexto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 255, 195, 0.6);
+}
+</style>
+
 <div class="final-hab4-container" style="max-width:700px;margin:40px auto;">
-    <h2>¡Llegaste al piso 20!</h2>
-    <div style="margin: 30px 0;">
-        <b>Usuario:</b> ¡Vamos! ¡Pasé los láseres!<br/>
-        <b>Usuario:</b> Esta vez llegué directo al piso 10. Me estoy acercando.<br/>
-        <b>Usuario:</b> Usás el ascensor privado.<br/>
-        <b>Usuario:</b> Llegás al piso 20, listo para la entrevista final en la Habitación 5.<br/>
-    </div>
-    <div style="text-align:center;">
-        <span style="font-size:1.3em;color:#00ffc3;">¡Fin de la Habitación 4!</span>
+    <div class="contexto-epico">
+        <h3>🎯 ¡Llegaste al Piso 20! 🎯</h3>
+        <p>¡Increíble! Has logrado infiltrarte en el edificio de Auraman y llegar hasta el piso 20. El ascensor privado de Binker te llevó directamente a tu destino.</p>
+        <p style="color: #00ffc3; font-style: italic;">"Finalmente... después de todo lo que pasé, llegué al despacho de Auraman."</p>
+        <p>Te encuentras ahora en el corazón del edificio. El ambiente es completamente diferente aquí - todo es más lujoso, más tecnológico. Puedes sentir la presencia de Auraman en cada rincón.</p>
+        <p>Mientras te orientas en este nuevo espacio, ves que el despacho está protegido por sistemas de seguridad avanzados. Parece que Auraman te está esperando para el desafío final.</p>
+        <p style="color: #00a8a8; font-weight: bold;">¿Estás listo para enfrentar la entrevista final y demostrar que mereces el puesto?</p>
+        <a href="/Home/Habitacion5" class="btn-contexto">Entrar al Despacho</a>
     </div>
 </div> 

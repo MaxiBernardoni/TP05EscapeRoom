@@ -41,7 +41,7 @@
     height: 110px;
     border-radius: 50%;
     border: 3px solid #00eaff;
-    background: #fff;ZZ
+    background: #fff;
     border: none !important;
 }
 .npc-comment {
@@ -80,6 +80,20 @@
 </style>
 
 <div class="barrio-container">
+    @if (TempData["MensajePunga"] != null)
+    {
+        <div style="background: #ff4444; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-weight: bold; border: 2px solid #cc0000;">
+            @TempData["MensajePunga"]
+        </div>
+    }
+    
+    @if (TempData["MensajeNervioso"] != null)
+    {
+        <div style="background: #ff8800; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-weight: bold; border: 2px solid #cc6600;">
+            @TempData["MensajeNervioso"]
+        </div>
+    }
+    
     <div class="barrio-title">
         Te bajas del colectivo cerca del edificio donde se encuentra el despacho. Es un nuevo barrio donde no conocés las calles. Tenés que buscar la solución para dirigirte a la dirección del edificio.<br><br>
         <span style="color:#00eaff;">Usuario:</span> bueno. ya estamos en almagro. ahora, a buscar el edificio de auraman. ¿a quién le pregunto?
@@ -171,6 +185,13 @@
             <div class="npc" style="cursor:default;opacity:0.5;">
                 <img src="/img/nervioso.png" alt="Nervioso" />
                 <div class="npc-comment">Ya le hablé, me dio el código del edificio.</div>
+            </div>
+        }
+        else if (!TuProyecto.Models.InventarioGlobal.CargarDeSession(Context.Session).TieneObjeto("🪞 Espejo"))
+        {
+            <div class="npc" style="cursor:default;opacity:0.5;">
+                <img src="/img/nervioso.png" alt="Nervioso" />
+                <div class="npc-comment">Necesitás el espejo para hablar con él.</div>
             </div>
         }
         else

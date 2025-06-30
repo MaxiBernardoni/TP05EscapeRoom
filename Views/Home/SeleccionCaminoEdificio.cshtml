@@ -1,0 +1,85 @@
+@{
+    ViewData["Title"] = "Edificio - Selección de Camino";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+.contexto-exito {
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #00ffc3;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 30px 0;
+    box-shadow: 0 0 30px rgba(0, 255, 195, 0.3);
+    text-align: center;
+    color: #fff;
+}
+.contexto-exito h3 {
+    color: #00ffc3;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 195, 0.5);
+}
+.contexto-exito p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+.btn-exito {
+    background: linear-gradient(45deg, #00ffc3, #00a8cc);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 8px 25px rgba(0, 255, 195, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+.btn-exito:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 255, 195, 0.6);
+}
+</style>
+
+<div class="seleccion-camino-container">
+    <!-- Contexto de éxito -->
+    <div id="contexto-exito">
+        <div class="contexto-exito">
+            <h3>🎉 ¡Infiltración Exitosa! 🎉</h3>
+            <p>¡Lo lograste! Has conseguido infiltrarte en el edificio sin ser detectado. Ahora estás en el vestíbulo principal, rodeado de la opulencia y el misterio que caracteriza a este lugar.</p>
+            <p style="color: #00ffc3; font-style: italic;">"Ahora viene la parte difícil... llegar al piso 20 sin que me descubran."</p>
+            <p>Desde aquí puedes ver dos opciones: las escaleras de emergencia o el ascensor principal. Ambas te llevarán hacia tu objetivo, pero cada una tiene sus riesgos.</p>
+            <p style="color: #00a8cc; font-weight: bold;">¿Cuál camino elegirás?</p>
+            <button onclick="mostrarOpciones()" class="btn-exito">Elegir Camino</button>
+        </div>
+    </div>
+    
+    <div id="opciones-camino" style="display:none;">
+        <h2>¿Cómo quieres subir?</h2>
+        <div style="margin: 30px 0;">
+            <b>Usuario:</b> Bien, ya estoy adentro. ¿Subo por la escalera o el ascensor?
+        </div>
+        <div style="display:flex; gap:60px; justify-content:center; align-items:center; margin-top:30px;">
+            <a href="/Home/Escalera" class="btn btn-primary" style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 18px;min-width:180px;">
+                <img src="/img/escalera.jpg" alt="Escalera" style="width:110px;height:110px;object-fit:cover;border-radius:16px;box-shadow:0 4px 16px #0006;">
+                <span style="font-size:1.2em;font-weight:bold;">Escalera</span>
+            </a>
+            <a href="/Home/Ascensor" class="btn btn-secondary" style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 18px;min-width:180px;">
+                <img src="/img/ascensor.jpg" alt="Ascensor" style="width:110px;height:110px;object-fit:cover;border-radius:16px;box-shadow:0 4px 16px #0006;">
+                <span style="font-size:1.2em;font-weight:bold;">Ascensor</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+function mostrarOpciones() {
+    document.getElementById('contexto-exito').style.display = 'none';
+    document.getElementById('opciones-camino').style.display = 'block';
+}
+</script> 

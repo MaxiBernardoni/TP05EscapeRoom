@@ -116,7 +116,7 @@
     </div>
     <div style="background:#003344; color:#fff; border-radius:8px; padding:10px 18px; margin-bottom:18px; font-family:'Courier New',monospace; font-size:1.05em; max-width:420px; margin-left:auto; margin-right:auto;">
         <b>¿Cómo funciona?</b><br/>
-        <b>E</b> = Exactos: dígitos correctos y en la posición correcta.<br/>
+        <b>E</b> = Exactos: dígitos correctos y en la posición correcta. @modelo.NumeroSecretoCofre<br/>
         <b>D</b> = Desordenados: dígitos correctos pero en posición incorrecta.<br/>
         Ejemplo: <span style="color:#0f0">1E-3D</span> significa 1 exacto y 3 desordenados.
     </div>
@@ -131,11 +131,15 @@
             <input class="cofre-input" type="text" name="intento" maxlength="4" minlength="4" pattern="[0-9]{4}" autocomplete="off" required placeholder="----" />
             <button class="cofre-btn" type="submit">Probar combinación</button>
         </form>
+        <div style="text-align:center; margin-top:10px; font-size:0.9em; color:#888;">
+            Ingresa 4 dígitos diferentes (ej: 1234, 5678)
+        </div>
     }
     @if (modelo.CofreResuelto)
     {
         <div class="cofre-exito">¡Abriste el cofre! El número era <b>@modelo.NumeroSecretoCofre</b>.</div>
-        <form method="get" action="/Home/Habitacion3">
+        <form method="post" action="/Home/AvanzarCuadra">
+            @Html.AntiForgeryToken()
             <button class="cofre-btn" type="submit">Continuar</button>
         </form>
     }

@@ -1,0 +1,273 @@
+﻿Edificio (Entrada)
+
+
+¡Vamos Maxi! 💣💥 Acá te armo un documento completísimo y detallado para la Habitación 4, listo para que copies y pegues en tu doc.
+Incluye:
+✅ Todas las opciones y caminos.
+✅ Todos los diálogos.
+✅ Qué pasa según cada elección (si tenés o no el código).
+✅ Las dos tuberías con descripciones gráficas y tutoriales detallados (¡sin checkpoints!).
+✅ Estructura clara y lista para usar.
+________________
+
+
+🏢 💥 
+Habitación 4 — El Edificio de Auraman
+________________
+
+
+🎯 
+Objetivo general
+Llegar a la oficina de Auraman en el piso 20 para la entrevista final.
+El jugador puede intentar entrar con un código especial, o si no lo tiene, debe buscar una entrada alternativa (tubería).
+________________
+
+
+🚪 
+Entrada principal (portero)
+💬 Diálogo
+Portero: Buen día. ¿A dónde vas?
+Usuario: Tengo una reunión con el Director Auraman.
+Portero: Para entrar necesitás un código.  
+Usuario: (pensando) Ufff… veamos qué hago.
+________________
+
+
+✅ Opciones
+✅ 
+Si tenés el código
+Interfaz para ingresar el codigo tipo pin bancario (Que tenga una cruz arriba como opcion para cancelar por si el usuario no entiende que codigo tiene que poner y que cuando presiona la X salga un recuadro que diga, “Seguro que queres salir? No vas a poder pasar por aca si salis” y las opciones “Salir” y “Volver” si aprieta salir se pone el dialogo de si hubiese dicho que no y si presiona volver sigue con el codigo)
+“01001000 01101111 01101100 01100001 00100000 01001101 01110101 01101110 01100100 01101111” (Hello World en binario) Hay que poner hello world, no binario
+Portero: Ahhh, sos vos. Podés pasar, pero andá derecho. No te metas en problemas.
+Usuario: Gracias.
+El jugador entra directamente y puede elegir:
+* Escalera
+
+* Ascensor
+
+________________
+
+
+❌ 
+Si no tenés el código
+Usuario: Uy… no lo tengo.
+Portero: Entonces buscate otra forma. Afuera.
+Usuario: Bueno… me la juego.
+El jugador tiene que entrar por la tubería lateral.
+________________
+
+
+🌀 
+Tubería lateral — Primer intento
+🎮 
+Mecánica: Laberinto clásico
+💡 Descripción gráfica
+   * Fondo oscuro o metálico (estilo túnel).
+
+   * Laberinto sencillo, se controla moviendo el mouse.
+
+   * Si el cursor toca el borde, reinicia desde el principio.
+
+   * No hay checkpoints.
+
+________________
+
+
+💬 Tutorial (estilo gráfico)
+Nombre del juego: Tubería Laberinto
+      * Abajo del título, colocar tres cuadros o recuadros alineados horizontalmente (pueden tener bordes de color brillante, tipo verde neón o azul, para dar aspecto tech/escape room).
+
+✅ Instrucciones dentro de cada cuadro
+1️⃣ Primer cuadro:
+         * Número grande "1" centrado en el cuadro.
+
+         * Texto debajo o integrado que diga:
+
+"Mové el mouse para avanzar por el laberinto."
+2️⃣ Segundo cuadro:
+            * Número grande "2".
+
+            * Texto:
+
+"No te salgas de los bordes. Si salís, empezás de nuevo."
+3️⃣ Tercer cuadro:
+               * Número grande "3".
+
+               * Texto:
+
+"Llegá al final para acceder al edificio."
+🎨 Estética
+                  * Tipografía clara y moderna, estilo tech.
+
+                  * Colores vivos para bordes (ej: verde neón, azul eléctrico).
+
+                  * Íconos pequeños o mini ilustraciones opcionales (ej: un cursor, una línea de laberinto, una meta con bandera).
+________________
+
+
+💬 Diálogo antes de entrar
+Usuario: Bueno… si no hay código, no queda otra.  
+Usuario: Esta tubería parece un laberinto… ¡a concentrarse!
+________________
+
+
+🏃 
+Después de la tubería (primer ingreso)
+Cuando termina la tubería, el jugador accede al edificio y puede elegir:
+                     * Escalera
+
+                     * Ascensor
+
+________________
+
+
+🛗 
+Ascensor
+💬 Diálogo
+Usuario: Rápido y cómodo… espero no haya nadie.
+(Se abre la puerta en el piso 20)
+Seguridad: Ey, ¿quién sos? ¿Número de residencia?
+Usuario: Ehhh… 105.
+Seguridad: Jajaja, sí claro. Fuera de acá.
+Usuario: ¡Qué ortiva!
+Resultado: Lo echan del edificio y tiene que volver a intentar.
+________________
+
+
+🏃 
+Escalera
+💬 Diálogo
+Usuario: Mejor por las escaleras… no quiero sorpresas.
+(Al llegar al piso 10)
+Usuario: ¡Noooo! Se cortó la luz.
+Usuario: ¡¿Ahora qué hago?!
+Seguridad: ¿Qué hacés acá? Bajá YA.
+Usuario: Me descubrieron… bueno, ya fue.
+Resultado: Lo echan del edificio y tiene que volver a intentar.
+________________
+
+
+🔁 
+Nuevo intento (tubería avanzada)
+Ahora no hay portero, por lo que sí o sí tiene que volver a entrar por la tubería.
+________________
+
+
+🌀 
+Tubería — Segundo intento (avanzada)
+🎮 
+Mecánica: Tubería Láser — Salto Fantasma
+💡 Descripción gráfica
+                        * Fondo metálico oscuro, ambiente de alta seguridad.
+
+                        * Láseres fijos y móviles, algunos diagonales.
+
+                        * Jugador usa el mouse para avanzar.
+
+                        * Puede hacer click para desaparecer durante 1 segundo (salto fantasma).
+
+                        * Solo tiene 3 dashes por intento.
+
+                        * Si toca un láser, reinicia desde el principio.
+
+                        * No hay checkpoints.
+
+________________
+
+
+💬 Tutorial (estilo gráfico)
+Nombre del juego: Tubería Láser — Salto Fantasma
+                           * Debajo del título, tres cuadros o recuadros alineados horizontalmente (misma estética que el primer tutorial para coherencia).
+
+✅ Instrucciones dentro de cada cuadro
+1️⃣ Primer cuadro:
+                              * Número grande "1".
+
+                              * Texto:
+
+"Mové el mouse para esquivar los láseres."
+2️⃣ Segundo cuadro:
+                                 * Número grande "2".
+
+                                 * Texto:
+
+"Hacé click para desaparecer por 1 segundo (tenés 3 usos)."
+3️⃣ Tercer cuadro:
+                                    * Número grande "3".
+
+                                    * Texto:
+
+"Llegá al final sin tocar ningún láser."
+🎨 Estética
+                                       * Bordes de color vibrante (ej: rojo neón o púrpura para diferenciarlo del primero).
+
+                                       * Tipografía tech y clara.
+
+                                       * Posible icono extra: un láser, un rayo o un efecto "fantasma" para el dash.
+________________
+
+
+💬 Diálogo antes de entrar
+Usuario: Otra vez la tubería… pero ahora se ve mucho más jodida.
+Usuario: ¡¿Láseres?! Esto ya parece Misión Imposible.
+Usuario: Por suerte puedo desaparecer por un segundo… si no, estoy frito.
+Usuario: Vamos… ¡no pienso rendirme ahora!
+________________
+
+
+💬 Si toca un láser
+Mensaje en pantalla: ¡Te atraparon los sensores! Vuelve a intentarlo.
+Botón: Reintentar
+
+
+Usuario: ¡Ahhh! Me engancharon… bueno, otra vez.
+________________
+
+
+💬 Al ganar
+Usuario: ¡Vamos! ¡Pasé los láseres!
+Usuario: Esta vez llegué directo al piso 10. Me estoy acercando.
+________________
+
+
+🚶 
+Piso 10 — Encuentro con Binker
+💬 Diálogo
+Ezequiel: Hola, ¿qué necesitás?
+Usuario: Estoy buscando cómo subir al piso 20 sin que me echen.
+Ezequiel: Auraman… sí. Yo también pasé por eso.
+Usuario: Me sacaron siempre… estoy agotado.
+Ezequiel: Tranqui, tomá un vaso de agua. Y escuchá: tenés que mantener la calma, Auraman prueba tu temple.
+Usuario: Gracias… me la voy a bancar.
+Ezequiel: Tomá mi ascensor privado, va directo al 20. Nadie te va a molestar.
+Usuario: Gracias, crack.
+Ezequiel: Suerte, pibe. Nadie está 100% listo… pero vos ya hiciste tu parte.
+________________
+
+
+🟡 
+Final de la habitación
+                                          * Usás el ascensor privado.
+
+                                          * Llegás al piso 20, listo para la entrevista final en la Habitación 5.
+
+________________
+
+
+✅ 
+Resumen lógico completo
+Si tenés el código
+1️⃣ Entrás directo.
+2️⃣ Elegís escalera o ascensor → ambos fallan.
+3️⃣ Echan al jugador → debe volver por tubería avanzada.
+4️⃣ Sale en piso 10 → encuentro con Binker.
+5️⃣ Ascensor privado → piso 20.
+________________
+
+
+Si NO tenés el código
+1️⃣ Entrás por la tubería simple (laberinto).
+2️⃣ Elegís escalera o ascensor → ambos fallan.
+3️⃣ Echan al jugador → debe volver por tubería avanzada.
+4️⃣ Sale en piso 10 → encuentro con Binker.
+5️⃣ Ascensor privado → piso 20.

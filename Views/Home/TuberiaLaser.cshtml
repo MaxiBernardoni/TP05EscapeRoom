@@ -1,0 +1,410 @@
+@{
+    ViewData["Title"] = "Tubería Láser — Salto Fantasma";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var gano = ViewBag.GanoLaser as bool? ?? false;
+}
+<style>
+.contexto-epico {
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #ff00cc;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 30px 0;
+    box-shadow: 0 0 30px rgba(255, 0, 204, 0.3);
+    text-align: center;
+    color: #fff;
+}
+.contexto-epico h3 {
+    color: #ff00cc;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 0, 204, 0.5);
+}
+.contexto-epico p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+.btn-contexto {
+    background: linear-gradient(45deg, #ff00cc, #ff6b9d);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 8px 25px rgba(255, 0, 204, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+.btn-contexto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(255, 0, 204, 0.6);
+}
+</style>
+
+<div class="tut-laser-container" style="max-width:700px;margin:40px auto;">
+    <h2 style="text-align:center;">Tubería Láser — Salto Fantasma</h2>
+    
+    <!-- Contexto épico -->
+    <div id="contexto-epico" style="display:@(gano ? "none" : "block");">
+        <div class="contexto-epico">
+            <h3>🔥 Segundo Intento 🔥</h3>
+            <p>Después de ser echado del edificio por la escalera/ascensor, te das cuenta de que la seguridad se ha intensificado drásticamente. Ya no hay portero en la entrada principal, pero ahora hay sensores de movimiento y láseres de alta tecnología protegiendo la tubería.</p>
+            <p style="color: #ff00cc; font-style: italic;">"Esta vez será diferente... tengo que ser más cuidadoso. No puedo permitirme otro fracaso."</p>
+            <p>La tubería ahora es una zona de alta seguridad. Los láseres se mueven de forma impredecible y solo tienes una oportunidad limitada para usar tu habilidad de "salto fantasma". Cada movimiento debe ser calculado al milímetro.</p>
+            <p>Pero esta vez tienes una ventaja: has aprendido de tus errores. Sabes que necesitas llegar al piso 20 para la entrevista con Auraman, y esta tubería es tu única opción.</p>
+            <p style="color: #ff6b9d; font-weight: bold;">¿Estás listo para infiltrarte una vez más y demostrar que tienes lo que se necesita?</p>
+            <button onclick="mostrarTutorial()" class="btn-contexto">Preparar Infiltración</button>
+        </div>
+    </div>
+    
+    <div id="tutorial-laser" style="display:none;">
+        <div style="display:flex;gap:24px;justify-content:center;margin:32px 0;">
+            <div style="background:#111;border:2px solid #ff00cc;border-radius:12px;padding:24px 18px;width:180px;text-align:center;">
+                <div style="font-size:2.5em;font-weight:bold;">1</div>
+                <div style="margin-top:10px;">Mové el mouse para esquivar los láseres.</div>
+            </div>
+            <div style="background:#111;border:2px solid #ff00cc;border-radius:12px;padding:24px 18px;width:180px;text-align:center;">
+                <div style="font-size:2.5em;font-weight:bold;">2</div>
+                <div style="margin-top:10px;">Hacé click para desaparecer por 1 segundo (tenés 3 usos).</div>
+            </div>
+            <div style="background:#111;border:2px solid #ff00cc;border-radius:12px;padding:24px 18px;width:180px;text-align:center;">
+                <div style="font-size:2.5em;font-weight:bold;">3</div>
+                <div style="margin-top:10px;">Llegá al final sin tocar ningún láser.</div>
+            </div>
+        </div>
+        <div style="text-align:center;margin:32px 0;">
+            <button onclick="iniciarLaser()" class="btn btn-primary" style="font-size:1.2em;">Jugar tubería láser</button>
+        </div>
+    </div>
+    <div id="laser-juego" style="display:@(gano ? "block" : "none");text-align:center;position:relative;">
+        <div id="play-overlay-laser" style="display:block;position:absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.0);z-index:10;align-items:center;justify-content:center;pointer-events:none;">
+            <button id="btn-play-laser" style="position:absolute;left:7vw;top:200px;transform:translate(-50%,-50%);background:none;color:#fff;font-size:2.5em;padding:0;border:none;border-radius:50%;box-shadow:none;font-weight:bold;cursor:pointer;pointer-events:auto;">▶</button>
+        </div>
+        <canvas id="laser-canvas" width="1536" height="400" style="background:#222;display:block;margin:0 auto;border:3px solid #ff00cc;border-radius:12px;width:80vw;max-width:1536px;"></canvas>
+        <div id="laser-estado" style="margin:20px 0;color:#fff;font-size:1.2em;"></div>
+        <div id="laser-nivel" style="margin:10px 0;color:#ff00cc;font-size:1.1em;font-weight:bold;"></div>
+        <div id="laser-dash" style="margin:10px 0;color:#0ff;font-size:1em;"></div>
+    </div>
+</div>
+<script>
+function mostrarTutorial() {
+    document.getElementById('contexto-epico').style.display = 'none';
+    document.getElementById('tutorial-laser').style.display = 'block';
+}
+
+let jugandoLaser = false;
+let ganoLaser = false;
+let nivelActual = 1;
+let totalNiveles = 3;
+let dashs = 3;
+let dashActivo = false;
+let dashTimeout = null;
+
+// Nuevo ancho
+const ANCHO = 0.8 * window.innerWidth;
+const ANCHO_CANVAS = Math.min(1536, Math.max(900, ANCHO));
+const ALTO_CANVAS = 400;
+
+// Configuración de niveles
+const nivelesLaser = [
+    // Nivel 1 - Fácil
+    {
+        start: {x: 0.08*ANCHO_CANVAS, y: 200},
+        end: {x: 0.92*ANCHO_CANVAS, y: 200, r: 20},
+        lasers: [
+            {x:0.25*ANCHO_CANVAS,y:0,w:10,h:400,dx:2,dy:0,minX:0.15*ANCHO_CANVAS,maxX:0.85*ANCHO_CANVAS},
+            {x:0.75*ANCHO_CANVAS,y:0,w:10,h:400,dx:-2,dy:0,minX:0.15*ANCHO_CANVAS,maxX:0.85*ANCHO_CANVAS},
+            {x:0.5*ANCHO_CANVAS,y:0,w:10,h:400,dx:0,dy:2}
+        ],
+        muros: []
+    },
+    // Nivel 2 - Imposible sin dash (invertido)
+    {
+        start: {x: 0.92*ANCHO_CANVAS, y: 200},
+        end: {x: 0.08*ANCHO_CANVAS, y: 200, r: 20},
+        lasers: [
+            {x:0.35*ANCHO_CANVAS,y:0,w:10,h:400,dx:0,dy:0},
+            {x:0.5*ANCHO_CANVAS,y:0,w:10,h:400,dx:0,dy:0},
+            {x:0.65*ANCHO_CANVAS,y:0,w:10,h:400,dx:0,dy:0}
+        ],
+        muros: [
+            {x:0.45*ANCHO_CANVAS,y:150,w:0.1*ANCHO_CANVAS,h:100}
+        ]
+    },
+    // Nivel 3 - Extremo (invertido)
+    {
+        start: {x: 0.08*ANCHO_CANVAS, y: 200},
+        end: {x: 0.92*ANCHO_CANVAS, y: 200, r: 20},
+        lasers: [
+            {x:0.18*ANCHO_CANVAS,y:0,w:10,h:400,dx:3,dy:0},
+            {x:0.32*ANCHO_CANVAS,y:0,w:10,h:400,dx:0,dy:3},
+            {x:0.68*ANCHO_CANVAS,y:0,w:10,h:400,dx:-3,dy:0},
+            {x:0.82*ANCHO_CANVAS,y:0,w:10,h:400,dx:0,dy:-3},
+            {x:0.28*ANCHO_CANVAS,y:0,w:10,h:400,dx:2,dy:2},
+            {x:0.72*ANCHO_CANVAS,y:0,w:10,h:400,dx:-2,dy:-2}
+        ],
+        muros: [
+            {x:0.35*ANCHO_CANVAS,y:120,w:0.08*ANCHO_CANVAS,h:80},
+            {x:0.57*ANCHO_CANVAS,y:200,w:0.08*ANCHO_CANVAS,h:80}
+        ]
+    }
+];
+
+let mouseL = {x: 0, y: 0};
+let nivelActualConfig = nivelesLaser[0];
+
+function iniciarLaser() {
+    document.getElementById('tutorial-laser').style.display = 'none';
+    document.getElementById('laser-juego').style.display = 'block';
+    // Mostrar overlay de play solo en el primer nivel
+    document.getElementById('play-overlay-laser').style.display = 'flex';
+    document.getElementById('btn-play-laser').onclick = function() {
+        document.getElementById('play-overlay-laser').style.display = 'none';
+        jugarLaser();
+    };
+}
+
+function jugarLaser() {
+    jugandoLaser = true;
+    ganoLaser = false;
+    nivelActual = 1;
+    dashs = 3;
+    dashActivo = false;
+    nivelActualConfig = nivelesLaser[0];
+    
+    let canvas = document.getElementById('laser-canvas');
+    let ctx = canvas.getContext('2d');
+    let estado = document.getElementById('laser-estado');
+    let nivelDisplay = document.getElementById('laser-nivel');
+    let dashDisplay = document.getElementById('laser-dash');
+    
+    estado.textContent = 'Mové el mouse desde el círculo blanco hasta el amarillo sin tocar los láseres. Click para desaparecer (3 usos, 0.25s). Si atraviesas un láser durante el dash, el dash se desactiva instantáneamente.';
+    nivelDisplay.textContent = `Nivel ${nivelActual} de ${totalNiveles}`;
+    dashDisplay.textContent = `Dash disponibles: ${dashs}`;
+    
+    // Posición inicial
+    mouseL.x = nivelActualConfig.start.x;
+    mouseL.y = nivelActualConfig.start.y;
+    
+    function draw() {
+        ctx.clearRect(0,0,ANCHO_CANVAS,ALTO_CANVAS);
+        
+        // Dibuja los muros
+        ctx.fillStyle = '#666';
+        for(let muro of nivelActualConfig.muros) {
+            ctx.fillRect(muro.x, muro.y, muro.w, muro.h);
+        }
+        
+        // Dibuja lasers
+        ctx.save();
+        for(let l of nivelActualConfig.lasers) {
+            ctx.fillStyle = dashActivo ? '#555' : '#ff00cc';
+            ctx.fillRect(l.x,l.y,l.w,l.h);
+        }
+        ctx.restore();
+        
+        // Dibuja inicio y fin
+        ctx.beginPath();
+        ctx.arc(nivelActualConfig.start.x, nivelActualConfig.start.y, 12, 0, 2*Math.PI);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(nivelActualConfig.end.x, nivelActualConfig.end.y, nivelActualConfig.end.r, 0, 2*Math.PI);
+        ctx.fillStyle = '#ff0';
+        ctx.fill();
+        
+        // Dibuja jugador
+        ctx.beginPath();
+        ctx.arc(mouseL.x, mouseL.y, 10, 0, 2*Math.PI);
+        ctx.fillStyle = dashActivo ? '#0ff' : '#0f0';
+        ctx.fill();
+    }
+    
+    function updateLasers() {
+        for(let l of nivelActualConfig.lasers) {
+            l.x += l.dx;
+            l.y += l.dy;
+            // Límites del canvas
+            if(nivelActual === 1 && l.minX !== undefined && l.maxX !== undefined) {
+                if(l.x < l.minX || l.x > l.maxX) l.dx *= -1;
+            } else {
+                if(l.x < 0 || l.x > ANCHO_CANVAS) l.dx *= -1;
+            }
+            if(l.y < 0 || l.y > ALTO_CANVAS) l.dy *= -1;
+        }
+    }
+    
+    function checkColision() {
+        if(dashActivo) {
+            // Si atraviesa un láser, desactiva el dash instantáneamente
+            for(let l of nivelActualConfig.lasers) {
+                if(mouseL.x+10 > l.x && mouseL.x-10 < l.x+l.w && mouseL.y+10 > l.y && mouseL.y-10 < l.y+l.h) {
+                    dashActivo = false;
+                    return false;
+                }
+            }
+            return false;
+        }
+        // Verificar colisión con muros
+        for(let muro of nivelActualConfig.muros) {
+            if(mouseL.x >= muro.x && mouseL.x <= muro.x + muro.w && mouseL.y >= muro.y && mouseL.y <= muro.y + muro.h) {
+                return true;
+            }
+        }
+        // Verificar colisión con láseres
+        for(let l of nivelActualConfig.lasers) {
+            if(mouseL.x+10 > l.x && mouseL.x-10 < l.x+l.w && mouseL.y+10 > l.y && mouseL.y-10 < l.y+l.h) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    function checkWin() {
+        let dx = mouseL.x - nivelActualConfig.end.x;
+        let dy = mouseL.y - nivelActualConfig.end.y;
+        return Math.sqrt(dx*dx + dy*dy) < nivelActualConfig.end.r;
+    }
+    
+    function siguienteNivel() {
+        nivelActual++;
+        if(nivelActual <= totalNiveles) {
+            nivelActualConfig = nivelesLaser[nivelActual - 1];
+            mouseL.x = nivelActualConfig.start.x;
+            mouseL.y = nivelActualConfig.start.y;
+            dashs = 3; // Resetear dashs para cada nivel
+            dashActivo = false;
+            nivelDisplay.textContent = `Nivel ${nivelActual} de ${totalNiveles}`;
+            dashDisplay.textContent = `Dash disponibles: ${dashs}`;
+            estado.textContent = `¡Nivel ${nivelActual-1} completado! Continúa al siguiente nivel.`;
+            setTimeout(() => {
+                estado.textContent = 'Mové el mouse desde el círculo blanco hasta el amarillo sin tocar los láseres. Click para desaparecer (3 usos, 0.25s). Si atraviesas un láser durante el dash, el dash se desactiva instantáneamente.';
+            }, 1500);
+        } else {
+            // Juego completado
+            ganoLaser = true;
+            jugandoLaser = false;
+            estado.textContent = '¡Felicidades! Has completado todos los niveles de la tubería láser.';
+            
+            // Mostrar contexto épico después de completar
+            mostrarContextoEpicoCompletado();
+        }
+    }
+    
+    function mostrarContextoEpicoCompletado() {
+        // Ocultar el juego y mostrar contexto épico
+        document.getElementById('laser-juego').style.display = 'none';
+        
+        const contextoCompletado = document.createElement('div');
+        contextoCompletado.innerHTML = `
+            <div class="contexto-epico" style="margin-top: 40px;">
+                <h3>🎯 Infiltración Exitosa 🎯</h3>
+                <p>¡Increíble! Has logrado atravesar todos los sistemas de seguridad. Los láseres, sensores y muros no pudieron detenerte. Tu habilidad de "salto fantasma" resultó ser la clave para infiltrarte en el edificio.</p>
+                <p style="color: #ff00cc; font-style: italic;">"Esta vez sí... llegué hasta el piso 10 sin ser detectado."</p>
+                <p>Te encuentras ahora en el piso 10 del edificio de Auraman. El ambiente es diferente aquí - más tranquilo, menos vigilado. Parece que has logrado acceder a una zona donde la seguridad no es tan estricta.</p>
+                <p>Mientras te orientas en este nuevo piso, ves a alguien que se acerca. Es un hombre de aspecto amigable que parece estar trabajando en el edificio. Su nombre es Ezequiel, pero todos lo conocen como "Binker".</p>
+                <p style="color: #ff6b9d; font-weight: bold;">¿Será que finalmente encontraste a alguien que puede ayudarte a llegar al piso 20?</p>
+                <button id="btn-encontrar-binker" class="btn-contexto">Encontrar a Binker</button>
+            </div>
+        `;
+        
+        document.querySelector('.tut-laser-container').appendChild(contextoCompletado);
+        
+        // Agregar event listener al botón después de crearlo
+        document.getElementById('btn-encontrar-binker').addEventListener('click', function() {
+            window.location.href = '/Home/EncuentroBinker';
+        });
+    }
+    
+    function mostrarContextoDerrota() {
+        // Ocultar el juego y mostrar contexto de derrota
+        document.getElementById('laser-juego').style.display = 'none';
+        
+        const contextoDerrota = document.createElement('div');
+        contextoDerrota.innerHTML = `
+            <div class="contexto-epico" style="margin-top: 40px;">
+                <h3>💥 Infiltración Fallida 💥</h3>
+                <p>¡Los sensores te detectaron! Los láseres de alta tecnología no perdonan errores. Has sido expulsado de la tubería una vez más.</p>
+                <p style="color: #ff00cc; font-style: italic;">"Maldición... los láseres son más rápidos de lo que pensaba. Tengo que ser más preciso con el timing."</p>
+                <p>Pero no te rindas. Cada intento te enseña algo nuevo sobre los patrones de los láseres. Tu habilidad de "salto fantasma" sigue siendo tu mejor arma.</p>
+                <p>Recuerda: solo tienes 3 usos del dash por nivel. Úsalos sabiamente en los momentos más críticos.</p>
+                <p style="color: #ff6b9d; font-weight: bold;">¿Estás listo para intentarlo de nuevo con más determinación?</p>
+                <button id="btn-reintentar-laser" class="btn-contexto">Reintentar Infiltración</button>
+            </div>
+        `;
+        
+        document.querySelector('.tut-laser-container').appendChild(contextoDerrota);
+        
+        // Agregar event listener al botón después de crearlo
+        document.getElementById('btn-reintentar-laser').addEventListener('click', function() {
+            // Remover el contexto de derrota y volver a mostrar el juego
+            const contextoDerrota = document.querySelector('.contexto-epico');
+            if (contextoDerrota) {
+                contextoDerrota.remove();
+            }
+            document.getElementById('laser-juego').style.display = 'block';
+            jugarLaser();
+        });
+    }
+    
+    canvas.onmousemove = function(e) {
+        if(!jugandoLaser) return;
+        let rect = canvas.getBoundingClientRect();
+        mouseL.x = e.clientX - rect.left;
+        mouseL.y = e.clientY - rect.top;
+    };
+    
+    canvas.onclick = function() {
+        if(!jugandoLaser) return;
+        if(dashs > 0 && !dashActivo) {
+            dashActivo = true;
+            dashs--;
+            dashDisplay.textContent = `Dash disponibles: ${dashs}`;
+            estado.textContent = '¡Salto fantasma! Usos restantes: ' + dashs;
+            dashTimeout = setTimeout(() => {
+                dashActivo = false;
+                estado.textContent = 'Mové el mouse desde el círculo blanco hasta el amarillo sin tocar los láseres. Click para desaparecer (3 usos, 0.25s). Si atraviesas un láser durante el dash, el dash se desactiva instantáneamente.';
+            }, 250);
+        }
+    };
+    
+    // Loop principal
+    function loop() {
+        if(!jugandoLaser) return;
+        updateLasers();
+        draw();
+        
+        if(checkColision()) {
+            jugandoLaser = false;
+            estado.textContent = '¡Te atraparon los sensores! Vuelve a intentarlo.';
+            
+            // Mostrar contexto de derrota
+            setTimeout(() => {
+                mostrarContextoDerrota();
+            }, 1200);
+            return;
+        }
+        
+        if(checkWin()) {
+            jugandoLaser = false;
+            if(nivelActual < totalNiveles) {
+                siguienteNivel();
+                jugandoLaser = true;
+            } else {
+                siguienteNivel();
+            }
+        }
+        
+        requestAnimationFrame(loop);
+    }
+    
+    loop();
+}
+</script> 

@@ -48,8 +48,9 @@
     @if (modelo.RondaActualEmoji > 10)
     {
         <div style="margin:30px; font-size:1.3em; color:#0c0;">¡Completaste el minijuego!</div>
-        <form method="get" action="/Home/Minijuego2">
-            <button type="submit" class="btn btn-success">Ir al minijuego 2</button>
+        <form method="post" action="/Home/AvanzarCuadra">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-success">Continuar</button>
         </form>
     }
     else if (ViewBag.TiempoTerminado == true)

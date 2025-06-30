@@ -279,14 +279,27 @@ namespace TuProyecto.Controllers
             if (gano)
             {
                 modelo.PungaResuelto = true;
+                HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+                return RedirectToAction("MinijuegoPunga");
             }
             else
             {
+                // Perdió contra el punga - pierde 10 minutos y vuelve a Habitación 3
                 modelo.TienePlata = false;
+                
+                // Obtener el tiempo actual y restar 10 minutos (600 segundos)
+                int tiempoActual = HttpContext.Session.GetInt32("game_seconds") ?? 0;
+                int nuevoTiempo = tiempoActual + 600; // Sumar 10 minutos como penalización
+                HttpContext.Session.SetInt32("game_seconds", nuevoTiempo);
+                
+                // Actualizar el modelo
+                HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
+                
+                // Mostrar mensaje de penalización
+                TempData["MensajePunga"] = "¡Perdiste contra el punga! Te robó todo el dinero y perdiste 10 minutos. Vuelves a la Habitación 3.";
+                
+                return RedirectToAction("Habitacion3");
             }
-
-            HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
-            return RedirectToAction("MinijuegoPunga");
         }
 
         [HttpGet]
@@ -455,19 +468,39 @@ namespace TuProyecto.Controllers
         [HttpPost]
         public IActionResult ReiniciarNivel()
         {
-            // Detectar la habitación actual por el referer o por TempData/ViewBag si se implementa
+            // Detectar la habitación actual por el referer, contemplando todas las rutas posibles
             string referer = Request.Headers["Referer"].ToString().ToLower();
-            if (referer.Contains("habitacion1"))
+            
+            // Habitación 1 y sus rutas
+            if (referer.Contains("habitacion1") || referer.Contains("seleccionarobjeto") || referer.Contains("verificarpuerta"))
             {
                 HttpContext.Session.Remove("habitacion1");
                 return RedirectToAction("Habitacion1");
             }
-            if (referer.Contains("habitacion2"))
+            
+            // Habitación 2 y sus rutas
+            if (referer.Contains("habitacion2") || referer.Contains("transicioncolectivo") || 
+                referer.Contains("juegocolectivo") || referer.Contains("resultadocolectivo") || 
+                referer.Contains("siguienteronda"))
             {
                 HttpContext.Session.Remove("habitacion2");
+                HttpContext.Session.Remove("juego_colectivo");
                 return RedirectToAction("Habitacion2");
             }
-            // Por defecto, o si es un diálogo de la 3, reinicia la 3
+            
+            // Habitación 4 y todas sus rutas
+            if (referer.Contains("habitacion4") || referer.Contains("codigoportero") || 
+                referer.Contains("verificarcodigoportero") || referer.Contains("seleccioncaminoedificio") ||
+                referer.Contains("tuberialaberinto") || referer.Contains("tuberialaser") ||
+                referer.Contains("escalera") || referer.Contains("ascensor") ||
+                referer.Contains("encuentrobinker") || referer.Contains("finalhabitacion4"))
+            {
+                // La Habitación 4 no tiene estado persistente en session, solo redirigir
+                return RedirectToAction("Habitacion4");
+            }
+            
+            // Habitación 3 y todas sus rutas (por defecto)
+            // Incluye: diálogos, minijuegos, resultados, etc.
             HttpContext.Session.Remove("habitacion3");
             return RedirectToAction("Habitacion3");
         }
@@ -504,6 +537,14 @@ namespace TuProyecto.Controllers
                 ? new TuProyecto.Models.Habitacion3Model()
                 : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
 
+            // Verificar si el usuario tiene el espejo
+            var inventario = InventarioGlobal.CargarDeSession(HttpContext.Session);
+            if (!inventario.TieneObjeto("🪞 Espejo"))
+            {
+                TempData["MensajeNervioso"] = "Necesitás el espejo para poder hablar con el nervioso. Volvé a la Habitación 1 y agarrá el espejo.";
+                return RedirectToAction("Habitacion3");
+            }
+
             ViewBag.Modelo = modelo;
             ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
             return View();
@@ -523,6 +564,7 @@ namespace TuProyecto.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult FinalizarDialogoNervioso()
         {
             var modeloJson = HttpContext.Session.GetString("habitacion3");
@@ -537,6 +579,7 @@ namespace TuProyecto.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult AvanzarCuadra()
         {
             var modeloJson = HttpContext.Session.GetString("habitacion3");
@@ -619,7 +662,7 @@ namespace TuProyecto.Controllers
                 modelo.NumeroSecretoCofre = string.Join("", digitos);
                 modelo.IntentosCofre = new List<string>();
                 modelo.RespuestasCofre = new List<string>();
-                modelo.IntentosRestantesCofre = 11;
+                modelo.IntentosRestantesCofre = 8;
                 modelo.CofreResuelto = false;
                 HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
             }
@@ -711,7 +754,7 @@ namespace TuProyecto.Controllers
             // Validar intento
             if (string.IsNullOrEmpty(intento) || intento.Length != 4 || intento.Distinct().Count() != 4 || !intento.All(char.IsDigit))
             {
-                TempData["ErrorCofre"] = "El intento debe ser un número de 4 dígitos distintos.";
+                TempData["ErrorCofre"] = "Error: Debes ingresar exactamente 4 dígitos diferentes (ej: 1234, 5678).";
                 return RedirectToAction("Minijuego3");
             }
 
@@ -730,6 +773,7 @@ namespace TuProyecto.Controllers
             if (exactos == 4)
             {
                 modelo.CofreResuelto = true;
+                modelo.Minijuego3Completado = true;
                 HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
                 return RedirectToAction("ContinuarDespuesCofre");
             }
@@ -746,12 +790,10 @@ namespace TuProyecto.Controllers
                 ? new TuProyecto.Models.Habitacion3Model()
                 : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
 
-            var random = new System.Random();
-            var digitos = Enumerable.Range(0, 10).OrderBy(_ => random.Next()).Take(4).ToArray();
-            modelo.NumeroSecretoCofre = string.Join("", digitos);
+            modelo.NumeroSecretoCofre = null;
             modelo.IntentosCofre = new List<string>();
             modelo.RespuestasCofre = new List<string>();
-            modelo.IntentosRestantesCofre = 11;
+            modelo.IntentosRestantesCofre = 8;
             modelo.CofreResuelto = false;
             HttpContext.Session.SetString("habitacion3", System.Text.Json.JsonSerializer.Serialize(modelo));
             return RedirectToAction("Minijuego3");
@@ -774,35 +816,85 @@ namespace TuProyecto.Controllers
         [HttpGet]
         public IActionResult Habitacion4()
         {
-            // Aquí puedes inicializar el modelo o lógica de la habitación 4 si lo necesitas
-            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
-            ViewBag.MostrarDialogo = false;
-            
-            // Cargar el modelo de la habitación 3 para verificar si tiene el código
-            var modeloJson = HttpContext.Session.GetString("habitacion3");
-            var modelo = string.IsNullOrEmpty(modeloJson)
-                ? new TuProyecto.Models.Habitacion3Model()
-                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
-            ViewBag.Modelo = modelo;
-            
+            // Entrada principal del edificio
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CodigoPortero()
+        {
+            // Interfaz para ingresar el código
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult MostrarDialogoPortero()
+        public IActionResult VerificarCodigoPortero(string codigo)
         {
-            ViewBag.GameSeconds = HttpContext.Session.GetInt32("game_seconds") ?? 0;
-            ViewBag.MostrarDialogo = true;
-            
-            // Cargar el modelo de la habitación 3 para verificar si tiene el código
-            var modeloJson = HttpContext.Session.GetString("habitacion3");
-            var modelo = string.IsNullOrEmpty(modeloJson)
-                ? new TuProyecto.Models.Habitacion3Model()
-                : System.Text.Json.JsonSerializer.Deserialize<TuProyecto.Models.Habitacion3Model>(modeloJson);
-            ViewBag.Modelo = modelo;
-            
-            return View("Habitacion4");
+            if (!string.IsNullOrEmpty(codigo) && codigo.Trim() == "hello world")
+            {
+                // Código correcto, redirigir a la selección de escalera/ascensor
+                return RedirectToAction("SeleccionCaminoEdificio");
+            }
+            else
+            {
+                TempData["ErrorCodigo"] = "Código incorrecto. Intenta nuevamente.";
+                return RedirectToAction("CodigoPortero");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult SeleccionCaminoEdificio()
+        {
+            // Vista para elegir escalera o ascensor
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult TuberiaLaberinto()
+        {
+            // Minijuego de laberinto simple
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult TuberiaLaser()
+        {
+            // Minijuego de tubería avanzada (láseres y dash)
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Escalera()
+        {
+            // Diálogo y resultado de la escalera
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Ascensor()
+        {
+            // Diálogo y resultado del ascensor
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult EncuentroBinker()
+        {
+            // Diálogo con Binker
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult FinalHabitacion4()
+        {
+            // Final de la habitación 4
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult DialogoPortero()
+        {
+            return View();
         }
     }
 }

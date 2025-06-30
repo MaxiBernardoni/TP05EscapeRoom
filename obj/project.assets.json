@@ -1196,24 +1196,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nacho\\.nuget\\packages\\": {}
+    "C:\\Users\\Max\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\TP05-EscapeRoom.csproj",
+      "projectUniqueName": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\TP05-EscapeRoom.csproj",
       "projectName": "TP05-EscapeRoom",
-      "projectPath": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\TP05-EscapeRoom.csproj",
-      "packagesPath": "C:\\Users\\nacho\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nacho\\OneDrive\\Desktop\\TP05EscapeRoom\\obj\\",
+      "projectPath": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\TP05-EscapeRoom.csproj",
+      "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Max\\Downloads\\TP05EscapeRoom\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nacho\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1265,7 +1267,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

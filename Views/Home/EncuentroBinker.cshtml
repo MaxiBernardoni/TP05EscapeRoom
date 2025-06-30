@@ -1,0 +1,143 @@
+@{
+    ViewData["Title"] = "Encuentro con Binker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+.dialogo-chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    z-index: 20001;
+    background: rgba(0, 0, 0, 0.85);
+}
+.dialogo-chat-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.dialogo-chat-imgs {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+.dialogo-chat-imgs img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #00ffc3;
+    box-shadow: 0 0 16px 4px #00ffc3, 0 0 32px 8px #00ffc355;
+    background: #222;
+}
+#chat-burbujas {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.burbuja-chat {
+    display: none;
+    max-width: 600px;
+    margin-bottom: 12px;
+    padding: 18px 28px;
+    border-radius: 22px;
+    font-size: 1.13em;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    box-shadow: 0 4px 24px #0006;
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+    text-align: center;
+}
+.burbuja-chat.visible {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.burbuja-usuario {
+    align-self: flex-end;
+    background: linear-gradient(90deg, #00c9a7 0%, #005c4b 100%);
+    color: #fff;
+    margin-left: 20%;
+    margin-right: 0;
+}
+.burbuja-binker {
+    align-self: flex-start;
+    background: linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%);
+    color: #fff;
+    margin-right: 20%;
+    margin-left: 0;
+}
+</style>
+<div class="dialogo-chat-container">
+    <div class="dialogo-chat-inner">
+        <div class="dialogo-chat-imgs">
+            <img src="/img/usuario.png" alt="Usuario" />
+            <img src="/img/binker.png" alt="Binker" />
+        </div>
+        <div id="chat-burbujas"></div>
+        <button id="btn-avanzar-binker" class="btn btn-primary" style="margin-top:10px;">Avanzar</button>
+        <div id="opciones-binker" style="display:none; margin-top:20px;">
+            <a href="/Home/FinalHabitacion4" class="btn btn-success">Usar ascensor privado</a>
+        </div>
+    </div>
+</div>
+<script>
+const dialogosBinker = [
+    { quien: 'binker', texto: 'Hola, ¿qué necesitás?' },
+    { quien: 'usuario', texto: 'Estoy buscando cómo subir al piso 20 sin que me echen.' },
+    { quien: 'binker', texto: 'Auraman… sí. Yo también pasé por eso.' },
+    { quien: 'usuario', texto: 'Me sacaron siempre… estoy agotado.' },
+    { quien: 'binker', texto: 'Tranqui, tomá un vaso de agua. Y escuchá: tenés que mantener la calma, Auraman prueba tu temple.' },
+    { quien: 'usuario', texto: 'Gracias… me la voy a bancar.' },
+    { quien: 'binker', texto: 'Tomá mi ascensor privado, va directo al 20. Nadie te va a molestar.' },
+    { quien: 'usuario', texto: 'Gracias, crack.' },
+    { quien: 'binker', texto: 'Suerte, pibe. Nadie está 100% listo… pero vos ya hiciste tu parte.' }
+];
+let idxBinker = 0;
+const chatBinker = document.getElementById('chat-burbujas');
+const btnAvanzarBinker = document.getElementById('btn-avanzar-binker');
+const opcionesBinker = document.getElementById('opciones-binker');
+
+function mostrarBurbujaBinkerAuto() {
+    if (idxBinker < dialogosBinker.length) {
+        const d = dialogosBinker[idxBinker];
+        const div = document.createElement('div');
+        div.className = 'burbuja-chat ' + (d.quien === 'usuario' ? 'burbuja-usuario' : 'burbuja-binker');
+        div.innerText = d.texto;
+        chatBinker.appendChild(div);
+        setTimeout(() => {
+            div.classList.add('visible');
+            chatBinker.scrollTop = chatBinker.scrollHeight;
+            idxBinker++;
+            if (idxBinker < dialogosBinker.length) {
+                setTimeout(mostrarBurbujaBinkerAuto, 1200);
+            } else {
+                btnAvanzarBinker.style.display = 'none';
+                opcionesBinker.style.display = 'block';
+            }
+        }, 100);
+    }
+}
+
+btnAvanzarBinker.onclick = function() {
+    btnAvanzarBinker.disabled = true;
+    mostrarBurbujaBinkerAuto();
+};
+</script> 

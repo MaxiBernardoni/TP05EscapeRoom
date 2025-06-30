@@ -216,9 +216,14 @@
     <button class="btn-reintentar" id="btn-reintentar-espejo" style="display:none;">Volver a intentar</button>
 </div>
 
-<form id="form-minijuego1" method="get" action="/Home/Minijuego1" style="text-align:center; margin-top:20px; display:none;">
-    <button type="submit" class="btn btn-primary">Ir al primer minijuego</button>
+<form id="form-finalizar-nervioso" method="post" action="/Home/FinalizarDialogoNervioso" style="text-align:center; margin-top:20px; display:none;">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-success">Continuar</button>
 </form>
+
+<div style="text-align:center; margin-top:20px;">
+    <a href="/Home/Habitacion3" class="btn btn-secondary">Volver a la Habitación 3</a>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -285,6 +290,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 700);
     }
     
+    function mostrarBotonFinal() {
+        // Verificar si ya existe un botón final
+        if (document.querySelector('.btn-finalizar-dialogo')) return;
+        
+        const btnFinalizar = document.createElement('button');
+        btnFinalizar.className = 'btn btn-success btn-finalizar-dialogo';
+        btnFinalizar.textContent = 'Continuar';
+        btnFinalizar.style.marginTop = '10px';
+        btnFinalizar.onclick = function() {
+            document.getElementById('form-finalizar-nervioso').submit();
+        };
+        chat.parentNode.appendChild(btnFinalizar);
+    }
+    
     function iniciarMinijuegoEspejo() {
         minijuegoEspejo.classList.add('visible');
         let tiempoRestante = 3;
@@ -300,7 +319,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Perdió el minijuego
                     resultadoEspejo.textContent = "¡Se rompió el espejo!";
                     resultadoEspejo.className = "resultado perdio";
-                    btnReintentarEspejo.style.display = 'inline-block';
+                    // btnReintentarEspejo.style.display = 'inline-block'; // Eliminar reintento
+                    // Ocultar el minijuego
+                    minijuegoEspejo.classList.remove('visible');
+                    // Mostrar botón final para salir
+                    setTimeout(() => {
+                        mostrarBotonFinal();
+                    }, 1200);
                 }
             }
         }, 1000);
@@ -314,7 +339,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 resultadoEspejo.textContent = "¡Salvaste el espejo!";
                 resultadoEspejo.className = "resultado gano";
                 btnContinuarEspejo.style.display = 'inline-block';
-                
                 // Enviar al servidor que salvó el espejo
                 fetch('/Home/SalvarEspejo', {
                     method: 'POST',
@@ -361,14 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Diálogo terminado, mostrar botón para continuar
                 setTimeout(() => {
-                    const btnFinalizar = document.createElement('button');
-                    btnFinalizar.className = 'btn btn-success';
-                    btnFinalizar.textContent = 'Continuar';
-                    btnFinalizar.style.marginTop = '10px';
-                    btnFinalizar.onclick = function() {
-                        window.location.href = '/Home/Minijuego1';
-                    };
-                    chat.parentNode.appendChild(btnFinalizar);
+                    mostrarBotonFinal();
                 }, 2000);
             }
         };
@@ -382,21 +399,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Continuar con el diálogo
         setTimeout(() => {
             mostrarSecuencial();
+            // Verificar si el diálogo terminó después de continuar
+            setTimeout(() => {
+                if (actual >= dialogos.length) {
+                    mostrarBotonFinal();
+                }
+            }, 1000);
         }, 1000);
     };
     
     btnReintentarEspejo.onclick = function() {
-        // Reiniciar el minijuego
-        espejoSalvado = false;
-        resultadoEspejo.style.display = 'none';
-        btnContinuarEspejo.style.display = 'none';
-        btnReintentarEspejo.style.display = 'none';
-        iniciarMinijuegoEspejo();
+        // Deshabilitado: no se puede reintentar
+        // espejoSalvado = false;
+        // resultadoEspejo.style.display = 'none';
+        // btnContinuarEspejo.style.display = 'none';
+        // btnReintentarEspejo.style.display = 'none';
+        // iniciarMinijuegoEspejo();
     };
 });
-
-// Al finalizar el diálogo, mostrar el botón
-function mostrarBotonMinijuego() {
-    document.getElementById('form-minijuego1').style.display = 'block';
-}
 </script> 

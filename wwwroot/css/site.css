@@ -225,6 +225,14 @@ form {
 }
 
 .header-degradado-h4 {
-  background: linear-gradient(180deg, #00ffc3 0%, rgba(0,0,0,0) 100%);
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+header {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 

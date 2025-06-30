@@ -257,6 +257,7 @@ body {
     0% { opacity: 1; filter: brightness(1.5); }
     100% { opacity: 0.3; filter: brightness(2.5); }
 }
+.timer-partida { font-size: 1.3em; color: #00ffc3; font-weight: bold; margin-left: 30px; text-shadow: 0 0 8px #00ffc3, 0 0 2px #fff; }
 </style>
 <div class="fondo-animado">
     <canvas id="fondo-animado-canvas"></canvas>
@@ -275,6 +276,7 @@ body {
             <img src="/img/virus.png" class="virus-icon" alt="Virus" />
             Virus Eliminados: <span id="virus-eliminados">0</span>
         </div>
+        <div class="timer-partida" id="timer-partida">03:00</div>
     </div>
     <div class="nucleo-canvas-container">
         <canvas id="nucleo-canvas" width="1200" height="700"></canvas>
@@ -295,10 +297,12 @@ body {
                 <button type="submit" class="btn btn-success">Continuar</button>
             </form>
         </div>
-        <div id="auraman-msg" class="auraman-msg"></div>
     </div>
 </div>
 <script>
+// Al principio del script, junto a las otras variables globales:
+let timerInterval = null;
+
 // Fondo animado tipo partículas
 const fondoCanvas = document.getElementById('fondo-animado-canvas');
 const fondoCtx = fondoCanvas.getContext('2d');
@@ -422,7 +426,6 @@ let laseres = [
 let virus = [];
 let oleada = 1;
 let virusPorOleada = 8;
-let virusVivos = 0;
 let virusSpawnTimer = 0;
 let virusTipos = ['basico','rapido','divisor'];
 // Powerups
@@ -475,12 +478,8 @@ function dash() {
         jugador.puedeDash = false;
     }
 }
+
 function actualizarJugador() {
-    // Debug: verificar controles
-    if (teclas['arrowleft'] || teclas['a'] || teclas['arrowright'] || teclas['d']) {
-        console.log('Teclas presionadas:', Object.keys(teclas).filter(k => teclas[k]));
-    }
-    
     // Movimiento horizontal suave
     let dir = 0;
     if (teclas['arrowleft'] || teclas['a']) dir -= 1;
@@ -533,14 +532,19 @@ function activarSwitches() {
             jugador.y + jugador.height > switch_.y) {
             // Acción según el tipo de switch
             if (switch_.tipo === 'plataforma') {
-                // Alterna la visibilidad de la primera plataforma dinámica
                 if (plataformasDinamicas.length > 0) {
                     plataformasDinamicas[0].visible = !plataformasDinamicas[0].visible;
                     plataformasDinamicas[0].timer = 0;
+                    // Desactivar después de 5 segundos
+                    if (plataformasDinamicas[0].visible) {
+                        setTimeout(() => {
+                            plataformasDinamicas[0].visible = false;
+                            switches[idx].activado = false;
+                        }, 5000);
+                    }
                 }
             }
             if (switch_.tipo === 'escudo') {
-                // Activa el escudo del núcleo
                 if (!escudoNucleoActivo) {
                     escudoNucleoActivo = true;
                     escudoNucleoTimer = 0;
@@ -548,13 +552,18 @@ function activarSwitches() {
                 }
             }
             if (switch_.tipo === 'laser') {
-                // Alterna el láser principal
                 if (laseres.length > 0) {
                     laseres[0].activo = !laseres[0].activo;
+                    // Desactivar después de 5 segundos
+                    if (laseres[0].activo) {
+                        setTimeout(() => {
+                            laseres[0].activo = false;
+                            switches[idx].activado = false;
+                        }, 5000);
+                    }
                 }
             }
             if (switch_.tipo === 'puerta') {
-                // Alterna la puerta de energía
                 puertaEnergia.activa = !puertaEnergia.activa;
             }
             switch_.activado = !switch_.activado;
@@ -575,72 +584,86 @@ function actualizarPowerup() {
             timer: 0
         };
     }
-    
+    // --- Solo continuar si powerupActual existe ---
+    if (!powerupActual) return;
     // Actualizar powerup existente
-    if (powerupActual) {
-        powerupActual.timer++;
-        
-        // Hacer titilar cuando está por desaparecer
-        if (powerupActual.timer > 300) {
-            powerupTitilar = true;
+    powerupActual.timer++;
+    // Hacer titilar cuando está por desaparecer
+    if (powerupActual.timer > 300) {
+        powerupTitilar = true;
+    }
+    // Eliminar powerup después de cierto tiempo
+    if (powerupActual.timer > 420) {
+        powerupActual = null;
+        powerupTitilar = false;
+        return;
+    }
+    // Colisión con jugador
+    if (jugador.x < powerupActual.x + powerupActual.width &&
+        jugador.x + jugador.width > powerupActual.x &&
+        jugador.y < powerupActual.y + powerupActual.height &&
+        jugador.y + jugador.height > powerupActual.y) {
+        if (powerupActual.tipo === 'pulso') {
+            // Pulso defensivo - empuja virus lejos
+            virus.forEach(v => {
+                let dx = v.x - jugador.x;
+                let dy = v.y - jugador.y;
+                let dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 200) {
+                    v.velocidadX = (dx/dist) * 8;
+                    v.velocidadY = (dy/dist) * 8;
+                }
+            });
+        } else if (powerupActual.tipo === 'escudo') {
+            // Escudo temporal
+            escudoNucleoActivo = true;
+            escudoNucleoTimer = 0;
+            document.getElementById('escudo-nucleo').style.display = 'block';
         }
-        
-        // Eliminar powerup después de cierto tiempo
-        if (powerupActual.timer > 420) {
-            powerupActual = null;
-            powerupTitilar = false;
-        }
-        
-        // Colisión con jugador
-        if (jugador.x < powerupActual.x + powerupActual.width &&
-            jugador.x + jugador.width > powerupActual.x &&
-            jugador.y < powerupActual.y + powerupActual.height &&
-            jugador.y + jugador.height > powerupActual.y) {
-            
-            if (powerupActual.tipo === 'pulso') {
-                // Pulso defensivo - empuja virus lejos
-                virus.forEach(v => {
-                    let dx = v.x - jugador.x;
-                    let dy = v.y - jugador.y;
-                    let dist = Math.sqrt(dx*dx + dy*dy);
-                    if (dist < 200) {
-                        v.velocidadX = (dx/dist) * 8;
-                        v.velocidadY = (dy/dist) * 8;
-                    }
-                });
-                mostrarMensajeAuraman("¡Pulso defensivo activado!");
-            } else if (powerupActual.tipo === 'escudo') {
-                // Escudo temporal
-                escudoNucleoActivo = true;
-                escudoNucleoTimer = 0;
-                document.getElementById('escudo-nucleo').style.display = 'block';
-                mostrarMensajeAuraman("¡Escudo temporal activado!");
-            }
-            
-            powerupActual = null;
-            powerupTitilar = false;
-        }
+        powerupActual = null;
+        powerupTitilar = false;
     }
 }
 function spawnVirus() {
-    if (virusVivos >= virusPorOleada) return;
     virusSpawnTimer++;
-    if (virusSpawnTimer < 40 - Math.min(oleada*2, 30)) return;
+    let frecuencia = 50 - Math.min(oleada*2, 30); // mínimo 20 frames
+    if (virusSpawnTimer < frecuencia) return;
     virusSpawnTimer = 0;
     let tipo = virusTipos[Math.floor(Math.random()*Math.min(1+Math.floor(oleada/2), virusTipos.length))];
+    // Elegir un borde aleatorio: 0=izquierda, 1=derecha, 2=arriba
+    let borde = Math.floor(Math.random()*3);
+    let x, y;
+    if (borde === 0) { // izquierda
+        x = -40;
+        y = Math.random() * CANVAS_HEIGHT;
+    } else if (borde === 1) { // derecha
+        x = CANVAS_WIDTH + 40;
+        y = Math.random() * CANVAS_HEIGHT;
+    } else { // arriba
+        x = Math.random() * CANVAS_WIDTH;
+        y = -40;
+    }
+    // Calcular dirección hacia el centro del núcleo
+    let nucleoCentroX = nucleo.x + nucleo.width/2;
+    let nucleoCentroY = nucleo.y + nucleo.height/2;
+    let dx = nucleoCentroX - x;
+    let dy = nucleoCentroY - y;
+    let dist = Math.sqrt(dx*dx + dy*dy);
+    let velocidad = tipo==='rapido' ? 6 : 2.5;
+    let velocidadX = (dx/dist) * velocidad;
+    let velocidadY = (dy/dist) * velocidad;
     let v = {
-        x: Math.random() * (CANVAS_WIDTH - 40),
-        y: -40,
+        x: x,
+        y: y,
         width: 32,
         height: 32,
-        velocidadX: (Math.random() - 0.5) * (tipo==='rapido'?6:2),
-        velocidadY: tipo==='rapido'?4+Math.random()*2:2+Math.random()*2,
+        velocidadX: velocidadX,
+        velocidadY: velocidadY,
         tipo: tipo,
         anim: Math.random()*100,
         vida: tipo==='divisor'?2:1
     };
     virus.push(v);
-    virusVivos++;
 }
 function actualizarVirus() {
     for (let i = virus.length - 1; i >= 0; i--) {
@@ -656,8 +679,6 @@ function actualizarVirus() {
                 crearExplosion(v.x+v.width/2, v.y+v.height/2, 32);
                 virus.splice(i, 1);
                 gameState.virusEliminados++;
-                virusVivos--;
-                mostrarMensajeAuraman("¡Buen uso del láser!");
             }
         });
         // Colisión con pulso
@@ -671,27 +692,21 @@ function actualizarVirus() {
             if (escudoNucleoActivo) {
                 crearExplosion(v.x+v.width/2, v.y+v.height/2, 32);
                 virus.splice(i, 1);
-                virusVivos--;
-                mostrarMensajeAuraman("¡El escudo te salvó!");
             } else {
                 crearExplosion(v.x+v.width/2, v.y+v.height/2, 32);
                 virus.splice(i, 1);
-                gameState.nucleoIntegridad -= 10;
+                gameState.nucleoIntegridad -= 15;
                 actualizarHUD();
-                virusVivos--;
-                mostrarMensajeAuraman("¡Cuidado con el núcleo!");
                 if (gameState.nucleoIntegridad <= 0) gameOver();
             }
         }
         // Eliminar virus que salen de pantalla
         if (v.y > CANVAS_HEIGHT+40) {
             virus.splice(i, 1);
-            virusVivos--;
         }
         // Virus divisor: se divide al morir
         if (v.vida === 0) {
             virus.splice(i, 1);
-            virusVivos--;
             for (let d = 0; d < 2; d++) {
                 virus.push({
                     x: v.x,
@@ -704,7 +719,6 @@ function actualizarVirus() {
                     anim: Math.random()*100,
                     vida: 1
                 });
-                virusVivos++;
             }
         }
     }
@@ -713,7 +727,6 @@ function actualizarOleada() {
     if (gameState.virusEliminados > 0 && gameState.virusEliminados % virusPorOleada === 0) {
         oleada++;
         virusPorOleada += 4;
-        mostrarMensajeAuraman("¡Vienen más rápido!");
     }
 }
 function actualizarPlataformasDinamicas() {
@@ -927,10 +940,33 @@ function actualizarHUD() {
     void barra.offsetWidth;
     barra.classList.add('pulse');
 }
+function iniciarTemporizador() {
+    actualizarTimerHUD();
+    timerInterval = setInterval(() => {
+        if (!gameState.jugando) return;
+        tiempoRestante--;
+        actualizarTimerHUD();
+        if (tiempoRestante <= 0) {
+            tiempoRestante = 0;
+            clearInterval(timerInterval);
+            victoria();
+        }
+    }, 1000);
+}
+function actualizarTimerHUD() {
+    const timerDiv = document.getElementById('timer-partida');
+    let min = Math.floor(tiempoRestante / 60);
+    let seg = tiempoRestante % 60;
+    timerDiv.textContent = `${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
+}
 function iniciarJuego() {
     console.log('Iniciando juego del núcleo...');
     actualizarHUD();
     dibujar();
+    tiempoRestante = 120;
+    actualizarTimerHUD();
+    if (timerInterval) clearInterval(timerInterval);
+    iniciarTemporizador();
     console.log('GameLoop iniciado');
     requestAnimationFrame(gameLoop);
 }
@@ -947,7 +983,6 @@ function gameLoop() {
     spawnVirus();
     actualizarVirus();
     dibujar();
-    mensajesAuramanRandom();
     // Defensa activa timers
     if (escudoNucleoActivo) {
         escudoNucleoTimer++;
@@ -957,7 +992,7 @@ function gameLoop() {
         }
     }
     // Condición de victoria (3 oleadas)
-    if (oleada > 3 && virusVivos === 0) {
+    if (oleada > 3 && virus.length === 0) {
         victoria();
         return;
     }
@@ -976,7 +1011,6 @@ function reiniciarJuego() {
     Object.assign(gameState, { nucleoIntegridad: 100, virusEliminados: 0, tiempoJuego: 0, jugando: true });
     jugador.x = 100; jugador.y = CANVAS_HEIGHT - 120; jugador.velocidadX = 0; jugador.velocidadY = 0; jugador.saltos = 0; jugador.puedeDash = true; jugador.dashActivo = false;
     virus = [];
-    virusVivos = 0;
     oleada = 1;
     virusPorOleada = 8;
     plataformasDinamicas.forEach(p=>{p.visible=false;p.timer=0;});

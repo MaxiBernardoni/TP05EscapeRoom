@@ -227,4 +227,152 @@
         </form>
         <a href="/" class="btn-final btn-salir">🚪 Salir del Juego</a>
     </div>
-</div> 
+</div>
+
+<style>
+.creditos-bg {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: rgba(10, 30, 40, 0.85);
+    padding-top: 40px;
+    box-sizing: border-box;
+}
+.creditos-titulo {
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 2.5em;
+    color: #00ffc3;
+    background: #00242e;
+    border-radius: 18px;
+    border: 4px solid #00ffc3;
+    box-shadow: 0 0 24px #00ffc3cc, 0 0 8px #fff;
+    padding: 18px 48px 10px 48px;
+    margin-bottom: 36px;
+    letter-spacing: 2px;
+    text-align: center;
+    text-shadow: 0 0 16px #00ffc3, 0 0 2px #fff;
+    animation: glowTitulo 2s infinite alternate;
+}
+@@keyframes glowTitulo {
+    0% { box-shadow: 0 0 24px #00ffc3cc, 0 0 8px #fff; }
+    100% { box-shadow: 0 0 48px #00ffc3cc, 0 0 16px #fff; }
+}
+.creditos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+}
+.credito-tarjeta {
+    background: rgba(0,0,0,0.15);
+    border-radius: 22px;
+    min-width: 320px;
+    max-width: 350px;
+    min-height: 340px;
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    box-shadow: 0 0 32px 4px var(--glow), 0 0 0 2.5px var(--glow2);
+    border: 3.5px solid var(--glow2);
+    margin-bottom: 24px;
+    transition: box-shadow 0.3s;
+    overflow: hidden;
+    animation: pulseGlow 2.2s infinite alternate;
+}
+.credito-tarjeta[data-color="azul"] {
+    --glow: #00bfffcc;
+    --glow2: #00bfff;
+}
+.credito-tarjeta[data-color="verde"] {
+    --glow: #00ffb0cc;
+    --glow2: #00ffb0;
+}
+.credito-tarjeta[data-color="violeta"] {
+    --glow: #b000ffcc;
+    --glow2: #b000ff;
+}
+@@keyframes pulseGlow {
+    0% { box-shadow: 0 0 32px 4px var(--glow), 0 0 0 2.5px var(--glow2); }
+    100% { box-shadow: 0 0 64px 8px var(--glow), 0 0 0 4px var(--glow2); }
+}
+.credito-icono {
+    margin-top: 32px;
+    margin-bottom: 18px;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.credito-nombre {
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1.35em;
+    font-weight: bold;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.credito-id {
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    font-size: 1.1em;
+    opacity: 0.8;
+    margin-bottom: 18px;
+    text-align: center;
+}
+.credito-tarjeta[data-color="azul"] .credito-nombre { color: #00bfff; }
+.credito-tarjeta[data-color="azul"] .credito-id { color: #00bfff; }
+.credito-tarjeta[data-color="verde"] .credito-nombre { color: #00ffb0; }
+.credito-tarjeta[data-color="verde"] .credito-id { color: #00ffb0; }
+.credito-tarjeta[data-color="violeta"] .credito-nombre { color: #b000ff; }
+.credito-tarjeta[data-color="violeta"] .credito-id { color: #b000ff; }
+@@media (max-width: 1100px) {
+    .creditos-grid { flex-direction: column; align-items: center; }
+}
+</style>
+<div class="creditos-bg">
+    <div class="creditos-titulo">INTEGRANTES</div>
+    <div class="creditos-grid" id="creditos-grid"></div>
+</div>
+<script>
+// Tarjetas de integrantes
+const integrantes = [
+    {
+        nombre: "Maximiliano Bernardoni",
+        id: "ID-0124",
+        color: "azul",
+        icono: `<svg width='56' height='56' viewBox='0 0 56 56' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='28' cy='28' r='24' stroke='#00bfff' stroke-width='4' fill='rgba(0,191,255,0.08)'/><circle cx='28' cy='28' r='12' stroke='#00bfff' stroke-width='3' fill='rgba(0,191,255,0.18)'/><rect x='18' y='38' width='20' height='6' rx='3' fill='#00bfff' fill-opacity='0.18'/></svg>`
+    },
+    {
+        nombre: "Ignacio Eskenazi",
+        id: "ID-0889",
+        color: "verde",
+        icono: `<svg width='56' height='56' viewBox='0 0 56 56' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='28' cy='28' r='24' stroke='#00ffb0' stroke-width='4' fill='rgba(0,255,176,0.08)'/><circle cx='28' cy='28' r='12' stroke='#00ffb0' stroke-width='3' fill='rgba(0,255,176,0.18)'/><rect x='18' y='38' width='20' height='6' rx='3' fill='#00ffb0' fill-opacity='0.18'/></svg>`
+    },
+    {
+        nombre: "Tobias Nul",
+        id: "ID-0456",
+        color: "violeta",
+        icono: `<svg width='56' height='56' viewBox='0 0 56 56' fill='none' xmlns='http://www.w3.org/2000/svg'><circle cx='28' cy='28' r='24' stroke='#b000ff' stroke-width='4' fill='rgba(176,0,255,0.08)'/><circle cx='28' cy='28' r='12' stroke='#b000ff' stroke-width='3' fill='rgba(176,0,255,0.18)'/><rect x='18' y='38' width='20' height='6' rx='3' fill='#b000ff' fill-opacity='0.18'/></svg>`
+    }
+];
+const grid = document.getElementById('creditos-grid');
+integrantes.forEach(intg => {
+    const card = document.createElement('div');
+    card.className = 'credito-tarjeta';
+    card.setAttribute('data-color', intg.color);
+    card.innerHTML = `
+        <div class="credito-icono">${intg.icono}</div>
+        <div class="credito-nombre">${intg.nombre}</div>
+        <div class="credito-id">${intg.id}</div>
+    `;
+    grid.appendChild(card);
+});
+</script> 

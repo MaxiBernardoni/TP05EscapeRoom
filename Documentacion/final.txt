@@ -1,0 +1,49 @@
+🎯 Objetivo
+Crear una view en JavaScript que muestre a los integrantes de la sala como tarjetas de identificación futuristas.
+Cada tarjeta debe parecer un ID digital personalizado, con estética sci-fi tecnológica, colores diferentes y fondo transparente.
+
+🖼️ Estética y diseño
+Estilo inspirado en interfaces de ciencia ficción, tipo Tron, Cyberpunk 2077 o paneles de acceso digital.
+
+Formas rectangulares o con esquinas suavemente redondeadas.
+
+Bordes con efecto glow suave.
+
+Detalles internos como líneas finas de circuitos, bordes dobles o marcos luminosos.
+
+Fondo transparente para que se puedan superponer sobre cualquier fondo.
+
+🎨 Colores y personalización
+Cada integrante debe tener su propio color principal:
+
+Maximiliano Bernardoni: azul eléctrico.
+
+Ignacio Eskenazi: verde neón.
+
+Tobias Nul: violeta brillante.
+
+El color define el borde glow y detalles decorativos.
+
+💡 Contenido de cada tarjeta
+Nombre completo en la parte central o superior, en tipografía moderna y clara (tipo "Orbitron" o similar).
+
+Número de ID ficticio (ejemplo: "ID-0124", "ID-0889") debajo del nombre.
+
+Espacio para un ícono o silueta abstracta que represente al integrante (puede ser un placeholder o SVG simple).
+
+Animación sutil: por ejemplo, efecto pulsante o brillo intermitente en el borde.
+
+🛠️ Tecnología y estructura (para JavaScript)
+Crear cada tarjeta como un div dinámico generado con JavaScript.
+
+Aplicar estilos con CSS (o CSS-in-JS) para bordes glow y efectos.
+
+Usar pseudo-elementos (::before, ::after) si hace falta para detalles luminosos o capas adicionales.
+
+Todas las tarjetas deben ser responsive, se adaptan en grid o fila.
+
+✅ Resumen para Cursor (copy directo)
+Crear una view en JavaScript que muestre tarjetas ID futuristas de tres integrantes: Maximiliano Bernardoni (azul eléctrico), Ignacio Eskenazi (verde neón) y Tobias Nul (violeta brillante).
+Cada tarjeta debe ser un div con fondo transparente, borde glow, nombre completo, ID ficticio y un ícono o silueta abstracta.
+Estética sci-fi (tipo Tron o Cyberpunk), con efectos pulsantes suaves.
+Generar todo dinámicamente con JavaScript y estilos bien detallados.

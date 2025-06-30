@@ -973,6 +973,12 @@ namespace TuProyecto.Controllers
             // Final del juego completo
             return RedirectToAction("ResultadoFinal");
         }
+
+        [HttpGet]
+        public IActionResult ResultadoFinal()
+        {
+            return View();
+        }
     }
 }
 

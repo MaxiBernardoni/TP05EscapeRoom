@@ -1,0 +1,130 @@
+@model TuProyecto.Models.JuegoColectivoModel
+@{
+    ViewData["Title"] = "Resultado Final del Juego";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .resultado-final-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        color: #fff;
+    }
+
+    .marcador {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 30px 0;
+        font-size: 2em;
+    }
+
+    .jugador-score, .conductor-score {
+        padding: 20px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        min-width: 150px;
+    }
+
+    .victoria-badge {
+        font-size: 3em;
+        margin: 20px 0;
+        animation: aparecer 1s ease-out;
+    }
+
+    .mensaje-final {
+        font-size: 1.5em;
+        margin: 30px 0;
+        padding: 20px;
+        border-radius: 10px;
+        background: linear-gradient(45deg, 
+            @(Model.GanadorFinal == "Jugador" ? "#4CAF50, #45a049" : "#f44336, #d32f2f"));
+        animation: aparecer 1s ease-out;
+    }
+
+    .tiempo-final {
+        font-size: 1.5em;
+        margin: 20px 0;
+        color: @(Model.TiempoPenalizacion < 0 ? "#4CAF50" : "#f44336");
+        animation: aparecer 0.5s ease-out;
+    }
+
+    .continuar-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        color: #fff;
+        background: linear-gradient(45deg, #2196F3, #1976D2);
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: aparecer 1s ease-out;
+    }
+
+    .continuar-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
+    }
+
+    .resumen-rondas {
+        margin: 30px 0;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    @@keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="resultado-final-container">
+    <h2>¡Fin del Desafío!</h2>
+
+    <div class="victoria-badge">
+        @(Model.GanadorFinal == "Jugador" ? "🏆" : "🚦")
+    </div>
+
+    <div class="marcador">
+        <div class="jugador-score">
+            Tú: @Model.VictoriasJugador
+        </div>
+        <div class="conductor-score">
+            Conductor: @Model.VictoriasConductor
+        </div>
+    </div>
+
+    <div class="mensaje-final">
+        @Model.MensajeConductor
+    </div>
+
+    <div class="tiempo-final">
+        @if (Model.TiempoPenalizacion < 0)
+        {
+            <span>¡Ganaste @Math.Abs(Model.TiempoPenalizacion) segundos! El conductor tomará atajos.</span>
+        }
+        else
+        {
+            <span>Perdiste @Model.TiempoPenalizacion segundos... El conductor tomará la ruta más larga.</span>
+        }
+    </div>
+
+    <a href="@Url.Action("Habitacion3", "Home")" class="continuar-btn">
+        Continuar el viaje →
+    </a>
+</div> 

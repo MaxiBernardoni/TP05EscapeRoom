@@ -134,7 +134,7 @@ namespace TuProyecto.Controllers
 
                 HttpContext.Session.SetInt32("game_seconds", segundos);
                 ViewBag.GameSeconds = segundos;
-                return View("ResultadoFinal", modelo);
+                return View("FinalColectivo", modelo);
             }
 
             ViewBag.GameSeconds = segundos;
@@ -854,12 +854,6 @@ namespace TuProyecto.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult CodigoPortero()
-        {
-            // Interfaz para ingresar el código
-            return View();
-        }
 
         [HttpPost]
         public IActionResult VerificarCodigoPortero(string codigo)
